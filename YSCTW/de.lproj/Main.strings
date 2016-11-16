@@ -1,0 +1,72 @@
+
+/* Class = "UITextView"; text = "Du hast noch keinen Account?"; ObjectID = "3pX-Bz-cyS"; */
+"3pX-Bz-cyS.text" = "Du hast noch keinen Account?";
+
+/* Class = "UILabel"; text = "Mache ein Foto"; ObjectID = "5d6-UO-PBg"; */
+"5d6-UO-PBg.text" = "Mache ein Foto";
+
+/* Class = "UIButton"; normalTitle = "Unterstützen"; ObjectID = "8EN-MJ-ltf"; */
+"8EN-MJ-ltf.normalTitle" = "Unterstützen";
+
+/* Class = "UITextView"; text = "Du hast bereits einen Account?"; ObjectID = "8b1-KI-nRS"; */
+"8b1-KI-nRS.text" = "Du hast bereits einen Account?";
+
+/* Class = "UIViewController"; title = "LoginViewController"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "LoginViewController";
+
+/* Class = "UILabel"; text = "YSCTW"; ObjectID = "GDQ-1A-2fD"; */
+"GDQ-1A-2fD.text" = "YSCTW";
+
+/* Class = "UIButton"; normalTitle = "ANMELDEN"; ObjectID = "KAd-gt-2Et"; */
+"KAd-gt-2Et.normalTitle" = "ANMELDEN";
+
+/* Class = "UITextField"; placeholder = "E-Mail Adresse"; ObjectID = "Mgd-j1-PT2"; */
+"Mgd-j1-PT2.placeholder" = "E-Mail Adresse";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Uen-Xy-2OY"; */
+"Uen-Xy-2OY.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "E-Mail Adresse"; ObjectID = "VxI-5R-MH2"; */
+"VxI-5R-MH2.placeholder" = "E-Mail Adresse";
+
+/* Class = "UILabel"; text = "Angesehen"; ObjectID = "WHj-0w-jTz"; */
+"WHj-0w-jTz.text" = "Angesehen";
+
+/* Class = "UITextField"; placeholder = "Passwort"; ObjectID = "fQN-7O-JfR"; */
+"fQN-7O-JfR.placeholder" = "Passwort";
+
+/* Class = "UISegmentedControl"; fWb-lg-OSu.segmentTitles[0] = "First"; ObjectID = "fWb-lg-OSu"; */
+"fWb-lg-OSu.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; fWb-lg-OSu.segmentTitles[1] = "Second"; ObjectID = "fWb-lg-OSu"; */
+"fWb-lg-OSu.segmentTitles[1]" = "Second";
+
+/* Class = "UILabel"; text = "YSCTW"; ObjectID = "hCE-Qa-021"; */
+"hCE-Qa-021.text" = "YSCTW";
+
+/* Class = "UITextField"; placeholder = "Passwort"; ObjectID = "j1w-qR-uwc"; */
+"j1w-qR-uwc.placeholder" = "Passwort";
+
+/* Class = "UILabel"; text = "Du kannst jetz 1€ pro Projekt spenden. Wähle ein oder mehrere Projekte aus"; ObjectID = "jeN-7J-NuL"; */
+"jeN-7J-NuL.text" = "Du kannst jetz 1€ pro Projekt spenden. Wähle ein oder mehrere Projekte aus";
+
+/* Class = "UIButton"; normalTitle = "ANMELDEN"; ObjectID = "pIJ-Ea-7BH"; */
+"pIJ-Ea-7BH.normalTitle" = "ANMELDEN";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "ps0-X3-Yty"; */
+"ps0-X3-Yty.placeholder" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Registrieren!"; ObjectID = "tKS-VN-QiA"; */
+"tKS-VN-QiA.normalTitle" = "Registrieren!";
+
+/* Class = "UILabel"; text = "Land"; ObjectID = "tdJ-zq-NoK"; */
+"tdJ-zq-NoK.text" = "Land";
+
+/* Class = "UIButton"; normalTitle = "Anmelden!"; ObjectID = "uVZ-Vf-5ga"; */
+"uVZ-Vf-5ga.normalTitle" = "Anmelden!";
+
+/* Class = "UILabel"; text = "ODER"; ObjectID = "uqX-Yj-JoU"; */
+"uqX-Yj-JoU.text" = "ODER";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."; ObjectID = "wAm-NR-Cy7"; */
+"wAm-NR-Cy7.text" = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";

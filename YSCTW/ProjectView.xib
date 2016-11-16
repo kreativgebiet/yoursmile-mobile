@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectView" customModule="YSCTW" customModuleProvider="target">
+            <connections>
+                <outlet property="projectLabel" destination="lNZ-aI-9my" id="RuO-J3-obf"/>
+                <outlet property="projectLogoImageView" destination="BW7-ph-WIx" id="ZDY-oQ-jSL"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Nzk-a6-kMf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNZ-aI-9my">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BW7-ph-WIx" customClass="RoundImageView" customModule="YSCTW" customModuleProvider="target">
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="BW7-ph-WIx" secondAttribute="height" multiplier="1:1" id="Lhb-VM-MCX"/>
+                        <constraint firstAttribute="width" constant="26" id="yKE-4U-mCY"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="lNZ-aI-9my" secondAttribute="trailing" constant="8" id="0ZK-ZX-jc5"/>
+                <constraint firstItem="BW7-ph-WIx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="0g3-pK-PF0"/>
+                <constraint firstAttribute="bottom" secondItem="lNZ-aI-9my" secondAttribute="bottom" id="8EX-Nk-RBV"/>
+                <constraint firstAttribute="bottom" secondItem="BW7-ph-WIx" secondAttribute="bottom" constant="8" id="EvS-YO-zGr"/>
+                <constraint firstItem="lNZ-aI-9my" firstAttribute="leading" secondItem="BW7-ph-WIx" secondAttribute="trailing" constant="8" id="QFw-CU-sqZ"/>
+                <constraint firstItem="BW7-ph-WIx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="XAf-Qb-bho"/>
+                <constraint firstItem="lNZ-aI-9my" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vfj-b7-KsS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="57.5" y="145"/>
+        </view>
+    </objects>
+</document>

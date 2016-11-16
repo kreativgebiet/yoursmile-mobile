@@ -1,0 +1,88 @@
+/* 
+  Localizable.strings
+  YSCTW
+
+  Created by Max Zimmermann on 14.11.16.
+  Copyright © 2016 MZ. All rights reserved.
+*/
+//Login
+"LOGIN" = "Login";
+"NO_ACCOUNT_LABEL" = "No account yet?";
+"REGISTER_BUTTON" = "Register!";
+"OR" = "OR";
+
+//Registration
+"REGISTER" = "Login";
+"ACCOUNT_LABEL" = "Already have an account?";
+"LOGIN_BUTTON" = "Login!";
+
+//Feed
+"SHOW_IMAGE_DETAIL" = "Show image details";
+
+//Donation detail
+"ALL" = "Show all";
+"COMMENTS" = "comments";
+"SEND" = "send";
+"ADD_COMMENT" = "Add comment";
+"REPORT_COMMENT" = "Report comment";
+"SHARE_FACEBOOK" = "Share on Facebook";
+"SHARE_INSTAGRAM" = "Share on Instagram";
+
+//General
+"EMAIL" = "E-Mail";
+"PASSWORD" = "Password";
+"CANCEL" = "Cancel";
+"VISITED" = "Visited";
+"COUNTRY" = "Country";
+"PROJECTS" = "Donation projects";
+"PROJECT" = "Donation project";
+"PROFILE" = "Profile";
+"OPTIONS" = "More options";
+"DONATE" = "Donation";
+
+//Profile
+"PROJECTS_SUPPORTED" = "Projects supported";
+"SUBSCRIBED" = "SUBSCRIBED";
+"SUBSCRIBER" = "SUBSCRIBER";
+"SUBSCRIBE" = "Subscribe";
+
+//Errors
+"NAME_ERROR" = "Please enter your name";
+"MAIL_ERROR" = "Please enter a valid E-mail address";
+"PASSWORD_ERROR" = "The password must be at least 8 characters long";
+"ERROR" = "An error occured";
+
+//Project cell
+"SHOW_DETAILS" = "Show details";
+"SUPPORT" = "Support";
+
+//ProgressView
+"TARGET_REACHED1" = "Target reached";
+"TARGET_REACHED2" = "";
+
+//Camera
+"TAKE_PICTURE" = "Take a picture";
+
+//Donation
+"DONATION_DESCRIPTION" = "You can now donate 1 € per project. Select one or more projects";
+"SELECT_PROJECT" = "Select a donation project";
+"SELECT_ANOTHER_PROJECT" = "Select another project";
+
+//Preferences
+"ABOUT" = "ABOUT";
+"ABOUT_YSCTW" = "About YSCTW";
+"TERMS_CONDITIONS" = "Terms and Conditions";
+"YOUR_FEEDBACK" = "Your feedback";
+"STATISTICS" = "Statistics";
+"APP_SETTINGS" = "APP SETTINGS";
+"CHANGE_LANGUAGE" = "Change language";
+"INFORMATIONS" = "INFORMATIONS";
+"VERSION" = "Version";
+"DISPLAY_NAME" = "USER NAME";
+"ACCOUNT_SETTINGS" = "ACCOUNT SETTINGS";
+"CHANGE_PASSWORD" = "Change password";
+"CHANGE_MAIL" = "Change e-mail";
+"DELETE_ACCOUNT" = "Delete account";
+"PAYMENT_OPTIONS" = "PAYMENT OPTIONS";
+"PAYMENT_PAYPAL" = "PayPal";
+"PAYMENT_CREDIT_CARD" = "Credit card";

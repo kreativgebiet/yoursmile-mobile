@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DonationDetailHeaderView" customModule="YSCTW" customModuleProvider="target">
+            <connections>
+                <outlet property="donationReceiverView" destination="6Zm-We-VPy" id="9MS-Of-jeX"/>
+                <outlet property="donatorNameLabel" destination="fQO-SV-uOY" id="7Ke-04-3UU"/>
+                <outlet property="donatorProfileImageView" destination="7eM-kq-xPG" id="H4y-Xv-GYn"/>
+                <outlet property="selfieCommentLabel" destination="wwH-AW-bSv" id="Zet-3U-l8y"/>
+                <outlet property="selfieImageView" destination="BxR-mi-HAw" id="o8s-g3-JMD"/>
+                <outlet property="transparentProjectView" destination="6Zm-We-VPy" id="aPy-QD-for"/>
+                <outlet property="view" destination="iN0-l3-epB" id="b4m-QS-xVD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKa-d5-BBq">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selfie" translatesAutoresizingMaskIntoConstraints="NO" id="BxR-mi-HAw">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="375" id="PH3-3P-MBK"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="375" id="tIz-d9-lD0"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJ6-C3-wHs" userLabel="CommentHeader">
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7eM-kq-xPG">
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="23" id="HWF-FR-Jrs"/>
+                                        <constraint firstAttribute="height" constant="23" id="swa-6M-QAh"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQO-SV-uOY">
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="fQO-SV-uOY" firstAttribute="centerY" secondItem="pJ6-C3-wHs" secondAttribute="centerY" id="J1F-qg-j81"/>
+                                <constraint firstItem="fQO-SV-uOY" firstAttribute="leading" secondItem="7eM-kq-xPG" secondAttribute="trailing" constant="10" id="LD2-PN-4vH"/>
+                                <constraint firstAttribute="trailing" secondItem="fQO-SV-uOY" secondAttribute="trailing" constant="10" id="aJ6-dh-GrO"/>
+                                <constraint firstItem="fQO-SV-uOY" firstAttribute="top" secondItem="pJ6-C3-wHs" secondAttribute="top" constant="2" id="dSN-79-cVB"/>
+                                <constraint firstItem="7eM-kq-xPG" firstAttribute="leading" secondItem="pJ6-C3-wHs" secondAttribute="leading" constant="8" id="eEH-fa-NLJ"/>
+                                <constraint firstAttribute="bottom" secondItem="fQO-SV-uOY" secondAttribute="bottom" constant="2" id="eQ7-ZQ-anJ"/>
+                                <constraint firstAttribute="height" constant="34" id="f7w-2m-A92"/>
+                                <constraint firstItem="7eM-kq-xPG" firstAttribute="centerY" secondItem="pJ6-C3-wHs" secondAttribute="centerY" id="mOu-FF-zCQ"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwH-AW-bSv">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Zm-We-VPy" userLabel="DonationView" customClass="TransparentProjectView" customModule="YSCTW" customModuleProvider="target">
+                            <color key="backgroundColor" red="0.5252327967" green="0.5252327967" blue="0.5252327967" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="Uyf-af-yo2"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="VD1-oz-evL"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="6Zm-We-VPy" firstAttribute="leading" secondItem="WKa-d5-BBq" secondAttribute="leading" id="0ou-BG-eFH"/>
+                        <constraint firstItem="pJ6-C3-wHs" firstAttribute="leading" secondItem="WKa-d5-BBq" secondAttribute="leading" id="BDj-ek-9QI"/>
+                        <constraint firstAttribute="bottom" secondItem="wwH-AW-bSv" secondAttribute="bottom" constant="5" id="KDh-0k-ubr"/>
+                        <constraint firstItem="BxR-mi-HAw" firstAttribute="leading" secondItem="WKa-d5-BBq" secondAttribute="leading" id="KmK-JR-p2f"/>
+                        <constraint firstItem="pJ6-C3-wHs" firstAttribute="top" secondItem="BxR-mi-HAw" secondAttribute="bottom" id="PDQ-P4-RLc"/>
+                        <constraint firstItem="wwH-AW-bSv" firstAttribute="leading" secondItem="WKa-d5-BBq" secondAttribute="leading" constant="8" id="WIV-Sl-bO6"/>
+                        <constraint firstAttribute="trailing" secondItem="wwH-AW-bSv" secondAttribute="trailing" constant="8" id="bxA-sJ-6rf"/>
+                        <constraint firstItem="BxR-mi-HAw" firstAttribute="top" secondItem="WKa-d5-BBq" secondAttribute="top" id="ddn-om-Dk5"/>
+                        <constraint firstItem="6Zm-We-VPy" firstAttribute="top" secondItem="BxR-mi-HAw" secondAttribute="bottom" constant="-42" id="gPt-V3-iZq"/>
+                        <constraint firstItem="wwH-AW-bSv" firstAttribute="top" secondItem="fQO-SV-uOY" secondAttribute="bottom" id="hp3-ye-dzD"/>
+                        <constraint firstAttribute="trailing" secondItem="pJ6-C3-wHs" secondAttribute="trailing" id="oey-Wz-LDF"/>
+                        <constraint firstAttribute="trailing" secondItem="BxR-mi-HAw" secondAttribute="trailing" id="sUX-aY-d9x"/>
+                        <constraint firstAttribute="trailing" secondItem="6Zm-We-VPy" secondAttribute="trailing" id="yJU-Uj-7QG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WKa-d5-BBq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7SP-Aw-5a1"/>
+                <constraint firstAttribute="trailing" secondItem="WKa-d5-BBq" secondAttribute="trailing" id="XTm-WG-BtH"/>
+                <constraint firstItem="WKa-d5-BBq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="oPD-fW-MMn"/>
+                <constraint firstAttribute="bottom" secondItem="WKa-d5-BBq" secondAttribute="bottom" id="vKW-ba-GIt"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Selfie" width="375" height="375"/>
+    </resources>
+</document>

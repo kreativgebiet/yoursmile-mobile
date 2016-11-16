@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  YSCTW
+
+  Created by Max Zimmermann on 14.11.16.
+  Copyright © 2016 MZ. All rights reserved.
+*/
+
+"ABOUT" = "ABOUT";
+"ABOUT_YSCTW" = "About YSCTW";
+"TERMS_CONDITIONS" = "Terms and Conditions";
+"YOUR_FEEDBACK" = "Dein Feedback";
+"STATISTICS" = "Statistiken";
+"APP_SETTINGS" = "APP SETTINGS";
+"CHANGE_LANGUAGE" = "Sprache ändern";
+"INFORMATIONS" = "INFORMATIONEN";
+"VERSION" = "Version";

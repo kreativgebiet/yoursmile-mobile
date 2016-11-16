@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DonationDetailOverlayView" customModule="YSCTW" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonContainerView" destination="Q1D-d5-Qcd" id="g8o-6n-dwG"/>
+                <outlet property="cancelButton" destination="YrI-Ky-rsl" id="VoD-nV-Wrz"/>
+                <outlet property="facebookButton" destination="AGv-hc-gev" id="tLj-vR-X96"/>
+                <outlet property="instagramButton" destination="FMi-Vq-Ssw" id="V8o-6n-7L0"/>
+                <outlet property="reportButton" destination="1UZ-rU-qeL" id="Q1f-vH-CUo"/>
+                <outlet property="view" destination="iN0-l3-epB" id="lhi-d4-dp1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1D-d5-Qcd">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrI-Ky-rsl" customClass="CornerButton" customModule="YSCTW" customModuleProvider="target">
+                            <state key="normal" title="Abbrechen"/>
+                            <connections>
+                                <action selector="handleCancelButtonTapped:" destination="-1" eventType="touchUpInside" id="8hv-rv-F51"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMi-Vq-Ssw" customClass="CornerButton" customModule="YSCTW" customModuleProvider="target">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="0ZO-Dt-YaA"/>
+                            </constraints>
+                            <state key="normal" title="Auf Instagram posten"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGv-hc-gev" customClass="CornerButton" customModule="YSCTW" customModuleProvider="target">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="c9l-n0-T8o"/>
+                            </constraints>
+                            <state key="normal" title="Auf Facebook teilen"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UZ-rU-qeL" customClass="CornerButton" customModule="YSCTW" customModuleProvider="target">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="2AU-sl-w8P"/>
+                            </constraints>
+                            <state key="normal" title="Beitrag melden"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.6588235294117647" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="FMi-Vq-Ssw" firstAttribute="top" secondItem="AGv-hc-gev" secondAttribute="bottom" id="2Gf-3Y-SN5"/>
+                        <constraint firstAttribute="trailing" secondItem="FMi-Vq-Ssw" secondAttribute="trailing" constant="8" id="55B-Df-AV3"/>
+                        <constraint firstItem="AGv-hc-gev" firstAttribute="leading" secondItem="Q1D-d5-Qcd" secondAttribute="leading" constant="8" id="94E-xp-8I1"/>
+                        <constraint firstAttribute="height" constant="205" id="9ao-ZR-JBy"/>
+                        <constraint firstItem="FMi-Vq-Ssw" firstAttribute="leading" secondItem="Q1D-d5-Qcd" secondAttribute="leading" constant="8" id="CmD-Pq-iSg"/>
+                        <constraint firstAttribute="trailing" secondItem="1UZ-rU-qeL" secondAttribute="trailing" constant="8" id="F97-Pm-2IV"/>
+                        <constraint firstItem="YrI-Ky-rsl" firstAttribute="leading" secondItem="Q1D-d5-Qcd" secondAttribute="leading" constant="8" id="KRR-m7-pxo"/>
+                        <constraint firstItem="YrI-Ky-rsl" firstAttribute="top" secondItem="FMi-Vq-Ssw" secondAttribute="bottom" constant="13" id="Q5t-Vc-RJm"/>
+                        <constraint firstItem="1UZ-rU-qeL" firstAttribute="leading" secondItem="Q1D-d5-Qcd" secondAttribute="leading" constant="8" id="gmE-ig-7pq"/>
+                        <constraint firstItem="AGv-hc-gev" firstAttribute="top" secondItem="1UZ-rU-qeL" secondAttribute="bottom" id="khe-iI-5Os"/>
+                        <constraint firstAttribute="trailing" secondItem="YrI-Ky-rsl" secondAttribute="trailing" constant="8" id="koK-LT-B9D"/>
+                        <constraint firstAttribute="bottom" secondItem="YrI-Ky-rsl" secondAttribute="bottom" constant="8" id="lpn-6n-8yY"/>
+                        <constraint firstAttribute="trailing" secondItem="AGv-hc-gev" secondAttribute="trailing" constant="8" id="nuf-Wa-Q1Z"/>
+                        <constraint firstItem="1UZ-rU-qeL" firstAttribute="top" secondItem="Q1D-d5-Qcd" secondAttribute="top" constant="8" id="pYL-wX-Pql"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Q1D-d5-Qcd" secondAttribute="bottom" id="FT9-rb-rdc"/>
+                <constraint firstAttribute="trailing" secondItem="Q1D-d5-Qcd" secondAttribute="trailing" id="MSz-Tl-JyG"/>
+                <constraint firstItem="Q1D-d5-Qcd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zjl-zL-IKi"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="86.5"/>
+        </view>
+    </objects>
+</document>
