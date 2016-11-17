@@ -32,8 +32,6 @@ class LeftViewImageTextField: UITextField {
         self.layer.shadowRadius = 50.0
         
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        
-        self.layer.shouldRasterize = true
     }
     
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {

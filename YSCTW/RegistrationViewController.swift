@@ -53,7 +53,7 @@ class RegistrationViewController: UIViewController {
         self.mailTextField.placeholder = "EMAIL".localized
         self.passwordTextField.placeholder = "PASSWORD".localized
         
-        let text1 = "ACCOUNT_LABEL".localized
+        let text1 = "ACCOUNT_LABEL".localized + " "
         let text2 = "LOGIN_BUTTON".localized
         let mutableString = NSMutableAttributedString(
             string: text1+text2,

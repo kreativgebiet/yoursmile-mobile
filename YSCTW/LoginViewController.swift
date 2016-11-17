@@ -32,11 +32,11 @@ class LoginViewController: UIViewController {
         self.defaultFacebookButtonTopSpaceConstraintConstant = self.facebookButtonTopSpaceConstraint.constant
         self.defaultlogoTopSpaceConstraintConstant = self.logoTopSpaceConstraint.constant
         
-        self.emailTextField.leftViewImage = UIImage(named: "mail-icon")!
+        self.emailTextField.leftViewImage = #imageLiteral(resourceName: "mail-icon")
         self.emailTextField.corners = UIRectCorner.topLeft.union(UIRectCorner.topRight)
         self.emailTextField.autocorrectionType = .no
         
-        self.passwordTextField.leftViewImage = UIImage(named: "password-icon")!
+        self.passwordTextField.leftViewImage = #imageLiteral(resourceName: "password-icon")
         self.passwordTextField.isSecureTextEntry = true
         self.passwordTextField.corners = UIRectCorner.bottomLeft.union(UIRectCorner.bottomRight)
         
@@ -47,10 +47,10 @@ class LoginViewController: UIViewController {
         self.emailTextField.placeholder = "EMAIL".localized
         self.passwordTextField.placeholder = "PASSWORD".localized
         
-        let text1 = "NO_ACCOUNT_LABEL".localized
+        let text1 = "NO_ACCOUNT_LABEL".localized + " "
         let text2 = "REGISTER_BUTTON".localized
         let mutableString = NSMutableAttributedString(
-            string: text1+text2,
+            string: text1 + text2,
             attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)])
         
         mutableString.addAttribute(NSForegroundColorAttributeName, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
@@ -117,6 +117,10 @@ class LoginViewController: UIViewController {
         
         self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
 
+    }
+    
+    @IBAction func facebookButton(_ sender: AnyObject) {
+        
     }
     
     // MARK: - Keyboard animation handling

@@ -40,12 +40,15 @@
                                     <action selector="handleRegistrationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RMf-CL-8TW"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwy-MK-X6Y" userLabel="Facebook-Login Button">
-                                <color key="backgroundColor" red="0.12019588852812479" green="0.22973972341343529" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xn-Lc-eD1" userLabel="Facebook-Button">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="qNY-sD-PCb"/>
+                                    <constraint firstAttribute="height" constant="50" id="EXD-uh-78H"/>
                                 </constraints>
-                            </view>
+                                <state key="normal" backgroundImage="login-with-facebook"/>
+                                <connections>
+                                    <action selector="facebookButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkF-hs-tyM"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evX-o7-MtB" userLabel="DividerView" customClass="DividerView" customModule="YSCTW" customModuleProvider="target">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ODER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqX-Yj-JoU">
@@ -117,8 +120,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="evX-o7-MtB" firstAttribute="top" secondItem="kwy-MK-X6Y" secondAttribute="bottom" constant="10" id="0ob-It-sQW"/>
-                            <constraint firstItem="kwy-MK-X6Y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="107-Cs-pd4"/>
                             <constraint firstItem="fQN-7O-JfR" firstAttribute="top" secondItem="Mgd-j1-PT2" secondAttribute="bottom" id="3nq-af-bx3"/>
                             <constraint firstItem="x5Q-B9-hNT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="713-db-N3E"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iiE-1n-E6o" secondAttribute="bottom" constant="10" id="7Sl-JA-dBu"/>
@@ -128,29 +129,29 @@
                             <constraint firstItem="B71-xi-DpT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JWi-aA-d8c"/>
                             <constraint firstAttribute="trailing" secondItem="B71-xi-DpT" secondAttribute="trailing" id="RAT-82-IqK"/>
                             <constraint firstItem="fQN-7O-JfR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="RDc-Bm-FUK"/>
-                            <constraint firstItem="evX-o7-MtB" firstAttribute="leading" secondItem="kwy-MK-X6Y" secondAttribute="leading" id="RYt-wU-Cn0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kwy-MK-X6Y" secondAttribute="trailing" constant="25" id="SgZ-Ng-oVA"/>
-                            <constraint firstItem="KAd-gt-2Et" firstAttribute="top" secondItem="fQN-7O-JfR" secondAttribute="bottom" constant="6" id="TSy-Ew-y47"/>
+                            <constraint firstItem="KAd-gt-2Et" firstAttribute="top" secondItem="fQN-7O-JfR" secondAttribute="bottom" constant="10" id="TSy-Ew-y47"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8xn-Lc-eD1" secondAttribute="trailing" constant="25" id="U8W-KQ-SY0"/>
                             <constraint firstItem="Mgd-j1-PT2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="UXV-A2-kv0"/>
                             <constraint firstItem="iiE-1n-E6o" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="VJy-HN-Ke9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mgd-j1-PT2" secondAttribute="trailing" constant="25" id="X3a-uc-Au6"/>
                             <constraint firstItem="x5Q-B9-hNT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="a4e-Zv-fBq"/>
                             <constraint firstItem="evX-o7-MtB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bYi-zZ-pYe"/>
-                            <constraint firstItem="kwy-MK-X6Y" firstAttribute="top" secondItem="x5Q-B9-hNT" secondAttribute="bottom" constant="117" id="eRn-Wa-i3V"/>
-                            <constraint firstItem="evX-o7-MtB" firstAttribute="top" secondItem="kwy-MK-X6Y" secondAttribute="bottom" constant="10" id="faP-9x-pvl"/>
+                            <constraint firstItem="evX-o7-MtB" firstAttribute="top" secondItem="8xn-Lc-eD1" secondAttribute="bottom" constant="10" id="ddE-1u-ZRo"/>
                             <constraint firstItem="Mgd-j1-PT2" firstAttribute="top" secondItem="evX-o7-MtB" secondAttribute="bottom" constant="6" id="gxR-mU-hPl"/>
                             <constraint firstItem="B71-xi-DpT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nJD-3s-GSy"/>
                             <constraint firstItem="GDQ-1A-2fD" firstAttribute="top" secondItem="x5Q-B9-hNT" secondAttribute="bottom" constant="-1" id="oyz-sD-ym9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fQN-7O-JfR" secondAttribute="trailing" constant="25" id="pKR-7Z-q5O"/>
+                            <constraint firstItem="8xn-Lc-eD1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="rpC-G2-W7U"/>
                             <constraint firstItem="GDQ-1A-2fD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sYF-NY-4ZR"/>
                             <constraint firstItem="evX-o7-MtB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="u7Z-eQ-j6r"/>
+                            <constraint firstItem="8xn-Lc-eD1" firstAttribute="top" secondItem="x5Q-B9-hNT" secondAttribute="bottom" constant="117" id="vDv-lR-xnp"/>
                             <constraint firstItem="KAd-gt-2Et" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="w36-5m-S4k"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iiE-1n-E6o" secondAttribute="trailing" constant="10" id="xBd-GG-j23"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Mgd-j1-PT2" id="8j4-uT-HeK"/>
-                        <outlet property="facebookButtonTopSpaceConstraint" destination="eRn-Wa-i3V" id="9x0-UG-JJ9"/>
+                        <outlet property="facebookButtonTopSpaceConstraint" destination="vDv-lR-xnp" id="bpQ-QN-mgz"/>
                         <outlet property="gotoRegistrationButton" destination="iiE-1n-E6o" id="Jzt-2y-fnP"/>
                         <outlet property="loginButton" destination="KAd-gt-2Et" id="GrL-gb-MaQ"/>
                         <outlet property="logoTitleLabel" destination="GDQ-1A-2fD" id="RSz-gF-azv"/>
@@ -1348,6 +1349,7 @@
         <image name="filter-arrow" width="11" height="7"/>
         <image name="filter-icon" width="16" height="19"/>
         <image name="instagram-icon" width="29" height="29"/>
+        <image name="login-with-facebook" width="319" height="54"/>
         <image name="logo-orange" width="130" height="135"/>
         <image name="switch-icon" width="38" height="31"/>
         <image name="tabbar-donation" width="24" height="20"/>
