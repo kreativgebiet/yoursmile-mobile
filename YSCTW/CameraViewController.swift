@@ -24,6 +24,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var navBarLabel: UILabel!
     @IBOutlet weak var cameraRollButton: UIButton!
+    @IBOutlet weak var switchCameraButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
     
     override func viewDidLoad() {
@@ -35,9 +36,15 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         let helper = HelperFunctions()
         
-        self.cameraRollButton.contentHorizontalAlignment = .center
-        self.cameraRollButton.contentVerticalAlignment = .center
-        self.cameraRollButton.setImage(helper.fetchLastPhoto(targetSize: CGSize(width: 100, height: 100)), for: .normal)
+        self.cameraRollButton.contentHorizontalAlignment = .fill
+        self.cameraRollButton.contentVerticalAlignment = .fill
+        self.cameraRollButton.setImage(helper.fetchLastPhoto(targetSize: CGSize(width: 70, height: 70)), for: .normal)
+        self.cameraRollButton.imageView?.layer.cornerRadius = 5
+        self.cameraRollButton.imageEdgeInsets = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
+        
+        self.switchCameraButton.contentHorizontalAlignment = .center
+        self.switchCameraButton.contentVerticalAlignment = .center
+        self.switchCameraButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         
         for device in devices! {
             if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {

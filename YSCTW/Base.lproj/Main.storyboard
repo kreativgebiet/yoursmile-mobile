@@ -395,6 +395,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="jbK-hg-7Bh"/>
                                         </constraints>
+                                        <inset key="imageEdgeInsets" minX="-35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" image="close-icon"/>
                                         <connections>
                                             <action selector="closeButtonTapped:" destination="uz4-UT-GN6" eventType="touchUpInside" id="YON-aW-axz"/>
@@ -403,13 +404,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="M6D-Bl-e1f" secondAttribute="bottom" id="0jd-pq-U7x"/>
                                     <constraint firstAttribute="height" constant="54" id="2M2-ik-G6m"/>
                                     <constraint firstItem="5d6-UO-PBg" firstAttribute="centerX" secondItem="HcW-EH-Zb8" secondAttribute="centerX" id="3Eb-6r-YPW"/>
                                     <constraint firstItem="5d6-UO-PBg" firstAttribute="top" secondItem="HcW-EH-Zb8" secondAttribute="top" constant="20" id="AnJ-YZ-dUp"/>
-                                    <constraint firstItem="M6D-Bl-e1f" firstAttribute="leading" secondItem="HcW-EH-Zb8" secondAttribute="leading" id="Fgu-Eh-Bxp"/>
-                                    <constraint firstItem="M6D-Bl-e1f" firstAttribute="top" secondItem="HcW-EH-Zb8" secondAttribute="top" constant="10" id="GWg-0s-HZy"/>
+                                    <constraint firstItem="M6D-Bl-e1f" firstAttribute="top" secondItem="HcW-EH-Zb8" secondAttribute="top" constant="5" id="GnP-E8-ubl"/>
                                     <constraint firstAttribute="bottom" secondItem="5d6-UO-PBg" secondAttribute="bottom" constant="14" id="b0I-0E-vbf"/>
+                                    <constraint firstItem="M6D-Bl-e1f" firstAttribute="leading" secondItem="HcW-EH-Zb8" secondAttribute="leading" id="dAa-IF-z8F"/>
+                                    <constraint firstAttribute="bottom" secondItem="M6D-Bl-e1f" secondAttribute="bottom" constant="5" id="peZ-TT-orc"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1Y-rL-jQU">
@@ -426,8 +427,8 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uen-Xy-2OY">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="1X0-kX-Jn8"/>
-                                            <constraint firstAttribute="width" constant="90" id="jma-hQ-I7A"/>
+                                            <constraint firstAttribute="height" constant="80" id="1X0-kX-Jn8"/>
+                                            <constraint firstAttribute="width" constant="80" id="jma-hQ-I7A"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="camera-button"/>
                                         <connections>
@@ -477,6 +478,7 @@
                         <outlet property="cameraRollButton" destination="1uP-CH-U86" id="Yzo-4n-eCK"/>
                         <outlet property="cameraView" destination="cGe-Gx-uUP" id="wq9-Kr-Zik"/>
                         <outlet property="navBarLabel" destination="5d6-UO-PBg" id="nLL-du-N2N"/>
+                        <outlet property="switchCameraButton" destination="5S2-XF-vOq" id="aVV-pP-IgX"/>
                         <segue destination="o4g-Cs-04F" kind="show" identifier="donationSegue" id="LXr-Op-pta"/>
                     </connections>
                 </viewController>
