@@ -37,7 +37,6 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         button.frame = CGRect(x: 0, y:  0, width: 51, height: 31)
         button.setImage(#imageLiteral(resourceName: "preferences-icon"), for: .normal)
         button.transform = CGAffineTransform(translationX: 15, y: 0)
-        
         button.addTarget(self, action: #selector(preferencesTapped), for: .touchUpInside)
         
         let containerView = UIView()

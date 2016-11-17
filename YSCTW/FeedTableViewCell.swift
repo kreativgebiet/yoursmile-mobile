@@ -32,7 +32,7 @@ class FeedTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()        
         self.donorLogoImageView.backgroundColor = .white
-        self.donorTimeLabel.textColor = customGray
+        self.donorTimeLabel.textColor = timeGray
         self.donationLabelView.text = "SHOW_IMAGE_DETAIL".localized
         
         self.donorLogoImageView.isUserInteractionEnabled = true

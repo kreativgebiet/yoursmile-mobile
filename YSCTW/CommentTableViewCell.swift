@@ -16,15 +16,17 @@ class CommentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.commentLabel.textColor = customDarkerGray
+        self.commentLabel.textColor = spacerGray
         self.nameLabel.textColor = navigationBarGray
         
         self.backgroundColor = customLightGray
         self.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.width/2
+        self.profileImageView.clipsToBounds = true
     }
 
 }

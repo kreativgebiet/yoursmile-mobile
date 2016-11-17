@@ -19,6 +19,7 @@ let green = UIColor(red: 0/255.0, green: 151.0/255.0, blue: 137.0/255.0, alpha: 
 let customRed = UIColor(red: 250.0/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0) as UIColor
 let customLightGray = UIColor.init(white: 248.0/256.0, alpha: 1)
 let customGray = UIColor.init(white: 235.0/256.0, alpha: 1)
+let timeGray = UIColor.init(white: 169.0/256.0, alpha: 1)
 let customDarkGray = UIColor.init(white: 180.0/256.0, alpha: 1)
 let customDarkerGray = UIColor.init(white: 216.0/256.0, alpha: 1)
 let spacerGray = UIColor.init(white: 102.0/256.0, alpha: 1)

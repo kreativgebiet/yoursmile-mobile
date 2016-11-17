@@ -23,9 +23,16 @@ class DonationDetailViewController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "more-icon"), for: .normal)
         button.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
         
+        button.transform = CGAffineTransform(translationX: 15, y: 0)
+        
+        let containerView = UIView()
+        containerView.frame = button.frame
+        containerView.addSubview(button)
+        
         let barButton = UIBarButtonItem()
-        barButton.customView = button
+        barButton.customView = containerView
         barButton.tintColor = .white
+        
         self.navigationItem.rightBarButtonItem = barButton
         
         self.navigationItem.rightBarButtonItem?.setBackgroundVerticalPositionAdjustment(10, for: UIBarMetrics.default)

@@ -21,7 +21,6 @@ class CornerButton: UIButton {
         self.layer.shadowOpacity = 1
         self.layer.shadowRadius = 50.0
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
     }
     
     override func layoutSubviews() {

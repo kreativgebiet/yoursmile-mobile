@@ -33,6 +33,8 @@ class CommentView: UIView {
     
     //:Mark - Button handling
     @IBAction func handleSendCommentButtonTapped(_ sender: AnyObject) {
+        
     }
+    
 
 }
