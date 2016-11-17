@@ -69,12 +69,7 @@ class BarViewController: UIViewController {
     }
     
     @IBAction func handleCameraButtonTapped(_ sender: UIButton) {
-        if sender != self.selectedButton {
-
-//            sender.isSelected = true
-//            self.selectedButton?.isSelected = false
-//            self.selectedButton = sender
-            
+        if sender != self.selectedButton {            
             self.delegate?.didSelectButtonOf(type: Type.camera)
         }
     }

@@ -12,6 +12,8 @@ import UIKit
 let baseURL = "http://yoursmile-staging.herokuapp.com/"
 
 let orange = UIColor(red: 252.0/255.0, green: 168/255.0, blue: 78/255.0, alpha: 1.0) as UIColor
+let green = UIColor(red: 0/255.0, green: 151.0/255.0, blue: 137.0/255.0, alpha: 1.0) as UIColor
+
 let customRed = UIColor(red: 250.0/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0) as UIColor
 let customLightGray = UIColor.init(white: 248.0/256.0, alpha: 1)
 let customGray = UIColor.init(white: 235.0/256.0, alpha: 1)

@@ -95,6 +95,12 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
+        imagePickerController.navigationBar.isTranslucent = false
+        imagePickerController.navigationBar.barTintColor = navigationBarGray
+        imagePickerController.navigationBar.tintColor = .white
+        imagePickerController.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : UIColor.white
+        ]
         
         self.present(imagePickerController, animated: true, completion: nil)
     }

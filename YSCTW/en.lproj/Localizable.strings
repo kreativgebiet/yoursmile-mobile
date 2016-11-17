@@ -38,6 +38,7 @@
 //General
 "EMAIL" = "E-Mail";
 "PASSWORD" = "Password";
+"PROCEED" = "Proceed";
 "CANCEL" = "Cancel";
 "VISITED" = "Visited";
 "COUNTRY" = "Country";
@@ -74,6 +75,21 @@
 "DONATION_DESCRIPTION" = "You can now donate 1 € per project. Select one or more projects";
 "SELECT_PROJECT" = "Select a donation project";
 "SELECT_ANOTHER_PROJECT" = "Select another project";
+"PAYMENT_ERROR" = "Please select a payment option.";
+"NO_PROJECT_ERROR" = "Please select one or more donation projects.";
+"DESCRIPTION" = "Description";
+"YOUR_COMMENT" = "Your comment";
+"PUBLISH" = "Post on";
+"DONATION_INFO" = "You have selected %@ %1 and will donate %@€ plus fees*";
+"FEE_INFO" = "*plus %@€ fees";
+"PROJECT_WORD" = "project";
+"PROJECTS_WORD" = "projects";
+
+//Overlay
+"THANK_YOU" = "Thank you";
+"THANK_YOU_TEXT" = "You are a real hero! Your payment was succesfully transferred to the selected project.";
+"THANK_YOU_BUTTON" = "Back to my stream";
+
 
 //Preferences
 "ABOUT" = "ABOUT";

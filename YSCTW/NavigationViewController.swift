@@ -36,9 +36,6 @@ class NavigationViewController: UINavigationController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        self.navigationBar.topItem?.title = ""
-        self.title = ""
-        
         if segue.identifier == "donationDetailSegue" {
             let destinationVC = segue.destination as! DonationDetailViewController
             let donation = sender as! Donation

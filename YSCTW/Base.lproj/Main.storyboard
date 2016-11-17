@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -201,6 +202,9 @@
                             <constraint firstItem="30J-J8-3DN" firstAttribute="top" secondItem="pho-Rw-cl5" secondAttribute="top" id="vu3-XX-E9s"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hzd-56-H4V">
+                        <barButtonItem key="backBarButtonItem" title=" " id="rhl-xP-Jwp"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomContainerView" destination="sId-Vj-hW5" id="vak-EE-V3y"/>
                         <outlet property="topContainerView" destination="30J-J8-3DN" id="k4U-gZ-6nl"/>
@@ -518,36 +522,10 @@
                                                     <constraint firstAttribute="height" constant="50" id="2V8-Xf-8TH"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tia-LB-Vrb" userLabel="Payment Options Container View">
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal" translatesAutoresizingMaskIntoConstraints="NO" id="OBR-Gh-qdI" userLabel="paypal">
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="112" id="NdY-r6-d5a"/>
-                                                            <constraint firstAttribute="height" constant="50" id="mC5-9i-jsq"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard" translatesAutoresizingMaskIntoConstraints="NO" id="F1M-zB-fnh" userLabel="creditcard">
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="112" id="8CT-X4-ebI"/>
-                                                            <constraint firstAttribute="height" constant="50" id="eBD-aB-jnK"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itunes" translatesAutoresizingMaskIntoConstraints="NO" id="0gR-3V-7Oi" userLabel="itunes">
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="112" id="Rnk-zI-92s"/>
-                                                            <constraint firstAttribute="height" constant="50" id="vT2-CS-y0Z"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                </subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tia-LB-Vrb" userLabel="PaymentSelectionView" customClass="PaymentSelectionView" customModule="YSCTW" customModuleProvider="target">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="OBR-Gh-qdI" firstAttribute="centerY" secondItem="tia-LB-Vrb" secondAttribute="centerY" id="GI0-WR-s0e"/>
-                                                    <constraint firstItem="OBR-Gh-qdI" firstAttribute="leading" secondItem="tia-LB-Vrb" secondAttribute="leading" constant="10" id="WlO-HA-ge4"/>
-                                                    <constraint firstItem="F1M-zB-fnh" firstAttribute="centerY" secondItem="tia-LB-Vrb" secondAttribute="centerY" id="Yfh-9R-bet"/>
-                                                    <constraint firstAttribute="trailing" secondItem="0gR-3V-7Oi" secondAttribute="trailing" constant="10" id="Zik-Rn-MHZ"/>
                                                     <constraint firstAttribute="height" constant="50" id="a05-Of-ylF"/>
-                                                    <constraint firstItem="F1M-zB-fnh" firstAttribute="centerX" secondItem="tia-LB-Vrb" secondAttribute="centerX" id="g2U-6j-g0Z"/>
-                                                    <constraint firstItem="0gR-3V-7Oi" firstAttribute="centerY" secondItem="tia-LB-Vrb" secondAttribute="centerY" id="mU2-au-w0q"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -592,15 +570,136 @@
                     <connections>
                         <outlet property="addProjectButton" destination="mhi-p9-UA5" id="rie-zg-opv"/>
                         <outlet property="descriptionLabel" destination="jeN-7J-NuL" id="1eR-NN-IEm"/>
-                        <outlet property="paymentOptionsContainerView" destination="tia-LB-Vrb" id="L99-A3-js0"/>
+                        <outlet property="paymentSelectionView" destination="tia-LB-Vrb" id="kTx-4l-I7E"/>
                         <outlet property="projectsContainerHeightConstraint" destination="yAq-W9-nsf" id="CJc-MM-3pF"/>
                         <outlet property="selectedProjectsContainerView" destination="Pac-OJ-5xZ" id="qzh-vG-bHb"/>
                         <outlet property="selfieImageView" destination="OXv-jD-1a5" id="Y4I-6K-ycY"/>
+                        <segue destination="Pmb-zv-XnQ" kind="show" identifier="donationDescriptionSegue" id="Tm7-7b-A0J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXg-an-HKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1208.8" y="1836.4317841079462"/>
+        </scene>
+        <!--Donation Description View Controller-->
+        <scene sceneID="5m8-8I-xFi">
+            <objects>
+                <viewController id="Pmb-zv-XnQ" customClass="DonationDescriptionViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="phh-cm-Xjh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wpk-KB-Pf5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wyf-28-rPU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAH-P1-K72" userLabel="Project Logo View" customClass="DonationDescriptionLogoView" customModule="YSCTW" customModuleProvider="target">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="rmF-Db-YTY"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-7H-C4y">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="0AA-yN-fOI"/>
+                                    <constraint firstAttribute="height" constant="85" id="rAL-u3-XPS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du hast 3 Projekte ausgewählt du spendest insgesamt 3 € zzgl. Gebühren" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjn-IU-qXq">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KkA-EK-r6H">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veröffentlichen auf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTX-6M-TNH">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cu2-zi-8wU" userLabel="spacerLeft">
+                                <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="l4m-7x-Fpi"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvD-oW-haA" userLabel="spacerRight">
+                                <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="LSe-m3-gT1"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJM-KE-GvH" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aR3-ZC-X2R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Facebook" image="facebook-icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-qJ-egp" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="veh-bj-iHw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="6" minY="10" maxX="0.0" maxY="10"/>
+                                <state key="normal" title="Instagram" image="instagram-icon"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*zzgl. 30 Cent Gebühren" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-1q-hcS">
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FvD-oW-haA" firstAttribute="leading" secondItem="KTX-6M-TNH" secondAttribute="trailing" constant="8" id="2e3-MW-tbj"/>
+                            <constraint firstItem="TAH-P1-K72" firstAttribute="top" secondItem="phh-cm-Xjh" secondAttribute="bottom" id="4Ln-g9-gGf"/>
+                            <constraint firstItem="pjn-IU-qXq" firstAttribute="top" secondItem="TAH-P1-K72" secondAttribute="bottom" constant="8" id="6FU-Af-hWJ"/>
+                            <constraint firstItem="pjn-IU-qXq" firstAttribute="leading" secondItem="wyf-28-rPU" secondAttribute="leadingMargin" id="BVR-c2-YAG"/>
+                            <constraint firstItem="KkA-EK-r6H" firstAttribute="top" secondItem="H0u-7H-C4y" secondAttribute="top" id="IgH-C9-Ie3"/>
+                            <constraint firstItem="H0u-7H-C4y" firstAttribute="leading" secondItem="wyf-28-rPU" secondAttribute="leadingMargin" id="Igw-ke-6fr"/>
+                            <constraint firstItem="oOY-1q-hcS" firstAttribute="leading" secondItem="wyf-28-rPU" secondAttribute="leadingMargin" id="JjJ-IM-n43"/>
+                            <constraint firstItem="KvP-qJ-egp" firstAttribute="top" secondItem="KTX-6M-TNH" secondAttribute="bottom" constant="11.5" id="L7R-yq-eYf"/>
+                            <constraint firstAttribute="trailing" secondItem="FvD-oW-haA" secondAttribute="trailing" constant="8" id="LdL-te-0TK"/>
+                            <constraint firstItem="KTX-6M-TNH" firstAttribute="top" secondItem="KkA-EK-r6H" secondAttribute="bottom" constant="15" id="Lhj-i3-nl8"/>
+                            <constraint firstItem="pjn-IU-qXq" firstAttribute="trailing" secondItem="wyf-28-rPU" secondAttribute="trailingMargin" id="MaZ-4p-HtK"/>
+                            <constraint firstAttribute="trailing" secondItem="TAH-P1-K72" secondAttribute="trailing" id="SSV-gG-WRl"/>
+                            <constraint firstItem="KkA-EK-r6H" firstAttribute="trailing" secondItem="wyf-28-rPU" secondAttribute="trailingMargin" id="TT8-Zy-g08"/>
+                            <constraint firstItem="pJM-KE-GvH" firstAttribute="top" secondItem="KTX-6M-TNH" secondAttribute="bottom" constant="11.5" id="XqS-H1-8Cb"/>
+                            <constraint firstItem="Cu2-zi-8wU" firstAttribute="leading" secondItem="wyf-28-rPU" secondAttribute="leadingMargin" id="Xuf-GX-XG7"/>
+                            <constraint firstItem="oOY-1q-hcS" firstAttribute="top" secondItem="KvP-qJ-egp" secondAttribute="bottom" constant="39" id="YJt-vB-obK"/>
+                            <constraint firstItem="KvP-qJ-egp" firstAttribute="leading" secondItem="wyf-28-rPU" secondAttribute="centerXWithinMargins" constant="8" id="ZYs-HV-nfN"/>
+                            <constraint firstItem="KkA-EK-r6H" firstAttribute="leading" secondItem="H0u-7H-C4y" secondAttribute="trailing" constant="8" id="aTR-wr-HCP"/>
+                            <constraint firstItem="pJM-KE-GvH" firstAttribute="trailing" secondItem="wyf-28-rPU" secondAttribute="centerXWithinMargins" constant="-8" id="bWd-Th-NDz"/>
+                            <constraint firstItem="TAH-P1-K72" firstAttribute="leading" secondItem="wyf-28-rPU" secondAttribute="leading" id="bWx-pv-gJL"/>
+                            <constraint firstItem="H0u-7H-C4y" firstAttribute="top" secondItem="pjn-IU-qXq" secondAttribute="bottom" constant="26.5" id="bY4-PZ-qwH"/>
+                            <constraint firstItem="KTX-6M-TNH" firstAttribute="centerX" secondItem="wyf-28-rPU" secondAttribute="centerX" id="dby-Dh-zBb"/>
+                            <constraint firstItem="pJM-KE-GvH" firstAttribute="leading" secondItem="wyf-28-rPU" secondAttribute="leadingMargin" id="fXp-Fw-Ecc"/>
+                            <constraint firstItem="Cu2-zi-8wU" firstAttribute="centerY" secondItem="KTX-6M-TNH" secondAttribute="centerY" id="gOG-l5-86S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KvP-qJ-egp" secondAttribute="trailing" id="k6M-sZ-asz"/>
+                            <constraint firstItem="KTX-6M-TNH" firstAttribute="leading" secondItem="Cu2-zi-8wU" secondAttribute="trailing" constant="8" id="k80-Es-IZV"/>
+                            <constraint firstItem="KkA-EK-r6H" firstAttribute="height" secondItem="H0u-7H-C4y" secondAttribute="height" id="tN8-jX-bLh"/>
+                            <constraint firstItem="oOY-1q-hcS" firstAttribute="trailing" secondItem="wyf-28-rPU" secondAttribute="trailingMargin" id="tnq-5e-IfH"/>
+                            <constraint firstItem="FvD-oW-haA" firstAttribute="centerY" secondItem="KTX-6M-TNH" secondAttribute="centerY" id="zwz-ta-P61"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="KkA-EK-r6H" id="Ax1-gH-yAN"/>
+                        <outlet property="facebookButton" destination="pJM-KE-GvH" id="oJy-IU-F2o"/>
+                        <outlet property="feeLabel" destination="oOY-1q-hcS" id="sVQ-c4-30E"/>
+                        <outlet property="instagrammButton" destination="KvP-qJ-egp" id="bWb-cG-4gk"/>
+                        <outlet property="projectsDonationInfoLabel" destination="pjn-IU-qXq" id="u0V-zI-4Nw"/>
+                        <outlet property="projectsLogoView" destination="TAH-P1-K72" id="u7x-p3-3yr"/>
+                        <outlet property="publishLabel" destination="KTX-6M-TNH" id="TJw-am-yrI"/>
+                        <outlet property="selfieImageView" destination="H0u-7H-C4y" id="fWy-xS-FWu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cbQ-Kd-CxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216.8" y="2646.9265367316343"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="tuH-LJ-O2c">
@@ -838,6 +937,9 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eci-3O-5eK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem id="pZJ-eU-fZB">
+                    <barButtonItem key="backBarButtonItem" title=" " id="NBy-yQ-SnE"/>
+                </navigationItem>
             </objects>
             <point key="canvasLocation" x="1209" y="136"/>
         </scene>
@@ -1242,12 +1344,11 @@
         <image name="camera" width="75" height="49"/>
         <image name="camera-button" width="90" height="90"/>
         <image name="close-icon" width="16" height="16"/>
-        <image name="creditcard" width="112" height="50"/>
+        <image name="facebook-icon" width="29" height="29"/>
         <image name="filter-arrow" width="11" height="7"/>
         <image name="filter-icon" width="16" height="19"/>
-        <image name="itunes" width="112" height="50"/>
+        <image name="instagram-icon" width="29" height="29"/>
         <image name="logo-orange" width="130" height="135"/>
-        <image name="paypal" width="112" height="50"/>
         <image name="switch-icon" width="38" height="31"/>
         <image name="tabbar-donation" width="24" height="20"/>
         <image name="tabbar-donation-selected" width="24" height="20"/>

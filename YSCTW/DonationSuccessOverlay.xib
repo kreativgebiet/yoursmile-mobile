@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DonationSuccessOverlay" customModule="YSCTW" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="18P-X6-Rdf" id="Oy2-cn-Gx8"/>
+                <outlet property="gratitudeLabel" destination="dgY-54-pW4" id="ct3-fr-y4s"/>
+                <outlet property="gratitudeTextLabel" destination="KOy-iY-j2i" id="GAW-JN-t4z"/>
+                <outlet property="infoView" destination="ZWX-mg-cqF" id="PdK-Pn-Uaz"/>
+                <outlet property="logoImageView" destination="eU3-pV-ToR" id="AFq-WP-2Nq"/>
+                <outlet property="view" destination="iN0-l3-epB" id="hoK-Nq-vcz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWX-mg-cqF" userLabel="Info View">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are a real hero! Your payment was succesfully transferred to the selected project. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOy-iY-j2i">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danke" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgY-54-pW4">
+                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-orange" translatesAutoresizingMaskIntoConstraints="NO" id="eU3-pV-ToR">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="88" id="dXp-xW-HQD"/>
+                                <constraint firstAttribute="width" constant="85" id="zHm-yc-HcG"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18P-X6-Rdf" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="ZU0-n7-MOs"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="umC-ka-uoN"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="handleButtonPressed:" destination="-1" eventType="touchUpInside" id="01i-jf-PDb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="dgY-54-pW4" firstAttribute="top" secondItem="eU3-pV-ToR" secondAttribute="bottom" constant="10" id="1d5-8R-oLR"/>
+                        <constraint firstAttribute="trailing" secondItem="18P-X6-Rdf" secondAttribute="trailing" constant="20" id="1x1-GF-yXj"/>
+                        <constraint firstItem="eU3-pV-ToR" firstAttribute="top" secondItem="ZWX-mg-cqF" secondAttribute="top" constant="20" id="5GK-Ca-ZcL"/>
+                        <constraint firstAttribute="trailing" secondItem="KOy-iY-j2i" secondAttribute="trailing" constant="8" id="5Pm-42-lnD"/>
+                        <constraint firstAttribute="bottom" secondItem="18P-X6-Rdf" secondAttribute="bottom" constant="20" id="7xH-Bb-npa"/>
+                        <constraint firstItem="18P-X6-Rdf" firstAttribute="leading" secondItem="ZWX-mg-cqF" secondAttribute="leading" constant="20" id="ATC-Kf-cnf"/>
+                        <constraint firstItem="dgY-54-pW4" firstAttribute="centerX" secondItem="ZWX-mg-cqF" secondAttribute="centerX" id="CEY-5O-D3c"/>
+                        <constraint firstItem="eU3-pV-ToR" firstAttribute="centerX" secondItem="ZWX-mg-cqF" secondAttribute="centerX" id="Cm9-p1-YGF"/>
+                        <constraint firstAttribute="height" constant="325" id="Jiz-1V-v3q"/>
+                        <constraint firstItem="KOy-iY-j2i" firstAttribute="leading" secondItem="ZWX-mg-cqF" secondAttribute="leading" constant="8" id="bYN-F2-wYp"/>
+                        <constraint firstItem="KOy-iY-j2i" firstAttribute="top" secondItem="dgY-54-pW4" secondAttribute="bottom" constant="0.5" id="hqc-Rg-rc4"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ZWX-mg-cqF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Unx-Ke-8z6"/>
+                <constraint firstAttribute="trailing" secondItem="ZWX-mg-cqF" secondAttribute="trailing" constant="20" id="hX9-Yn-7R0"/>
+                <constraint firstItem="ZWX-mg-cqF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oyH-6r-ljY"/>
+                <constraint firstItem="ZWX-mg-cqF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="p1Z-BJ-Vh2"/>
+            </constraints>
+            <point key="canvasLocation" x="83.5" y="107.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo-orange" width="130" height="135"/>
+    </resources>
+</document>

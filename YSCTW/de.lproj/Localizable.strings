@@ -37,6 +37,7 @@
 
 //General
 "EMAIL" = "E-Mail Adresse";
+"PROCEED" = "Weiter";
 "PASSWORD" = "Passwort";
 "CANCEL" = "Abbrechen";
 "VISITED" = "Angesehen";
@@ -74,6 +75,20 @@
 "DONATION_DESCRIPTION" = "Du kannst jetzt 1€ pro Projekt spenden. Wähle ein oder mehrere Projekte aus";
 "SELECT_PROJECT" = "Spendenprojekt auswählen";
 "SELECT_ANOTHER_PROJECT" = "Weiteres Projekt auswählen";
+"PAYMENT_ERROR" = "Bitte wähle eine Bezahloption aus.";
+"NO_PROJECT_ERROR" = "Bitte wähle ein oder mehrere Spendenprojekte aus";
+"DESCRIPTION" = "Beschreibung";
+"YOUR_COMMENT" = "Dein Bildkommentar";
+"PUBLISH" = "Veröffentlichen auf";
+"DONATION_INFO" = "Du hast %@ %1 ausgewählt, du spendest insgesamt %@€ zzgl. Gebühren*";
+"FEE_INFO" = "*zzgl. %@€ Transaktionsgebühren";
+"PROJECT_WORD" = "Projekt";
+"PROJECTS_WORD" = "Projekte";
+
+//Overlay
+"THANK_YOU" = "Vielen Dank";
+"THANK_YOU_TEXT" = "Du bist ein wahrer Held! Deine Spende wurde erfolgreich weitergegeben.";
+"THANK_YOU_BUTTON" = "Back to my stream";
 
 //Preferences
 "ABOUT" = "ABOUT";

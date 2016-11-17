@@ -41,6 +41,7 @@ class DonationDetailViewController: UIViewController {
     // MARK: - Bar button handling
     
     func addTapped() {
+        self.view.endEditing(true)
         let navigationView = self.navigationController?.view
         let overlay = DonationDetailOverlayView(frame: (navigationView?.bounds)!)
         navigationView?.addSubview(overlay)

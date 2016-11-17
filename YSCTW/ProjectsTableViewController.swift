@@ -51,7 +51,6 @@ class ProjectsTableViewController: UITableViewController {
         
         cell.detailCallback = { project in
             self.selectedProject = project
-            self.navigationController?.title = ""
             self.navigationController?.performSegue(withIdentifier: "projectDetailSegue", sender: self)
         }
         

@@ -24,12 +24,25 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     public var dataManager: DataManager?
     
     let logoNavigationBarView = LogoNavigationBarView(frame: CGRect(x: 0, y: 0, width: 102, height: 28))
+    let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 170, height: 28))
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = ""
+        
         self.logoNavigationBarView.center = (self.navigationController?.navigationBar.center)!
         self.navigationController?.navigationBar.addSubview(self.logoNavigationBarView)
+        
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        self.titleLabel.backgroundColor = .clear
+        self.titleLabel.textColor = .white
+        self.titleLabel.textAlignment = .center
+        
+        self.titleLabel.center = (self.navigationController?.navigationBar.center)!
+        self.navigationController?.navigationBar.addSubview(self.titleLabel)
+        
+        self.titleLabel.isHidden = true
         
         self.feedViewController = self.viewControllerOf(type: .feed) as? FeedViewController
         self.feedViewController?.dataManager = self.dataManager
@@ -37,9 +50,14 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         self.addViewControllerAsChildViewController(viewController: self.feedViewController!)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.configureNavigationBarFor(type: self.currentType)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.titleLabel.isHidden = true
     }
     
     private func addViewControllerAsChildViewController(viewController: UIViewController) {
@@ -118,19 +136,23 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         
         switch type {
         case .feed:
-            self.title = ""
+            self.titleLabel.isHidden = true
             self.logoNavigationBarView.isHidden = false
             break
         case .donation:
-            self.title = "PROJECTS".localized
+            self.titleLabel.text = "PROJECTS".localized
+            self.titleLabel.isHidden = false
             self.logoNavigationBarView.isHidden = true
         case .camera:
+            self.titleLabel.isHidden = true
             self.logoNavigationBarView.isHidden = true
         case .preferences:
-            self.title = "OPTIONS".localized
+            self.titleLabel.text = "OPTIONS".localized
+            self.titleLabel.isHidden = false
             self.logoNavigationBarView.isHidden = true
         case .profile:
-            self.title = "PROFILE".localized
+            self.titleLabel.text = "PROFILE".localized
+            self.titleLabel.isHidden = false
             self.logoNavigationBarView.isHidden = true
         }
     }
@@ -165,7 +187,6 @@ class TabBarViewController: UIViewController, BarViewDelegate {
             barViewController.delegate = self
         }
         
-    }
- 
+    } 
 
 }

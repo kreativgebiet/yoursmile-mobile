@@ -22,7 +22,6 @@ class ProjectDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "PROJECT".localized
-        self.navigationController?.navigationBar.backItem?.title = ""
         
         self.projectDescriptionLabel.text = self.project.projectDescription
         self.projectImageView.image = self.project.projectImage
