@@ -96,6 +96,26 @@ class BarViewController: UIViewController {
         }
     }
     
+    public func selectButtonOf(type: Type) {
+        
+        self.selectedButton?.isSelected = false
+        
+        switch type {
+        case .feed:
+            self.selectedButton = self.feedButton
+        case .donation:
+            self.selectedButton = self.donationButton
+        case .camera:
+            self.selectedButton = self.cameraButton
+        case .profile:
+            self.selectedButton = self.profileButton
+        case .preferences:
+            self.selectedButton = self.preferencesButton
+        }
+        
+        self.selectedButton?.isSelected = true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

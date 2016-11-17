@@ -22,6 +22,8 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     var profileViewController: ProfileViewController?
     
     public var dataManager: DataManager?
+    var preferencesBarButtonItem: UIBarButtonItem!
+    var barViewController: BarViewController!
     
     let logoNavigationBarView = LogoNavigationBarView(frame: CGRect(x: 0, y: 0, width: 102, height: 28))
     let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 170, height: 28))
@@ -31,10 +33,26 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         
         self.title = ""
         
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y:  0, width: 51, height: 31)
+        button.setImage(#imageLiteral(resourceName: "preferences-icon"), for: .normal)
+        button.transform = CGAffineTransform(translationX: 15, y: 0)
+        
+        button.addTarget(self, action: #selector(preferencesTapped), for: .touchUpInside)
+        
+        let containerView = UIView()
+        containerView.frame = button.frame
+        containerView.addSubview(button)
+        
+        preferencesBarButtonItem = UIBarButtonItem()
+        preferencesBarButtonItem.customView = containerView
+        preferencesBarButtonItem.tintColor = .white
+        self.navigationItem.rightBarButtonItem = preferencesBarButtonItem
+        
         self.logoNavigationBarView.center = (self.navigationController?.navigationBar.center)!
         self.navigationController?.navigationBar.addSubview(self.logoNavigationBarView)
         
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         self.titleLabel.backgroundColor = .clear
         self.titleLabel.textColor = .white
         self.titleLabel.textAlignment = .center
@@ -58,6 +76,12 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     
     func openFeed() {
         self.didSelectButtonOf(type: .feed)
+        self.barViewController.selectButtonOf(type: .feed)
+    }
+    
+    func preferencesTapped() {
+        self.didSelectButtonOf(type: .preferences)
+        self.barViewController.selectButtonOf(type: .preferences)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,20 +172,25 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         case .feed:
             self.titleLabel.isHidden = true
             self.logoNavigationBarView.isHidden = false
+            self.navigationItem.rightBarButtonItem = self.preferencesBarButtonItem
             break
         case .donation:
             self.titleLabel.text = "PROJECTS".localized
+            self.navigationItem.rightBarButtonItem = nil
             self.titleLabel.isHidden = false
             self.logoNavigationBarView.isHidden = true
         case .camera:
             self.titleLabel.isHidden = true
+            self.navigationItem.rightBarButtonItem = nil
             self.logoNavigationBarView.isHidden = true
         case .preferences:
             self.titleLabel.text = "OPTIONS".localized
+            self.navigationItem.rightBarButtonItem = nil
             self.titleLabel.isHidden = false
             self.logoNavigationBarView.isHidden = true
         case .profile:
             self.titleLabel.text = "PROFILE".localized
+            self.navigationItem.rightBarButtonItem = nil
             self.titleLabel.isHidden = false
             self.logoNavigationBarView.isHidden = true
         }
@@ -193,8 +222,8 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "barViewSegue" {
-            let barViewController = segue.destination as! BarViewController
-            barViewController.delegate = self
+            self.barViewController = segue.destination as! BarViewController
+            self.barViewController.delegate = self
         }
         
     }

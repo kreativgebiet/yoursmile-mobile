@@ -29,6 +29,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        if screenSize.height <= 568  {
+            self.facebookButtonTopSpaceConstraint.constant = 80
+        }
+        
         self.defaultFacebookButtonTopSpaceConstraintConstant = self.facebookButtonTopSpaceConstraint.constant
         self.defaultlogoTopSpaceConstraintConstant = self.logoTopSpaceConstraint.constant
         
@@ -135,7 +141,7 @@ class LoginViewController: UIViewController {
         let screenSize: CGRect = UIScreen.main.bounds
         
         var topSpace:CGFloat = 34
-        var facebookTopSpace:CGFloat = 20
+        var facebookTopSpace:CGFloat = 33
         
         if screenSize.height <= 568  {
             topSpace = 0

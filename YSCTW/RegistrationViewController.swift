@@ -30,6 +30,12 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        if screenSize.height <= 568  {
+            self.nameTextFieldTopSpaceConstraint.constant = 80
+        }
+        
         self.defaultLogoTopSpaceConstraintConstant = self.logoTopSpaceConstraint.constant
         self.defaultnameTextFieldTopSpaceConstraintConstant = self.nameTextFieldTopSpaceConstraint.constant
         
@@ -48,8 +54,6 @@ class RegistrationViewController: UIViewController {
         self.registerButton.setTitle("LOGIN".localized, for: .normal)
         self.registerButton.setTitle("LOGIN".localized, for: .selected)
         
-        self.registerButton.setTitle("REGISTER_BUTTON".localized, for: .normal)
-        self.registerButton.setTitle("REGISTER_BUTTON".localized, for: .selected)
         self.mailTextField.placeholder = "EMAIL".localized
         self.passwordTextField.placeholder = "PASSWORD".localized
         
@@ -165,14 +169,16 @@ class RegistrationViewController: UIViewController {
         let screenSize: CGRect = UIScreen.main.bounds
         
         var topSpace:CGFloat = 54
+        var nameTextFieldTopSpace:CGFloat = 40
         
         if screenSize.height <= 568  {
             topSpace = 0
+            nameTextFieldTopSpace = 30
         }
         
         self.logoTopSpaceConstraint.constant = moveUp ? topSpace : self.defaultLogoTopSpaceConstraintConstant!
         let alpha = moveUp ? 0 : 1 as CGFloat
-        self.nameTextFieldTopSpaceConstraint.constant = moveUp ? 20 : self.defaultnameTextFieldTopSpaceConstraintConstant!
+        self.nameTextFieldTopSpaceConstraint.constant = moveUp ? nameTextFieldTopSpace : self.defaultnameTextFieldTopSpaceConstraintConstant!
         
         let options = UIViewAnimationOptions(rawValue: curve << 16)
         UIView.animate(withDuration: duration, delay: 0, options: options,
