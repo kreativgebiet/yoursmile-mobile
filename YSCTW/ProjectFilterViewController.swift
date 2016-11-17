@@ -35,6 +35,8 @@ class ProjectFilterViewController: UIViewController {
         //Localization
         self.leftLabel.text = "VISITED".localized
         self.rightLabel.text = "COUNTRY".localized
+        self.leftLabel.textColor = navigationBarGray
+        self.rightLabel.textColor = navigationBarGray
         
         self.leftLabel.adjustsFontSizeToFitWidth = true
         self.rightLabel.adjustsFontSizeToFitWidth = true

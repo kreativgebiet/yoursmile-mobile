@@ -15,7 +15,6 @@ class ProjectTableViewCell: UITableViewCell {
     @IBOutlet weak var detailButton: RoundedButton!
     @IBOutlet weak var supportButton: RoundedButton!
     @IBOutlet weak var transparentProjectView: TransparentProjectView!
-
     
     public var project: Project!
     
@@ -34,6 +33,17 @@ class ProjectTableViewCell: UITableViewCell {
         
         self.supportButton.setTitle("SUPPORT".localized, for: .normal)
         self.supportButton.setTitle("SUPPORT".localized, for: .selected)
+        
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            self.transparentProjectView.transparentView.backgroundColor = UIColor.clear
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            blurEffectView.alpha = 0.85
+            blurEffectView.frame = self.transparentProjectView.bounds
+            
+            self.transparentProjectView.insertSubview(blurEffectView, at: 0)
+        }
     }
     
     override func layoutSubviews() {

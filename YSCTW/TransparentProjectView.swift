@@ -23,6 +23,8 @@ class TransparentProjectView: UIView {
         view.frame = self.bounds
         
         self.projectsScrollView.backgroundColor = .clear
+        self.transparentView.backgroundColor = navigationBarGray.withAlphaComponent(0.6)
+
     }
     
     override func layoutSubviews() {
@@ -30,7 +32,6 @@ class TransparentProjectView: UIView {
         
         self.backgroundColor = .clear
         self.view.backgroundColor = .clear
-        self.transparentView.backgroundColor = navigationBarGray.withAlphaComponent(0.6)
         
         self.projectsScrollView.subviews.forEach({ $0.removeFromSuperview() })
         
