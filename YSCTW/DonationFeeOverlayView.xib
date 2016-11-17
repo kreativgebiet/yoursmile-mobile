@@ -37,7 +37,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="Mln-6Y-pch"/>
                                 <constraint firstAttribute="height" constant="88" id="bIg-Q3-9gn"/>
-                                <constraint firstAttribute="width" constant="85" id="d37-cP-O95"/>
+                                <constraint firstAttribute="width" constant="101" id="d37-cP-O95"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="88" id="wK1-b1-4aK"/>
                             </constraints>
                         </imageView>
@@ -59,11 +59,11 @@
                         <constraint firstAttribute="bottom" secondItem="cC3-dT-35c" secondAttribute="bottom" constant="20" id="CaD-pW-Lhv"/>
                         <constraint firstItem="IxZ-7d-KBl" firstAttribute="top" secondItem="LSO-MF-Fwm" secondAttribute="bottom" id="EXd-a6-8dY"/>
                         <constraint firstItem="LSO-MF-Fwm" firstAttribute="centerX" secondItem="oDk-eB-9fq" secondAttribute="centerX" id="EeW-RT-XXb"/>
-                        <constraint firstItem="IxZ-7d-KBl" firstAttribute="leading" secondItem="oDk-eB-9fq" secondAttribute="leading" id="GOt-1C-DML"/>
+                        <constraint firstItem="IxZ-7d-KBl" firstAttribute="leading" secondItem="oDk-eB-9fq" secondAttribute="leading" constant="8" id="GOt-1C-DML"/>
                         <constraint firstItem="LSO-MF-Fwm" firstAttribute="top" secondItem="I72-PD-mU7" secondAttribute="bottom" constant="10" id="HFe-0T-j9c"/>
                         <constraint firstItem="I72-PD-mU7" firstAttribute="top" secondItem="oDk-eB-9fq" secondAttribute="top" constant="20" id="Okt-iI-UfP"/>
                         <constraint firstAttribute="trailing" secondItem="cC3-dT-35c" secondAttribute="trailing" constant="20" id="QN6-2f-VI6"/>
-                        <constraint firstAttribute="trailing" secondItem="IxZ-7d-KBl" secondAttribute="trailing" id="Vk0-po-g3P"/>
+                        <constraint firstAttribute="trailing" secondItem="IxZ-7d-KBl" secondAttribute="trailing" constant="8" id="Vk0-po-g3P"/>
                         <constraint firstItem="cC3-dT-35c" firstAttribute="leading" secondItem="oDk-eB-9fq" secondAttribute="leading" constant="20" id="eNU-0G-RKG"/>
                         <constraint firstItem="I72-PD-mU7" firstAttribute="centerX" secondItem="oDk-eB-9fq" secondAttribute="centerX" id="kIE-Ug-ECc"/>
                     </constraints>
