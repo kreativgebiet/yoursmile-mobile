@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,6 +21,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="VdC-5B-EKh"/>
                     </constraints>
+                    <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" image="delete-icon"/>
                     <connections>
                         <action selector="handleDeleteButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="X71-j3-FRr"/>
@@ -39,7 +39,7 @@
                 <constraint firstItem="8mm-td-uUm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Gcc-GL-RXs"/>
                 <constraint firstItem="wdJ-6Q-jR0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="KZq-0S-xX9"/>
                 <constraint firstAttribute="trailing" secondItem="8mm-td-uUm" secondAttribute="trailing" id="gtJ-vM-6fh"/>
-                <constraint firstItem="lba-PW-1IR" firstAttribute="leading" secondItem="wdJ-6Q-jR0" secondAttribute="trailing" constant="8" id="hz2-q4-U3s"/>
+                <constraint firstItem="lba-PW-1IR" firstAttribute="leading" secondItem="wdJ-6Q-jR0" secondAttribute="trailing" constant="16" id="hz2-q4-U3s"/>
                 <constraint firstItem="wdJ-6Q-jR0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sTY-ZM-4DL"/>
                 <constraint firstItem="8mm-td-uUm" firstAttribute="leading" secondItem="lba-PW-1IR" secondAttribute="trailing" constant="8" id="uwI-IC-aS1"/>
                 <constraint firstAttribute="bottom" secondItem="8mm-td-uUm" secondAttribute="bottom" id="wyx-TX-HyN"/>

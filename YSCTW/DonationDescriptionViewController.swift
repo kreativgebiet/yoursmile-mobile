@@ -22,6 +22,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var facebookButton: RoundedButton!
     @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var projectsDonationInfoLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     
     var placeholderLabel: UILabel!
     
@@ -32,6 +33,9 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
         self.view.backgroundColor = customLightGray
+        
+        self.containerView.layer.cornerRadius = 5
+        self.containerView.clipsToBounds = true
         
         let button = UIButton()
         button.frame = CGRect(x: 0, y:  0, width: 100, height: 31)
@@ -106,6 +110,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
         self.projectsLogoView.layoutIfNeeded()
         
         self.selfieImageView.image = self.selfieImage
+        self.selfieImageView.contentMode = .scaleAspectFill
         
         var text = "DONATION_INFO".localized.replacingOccurrences(of: "%@", with: String(self.projects.count))
         text = text.replacingOccurrences(of: "%1", with: (self.projects.count > 1 ? "PROJECTS_WORD".localized : "PROJECT_WORD".localized))

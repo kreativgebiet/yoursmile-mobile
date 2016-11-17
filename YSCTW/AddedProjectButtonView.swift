@@ -27,6 +27,8 @@ class AddedProjectButtonView: UIView {
         self.layer.borderWidth = 1
         
         self.logoImageView.layer.cornerRadius = self.logoImageView.frame.size.height/2
+        self.logoImageView.layer.borderColor = customDarkerGray.cgColor
+        self.logoImageView.layer.borderWidth = 1
         
         self.logoImageView.backgroundColor = .white
         

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +22,7 @@
                         <constraint firstAttribute="width" constant="24" id="AG9-xA-Yhg"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-icon-right-black" translatesAutoresizingMaskIntoConstraints="NO" id="ls3-dd-VzR">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-icon-right-black" translatesAutoresizingMaskIntoConstraints="NO" id="ls3-dd-VzR">
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="J2Y-Vt-DbI"/>
                         <constraint firstAttribute="height" constant="20" id="txa-YE-58W"/>
@@ -45,12 +44,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="aUK-mm-MIu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3O3-wD-vd0"/>
-                <constraint firstItem="skt-ZU-EuK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="67B-aq-WJN"/>
+                <constraint firstItem="skt-ZU-EuK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="67B-aq-WJN"/>
                 <constraint firstItem="ls3-dd-VzR" firstAttribute="leading" secondItem="aUK-mm-MIu" secondAttribute="trailing" constant="8" id="MT0-Oi-Z2K"/>
                 <constraint firstItem="ls3-dd-VzR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Mxv-fS-W9i"/>
                 <constraint firstAttribute="trailing" secondItem="ls3-dd-VzR" secondAttribute="trailing" constant="10" id="T89-dj-0Mh"/>
                 <constraint firstItem="skt-ZU-EuK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="jmw-ix-1tm"/>
-                <constraint firstItem="aUK-mm-MIu" firstAttribute="leading" secondItem="skt-ZU-EuK" secondAttribute="trailing" constant="8" id="mLn-QG-OSU"/>
+                <constraint firstItem="aUK-mm-MIu" firstAttribute="leading" secondItem="skt-ZU-EuK" secondAttribute="trailing" constant="16" id="mLn-QG-OSU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="23.5" y="183"/>
