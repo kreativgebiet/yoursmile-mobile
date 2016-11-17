@@ -66,6 +66,8 @@ class ProfileHeaderView: UIView {
         self.subscribeButton.setTitle("SUBSCRIBE".localized, for: .normal)
         self.subscribeButton.setTitle("SUBSCRIBE".localized, for: .selected)
         
+        self.backButton.imageView?.contentMode = .center
+        
         self.clipsToBounds = true
     }
     

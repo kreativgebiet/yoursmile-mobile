@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
+    var initialProfileViewHeightConstraint: CGFloat!
     var donations: [Donation]?
     
     override func viewDidLoad() {
@@ -48,6 +49,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.profileView.profile = self.currentProfile
         self.profileView.userProfile = self.userProfile
+        
+        if self.currentProfile == nil {
+            self.profileViewHeightConstraint.constant = 285
+        }
+        
+        self.initialProfileViewHeightConstraint = self.profileViewHeightConstraint.constant
         
         self.profileView.subscribeCallback = {
             
@@ -108,7 +115,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
         } else {
             
-            let newConstant: CGFloat = 324
+            let newConstant: CGFloat = self.initialProfileViewHeightConstraint
             
             if newConstant != self.profileViewHeightConstraint.constant {
                 self.profileViewHeightConstraint.constant = newConstant
