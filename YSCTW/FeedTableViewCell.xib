@@ -104,11 +104,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="5dS-y7-0ti" secondAttribute="bottom" constant="5" id="1Kt-yS-hzs"/>
-                        <constraint firstItem="mm7-ui-Q1k" firstAttribute="top" secondItem="29T-xf-86m" secondAttribute="top" constant="21" id="5ln-Mt-voL"/>
+                        <constraint firstItem="mm7-ui-Q1k" firstAttribute="top" secondItem="29T-xf-86m" secondAttribute="top" constant="19" id="5ln-Mt-voL"/>
                         <constraint firstAttribute="trailing" secondItem="Peu-eL-6aY" secondAttribute="trailing" constant="8" id="6w6-Tk-hzR"/>
-                        <constraint firstItem="5dS-y7-0ti" firstAttribute="leading" secondItem="mm7-ui-Q1k" secondAttribute="trailing" constant="8" id="Isc-Dm-rdv"/>
+                        <constraint firstItem="5dS-y7-0ti" firstAttribute="leading" secondItem="mm7-ui-Q1k" secondAttribute="trailing" constant="6" id="Isc-Dm-rdv"/>
                         <constraint firstItem="JG2-fo-at4" firstAttribute="leading" secondItem="5dS-y7-0ti" secondAttribute="trailing" constant="20" id="JIc-vO-7kC"/>
-                        <constraint firstItem="mm7-ui-Q1k" firstAttribute="leading" secondItem="esb-2S-FLC" secondAttribute="trailing" constant="8" id="ix4-mC-oLk"/>
+                        <constraint firstItem="mm7-ui-Q1k" firstAttribute="leading" secondItem="esb-2S-FLC" secondAttribute="trailing" constant="10" id="ix4-mC-oLk"/>
                         <constraint firstItem="esb-2S-FLC" firstAttribute="centerY" secondItem="29T-xf-86m" secondAttribute="centerY" id="ovs-hq-64d"/>
                         <constraint firstItem="Peu-eL-6aY" firstAttribute="centerY" secondItem="29T-xf-86m" secondAttribute="centerY" id="qg5-fd-tLo"/>
                         <constraint firstItem="5dS-y7-0ti" firstAttribute="top" secondItem="29T-xf-86m" secondAttribute="top" constant="5" id="vud-V1-e18"/>

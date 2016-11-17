@@ -44,10 +44,10 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         containerView.frame = button.frame
         containerView.addSubview(button)
         
-        preferencesBarButtonItem = UIBarButtonItem()
-        preferencesBarButtonItem.customView = containerView
-        preferencesBarButtonItem.tintColor = .white
-        self.navigationItem.rightBarButtonItem = preferencesBarButtonItem
+        self.preferencesBarButtonItem = UIBarButtonItem()
+        self.preferencesBarButtonItem.customView = containerView
+        self.preferencesBarButtonItem.tintColor = .white
+        self.navigationItem.rightBarButtonItem = self.preferencesBarButtonItem
         
         self.logoNavigationBarView.center = (self.navigationController?.navigationBar.center)!
         self.navigationController?.navigationBar.addSubview(self.logoNavigationBarView)
