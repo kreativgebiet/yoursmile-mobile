@@ -14,7 +14,6 @@ class AddProjectButton: UIView {
     @IBOutlet weak var textLabel: UILabel!
     
     public var callback: (() -> Void)!
-
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!

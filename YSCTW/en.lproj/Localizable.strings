@@ -28,6 +28,13 @@
 "SHARE_FACEBOOK" = "Share on Facebook";
 "SHARE_INSTAGRAM" = "Share on Instagram";
 
+//Projects Filter
+"NO_FILTER_SELECTED" = "All";
+"VISITED_FAVORITES" = "Visited/Favorites";
+"EDUCTION" = "Education";
+"FOOD" = "Food";
+"HEALTH" = "Health";
+
 //General
 "EMAIL" = "E-Mail";
 "PASSWORD" = "Password";

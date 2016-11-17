@@ -63,7 +63,7 @@ class RegistrationViewController: UIViewController {
         mutableString.addAttribute(NSForegroundColorAttributeName, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))
         self.gotoLoginButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoLoginButton.setAttributedTitle(mutableString, for: .selected)
-        
+        self.gotoLoginButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)

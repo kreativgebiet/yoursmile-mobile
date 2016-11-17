@@ -17,6 +17,11 @@ class ProjectFilterViewController: UIViewController {
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     
+    public var topicCallback: (() -> Void)!
+    public var countryCallback: (() -> Void)!
+    
+    var picker: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.spacerView.backgroundColor = spacerGray
@@ -30,21 +35,23 @@ class ProjectFilterViewController: UIViewController {
         //Localization
         self.leftLabel.text = "VISITED".localized
         self.rightLabel.text = "COUNTRY".localized
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        self.leftLabel.adjustsFontSizeToFitWidth = true
+        self.rightLabel.adjustsFontSizeToFitWidth = true
+        
+        let tapLeft = UITapGestureRecognizer(target: self, action: #selector(handleLeftTap))
+        let tapRight = UITapGestureRecognizer(target: self, action: #selector(handleRightTap))
+        
+        self.leftView.addGestureRecognizer(tapLeft)
+        self.rightView.addGestureRecognizer(tapRight)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func handleLeftTap() {
+        self.topicCallback()
     }
-    */
-
+    
+    func handleRightTap() {
+        self.countryCallback()
+    }
+    
 }

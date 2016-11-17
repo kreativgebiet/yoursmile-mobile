@@ -98,7 +98,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.view.layoutIfNeeded()
                     
                     self.profileView.topImageView.alpha = 1
-                    self.profileView.profileLabel.text = self.dataManager?.profile().userName
+                    
+                    let profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
+                    self.profileView.profileLabel.text = profileToUse.userName
                     
                 } )
 

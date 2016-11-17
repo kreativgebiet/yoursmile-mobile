@@ -40,6 +40,8 @@ struct Project {
     var projectName: String
     var projectDescription: String
     var logoImage: UIImage
+    var country: String?
+    var sector: String?
     
     init(name: String, description: String, image: UIImage, logo: UIImage) {
         self.projectImage = image
@@ -55,8 +57,6 @@ extension Project: Equatable {
         return lhs.projectName == rhs.projectName //replace with code for your struct.
     }
 }
-
-
 
 struct Comment {
     var commentProfileImage: UIImage

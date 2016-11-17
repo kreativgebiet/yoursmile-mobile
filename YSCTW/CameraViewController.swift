@@ -54,6 +54,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             beginSession()
         }
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.view.addGestureRecognizer(tapGesture)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,16 +169,14 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     let screenWidth = UIScreen.main.bounds.size.width
     
-    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let anyTouch = touches.anyObject() as! UITouch
-        let touchPercent = anyTouch.location(in: self.view).x / screenWidth
-        focusTo(value: Float(touchPercent))
-    }
-    
-    func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let anyTouch = touches.anyObject() as! UITouch
-        let touchPercent = anyTouch.location(in: self.view).x / screenWidth
-        focusTo(value: Float(touchPercent))
+    func handleTap(sender: UIGestureRecognizer) {
+        if sender.state == .ended {
+            
+            var touchLocation: CGPoint = sender.location(in: self.view)
+            let touchPercent = touchLocation.x / screenWidth
+            focusTo(value: Float(touchPercent))
+            
+        }
     }
     
     // MARK: - Camer-Configuration
@@ -210,7 +211,17 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         previewLayer?.frame = self.cameraView.layer.bounds
         self.cameraView.layer.addSublayer(previewLayer!)
-        captureSession.startRunning()
+        self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto
+        self.captureSession.startRunning()
+        
+        self.stillImageOutput = AVCaptureStillImageOutput()
+        
+        if captureSession.canAddOutput(self.stillImageOutput) {
+            captureSession.addOutput(self.stillImageOutput)
+        }
+        
+        captureSession.commitConfiguration()
+        
     }
     
     // MARK: - Image picker delegate

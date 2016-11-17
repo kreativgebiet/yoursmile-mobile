@@ -12,9 +12,25 @@ class MockUpTestData: NSObject {
     
     func projects() -> [Project] {
         
-        let project1 = Project(name: "wwf-fund", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
-        let project2 = Project(name: "wwf-fund1longtextfund1longtextfund1longtext", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
-        let project3 = Project(name: "wwf-fund2", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+//        "EDUCTION" = "Bildung";
+//        "FOOD" = "Nahrung";
+//        "HEALTH" = "Gesundheit";
+        
+        var project1 = Project(name: "wwf-fund", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        
+            project1.country = ""
+            project1.sector = "HEALTH".localized
+        
+        var project2 = Project(name: "wwf-fund1longtextfund1longtextfund1longtext", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        
+            project2.country = "Deutschland"
+            project2.sector = "EDUCTION".localized
+        
+        var project3 = Project(name: "wwf-fund2", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        
+            project3.country = "Frankreich"
+            project3.sector = "FOOD".localized
+        
         let project4 = Project(name: "wwf-fund3", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
         
         return [project1, project2, project3, project4]

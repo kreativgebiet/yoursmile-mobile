@@ -186,7 +186,7 @@
                                     <constraint firstAttribute="height" constant="50" id="dYc-x0-43f"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="2f4-KY-DP3" kind="embed" id="esq-85-0B4"/>
+                                    <segue destination="2f4-KY-DP3" kind="embed" identifier="projectsFilterSegue" id="esq-85-0B4"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -201,6 +201,10 @@
                             <constraint firstItem="30J-J8-3DN" firstAttribute="top" secondItem="pho-Rw-cl5" secondAttribute="top" id="vu3-XX-E9s"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomContainerView" destination="sId-Vj-hW5" id="vak-EE-V3y"/>
+                        <outlet property="topContainerView" destination="30J-J8-3DN" id="k4U-gZ-6nl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U1-yV-Cj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1071,13 +1075,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-33-QBV" userLabel="leftFilterView">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="9Y6-Gj-dau">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="9Y6-Gj-dau">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="GV1-2o-LuH"/>
-                                            <constraint firstAttribute="width" constant="20" id="yq8-mY-h8t"/>
+                                            <constraint firstAttribute="height" constant="9" id="GV1-2o-LuH"/>
+                                            <constraint firstAttribute="width" constant="11" id="yq8-mY-h8t"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-icon" translatesAutoresizingMaskIntoConstraints="NO" id="IkQ-Ns-kSM">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-icon" translatesAutoresizingMaskIntoConstraints="NO" id="IkQ-Ns-kSM">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="9fp-3N-RSV"/>
                                             <constraint firstAttribute="width" constant="20" id="I5f-na-qPs"/>
@@ -1109,13 +1113,13 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4t-e1-egF" userLabel="rightFilterView">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="f8p-Vm-bci">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="f8p-Vm-bci">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="1jh-q3-e4g"/>
-                                            <constraint firstAttribute="width" constant="20" id="VsM-VU-GWu"/>
+                                            <constraint firstAttribute="height" constant="9" id="1jh-q3-e4g"/>
+                                            <constraint firstAttribute="width" constant="11" id="VsM-VU-GWu"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="world-icon" translatesAutoresizingMaskIntoConstraints="NO" id="giW-eB-ZEf">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="world-icon" translatesAutoresizingMaskIntoConstraints="NO" id="giW-eB-ZEf">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="QHH-ng-IfP"/>
                                             <constraint firstAttribute="width" constant="30" id="xZW-Cl-WvE"/>

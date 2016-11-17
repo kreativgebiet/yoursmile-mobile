@@ -25,7 +25,12 @@ class ProjectsTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
         self.tableView.allowsSelection = false
-        self.tableView.backgroundColor = customLightGray
+        self.tableView.backgroundColor = .white
+        self.tableView.tableFooterView = UIView()
+    }
+    
+    public func reload() {
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
