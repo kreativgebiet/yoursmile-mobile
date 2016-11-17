@@ -121,12 +121,22 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
     
     func proceedTapped() {
         let navigationView = self.navigationController?.view
-        let overlay = DonationSuccessOverlay(frame: (navigationView?.bounds)!)
+        let overlay = DonationFeeOverlayView(frame: (navigationView?.bounds)!)
         navigationView?.addSubview(overlay)
         
         overlay.callback = {
             overlay.removeFromSuperview()
-            _ = self.navigationController?.popToRootViewController(animated: false)
+            
+            let navigationView = self.navigationController?.view
+            let overlay2 = DonationSuccessOverlay(frame: (navigationView?.bounds)!)
+            navigationView?.addSubview(overlay2)
+            
+            overlay2.callback = {
+                overlay2.removeFromSuperview()
+                _ = self.navigationController?.popToRootViewController(animated: false)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
+            }
+            
         }
     }
 

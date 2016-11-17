@@ -39,6 +39,8 @@
 		A135467A1DDE086000931139 /* DonationDescriptionLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13546791DDE086000931139 /* DonationDescriptionLogoView.xib */; };
 		A135467C1DDE0FFF00931139 /* DonationSuccessOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A135467B1DDE0FFF00931139 /* DonationSuccessOverlay.swift */; };
 		A135467E1DDE100F00931139 /* DonationSuccessOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = A135467D1DDE100F00931139 /* DonationSuccessOverlay.xib */; };
+		A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A135467F1DDE165F00931139 /* DonationFeeOverlayView.swift */; };
+		A13546821DDE166900931139 /* DonationFeeOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13546811DDE166900931139 /* DonationFeeOverlayView.xib */; };
 		A15390991DD0C8A700B7ADA0 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390981DD0C8A700B7ADA0 /* DividerView.swift */; };
 		A153909B1DD0CD9200B7ADA0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153909A1DD0CD9200B7ADA0 /* RoundedButton.swift */; };
 		A153909D1DD0CEFF00B7ADA0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153909C1DD0CEFF00B7ADA0 /* RegistrationViewController.swift */; };
@@ -144,6 +146,8 @@
 		A13546791DDE086000931139 /* DonationDescriptionLogoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationDescriptionLogoView.xib; sourceTree = "<group>"; };
 		A135467B1DDE0FFF00931139 /* DonationSuccessOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationSuccessOverlay.swift; sourceTree = "<group>"; };
 		A135467D1DDE100F00931139 /* DonationSuccessOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationSuccessOverlay.xib; sourceTree = "<group>"; };
+		A135467F1DDE165F00931139 /* DonationFeeOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationFeeOverlayView.swift; sourceTree = "<group>"; };
+		A13546811DDE166900931139 /* DonationFeeOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationFeeOverlayView.xib; sourceTree = "<group>"; };
 		A15390981DD0C8A700B7ADA0 /* DividerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		A153909A1DD0CD9200B7ADA0 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A153909C1DD0CEFF00B7ADA0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +343,8 @@
 				A13546791DDE086000931139 /* DonationDescriptionLogoView.xib */,
 				A135467B1DDE0FFF00931139 /* DonationSuccessOverlay.swift */,
 				A135467D1DDE100F00931139 /* DonationSuccessOverlay.xib */,
+				A135467F1DDE165F00931139 /* DonationFeeOverlayView.swift */,
+				A13546811DDE166900931139 /* DonationFeeOverlayView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -499,6 +505,7 @@
 				A11028F91DD5308700633343 /* ProfileHeaderView.xib in Resources */,
 				A1CF0CA21DD23875002C4562 /* DonationDetailHeaderView.xib in Resources */,
 				A1CF0CAF1DD26AB9002C4562 /* DonationDetailOverlayView.xib in Resources */,
+				A13546821DDE166900931139 /* DonationFeeOverlayView.xib in Resources */,
 				A13546741DDDEC8700931139 /* PaymentSelectionView.xib in Resources */,
 				A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */,
 				A12A45521DCF8C76002977DF /* Main.storyboard in Resources */,
@@ -556,6 +563,7 @@
 				A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */,
 				A1F8D8E71DD3632800AFAB4F /* MockUpTestData.swift in Sources */,
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
+				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
 				A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */,
 				A1CF0CA41DD238C9002C4562 /* DonationDetailHeaderView.swift in Sources */,
 				A12A454D1DCF8C76002977DF /* AppDelegate.swift in Sources */,

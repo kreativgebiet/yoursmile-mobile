@@ -11,6 +11,8 @@ import UIKit
 
 let baseURL = "http://yoursmile-staging.herokuapp.com/"
 
+let feedNotificationIdentifier: String = "FeedNotificationIdentifier"
+
 let orange = UIColor(red: 252.0/255.0, green: 168/255.0, blue: 78/255.0, alpha: 1.0) as UIColor
 let green = UIColor(red: 0/255.0, green: 151.0/255.0, blue: 137.0/255.0, alpha: 1.0) as UIColor
 

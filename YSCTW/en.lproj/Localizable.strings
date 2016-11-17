@@ -89,6 +89,9 @@
 "THANK_YOU" = "Thank you";
 "THANK_YOU_TEXT" = "You are a real hero! Your payment was succesfully transferred to the selected project.";
 "THANK_YOU_BUTTON" = "Back to my stream";
+"FEE_TITLE" = "Payment Info";
+"FEE_TEXT" = "We have to charge a fee for this payment type, because we want that the project will receive the full amount of 1€ without any subtractions. The fee is 0,21€ and will come on top of your amount.";
+"FEE_BUTTON" = "Okay, thats fine";
 
 
 //Preferences

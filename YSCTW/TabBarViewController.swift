@@ -48,6 +48,16 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         self.feedViewController?.dataManager = self.dataManager
         
         self.addViewControllerAsChildViewController(viewController: self.feedViewController!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(openFeed), name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func openFeed() {
+        self.didSelectButtonOf(type: .feed)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -187,6 +197,6 @@ class TabBarViewController: UIViewController, BarViewDelegate {
             barViewController.delegate = self
         }
         
-    } 
+    }
 
 }

@@ -1,5 +1,5 @@
 //
-//  DonationSuccessOverlay.swift
+//  DonationFeeOverlayView.swift
 //  YSCTW
 //
 //  Created by Max Zimmermann on 17.11.16.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class DonationSuccessOverlay: UIView {
+class DonationFeeOverlayView: UIView {
 
-    @IBOutlet weak var gratitudeLabel: UILabel!
     @IBOutlet var view: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var gratitudeTextLabel: UILabel!
-    @IBOutlet weak var backButton: RoundedButton!
+    @IBOutlet weak var button: RoundedButton!
+    @IBOutlet weak var paymentLabel: UILabel!
+    @IBOutlet weak var paymentDescriptionLabel: UILabel!
     @IBOutlet weak var infoView: UIView!
     
     public var callback: (() -> Void)!
@@ -33,24 +33,24 @@ class DonationSuccessOverlay: UIView {
         self.infoView.backgroundColor = .white
         self.infoView.layer.cornerRadius = 10
         
-        self.backButton.setTitle("THANK_YOU_BUTTON".localized, for: .normal)
-        self.backButton.setTitle("THANK_YOU_BUTTON".localized, for: .selected)
+        self.button.setTitle("FEE_BUTTON".localized, for: .normal)
+        self.button.setTitle("FEE_BUTTON".localized, for: .selected)
         
-        self.gratitudeLabel.text = "THANK_YOU".localized
-        self.gratitudeLabel.textColor = navigationBarGray
+        self.paymentLabel.text = "FEE_TITLE".localized
+        self.paymentLabel.textColor = navigationBarGray
         
-        self.gratitudeTextLabel.text = "THANK_YOU_TEXT".localized
-        self.gratitudeTextLabel.textColor = green
+        self.paymentDescriptionLabel.text = "FEE_TEXT".localized
+        self.paymentDescriptionLabel.textColor = green
     }
-    
-    @IBAction func handleButtonPressed(_ sender: AnyObject) {
+
+    @IBAction func buttonHandler(_ sender: AnyObject) {
         self.callback()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
