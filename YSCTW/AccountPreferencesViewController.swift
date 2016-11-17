@@ -50,8 +50,10 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
         let dict = self.data[section]
         let titleString = dict?["title"] as! String
         
+        let y: CGFloat = (section == 0 ? 20 : 30)
+        
         let title = UILabel()
-        title.frame =  CGRect(x: 15,y: 10,width: headerFrame.size.width-20,height: 40)
+        title.frame =  CGRect(x: 15,y: y,width: headerFrame.size.width-20,height: 20)
         title.font = title.font.withSize(14)
         title.text = titleString.localized
         title.textColor = customMiddleGray
@@ -62,6 +64,14 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
         headerView.addSubview(title)
         
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 40
+        } else {
+            return 50
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

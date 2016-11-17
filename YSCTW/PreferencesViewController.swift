@@ -26,7 +26,7 @@ class PreferencesViewController: UIViewController {
         
         self.segmentedControl.tintColor = orange
         self.segmentedControl.setTitle("YSCTW", forSegmentAt: 0)
-        self.segmentedControl.setTitle("Account Settings", forSegmentAt: 1)
+        self.segmentedControl.setTitle("ACCOUNT_SETTINGS_SEGMENTED_TITLE".localized, forSegmentAt: 1)
         
         self.appPreferencesViewController = self.instantiateViewController(withIdentifier: "AppPreferencesViewController") as? AppPreferencesViewController
         self.appPreferencesViewController.view.backgroundColor = customLightGray
