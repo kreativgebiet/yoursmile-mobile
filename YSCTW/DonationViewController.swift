@@ -23,10 +23,13 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     public var dataManager: DataManager?
     public var selectedProject: Project?
     
+    var projects: [Project]?
     var supportedProjects = [Project]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.projects = self.dataManager?.projects()
         
         self.title = "DONATE".localized
         
@@ -54,7 +57,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         self.title = ""
         
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProjectsViewController") as! ProjectsViewController
-        viewController.dataManager = self.dataManager
+        viewController.projects = self.projects?.filter({!self.supportedProjects.contains($0)})
         
         viewController.supportCallback = { selectedSupportProject in
             self.supportedProjects.append(selectedSupportProject)

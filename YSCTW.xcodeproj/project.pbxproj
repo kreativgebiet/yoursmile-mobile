@@ -232,13 +232,13 @@
 		A12A454B1DCF8C76002977DF /* YSCTW */ = {
 			isa = PBXGroup;
 			children = (
-				A12A457A1DCF9383002977DF /* constants.swift */,
 				A12A454C1DCF8C76002977DF /* AppDelegate.swift */,
 				A12A45501DCF8C76002977DF /* Main.storyboard */,
 				A12A45531DCF8C76002977DF /* Assets.xcassets */,
 				A12A45551DCF8C76002977DF /* LaunchScreen.storyboard */,
 				A12A45581DCF8C76002977DF /* Info.plist */,
 				A11029041DD9C36D00633343 /* Localizable.strings */,
+				A12A457A1DCF9383002977DF /* constants.swift */,
 				A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */,
 				A1F8D8E81DD3648400AFAB4F /* DataManager.swift */,
 				A11029071DD9C55E00633343 /* StringExtension.swift */,

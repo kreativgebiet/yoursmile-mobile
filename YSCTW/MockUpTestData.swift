@@ -12,10 +12,6 @@ class MockUpTestData: NSObject {
     
     func projects() -> [Project] {
         
-//        "EDUCTION" = "Bildung";
-//        "FOOD" = "Nahrung";
-//        "HEALTH" = "Gesundheit";
-        
         var project1 = Project(name: "wwf-fund", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
         
             project1.country = ""

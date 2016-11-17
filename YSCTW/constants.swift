@@ -54,7 +54,7 @@ struct Project {
 extension Project: Equatable {
     static public func ==(lhs: Project, rhs: Project) -> Bool
     {
-        return lhs.projectName == rhs.projectName //replace with code for your struct.
+        return lhs.projectName == rhs.projectName && lhs.sector == rhs.sector && lhs.projectDescription == rhs.projectDescription
     }
 }
 

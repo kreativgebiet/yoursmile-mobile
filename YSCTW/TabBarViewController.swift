@@ -75,7 +75,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
             case .donation:
                 if self.projectsViewController == nil {
                     self.projectsViewController = self.instantiateViewController(withIdentifier: "ProjectsViewController") as? ProjectsViewController
-                    self.projectsViewController?.dataManager = self.dataManager
+                    self.projectsViewController?.projects = self.dataManager?.projects()
                     
                     self.projectsViewController?.supportCallback = { selectedProject in                        
                         self.navigationController?.performSegue(withIdentifier: "cameraSegue", sender: selectedProject)

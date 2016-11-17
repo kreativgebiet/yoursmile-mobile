@@ -12,7 +12,6 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     @IBOutlet weak var topContainerView: UIView!
     @IBOutlet weak var bottomContainerView: UIView!
-    public var dataManager: DataManager?
     public var supportCallback: ((_ project: Project) -> Void)!
     
     var projectsTableViewController: ProjectsTableViewController!
@@ -145,10 +144,7 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         if segue.identifier == "projectsTableViewSegue" {
             
-            if self.projects == nil {
-                self.projects = self.dataManager?.projects()
-                self.projectsToShow = self.projects
-            }
+            self.projectsToShow = self.projects
             
             self.projectsTableViewController = segue.destination as! ProjectsTableViewController
             self.projectsTableViewController.projects = self.projects
