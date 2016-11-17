@@ -10,6 +10,7 @@ import UIKit
 
 class DonationDetailHeaderView: UIView {
 
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var donationReceiverView: UIView!
     @IBOutlet weak var selfieImageView: UIImageView!
     
@@ -39,9 +40,11 @@ class DonationDetailHeaderView: UIView {
     func addStyle() {
         //Header Style
         self.donatorProfileImageView.layer.cornerRadius = self.donatorProfileImageView.frame.size.width/2
+        self.donatorProfileImageView.clipsToBounds = true
         self.donatorNameLabel.textColor = navigationBarGray
 
         self.donationReceiverView.backgroundColor = navigationBarGray.withAlphaComponent(0.6)
+        self.timeLabel.textColor = timeGray
     }
     
     func addHeaderData() {

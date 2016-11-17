@@ -32,6 +32,8 @@ class DonationDetailTableViewController: UITableViewController {
             }
             
             self.tableView.tableFooterView = self.footerView
+        } else {
+            self.tableView.tableFooterView = UIView()
         }
         
         self.applyTableViewStyle()
@@ -44,7 +46,6 @@ class DonationDetailTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentCell")
         self.tableView.allowsSelection = false
         self.tableView.backgroundColor = customLightGray
-        self.tableView.tableFooterView = UIView()
     }
     
     func sizeHeaderToFit() {

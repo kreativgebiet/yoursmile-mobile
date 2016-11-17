@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,8 +30,8 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="GoF-ZK-F9P" secondAttribute="trailing" constant="8" id="JnM-Iz-ZOn"/>
-                <constraint firstAttribute="trailing" secondItem="6ax-b5-rJp" secondAttribute="trailing" constant="8" id="OPB-HZ-anO"/>
+                <constraint firstAttribute="trailing" secondItem="GoF-ZK-F9P" secondAttribute="trailing" id="JnM-Iz-ZOn"/>
+                <constraint firstAttribute="trailing" secondItem="6ax-b5-rJp" secondAttribute="trailing" id="OPB-HZ-anO"/>
                 <constraint firstItem="6ax-b5-rJp" firstAttribute="leading" secondItem="Srg-hB-rS9" secondAttribute="trailing" constant="16" id="fIv-9a-PhS"/>
                 <constraint firstItem="Srg-hB-rS9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="iI3-J7-WgV"/>
                 <constraint firstItem="GoF-ZK-F9P" firstAttribute="leading" secondItem="Srg-hB-rS9" secondAttribute="trailing" constant="16" id="mRi-qW-Qwy"/>

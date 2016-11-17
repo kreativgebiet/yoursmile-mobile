@@ -35,6 +35,7 @@ class TableViewFooterView: UIView {
         addSubview(view)
         
         view.backgroundColor = customLightGray
+        self.textLabel.textColor = navigationBarGray
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.view.addGestureRecognizer(tapGesture)
