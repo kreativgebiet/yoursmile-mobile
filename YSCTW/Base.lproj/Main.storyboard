@@ -521,7 +521,6 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-jD-1a5">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="422" id="Lwa-19-0E8"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="375" id="PcI-Vu-tFb"/>
                                                 </constraints>
                                             </imageView>
                                             <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvW-9K-rIR">
@@ -791,15 +790,28 @@
                                     <segue destination="kd5-4Q-Jci" kind="embed" id="o6h-2v-Xsb"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hm-rs-0Id" userLabel="UploadProgressView" customClass="CancelableProgressView" customModule="YSCTW" customModuleProvider="target">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="rnH-Nx-fbb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.35290342385222595" blue="0.32355879645621888" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bpp-6H-6eS" firstAttribute="top" secondItem="rw1-6c-bzI" secondAttribute="top" id="LcI-Wb-bWB"/>
+                            <constraint firstItem="bpp-6H-6eS" firstAttribute="top" secondItem="1hm-rs-0Id" secondAttribute="bottom" id="5eZ-DF-0UH"/>
                             <constraint firstAttribute="trailing" secondItem="bpp-6H-6eS" secondAttribute="trailing" id="M5v-QS-vch"/>
+                            <constraint firstItem="1hm-rs-0Id" firstAttribute="top" secondItem="rw1-6c-bzI" secondAttribute="top" id="RQL-pk-QYA"/>
+                            <constraint firstItem="1hm-rs-0Id" firstAttribute="leading" secondItem="rw1-6c-bzI" secondAttribute="leading" id="Rql-cl-Hbn"/>
                             <constraint firstItem="tug-77-NFE" firstAttribute="top" secondItem="bpp-6H-6eS" secondAttribute="bottom" id="UwB-hP-16c"/>
+                            <constraint firstAttribute="trailing" secondItem="1hm-rs-0Id" secondAttribute="trailing" id="sw6-x1-Lpz"/>
                             <constraint firstItem="bpp-6H-6eS" firstAttribute="leading" secondItem="rw1-6c-bzI" secondAttribute="leading" id="uVH-Rz-Yrh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="progressView" destination="1hm-rs-0Id" id="2nS-Rr-XoU"/>
+                        <outlet property="progressViewHeightConstraint" destination="rnH-Nx-fbb" id="cbT-y4-zX2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a30-fN-4Jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -981,7 +993,7 @@
             <objects>
                 <tableViewController id="kd5-4Q-Jci" customClass="FeedTableViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wwv-lu-apQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="633"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>

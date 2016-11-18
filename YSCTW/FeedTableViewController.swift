@@ -19,7 +19,7 @@ class FeedTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

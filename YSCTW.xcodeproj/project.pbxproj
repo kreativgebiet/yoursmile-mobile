@@ -53,6 +53,8 @@
 		A15390AF1DD0F64100B7ADA0 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390AE1DD0F64100B7ADA0 /* PreferencesViewController.swift */; };
 		A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390B21DD1D86A00B7ADA0 /* BarViewController.swift */; };
 		A154FDF11DDF5BC200D88306 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */; };
+		A154FDF31DDF66DB00D88306 /* CancelableProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154FDF21DDF66DB00D88306 /* CancelableProgressView.swift */; };
+		A154FDF51DDF66E300D88306 /* CancelableProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A154FDF41DDF66E300D88306 /* CancelableProgressView.xib */; };
 		A16407061DDE723A00BA1853 /* PreferencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16407041DDE723A00BA1853 /* PreferencesTableViewCell.swift */; };
 		A16407071DDE723A00BA1853 /* PreferencesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16407051DDE723A00BA1853 /* PreferencesTableViewCell.xib */; };
 		A16407181DDF181800BA1853 /* Gotham-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407081DDF181800BA1853 /* Gotham-BookItalic.otf */; };
@@ -179,6 +181,8 @@
 		A15390AE1DD0F64100B7ADA0 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		A15390B21DD1D86A00B7ADA0 /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
 		A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		A154FDF21DDF66DB00D88306 /* CancelableProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelableProgressView.swift; sourceTree = "<group>"; };
+		A154FDF41DDF66E300D88306 /* CancelableProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelableProgressView.xib; sourceTree = "<group>"; };
 		A16407041DDE723A00BA1853 /* PreferencesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewCell.swift; sourceTree = "<group>"; };
 		A16407051DDE723A00BA1853 /* PreferencesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesTableViewCell.xib; sourceTree = "<group>"; };
 		A16407081DDF181800BA1853 /* Gotham-BookItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-BookItalic.otf"; path = "Resources/Gotham-BookItalic.otf"; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 				A135467D1DDE100F00931139 /* DonationSuccessOverlay.xib */,
 				A135467F1DDE165F00931139 /* DonationFeeOverlayView.swift */,
 				A13546811DDE166900931139 /* DonationFeeOverlayView.xib */,
+				A154FDF21DDF66DB00D88306 /* CancelableProgressView.swift */,
+				A154FDF41DDF66E300D88306 /* CancelableProgressView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -573,6 +579,7 @@
 				A135467E1DDE100F00931139 /* DonationSuccessOverlay.xib in Resources */,
 				A12A45541DCF8C76002977DF /* Assets.xcassets in Resources */,
 				A164071C1DDF181800BA1853 /* Gotham-Bold.otf in Resources */,
+				A154FDF51DDF66E300D88306 /* CancelableProgressView.xib in Resources */,
 				A1F8D8F31DD37AE400AFAB4F /* TransparentProjectView.xib in Resources */,
 				A11028F91DD5308700633343 /* ProfileHeaderView.xib in Resources */,
 				A1CF0CA21DD23875002C4562 /* DonationDetailHeaderView.xib in Resources */,
@@ -682,6 +689,7 @@
 				A15390991DD0C8A700B7ADA0 /* DividerView.swift in Sources */,
 				A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */,
 				A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */,
+				A154FDF31DDF66DB00D88306 /* CancelableProgressView.swift in Sources */,
 				A11028F71DD5307700633343 /* ProfileHeaderView.swift in Sources */,
 				A1CF0CB11DD26CD3002C4562 /* CornerButton.swift in Sources */,
 				A15390AD1DD0F62E00B7ADA0 /* ProfileViewController.swift in Sources */,

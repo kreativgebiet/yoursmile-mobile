@@ -136,6 +136,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
             overlay2.removeFromSuperview()
             _ = self.navigationController?.popToRootViewController(animated: false)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: showUploadNotificationIdentifier), object: nil)
         }
     }
 
