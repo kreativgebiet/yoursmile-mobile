@@ -29,6 +29,9 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.register(UINib(nibName: "PreferencesTableViewCell", bundle: nil), forCellReuseIdentifier: "PreferencesCell")
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -36,8 +39,6 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView.sectionHeaderHeight = 40
         self.tableView.backgroundColor = customLightGray
         self.tableView.tableFooterView = UIView()
-        
-        self.tableView.register(PreferencesTableViewCell.self, forCellReuseIdentifier: "PreferencesCell")
     }
 
     // MARK: - TableView datasource and delegate
@@ -52,7 +53,7 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
         
         let title = UILabel()
         title.frame =  CGRect(x: 15,y: y,width: headerFrame.size.width-20,height: 20)
-        title.font = title.font.withSize(14)
+        title.font = UIFont(name: "Gotham-Bold", size: 12)
         title.text = titleString.localized
         title.textColor = customMiddleGray
         
@@ -91,12 +92,19 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
         
         cell.textLabel?.text = dictData[indexPath.row].localized
         cell.textLabel?.textColor = navigationBarGray
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.font = UIFont(name: "Gotham-Book", size: 15)
         
         if dict?["title"] as! String != "INFORMATIONS" {
             cell.accessoryType = .disclosureIndicator
+            cell.rightLabel.isHidden = true
         } else {
+//            cell.rightImageView.isHidden = true
+            cell.rightLabel.isHidden = false
             
+            if let versionNumberString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                cell.rightLabel.text = versionNumberString
+                cell.bringSubview(toFront: cell.rightLabel)
+            }
         }
     
         return cell

@@ -109,11 +109,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         imagePickerController.navigationBar.isTranslucent = false
         imagePickerController.navigationBar.barTintColor = navigationBarGray
         imagePickerController.navigationBar.tintColor = .white
-        imagePickerController.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : UIColor.white
-        ]
+        let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 18)!, NSForegroundColorAttributeName: UIColor.white]
+        imagePickerController.navigationBar.titleTextAttributes = attributes
         
-        self.present(imagePickerController, animated: true, completion: nil)
+        self.present(imagePickerController, animated: false, completion: nil)
     }
     
     @IBAction func cameraButtonTapped(_ sender: AnyObject) {

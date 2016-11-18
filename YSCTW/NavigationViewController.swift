@@ -16,9 +16,11 @@ class NavigationViewController: UINavigationController {
         super.viewDidLoad()
         
         self.navigationBar.barTintColor = navigationBarGray
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationBar.isTranslucent = false
         self.navigationBar.backgroundColor = navigationBarGray
+
+        let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 18)!, NSForegroundColorAttributeName: UIColor.white]
+        self.navigationBar.titleTextAttributes = attributes
         
         self.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back-icon")
         self.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back-icon")

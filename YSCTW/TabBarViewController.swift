@@ -51,7 +51,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         self.logoNavigationBarView.center = (self.navigationController?.navigationBar.center)!
         self.navigationController?.navigationBar.addSubview(self.logoNavigationBarView)
         
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        self.titleLabel.font = UIFont(name: "Gotham-Book", size: 18)
         self.titleLabel.backgroundColor = .clear
         self.titleLabel.textColor = .white
         self.titleLabel.textAlignment = .center

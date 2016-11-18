@@ -11,13 +11,11 @@ import UIKit
 class PreferencesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var rightLabel: UILabel!
-    @IBOutlet weak var rightImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.rightImageView.image = #imageLiteral(resourceName: "close-icon")
-        self.rightLabel.text = "1212"
+//        self.rightImageView.image = #imageLiteral(resourceName: "close-icon")
         
     }
 

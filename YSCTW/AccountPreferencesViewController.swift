@@ -31,6 +31,9 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.register(UINib(nibName: "PreferencesTableViewCell", bundle: nil), forCellReuseIdentifier: "PreferencesCell")
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -38,8 +41,6 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
         self.tableView.sectionHeaderHeight = 40
         self.tableView.backgroundColor = customLightGray
         self.tableView.tableFooterView = UIView()
-        
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "StandardCell")
     }
     
     // MARK: - TableView datasource and delegate
@@ -54,7 +55,7 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
         
         let title = UILabel()
         title.frame =  CGRect(x: 15,y: y,width: headerFrame.size.width-20,height: 20)
-        title.font = title.font.withSize(14)
+        title.font = UIFont(name: "Gotham-Bold", size: 12)
         title.text = titleString.localized
         title.textColor = customMiddleGray
         
@@ -86,19 +87,25 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PreferencesCell", for: indexPath) as! PreferencesTableViewCell
         
         let dict = self.data[indexPath.section]
         let dictData = dict?["data"] as! [String]
         
         cell.textLabel?.text = dictData[indexPath.row].localized
         cell.textLabel?.textColor = navigationBarGray
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.font = UIFont(name: "Gotham-Book", size: 15)
         
         if dict?["title"] as! String != "DISPLAY_NAME" {
             cell.accessoryType = .disclosureIndicator
+//            cell.rightImageView.isHidden = true
+            cell.rightLabel.isHidden = true
         } else {
+            cell.accessoryType = .none
+            cell.textLabel?.font = UIFont(name: "Gotham-Medium", size: 15)
             cell.textLabel?.text = self.profile?.userName
+//            cell.rightImageView.isHidden = false
+            cell.rightLabel.isHidden = true
         }
         
         return cell

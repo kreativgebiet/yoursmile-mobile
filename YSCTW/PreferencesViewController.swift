@@ -29,6 +29,11 @@ class PreferencesViewController: UIViewController {
         self.segmentedControl.setTitle("ACCOUNT_SETTINGS_SEGMENTED_TITLE".localized, forSegmentAt: 1)
         self.segmentedControl.backgroundColor = UIColor.white.withAlphaComponent(0.95)
         
+        let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Light", size: 13)!]
+        
+        self.segmentedControl.setTitleTextAttributes(attributes, for: .normal)
+        self.segmentedControl.setTitleTextAttributes(attributes, for: .selected)
+        
         self.appPreferencesViewController = self.instantiateViewController(withIdentifier: "AppPreferencesViewController") as? AppPreferencesViewController
         self.appPreferencesViewController.view.backgroundColor = customLightGray
         
