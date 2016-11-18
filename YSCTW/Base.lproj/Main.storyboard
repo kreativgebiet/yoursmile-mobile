@@ -800,6 +800,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Y2s-Gw-kch"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
                                                 <state key="normal" title="Unterstützen"/>
                                                 <connections>
                                                     <action selector="supportButtonTapped:" destination="f9e-94-c6Q" eventType="touchUpInside" id="HQt-y8-h9n"/>
