@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import PhotoCropEditor
 
-class DonationViewController: UIViewController, AddedProjectButtonDelegate {
+class DonationViewController: UIViewController, AddedProjectButtonDelegate, CropViewControllerDelegate {
     
     @IBOutlet weak var adjustImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -73,10 +74,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             self.addProjectButtonTapped()
         }
 
-        self.selfieImageView.image = self.selfieImage
-        let aspect = (self.selfieImage?.size.height)! / (self.selfieImage?.size.width)!
-        
-        self.selfieImageViewHeightConstraint.constant = aspect * self.view.frame.width
+        self.applyImageToImageView()
         
         self.selectedProjectsContainerView.backgroundColor = .clear
         
@@ -91,10 +89,43 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         self.loadSupportedProjects()
     }
     
+    func applyImageToImageView() {
+        self.selfieImageView.image = self.selfieImage
+        let aspect = (self.selfieImage?.size.height)! / (self.selfieImage?.size.width)!
+        
+        self.selfieImageViewHeightConstraint.constant = aspect * self.view.frame.width
+    }
+    
     // MARK: Button Handling
     
     func adjustTapped() {
         
+        let controller = CropViewController()
+        
+        controller.delegate = self
+        controller.image = self.selfieImage
+        
+        let navController = ImageCropNavigationController(rootViewController: controller)
+        
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+    func cropViewController(_ controller: CropViewController, didFinishCroppingImage image: UIImage) {
+        controller.dismiss(animated: true, completion: nil)
+        
+        self.selfieImage = image
+        self.applyImageToImageView()
+    }
+    
+    public func cropViewController(_ controller: CropViewController, didFinishCroppingImage image: UIImage, transform: CGAffineTransform, cropRect: CGRect) {
+        controller.dismiss(animated: true, completion: nil)
+        
+        self.selfieImage = image
+        self.applyImageToImageView()
+    }
+    
+    public func cropViewControllerDidCancel(_ controller: CropViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func proceedTapped() {

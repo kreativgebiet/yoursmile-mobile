@@ -74,6 +74,7 @@
 		A16407261DDF181800BA1853 /* Gotham-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407161DDF181800BA1853 /* Gotham-BlackItalic.otf */; };
 		A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407171DDF181800BA1853 /* Gotham-Black.otf */; };
 		A1B2B9CC1DDF7B3600C27A26 /* PhotoCropEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */; };
+		A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */; };
 		A1CF0C981DD2170A002C4562 /* DonationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */; };
 		A1CF0C9A1DD22994002C4562 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0C991DD22994002C4562 /* CommentTableViewCell.swift */; };
 		A1CF0C9C1DD22DBE002C4562 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0C9B1DD22DBE002C4562 /* CommentTableViewCell.xib */; };
@@ -204,6 +205,7 @@
 		A16407171DDF181800BA1853 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Black.otf"; path = "Resources/Gotham-Black.otf"; sourceTree = "<group>"; };
 		A1B2B9C91DDF7A4600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = ../YSCTW/Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
 		A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
+		A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropNavigationController.swift; sourceTree = "<group>"; };
 		A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationDetailTableViewController.swift; sourceTree = "<group>"; };
 		A1CF0C991DD22994002C4562 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		A1CF0C9B1DD22DBE002C4562 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				A11028FE1DD5E23500633343 /* AccountPreferencesViewController.swift */,
 				A13546751DDDF45300931139 /* DonationDescriptionViewController.swift */,
 				A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */,
+				A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				A12A45811DD081FF002977DF /* LoginViewController.swift in Sources */,
 				A13546721DDDEC7900931139 /* PaymentSelectionView.swift in Sources */,
 				A153909B1DD0CD9200B7ADA0 /* RoundedButton.swift in Sources */,
+				A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */,
 				A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */,
 				A15390991DD0C8A700B7ADA0 /* DividerView.swift in Sources */,
 				A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */,
