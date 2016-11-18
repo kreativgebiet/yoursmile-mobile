@@ -16,6 +16,8 @@ class ProjectDetailViewController: UIViewController {
     @IBOutlet weak var projectDescriptionLabel: UILabel!
     @IBOutlet weak var transparentProjectView: TransparentProjectView!
     
+    public var supportCallback: (() -> Void)!
+    
     @IBOutlet weak var progressView: ProgressView!
     
     override func viewDidLoad() {
@@ -45,17 +47,7 @@ class ProjectDetailViewController: UIViewController {
     }
 
     @IBAction func supportButtonTapped(_ sender: AnyObject) {
-        self.navigationController?.performSegue(withIdentifier: "cameraSegue", sender: self.project)
+        self.supportCallback()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

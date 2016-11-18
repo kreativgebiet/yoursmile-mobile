@@ -44,10 +44,6 @@ class NavigationViewController: UINavigationController {
             let destinationVC = segue.destination as! DonationDetailViewController
             let donation = sender as! Donation
             destinationVC.donation = donation
-        } else if segue.identifier == "projectDetailSegue" {
-            let destination = segue.destination as! ProjectDetailViewController
-            let senderVC = sender as! ProjectsTableViewController
-            destination.project = senderVC.selectedProject
         } else if segue.identifier == "cameraSegue" {
             let destination = segue.destination as! CameraViewController
             destination.dataManager = self.dataManager

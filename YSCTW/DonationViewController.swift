@@ -164,7 +164,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
             self.supportedProjects.append(selectedSupportProject)
             self.loadSupportedProjects()
             
-            _ = self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popToViewController(self, animated: true)
         }
         
         viewController.title = "PROJECTS".localized

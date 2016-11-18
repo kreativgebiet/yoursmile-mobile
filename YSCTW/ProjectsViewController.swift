@@ -149,6 +149,11 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             self.projectsTableViewController = segue.destination as! ProjectsTableViewController
             self.projectsTableViewController.projects = self.projects
             self.projectsTableViewController.supportCallback = self.supportCallback
+            
+            self.projectsTableViewController.detailCallback = { project in
+                self.performSegue(withIdentifier: "projectDetailSegue", sender: project)
+            }
+            
         } else if segue.identifier == "projectsFilterSegue" {
             self.filterViewController = segue.destination as! ProjectFilterViewController
             
@@ -160,6 +165,18 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             self.filterViewController.topicCallback = {
                 self.leftPicker = true
                 self.togglePicker()
+            }
+            
+        } else if segue.identifier == "projectDetailSegue" {
+            
+            let destination = segue.destination as! ProjectDetailViewController
+            
+            let project = sender as! Project
+            
+            destination.project = project
+            
+            destination.supportCallback = {
+                self.supportCallback(project)
             }
             
         }

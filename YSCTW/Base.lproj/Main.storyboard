@@ -222,6 +222,7 @@
                     <connections>
                         <outlet property="bottomContainerView" destination="sId-Vj-hW5" id="vak-EE-V3y"/>
                         <outlet property="topContainerView" destination="30J-J8-3DN" id="k4U-gZ-6nl"/>
+                        <segue destination="f9e-94-c6Q" kind="show" identifier="projectDetailSegue" id="udc-dm-c8U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5U1-yV-Cj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -916,7 +917,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQn-mj-f58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2084" y="-2088"/>
+            <point key="canvasLocation" x="5159" y="-531"/>
         </scene>
         <!--Donation Detail View Controller-->
         <scene sceneID="Ue2-gq-eNM">
@@ -1017,7 +1018,6 @@
                     <connections>
                         <segue destination="Cgk-EH-1QO" kind="relationship" relationship="rootViewController" id="LGg-ae-BuK"/>
                         <segue destination="3N6-wb-z9T" kind="show" identifier="donationDetailSegue" id="ePq-pT-5TA"/>
-                        <segue destination="f9e-94-c6Q" kind="show" identifier="projectDetailSegue" id="tIv-So-bXa"/>
                         <segue destination="uz4-UT-GN6" kind="show" identifier="cameraSegue" id="YeD-Mo-IE5"/>
                         <segue destination="TCu-2B-KhK" kind="show" identifier="profileSegue" id="h9h-li-DOP"/>
                     </connections>
