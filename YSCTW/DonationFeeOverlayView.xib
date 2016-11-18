@@ -4,6 +4,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gotham-Bold.otf">
+            <string>Gotham-Bold</string>
+        </array>
+        <array key="Gotham-Book.otf">
+            <string>Gotham-Book</string>
+        </array>
+        <array key="Gotham-Medium.otf">
+            <string>Gotham-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DonationFeeOverlayView" customModule="YSCTW" customModuleProvider="target">
             <connections>
@@ -28,6 +39,7 @@
                                 <constraint firstAttribute="height" constant="50" id="D4y-PY-LIc"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="sok-0V-ATT"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="18"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="buttonHandler:" destination="-1" eventType="touchUpInside" id="1oo-6v-R3P"/>
@@ -42,13 +54,13 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSO-MF-Fwm">
-                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="28"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxZ-7d-KBl">
                             <string key="text">We have to charge a fee for this payment type, because we want that the project will receive the full amount of 1€ without any subtractions. The fee is 0,21€ and will come on top of your amount.</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -57,13 +69,13 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="375" id="51p-1F-3DZ"/>
                         <constraint firstAttribute="bottom" secondItem="cC3-dT-35c" secondAttribute="bottom" constant="20" id="CaD-pW-Lhv"/>
-                        <constraint firstItem="IxZ-7d-KBl" firstAttribute="top" secondItem="LSO-MF-Fwm" secondAttribute="bottom" id="EXd-a6-8dY"/>
+                        <constraint firstItem="IxZ-7d-KBl" firstAttribute="top" secondItem="LSO-MF-Fwm" secondAttribute="bottom" constant="10" id="EXd-a6-8dY"/>
                         <constraint firstItem="LSO-MF-Fwm" firstAttribute="centerX" secondItem="oDk-eB-9fq" secondAttribute="centerX" id="EeW-RT-XXb"/>
-                        <constraint firstItem="IxZ-7d-KBl" firstAttribute="leading" secondItem="oDk-eB-9fq" secondAttribute="leading" constant="8" id="GOt-1C-DML"/>
+                        <constraint firstItem="IxZ-7d-KBl" firstAttribute="leading" secondItem="oDk-eB-9fq" secondAttribute="leading" constant="15" id="GOt-1C-DML"/>
                         <constraint firstItem="LSO-MF-Fwm" firstAttribute="top" secondItem="I72-PD-mU7" secondAttribute="bottom" constant="10" id="HFe-0T-j9c"/>
                         <constraint firstItem="I72-PD-mU7" firstAttribute="top" secondItem="oDk-eB-9fq" secondAttribute="top" constant="20" id="Okt-iI-UfP"/>
                         <constraint firstAttribute="trailing" secondItem="cC3-dT-35c" secondAttribute="trailing" constant="20" id="QN6-2f-VI6"/>
-                        <constraint firstAttribute="trailing" secondItem="IxZ-7d-KBl" secondAttribute="trailing" constant="8" id="Vk0-po-g3P"/>
+                        <constraint firstAttribute="trailing" secondItem="IxZ-7d-KBl" secondAttribute="trailing" constant="15" id="Vk0-po-g3P"/>
                         <constraint firstItem="cC3-dT-35c" firstAttribute="leading" secondItem="oDk-eB-9fq" secondAttribute="leading" constant="20" id="eNU-0G-RKG"/>
                         <constraint firstItem="I72-PD-mU7" firstAttribute="centerX" secondItem="oDk-eB-9fq" secondAttribute="centerX" id="kIE-Ug-ECc"/>
                     </constraints>

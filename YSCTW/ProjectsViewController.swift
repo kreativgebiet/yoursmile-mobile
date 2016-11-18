@@ -111,7 +111,7 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         let titleData = self.pickerData()[row]
-        let title = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 15),NSForegroundColorAttributeName:UIColor.white])
+        let title = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Gotham-Book", size: 15),NSForegroundColorAttributeName:UIColor.white])
         
         return title.string
     }

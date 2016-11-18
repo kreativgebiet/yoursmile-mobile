@@ -47,7 +47,6 @@ class ProfileHeaderView: UIView {
         self.subscriberLabel.textColor = customGray
         
         self.profileLabel.text = "PROFILE".localized
-        self.profileLabel.font = UIFont.boldSystemFont(ofSize: 17)
         
         self.profileNameLabel.textColor = .white
         self.projectNumberLabel.textColor = customGray

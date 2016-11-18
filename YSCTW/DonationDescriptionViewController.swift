@@ -41,6 +41,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
         button.frame = CGRect(x: 0, y:  0, width: 100, height: 31)
         button.setTitle("DONATE".localized, for: .normal)
         button.setTitle("DONATE".localized, for: .selected)
+        button.titleLabel?.font = UIFont(name: "Gotham-Book", size: 18)
         button.contentHorizontalAlignment = .right
         button.setTitleColor(orange, for: .normal)
         button.setTitleColor(orange, for: .selected)

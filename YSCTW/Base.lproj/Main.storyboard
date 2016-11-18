@@ -641,14 +641,14 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aR3-ZC-X2R"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <state key="normal" title="Facebook" image="facebook-icon"/>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-qJ-egp" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="veh-bj-iHw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="6" minY="10" maxX="0.0" maxY="10"/>
                                 <state key="normal" title="Instagram" image="instagram-icon"/>
                             </button>
@@ -669,7 +669,7 @@
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KkA-EK-r6H">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
