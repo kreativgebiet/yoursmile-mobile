@@ -52,6 +52,8 @@
 		A15390AD1DD0F62E00B7ADA0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390AC1DD0F62E00B7ADA0 /* ProfileViewController.swift */; };
 		A15390AF1DD0F64100B7ADA0 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390AE1DD0F64100B7ADA0 /* PreferencesViewController.swift */; };
 		A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390B21DD1D86A00B7ADA0 /* BarViewController.swift */; };
+		A16407061DDE723A00BA1853 /* PreferencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16407041DDE723A00BA1853 /* PreferencesTableViewCell.swift */; };
+		A16407071DDE723A00BA1853 /* PreferencesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16407051DDE723A00BA1853 /* PreferencesTableViewCell.xib */; };
 		A1CF0C981DD2170A002C4562 /* DonationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */; };
 		A1CF0C9A1DD22994002C4562 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0C991DD22994002C4562 /* CommentTableViewCell.swift */; };
 		A1CF0C9C1DD22DBE002C4562 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0C9B1DD22DBE002C4562 /* CommentTableViewCell.xib */; };
@@ -159,6 +161,8 @@
 		A15390AC1DD0F62E00B7ADA0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A15390AE1DD0F64100B7ADA0 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		A15390B21DD1D86A00B7ADA0 /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
+		A16407041DDE723A00BA1853 /* PreferencesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewCell.swift; sourceTree = "<group>"; };
+		A16407051DDE723A00BA1853 /* PreferencesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesTableViewCell.xib; sourceTree = "<group>"; };
 		A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationDetailTableViewController.swift; sourceTree = "<group>"; };
 		A1CF0C991DD22994002C4562 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		A1CF0C9B1DD22DBE002C4562 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -379,6 +383,8 @@
 				A1CF0C9B1DD22DBE002C4562 /* CommentTableViewCell.xib */,
 				A1CF0CB61DD341CB002C4562 /* ProjectTableViewCell.swift */,
 				A1CF0CB71DD341CB002C4562 /* ProjectTableViewCell.xib */,
+				A16407041DDE723A00BA1853 /* PreferencesTableViewCell.swift */,
+				A16407051DDE723A00BA1853 /* PreferencesTableViewCell.xib */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -497,6 +503,7 @@
 			files = (
 				A110290F1DD9EDB100633343 /* ProjectView.xib in Resources */,
 				A11029021DD9C36D00633343 /* Localizable.strings in Resources */,
+				A16407071DDE723A00BA1853 /* PreferencesTableViewCell.xib in Resources */,
 				A11028F51DD5136400633343 /* AddedProjectButtonView.xib in Resources */,
 				A12A45571DCF8C76002977DF /* LaunchScreen.storyboard in Resources */,
 				A135467E1DDE100F00931139 /* DonationSuccessOverlay.xib in Resources */,
@@ -587,6 +594,7 @@
 				A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */,
 				A15390AB1DD0F61F00B7ADA0 /* CameraViewController.swift in Sources */,
 				A15390A51DD0EE1800B7ADA0 /* TabBarViewController.swift in Sources */,
+				A16407061DDE723A00BA1853 /* PreferencesTableViewCell.swift in Sources */,
 				A11028F31DD5135C00633343 /* AddedProjectButtonView.swift in Sources */,
 				A1CF0CAD1DD26AB1002C4562 /* DonationDetailOverlayView.swift in Sources */,
 				A1CF0CA71DD252D9002C4562 /* DonationDetailViewController.swift in Sources */,

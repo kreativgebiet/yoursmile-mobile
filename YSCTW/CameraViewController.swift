@@ -76,6 +76,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         navigationController?.navigationBar.isHidden = false
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     func focusTo(value : Float) {
         if let device = captureDevice {
             do {

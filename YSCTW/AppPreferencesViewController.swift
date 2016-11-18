@@ -37,7 +37,7 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView.backgroundColor = customLightGray
         self.tableView.tableFooterView = UIView()
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "StandardCell")
+        self.tableView.register(PreferencesTableViewCell.self, forCellReuseIdentifier: "PreferencesCell")
     }
 
     // MARK: - TableView datasource and delegate
@@ -84,7 +84,7 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PreferencesCell", for: indexPath) as! PreferencesTableViewCell
         
         let dict = self.data[indexPath.section]
         let dictData = dict?["data"] as! [String]
@@ -95,6 +95,8 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
         
         if dict?["title"] as! String != "INFORMATIONS" {
             cell.accessoryType = .disclosureIndicator
+        } else {
+            
         }
     
         return cell

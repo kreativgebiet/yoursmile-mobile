@@ -18,6 +18,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var subscribedLabel: UILabel!
     @IBOutlet weak var subscriberLabel: UILabel!
     @IBOutlet weak var subscriptionView: UIView!
+    @IBOutlet weak var preferencesButton: UIButton!
     
     @IBOutlet var view: UIView!
     
@@ -81,6 +82,9 @@ class ProfileHeaderView: UIView {
             self.subscribeButtonHeight.constant = 0
             self.subscribeButton.alpha = 0
             self.backButton.isHidden = true
+            self.preferencesButton.isHidden = false
+        } else {
+            self.preferencesButton.isHidden = true
         }
         
         //If no specific profile is selected user profile is used
@@ -115,6 +119,10 @@ class ProfileHeaderView: UIView {
         
     }
     
+    @IBAction func handlePreferencesButtonTapped(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: preferencesNotificationIdentifier), object: nil)
+    }
+
     @IBAction func handleSubscribeButtonTapped(_ sender: AnyObject) {
         self.subscribeCallback!()
     }

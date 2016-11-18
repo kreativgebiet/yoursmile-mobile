@@ -67,6 +67,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         self.addViewControllerAsChildViewController(viewController: self.feedViewController!)
         
         NotificationCenter.default.addObserver(self, selector: #selector(openFeed), name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(preferencesTapped), name: NSNotification.Name(rawValue: preferencesNotificationIdentifier), object: nil)
     }
     
     deinit {

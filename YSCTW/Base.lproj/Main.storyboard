@@ -231,7 +231,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bpp-Ps-Lq2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5074" y="-648"/>
+            <point key="canvasLocation" x="4001" y="-553"/>
         </scene>
         <!--Preferences View Controller-->
         <scene sceneID="aB9-qd-mB4">
@@ -387,7 +387,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-EH-Zb8">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mache ein Foto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d6-UO-PBg">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -847,7 +847,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQn-mj-f58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2084" y="-2821.4392803598203"/>
+            <point key="canvasLocation" x="2084" y="-2088"/>
         </scene>
         <!--Donation Detail View Controller-->
         <scene sceneID="Ue2-gq-eNM">
@@ -1270,8 +1270,8 @@
                             <constraint firstItem="mBe-HI-ZXR" firstAttribute="centerX" secondItem="Ld7-Cg-A9W" secondAttribute="centerX" id="F6w-Wx-BAM"/>
                             <constraint firstItem="mBe-HI-ZXR" firstAttribute="leading" secondItem="6Dy-33-QBV" secondAttribute="trailing" id="HIw-jS-aa3"/>
                             <constraint firstItem="6Dy-33-QBV" firstAttribute="top" secondItem="Ld7-Cg-A9W" secondAttribute="top" id="ftj-wd-udi"/>
-                            <constraint firstAttribute="bottom" secondItem="mBe-HI-ZXR" secondAttribute="bottom" constant="5" id="ngO-bj-dEm"/>
-                            <constraint firstItem="mBe-HI-ZXR" firstAttribute="top" secondItem="Ld7-Cg-A9W" secondAttribute="top" constant="5" id="oFU-1y-Zi2"/>
+                            <constraint firstAttribute="bottom" secondItem="mBe-HI-ZXR" secondAttribute="bottom" constant="10" id="ngO-bj-dEm"/>
+                            <constraint firstItem="mBe-HI-ZXR" firstAttribute="top" secondItem="Ld7-Cg-A9W" secondAttribute="top" constant="10" id="oFU-1y-Zi2"/>
                             <constraint firstItem="6Dy-33-QBV" firstAttribute="leading" secondItem="Ld7-Cg-A9W" secondAttribute="leading" id="rST-hh-UBi"/>
                             <constraint firstItem="Y4t-e1-egF" firstAttribute="leading" secondItem="mBe-HI-ZXR" secondAttribute="trailing" id="wAY-In-nad"/>
                             <constraint firstAttribute="trailing" secondItem="Y4t-e1-egF" secondAttribute="trailing" id="wRN-2X-jnN"/>
@@ -1288,7 +1288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cs-Ui-ZqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4114.3999999999996" y="-406.59670164917543"/>
+            <point key="canvasLocation" x="4001" y="-926"/>
         </scene>
         <!--App Preferences View Controller-->
         <scene sceneID="Nhf-AK-52S">

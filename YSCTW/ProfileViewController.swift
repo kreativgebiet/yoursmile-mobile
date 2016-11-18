@@ -100,6 +100,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             if newConstant != self.profileViewHeightConstraint.constant {
                 self.profileViewHeightConstraint.constant = newConstant
                 
+                scrollView.isScrollEnabled = false
+                
                 UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
                     self.view.setNeedsLayout()
                     self.view.layoutIfNeeded()
@@ -109,6 +111,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     let profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
                     self.profileView.profileLabel.text = profileToUse.userName
                     
+                }, completion: { (completed) in
+                    scrollView.setContentOffset(CGPoint(x: 0, y: 1), animated: true)
+                    scrollView.isScrollEnabled = true
                 } )
 
             }

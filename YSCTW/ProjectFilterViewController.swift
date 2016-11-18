@@ -24,7 +24,7 @@ class ProjectFilterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.spacerView.backgroundColor = spacerGray
+        self.spacerView.backgroundColor = customDarkerGray
         self.leftView.backgroundColor = customLightGray
         self.rightView.backgroundColor = customLightGray
         
@@ -33,8 +33,8 @@ class ProjectFilterViewController: UIViewController {
         self.view.backgroundColor = customLightGray
         
         //Localization
-        self.leftLabel.text = "VISITED".localized
-        self.rightLabel.text = "COUNTRY".localized
+        self.leftLabel.text = "ALL".localized
+        self.rightLabel.text = "ALL".localized
         self.leftLabel.textColor = navigationBarGray
         self.rightLabel.textColor = navigationBarGray
         
