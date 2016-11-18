@@ -67,5 +67,9 @@ class FeedViewController: UIViewController {
         let destinationVC = segue.destination as! FeedTableViewController
         destinationVC.donations = self.dataManager?.donations()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
 }
