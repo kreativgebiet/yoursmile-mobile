@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: LeftViewImageTextField!
     @IBOutlet weak var passwordTextField: LeftViewImageTextField!
@@ -41,10 +41,14 @@ class LoginViewController: UIViewController {
         self.emailTextField.leftViewImage = #imageLiteral(resourceName: "mail-icon")
         self.emailTextField.corners = UIRectCorner.topLeft.union(UIRectCorner.topRight)
         self.emailTextField.autocorrectionType = .no
+        self.emailTextField.text = ""
+        self.emailTextField.delegate = self
         
         self.passwordTextField.leftViewImage = #imageLiteral(resourceName: "password-icon")
         self.passwordTextField.isSecureTextEntry = true
         self.passwordTextField.corners = UIRectCorner.bottomLeft.union(UIRectCorner.bottomRight)
+        self.passwordTextField.text = ""
+        self.passwordTextField.delegate = self
         
         //Localization
         self.loginButton.setTitle("LOGIN".localized, for: .normal)
@@ -127,6 +131,25 @@ class LoginViewController: UIViewController {
     
     @IBAction func facebookButton(_ sender: AnyObject) {
         
+    }
+    
+    // MARK: - TextField Delegates
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == self.emailTextField {
+            self.passwordTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.setNeedsLayout()
+        textField.layoutIfNeeded()
     }
     
     // MARK: - Keyboard animation handling

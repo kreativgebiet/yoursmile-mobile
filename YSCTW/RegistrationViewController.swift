@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: LeftViewImageTextField!
     @IBOutlet weak var mailTextField: LeftViewImageTextField!
@@ -41,14 +41,17 @@ class RegistrationViewController: UIViewController {
         
         self.mailTextField.leftViewImage = UIImage(named: "mail-icon")!
         self.mailTextField.autocorrectionType = .no
+        self.mailTextField.delegate = self
         
         self.nameTextField.leftViewImage = UIImage(named: "user-icon")!
         self.nameTextField.corners = UIRectCorner.topLeft.union(UIRectCorner.topRight)
         self.nameTextField.autocorrectionType = .no
+        self.nameTextField.delegate = self
         
         self.passwordTextField.leftViewImage = UIImage(named: "password-icon")!
         self.passwordTextField.isSecureTextEntry = true
         self.passwordTextField.corners = UIRectCorner.bottomLeft.union(UIRectCorner.bottomRight)
+        self.passwordTextField.delegate = self
         
         //Localization
         self.registerButton.setTitle("LOGIN".localized, for: .normal)
@@ -77,6 +80,27 @@ class RegistrationViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - TextField Delegates
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == self.nameTextField {
+            self.mailTextField.becomeFirstResponder()
+        } else if textField == self.mailTextField {
+            self.passwordTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.setNeedsLayout()
+        textField.layoutIfNeeded()
     }
     
     // MARK: - Button Action

@@ -121,13 +121,10 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
         
         self.feeLabel.text = "FEE_INFO".localized.replacingOccurrences(of: "%@", with: "100")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func proceedTapped() {
+        self.view.endEditing(true)
+        
         let navigationView = self.navigationController?.view
         let overlay2 = DonationSuccessOverlay(frame: (navigationView?.bounds)!)
         navigationView?.addSubview(overlay2)
