@@ -21,6 +21,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     public var customCallback: ((_ image: UIImage) -> Void)?
     
     var image: UIImage?
+    var preViewLayer: AVCaptureVideoPreviewLayer!
     
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var navBarLabel: UILabel!
@@ -83,19 +84,81 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         return true
     }
     
-    func focusTo(value : Float) {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // MARK: Camera adjustments and settings
+    
+    
+    // MARK: - Camer-Focus
+    
+    let screenWidth = UIScreen.main.bounds.size.width
+    
+    func handleTap(sender: UIGestureRecognizer) {
+        if sender.state == .ended {
+            let touchLocation: CGPoint = sender.location(in: self.cameraView)
+            let pointInCamera = self.preViewLayer.captureDevicePointOfInterest(for: touchLocation)
+            
+            if let device = captureDevice {
+                do {
+                    try device.lockForConfiguration()
+                    device.focusPointOfInterest = pointInCamera
+                    device.focusMode = .autoFocus
+                    
+                    device.unlockForConfiguration()
+                } catch {
+                    // handle error
+                    return
+                }
+            }
+
+        }
+    }
+    
+    // MARK: - Camer-Configuration
+    
+    func configureDevice() {
         if let device = captureDevice {
             do {
                 try device.lockForConfiguration()
-                device.setFocusModeLockedWithLensPosition(value, completionHandler: { (time) -> Void in
-                    
-                })
-                device.unlockForConfiguration()
             } catch {
                 // handle error
                 return
             }
+            device.focusMode = .locked
+            device.unlockForConfiguration()
         }
+    }
+    
+    func beginSession() {
+        
+        configureDevice()
+        
+        let err : NSError? = nil
+        do {
+            let input = try AVCaptureDeviceInput(device: captureDevice)
+            captureSession.addInput(input)
+        } catch _ {
+            print("error: \(err?.localizedDescription)")
+        }
+        
+        self.preViewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        self.preViewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        
+        self.preViewLayer?.frame = self.cameraView.layer.bounds
+        self.cameraView.layer.addSublayer(self.preViewLayer)
+        self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto
+        self.captureSession.startRunning()
+        
+        self.stillImageOutput = AVCaptureStillImageOutput()
+        
+        if captureSession.canAddOutput(self.stillImageOutput) {
+            captureSession.addOutput(self.stillImageOutput)
+        }
+        
+        captureSession.commitConfiguration()
+        
     }
     
     // MARK: - Button Handler
@@ -179,63 +242,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         return nil
     }
     
-    // MARK: - Camer-Focus
-    
-    let screenWidth = UIScreen.main.bounds.size.width
-    
-    func handleTap(sender: UIGestureRecognizer) {
-        if sender.state == .ended {
-            let touchLocation: CGPoint = sender.location(in: self.view)
-            let touchPercent = touchLocation.x / screenWidth
-            focusTo(value: Float(touchPercent))
-        }
-    }
-    
-    // MARK: - Camer-Configuration
-    
-    func configureDevice() {
-        if let device = captureDevice {
-            do {
-                try device.lockForConfiguration()
-            } catch {
-                // handle error
-                return
-            }
-            device.focusMode = .locked
-            device.unlockForConfiguration()
-        }
-    }
-    
-    func beginSession() {
-        
-        configureDevice()
-        
-        let err : NSError? = nil
-        do {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-            captureSession.addInput(input)
-        } catch _ {
-            print("error: \(err?.localizedDescription)")
-        }
-        
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        
-        previewLayer?.frame = self.cameraView.layer.bounds
-        self.cameraView.layer.addSublayer(previewLayer!)
-        self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto
-        self.captureSession.startRunning()
-        
-        self.stillImageOutput = AVCaptureStillImageOutput()
-        
-        if captureSession.canAddOutput(self.stillImageOutput) {
-            captureSession.addOutput(self.stillImageOutput)
-        }
-        
-        captureSession.commitConfiguration()
-        
-    }
-    
     // MARK: - Image picker delegate
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -262,7 +268,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
 
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -277,10 +282,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             
         }
         
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
 
 }

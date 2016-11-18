@@ -20,6 +20,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     @IBOutlet weak var selfieImageView: UIImageView!
     @IBOutlet weak var paymentSelectionView: PaymentSelectionView!
     @IBOutlet weak var selectedProjectsContainerView: UIView!
+    @IBOutlet weak var selfieImageViewHeightConstraint: NSLayoutConstraint!
     
     public var selfieImage: UIImage?
     public var dataManager: DataManager?
@@ -73,6 +74,10 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         }
 
         self.selfieImageView.image = self.selfieImage
+        let aspect = (self.selfieImage?.size.height)! / (self.selfieImage?.size.width)!
+        
+        self.selfieImageViewHeightConstraint.constant = aspect * self.view.frame.width
+        
         self.selectedProjectsContainerView.backgroundColor = .clear
         
         self.selectedProjectsContainerView.setNeedsLayout()

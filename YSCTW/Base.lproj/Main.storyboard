@@ -518,7 +518,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpi-hW-loS" userLabel="Content View">
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-jD-1a5">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-jD-1a5">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="422" id="Lwa-19-0E8"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="375" id="PcI-Vu-tFb"/>
@@ -631,6 +631,7 @@
                         <outlet property="projectsContainerHeightConstraint" destination="yAq-W9-nsf" id="CJc-MM-3pF"/>
                         <outlet property="selectedProjectsContainerView" destination="Pac-OJ-5xZ" id="qzh-vG-bHb"/>
                         <outlet property="selfieImageView" destination="OXv-jD-1a5" id="Y4I-6K-ycY"/>
+                        <outlet property="selfieImageViewHeightConstraint" destination="Lwa-19-0E8" id="tm3-0j-NEx"/>
                         <outlet property="upperBlurView" destination="tvW-9K-rIR" id="U1f-BM-fJd"/>
                         <segue destination="Pmb-zv-XnQ" kind="show" identifier="donationDescriptionSegue" id="Tm7-7b-A0J"/>
                     </connections>
@@ -701,7 +702,7 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIK-jm-VYC" userLabel="ContainerView">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-7H-C4y">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-7H-C4y">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="85" id="0AA-yN-fOI"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="lV3-87-TUl"/>
