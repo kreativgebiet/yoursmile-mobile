@@ -37,9 +37,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isNavigationBarHidden = true
-        
+                
         self.donations = self.dataManager?.donations()
         
         self.tableView.dataSource = self
@@ -171,10 +169,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         return cell
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
 
 }

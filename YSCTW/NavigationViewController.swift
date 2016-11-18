@@ -25,6 +25,8 @@ class NavigationViewController: UINavigationController {
         self.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back-icon")
         self.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back-icon")
         
+        self.navigationController?.navigationBar.barStyle = .black
+        
         self.navigationBar.tintColor = .white
         let rootViewController = self.viewControllers[0] as!TabBarViewController
         rootViewController.dataManager = self.dataManager

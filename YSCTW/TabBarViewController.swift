@@ -227,5 +227,9 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         }
         
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
 }

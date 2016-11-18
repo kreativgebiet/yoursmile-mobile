@@ -34,6 +34,8 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
         
         self.view.backgroundColor = customLightGray
         
+        self.containerView.layer.borderColor = customDarkerGray.cgColor
+        self.containerView.layer.borderWidth = 1
         self.containerView.layer.cornerRadius = 5
         self.containerView.clipsToBounds = true
         
