@@ -106,7 +106,7 @@
 "VERSION" = "Version";
 "DISPLAY_NAME" = "ANZEIGENAME";
 "ACCOUNT_SETTINGS" = "ACCOUNT SETTINGS";
-"ACCOUNT_SETTINGS_SEGMENTED_TITLE" = "Account Einstellungen";
+"ACCOUNT_SETTINGS_SEGMENTED_TITLE" = "Account";
 "CHANGE_PASSWORD" = "Passwort ändern";
 "CHANGE_MAIL" = "E-Mail Adresse bearbeiten";
 "DELETE_ACCOUNT" = "Account löschen";

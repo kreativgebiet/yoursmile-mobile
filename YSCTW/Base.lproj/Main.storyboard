@@ -375,6 +375,7 @@
                             <constraint firstItem="Keq-Rf-hEF" firstAttribute="top" secondItem="6xS-Va-5hz" secondAttribute="bottom" id="kg3-pb-4MX"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="profileView" destination="6xS-Va-5hz" id="fD8-h1-8hD"/>
                         <outlet property="profileViewHeightConstraint" destination="DTF-FQ-lNd" id="MGi-YE-m98"/>
@@ -518,9 +519,20 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-jD-1a5">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="422" id="Lwa-19-0E8"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="422" id="PcI-Vu-tFb"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="375" id="PcI-Vu-tFb"/>
                                                 </constraints>
                                             </imageView>
+                                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvW-9K-rIR">
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xjf-aN-382">
+                                                    <frame key="frameInset"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="HWZ-cx-Mjw"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="tgX-cO-VWv"/>
+                                                </constraints>
+                                                <blurEffect style="light"/>
+                                            </visualEffectView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du kannst jetz 1€ pro Projekt spenden. Wähle ein oder mehrere Projekte aus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeN-7J-NuL">
                                                 <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -544,6 +556,22 @@
                                                     <constraint firstAttribute="height" constant="50" id="a05-Of-ylF"/>
                                                 </constraints>
                                             </view>
+                                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2f-2P-amG">
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NI9-Gm-8jZ">
+                                                    <frame key="frameInset"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="1UJ-5u-ycE"/>
+                                                </constraints>
+                                                <blurEffect style="light"/>
+                                            </visualEffectView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adjust-icon" translatesAutoresizingMaskIntoConstraints="NO" id="6oq-KR-P5O">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="Viz-aL-95t"/>
+                                                    <constraint firstAttribute="height" constant="32" id="rhe-fN-jmu"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -551,17 +579,25 @@
                                             <constraint firstItem="tia-LB-Vrb" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" id="2ee-kI-hF7"/>
                                             <constraint firstAttribute="trailing" secondItem="jeN-7J-NuL" secondAttribute="trailing" constant="10" id="51V-RL-gwS"/>
                                             <constraint firstItem="Pac-OJ-5xZ" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" constant="10" id="61d-NH-6yn"/>
+                                            <constraint firstAttribute="trailing" secondItem="tvW-9K-rIR" secondAttribute="trailing" id="888-Kb-4CS"/>
+                                            <constraint firstItem="tvW-9K-rIR" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" id="HG9-LE-6yd"/>
                                             <constraint firstAttribute="bottom" secondItem="tia-LB-Vrb" secondAttribute="bottom" constant="10" id="HKe-z1-Por"/>
+                                            <constraint firstItem="j2f-2P-amG" firstAttribute="bottom" secondItem="OXv-jD-1a5" secondAttribute="bottom" id="KyR-bU-DgM"/>
                                             <constraint firstItem="jeN-7J-NuL" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" constant="10" id="Nb3-h5-AVO"/>
+                                            <constraint firstItem="OXv-jD-1a5" firstAttribute="top" secondItem="tvW-9K-rIR" secondAttribute="bottom" constant="-24" id="Skh-x8-BFf"/>
                                             <constraint firstItem="OXv-jD-1a5" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" id="XQ8-hO-Yba"/>
                                             <constraint firstAttribute="trailing" secondItem="tia-LB-Vrb" secondAttribute="trailing" id="a4m-kP-oX8"/>
                                             <constraint firstAttribute="trailing" secondItem="OXv-jD-1a5" secondAttribute="trailing" id="aDu-hZ-UjY"/>
                                             <constraint firstAttribute="trailing" secondItem="Pac-OJ-5xZ" secondAttribute="trailing" constant="10" id="ama-DA-tz6"/>
+                                            <constraint firstItem="6oq-KR-P5O" firstAttribute="top" secondItem="tvW-9K-rIR" secondAttribute="bottom" constant="10" id="bD9-ww-rBY"/>
+                                            <constraint firstItem="j2f-2P-amG" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" id="cUH-DC-qOX"/>
                                             <constraint firstItem="mhi-p9-UA5" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" constant="10" id="eeb-1n-PI7"/>
                                             <constraint firstItem="mhi-p9-UA5" firstAttribute="top" secondItem="Pac-OJ-5xZ" secondAttribute="bottom" constant="8" id="gac-GY-kGz"/>
                                             <constraint firstItem="Pac-OJ-5xZ" firstAttribute="top" secondItem="jeN-7J-NuL" secondAttribute="bottom" constant="10" id="hbF-zQ-t8V"/>
-                                            <constraint firstItem="OXv-jD-1a5" firstAttribute="top" secondItem="fpi-hW-loS" secondAttribute="top" id="kJv-EV-PJy"/>
+                                            <constraint firstAttribute="trailing" secondItem="6oq-KR-P5O" secondAttribute="trailing" constant="10" id="mrN-yn-Jk3"/>
                                             <constraint firstItem="tia-LB-Vrb" firstAttribute="top" secondItem="mhi-p9-UA5" secondAttribute="bottom" constant="10" id="rQK-a8-OxO"/>
+                                            <constraint firstItem="OXv-jD-1a5" firstAttribute="top" secondItem="fpi-hW-loS" secondAttribute="top" id="tnb-hb-qfF"/>
+                                            <constraint firstAttribute="trailing" secondItem="j2f-2P-amG" secondAttribute="trailing" id="xKI-CW-KzM"/>
                                             <constraint firstAttribute="trailing" secondItem="mhi-p9-UA5" secondAttribute="trailing" constant="10" id="zMG-2M-nhx"/>
                                         </constraints>
                                     </view>
@@ -583,13 +619,17 @@
                             <constraint firstItem="wYk-4D-pyL" firstAttribute="top" secondItem="fcW-G5-z0i" secondAttribute="bottom" id="Zb5-qJ-Nwg"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="addProjectButton" destination="mhi-p9-UA5" id="rie-zg-opv"/>
+                        <outlet property="adjustImageView" destination="6oq-KR-P5O" id="6kh-VE-aG7"/>
                         <outlet property="descriptionLabel" destination="jeN-7J-NuL" id="1eR-NN-IEm"/>
+                        <outlet property="lowerBlurView" destination="j2f-2P-amG" id="mDH-ga-0CZ"/>
                         <outlet property="paymentSelectionView" destination="tia-LB-Vrb" id="kTx-4l-I7E"/>
                         <outlet property="projectsContainerHeightConstraint" destination="yAq-W9-nsf" id="CJc-MM-3pF"/>
                         <outlet property="selectedProjectsContainerView" destination="Pac-OJ-5xZ" id="qzh-vG-bHb"/>
                         <outlet property="selfieImageView" destination="OXv-jD-1a5" id="Y4I-6K-ycY"/>
+                        <outlet property="upperBlurView" destination="tvW-9K-rIR" id="U1f-BM-fJd"/>
                         <segue destination="Pmb-zv-XnQ" kind="show" identifier="donationDescriptionSegue" id="Tm7-7b-A0J"/>
                     </connections>
                 </viewController>
@@ -1393,6 +1433,7 @@
     </scenes>
     <resources>
         <image name="Project-Image" width="375" height="201"/>
+        <image name="adjust-icon" width="32" height="32"/>
         <image name="bg-image" width="375" height="527"/>
         <image name="camera" width="75" height="49"/>
         <image name="camera-button" width="90" height="90"/>

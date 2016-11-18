@@ -27,9 +27,9 @@ class PreferencesViewController: UIViewController {
         self.segmentedControl.tintColor = orange
         self.segmentedControl.setTitle("YSCTW", forSegmentAt: 0)
         self.segmentedControl.setTitle("ACCOUNT_SETTINGS_SEGMENTED_TITLE".localized, forSegmentAt: 1)
-        self.segmentedControl.backgroundColor = UIColor.white.withAlphaComponent(0.95)
+        self.segmentedControl.backgroundColor = .white
         
-        let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Light", size: 13)!]
+        let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 13)!]
         
         self.segmentedControl.setTitleTextAttributes(attributes, for: .normal)
         self.segmentedControl.setTitleTextAttributes(attributes, for: .selected)

@@ -14,7 +14,7 @@ class NavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.navigationBar.barTintColor = navigationBarGray
         self.navigationBar.isTranslucent = false
         self.navigationBar.backgroundColor = navigationBarGray
@@ -67,5 +67,9 @@ class NavigationViewController: UINavigationController {
         }
         
     }
-
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
 }

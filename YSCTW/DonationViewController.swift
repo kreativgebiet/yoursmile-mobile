@@ -10,8 +10,11 @@ import UIKit
 
 class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     
+    @IBOutlet weak var adjustImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addProjectButton: AddProjectButton!
+    @IBOutlet weak var upperBlurView: UIVisualEffectView!
+    @IBOutlet weak var lowerBlurView: UIVisualEffectView!
     
     @IBOutlet weak var projectsContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var selfieImageView: UIImageView!
@@ -29,6 +32,16 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         super.viewDidLoad()
         
         self.projects = self.dataManager?.projects()
+        
+        self.paymentSelectionView.callback = {
+            let navigationView = self.navigationController?.view
+            let overlay = DonationFeeOverlayView(frame: (navigationView?.bounds)!)
+            navigationView?.addSubview(overlay)
+
+            overlay.callback = {
+            overlay.removeFromSuperview()
+            }
+        }
         
         self.title = "DONATE".localized
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
@@ -65,10 +78,19 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         self.selectedProjectsContainerView.setNeedsLayout()
         self.selectedProjectsContainerView.layoutIfNeeded()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(adjustTapped))
+        
+        self.adjustImageView.isUserInteractionEnabled = true
+        self.adjustImageView.addGestureRecognizer(tapGesture)
+        
         self.loadSupportedProjects()
     }
     
     // MARK: Button Handling
+    
+    func adjustTapped() {
+        
+    }
     
     func proceedTapped() {
         

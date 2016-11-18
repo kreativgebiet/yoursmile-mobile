@@ -172,5 +172,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
 }

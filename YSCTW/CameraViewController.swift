@@ -112,6 +112,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 18)!, NSForegroundColorAttributeName: UIColor.white]
         imagePickerController.navigationBar.titleTextAttributes = attributes
         
+        self.navigationController?.isNavigationBarHidden = false
         self.present(imagePickerController, animated: false, completion: nil)
     }
     
@@ -187,11 +188,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func handleTap(sender: UIGestureRecognizer) {
         if sender.state == .ended {
-            
-            var touchLocation: CGPoint = sender.location(in: self.view)
+            let touchLocation: CGPoint = sender.location(in: self.view)
             let touchPercent = touchLocation.x / screenWidth
             focusTo(value: Float(touchPercent))
-            
         }
     }
     
@@ -281,6 +280,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             
         }
         
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
 }
