@@ -55,12 +55,12 @@ class LoginViewController: UIViewController {
         
         let text1 = "NO_ACCOUNT_LABEL".localized + " "
         let text2 = "REGISTER_BUTTON".localized
-        let mutableString = NSMutableAttributedString(
-            string: text1 + text2,
-            attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)])
         
+        let mutableString = NSMutableAttributedString(
+            string: text1 + text2)
         mutableString.addAttribute(NSForegroundColorAttributeName, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
         mutableString.addAttribute(NSForegroundColorAttributeName, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))
+        
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .selected)
         self.gotoRegistrationButton.titleLabel?.adjustsFontSizeToFitWidth = true

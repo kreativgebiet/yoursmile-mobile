@@ -60,8 +60,7 @@ class RegistrationViewController: UIViewController {
         let text1 = "ACCOUNT_LABEL".localized + " "
         let text2 = "LOGIN_BUTTON".localized
         let mutableString = NSMutableAttributedString(
-            string: text1+text2,
-            attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)])
+            string: text1+text2)
         
         mutableString.addAttribute(NSForegroundColorAttributeName, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
         mutableString.addAttribute(NSForegroundColorAttributeName, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))

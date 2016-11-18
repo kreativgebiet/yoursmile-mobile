@@ -7,6 +7,17 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gotham-Bold.otf">
+            <string>Gotham-Bold</string>
+        </array>
+        <array key="Gotham-Book.otf">
+            <string>Gotham-Book</string>
+        </array>
+        <array key="Gotham-Medium.otf">
+            <string>Gotham-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--LoginViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -35,6 +46,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3wu-EJ-Pg5"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="handleRegistrationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RMf-CL-8TW"/>
@@ -52,7 +64,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evX-o7-MtB" userLabel="DividerView" customClass="DividerView" customModule="YSCTW" customModuleProvider="target">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ODER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqX-Yj-JoU">
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -88,7 +100,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YSCTW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDQ-1A-2fD">
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -96,6 +108,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YoI-Mj-xtj"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="18"/>
                                 <state key="normal" title="ANMELDEN"/>
                                 <connections>
                                     <action selector="handleLoginBUttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nw4-hC-OBU"/>
@@ -106,7 +119,7 @@
                                     <constraint firstAttribute="height" constant="50" id="dzn-XE-rd5"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-Mail Adresse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mgd-j1-PT2" userLabel="EmailTextView" customClass="LeftViewImageTextField" customModule="YSCTW" customModuleProvider="target">
@@ -114,7 +127,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Syf-F9-eo8"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -941,7 +954,7 @@
         <scene sceneID="fGP-e2-Wlx">
             <objects>
                 <navigationController id="S3D-hc-yly" customClass="NavigationViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cla-Jb-ARD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cla-Jb-ARD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -989,9 +1002,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YSCTW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCE-Qa-021">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="C0w-Wl-O8K"/>
-                                    <constraint firstAttribute="width" constant="124" id="pyT-L6-sX4"/>
+                                    <constraint firstAttribute="width" constant="140" id="pyT-L6-sX4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1000,7 +1013,7 @@
                                     <constraint firstAttribute="height" constant="50" id="osU-za-add"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-Mail Adresse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VxI-5R-MH2" userLabel="MailTextField" customClass="LeftViewImageTextField" customModule="YSCTW" customModuleProvider="target">
@@ -1008,7 +1021,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Izs-Po-8dL"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1w-qR-uwc" customClass="LeftViewImageTextField" customModule="YSCTW" customModuleProvider="target">
@@ -1016,7 +1029,7 @@
                                     <constraint firstAttribute="height" constant="50" id="B1d-xe-ITB"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIJ-Ea-7BH" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
@@ -1024,6 +1037,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="8uA-EZ-8yB"/>
                                     <constraint firstAttribute="height" constant="50" id="mag-z3-PFN"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="18"/>
                                 <state key="normal" title="ANMELDEN"/>
                                 <connections>
                                     <action selector="handleLoginBUttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sdD-ny-EvX"/>
@@ -1035,6 +1049,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="3lu-40-kFf"/>
                                     <constraint firstAttribute="height" constant="30" id="FdN-CI-3zZ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="handleLoginButtonTapped:" destination="oIj-Ku-mV1" eventType="touchUpInside" id="nvL-Cj-FgC"/>
@@ -1085,7 +1100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8p9-5u-8Ys" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="981"/>
+            <point key="canvasLocation" x="133.59999999999999" y="980.95952023988013"/>
         </scene>
         <!--Bar View Controller-->
         <scene sceneID="itQ-x6-fSJ">
