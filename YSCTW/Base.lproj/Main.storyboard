@@ -488,11 +488,13 @@
                             <constraint firstItem="v1Y-rL-jQU" firstAttribute="leading" secondItem="pok-N3-UI3" secondAttribute="leading" id="vZU-z6-cYN"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="cameraRollButton" destination="1uP-CH-U86" id="Yzo-4n-eCK"/>
                         <outlet property="cameraView" destination="cGe-Gx-uUP" id="wq9-Kr-Zik"/>
                         <outlet property="navBarLabel" destination="5d6-UO-PBg" id="nLL-du-N2N"/>
                         <outlet property="switchCameraButton" destination="5S2-XF-vOq" id="aVV-pP-IgX"/>
+                        <outlet property="topBarView" destination="HcW-EH-Zb8" id="64l-V4-Y1d"/>
                         <segue destination="o4g-Cs-04F" kind="show" identifier="donationSegue" id="LXr-Op-pta"/>
                     </connections>
                 </viewController>
@@ -995,7 +997,7 @@
         <scene sceneID="fGP-e2-Wlx">
             <objects>
                 <navigationController id="S3D-hc-yly" customClass="NavigationViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cla-Jb-ARD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cla-Jb-ARD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -22,6 +22,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     var image: UIImage?
     
+    @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var navBarLabel: UILabel!
     @IBOutlet weak var cameraRollButton: UIButton!
     @IBOutlet weak var switchCameraButton: UIButton!
@@ -45,6 +46,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.switchCameraButton.contentHorizontalAlignment = .center
         self.switchCameraButton.contentVerticalAlignment = .center
         self.switchCameraButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        
+        self.topBarView.backgroundColor = navigationBarGray
         
         for device in devices! {
             if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
@@ -103,14 +106,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func photoRollCameraButtonTapped(_ sender: UIButton) {
         
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
+        let imagePickerController = ImagePickerViewController()
         imagePickerController.delegate = self
-        imagePickerController.navigationBar.isTranslucent = false
-        imagePickerController.navigationBar.barTintColor = navigationBarGray
-        imagePickerController.navigationBar.tintColor = .white
-        let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 18)!, NSForegroundColorAttributeName: UIColor.white]
-        imagePickerController.navigationBar.titleTextAttributes = attributes
         
         self.navigationController?.isNavigationBarHidden = false
         self.present(imagePickerController, animated: false, completion: nil)

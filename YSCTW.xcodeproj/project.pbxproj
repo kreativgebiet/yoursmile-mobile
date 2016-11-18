@@ -52,6 +52,7 @@
 		A15390AD1DD0F62E00B7ADA0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390AC1DD0F62E00B7ADA0 /* ProfileViewController.swift */; };
 		A15390AF1DD0F64100B7ADA0 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390AE1DD0F64100B7ADA0 /* PreferencesViewController.swift */; };
 		A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390B21DD1D86A00B7ADA0 /* BarViewController.swift */; };
+		A154FDF11DDF5BC200D88306 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */; };
 		A16407061DDE723A00BA1853 /* PreferencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16407041DDE723A00BA1853 /* PreferencesTableViewCell.swift */; };
 		A16407071DDE723A00BA1853 /* PreferencesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16407051DDE723A00BA1853 /* PreferencesTableViewCell.xib */; };
 		A16407181DDF181800BA1853 /* Gotham-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407081DDF181800BA1853 /* Gotham-BookItalic.otf */; };
@@ -177,6 +178,7 @@
 		A15390AC1DD0F62E00B7ADA0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A15390AE1DD0F64100B7ADA0 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		A15390B21DD1D86A00B7ADA0 /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
+		A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		A16407041DDE723A00BA1853 /* PreferencesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewCell.swift; sourceTree = "<group>"; };
 		A16407051DDE723A00BA1853 /* PreferencesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesTableViewCell.xib; sourceTree = "<group>"; };
 		A16407081DDF181800BA1853 /* Gotham-BookItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-BookItalic.otf"; path = "Resources/Gotham-BookItalic.otf"; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				A11028FC1DD5E22900633343 /* AppPreferencesViewController.swift */,
 				A11028FE1DD5E23500633343 /* AccountPreferencesViewController.swift */,
 				A13546751DDDF45300931139 /* DonationDescriptionViewController.swift */,
+				A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */,
 				A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */,
 				A1F8D8E71DD3632800AFAB4F /* MockUpTestData.swift in Sources */,
+				A154FDF11DDF5BC200D88306 /* ImagePickerViewController.swift in Sources */,
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
 				A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */,
