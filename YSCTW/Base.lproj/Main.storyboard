@@ -400,7 +400,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-EH-Zb8">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mache ein Foto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d6-UO-PBg">
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -522,7 +522,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du kannst jetz 1€ pro Projekt spenden. Wähle ein oder mehrere Projekte aus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeN-7J-NuL">
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -616,12 +616,12 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du hast 3 Projekte ausgewählt du spendest insgesamt 3 € zzgl. Gebühren" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjn-IU-qXq">
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veröffentlichen auf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTX-6M-TNH">
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -653,7 +653,7 @@
                                 <state key="normal" title="Instagram" image="instagram-icon"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*zzgl. 30 Cent Gebühren" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-1q-hcS">
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -821,10 +821,10 @@
                                             <constraint firstAttribute="trailing" secondItem="8EN-MJ-ltf" secondAttribute="trailing" constant="15" id="CNZ-eI-97R"/>
                                             <constraint firstItem="Q5b-Dp-z5S" firstAttribute="leading" secondItem="EdX-8i-eCe" secondAttribute="leading" id="L5d-xP-Ric"/>
                                             <constraint firstAttribute="trailing" secondItem="Q5b-Dp-z5S" secondAttribute="trailing" id="RUt-7D-bcd"/>
-                                            <constraint firstAttribute="trailing" secondItem="wAm-NR-Cy7" secondAttribute="trailing" constant="8" id="Scl-kM-IZl"/>
+                                            <constraint firstAttribute="trailing" secondItem="wAm-NR-Cy7" secondAttribute="trailing" constant="15" id="Scl-kM-IZl"/>
                                             <constraint firstItem="wAm-NR-Cy7" firstAttribute="top" secondItem="nkR-8s-Etv" secondAttribute="bottom" constant="8" id="UOc-KK-aY7"/>
                                             <constraint firstAttribute="trailing" secondItem="LMv-3j-pru" secondAttribute="trailing" id="VnJ-zE-fWW"/>
-                                            <constraint firstItem="wAm-NR-Cy7" firstAttribute="leading" secondItem="EdX-8i-eCe" secondAttribute="leading" constant="8" id="cRb-j3-kqP"/>
+                                            <constraint firstItem="wAm-NR-Cy7" firstAttribute="leading" secondItem="EdX-8i-eCe" secondAttribute="leading" constant="15" id="cRb-j3-kqP"/>
                                             <constraint firstItem="8EN-MJ-ltf" firstAttribute="leading" secondItem="EdX-8i-eCe" secondAttribute="leading" constant="15" id="jx2-Rh-7lM"/>
                                             <constraint firstItem="8EN-MJ-ltf" firstAttribute="top" secondItem="wAm-NR-Cy7" secondAttribute="bottom" constant="7.5" id="lMX-nW-cN5"/>
                                             <constraint firstAttribute="bottom" secondItem="8EN-MJ-ltf" secondAttribute="bottom" constant="83.5" id="mgx-d1-kpW"/>

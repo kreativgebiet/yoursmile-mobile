@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gotham-Medium.otf">
+            <string>Gotham-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DonationDetailOverlayView" customModule="YSCTW" customModuleProvider="target">
             <connections>
@@ -24,6 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1D-d5-Qcd">
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YrI-Ky-rsl" customClass="CornerButton" customModule="YSCTW" customModuleProvider="target">
+                            <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                             <state key="normal" title="Abbrechen"/>
                             <connections>
                                 <action selector="handleCancelButtonTapped:" destination="-1" eventType="touchUpInside" id="8hv-rv-F51"/>
@@ -33,18 +38,21 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="0ZO-Dt-YaA"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                             <state key="normal" title="Auf Instagram posten"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGv-hc-gev" customClass="CornerButton" customModule="YSCTW" customModuleProvider="target">
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="c9l-n0-T8o"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                             <state key="normal" title="Auf Facebook teilen"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UZ-rU-qeL" customClass="CornerButton" customModule="YSCTW" customModuleProvider="target">
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="2AU-sl-w8P"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                             <state key="normal" title="Beitrag melden"/>
                         </button>
                     </subviews>

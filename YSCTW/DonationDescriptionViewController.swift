@@ -80,7 +80,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
         
         self.placeholderLabel = UILabel()
         self.placeholderLabel.text = "YOUR_COMMENT".localized
-        self.placeholderLabel.font = UIFont.systemFont(ofSize: (self.descriptionTextField.font?.pointSize)!)
+        self.placeholderLabel.font = UIFont(name: "Gotham-Book", size: 14)
         self.placeholderLabel.sizeToFit()
         self.descriptionTextField.addSubview(placeholderLabel)
         self.placeholderLabel.frame.origin = CGPoint(x: 5, y: (self.descriptionTextField.font?.pointSize)! / 2)
