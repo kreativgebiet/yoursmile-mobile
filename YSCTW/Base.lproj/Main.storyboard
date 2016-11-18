@@ -581,12 +581,12 @@
                                             <constraint firstItem="tia-LB-Vrb" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" id="2ee-kI-hF7"/>
                                             <constraint firstAttribute="trailing" secondItem="jeN-7J-NuL" secondAttribute="trailing" constant="10" id="51V-RL-gwS"/>
                                             <constraint firstItem="Pac-OJ-5xZ" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" constant="10" id="61d-NH-6yn"/>
+                                            <constraint firstAttribute="bottom" secondItem="tia-LB-Vrb" secondAttribute="bottom" constant="10" id="7gk-gj-WGG"/>
                                             <constraint firstAttribute="trailing" secondItem="tvW-9K-rIR" secondAttribute="trailing" id="888-Kb-4CS"/>
+                                            <constraint firstItem="tvW-9K-rIR" firstAttribute="top" secondItem="OXv-jD-1a5" secondAttribute="top" id="EA7-QA-XZM"/>
                                             <constraint firstItem="tvW-9K-rIR" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" id="HG9-LE-6yd"/>
-                                            <constraint firstAttribute="bottom" secondItem="tia-LB-Vrb" secondAttribute="bottom" constant="10" id="HKe-z1-Por"/>
                                             <constraint firstItem="j2f-2P-amG" firstAttribute="bottom" secondItem="OXv-jD-1a5" secondAttribute="bottom" id="KyR-bU-DgM"/>
                                             <constraint firstItem="jeN-7J-NuL" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" constant="10" id="Nb3-h5-AVO"/>
-                                            <constraint firstItem="OXv-jD-1a5" firstAttribute="top" secondItem="tvW-9K-rIR" secondAttribute="bottom" constant="-24" id="Skh-x8-BFf"/>
                                             <constraint firstItem="OXv-jD-1a5" firstAttribute="leading" secondItem="fpi-hW-loS" secondAttribute="leading" id="XQ8-hO-Yba"/>
                                             <constraint firstAttribute="trailing" secondItem="tia-LB-Vrb" secondAttribute="trailing" id="a4m-kP-oX8"/>
                                             <constraint firstAttribute="trailing" secondItem="OXv-jD-1a5" secondAttribute="trailing" id="aDu-hZ-UjY"/>
@@ -605,11 +605,11 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="fpi-hW-loS" firstAttribute="centerX" secondItem="wYk-4D-pyL" secondAttribute="centerX" id="LVI-Is-06l"/>
+                                    <constraint firstItem="fpi-hW-loS" firstAttribute="width" secondItem="wYk-4D-pyL" secondAttribute="width" id="UZ2-aC-3g1"/>
                                     <constraint firstItem="fpi-hW-loS" firstAttribute="leading" secondItem="wYk-4D-pyL" secondAttribute="leading" id="YAi-ZZ-tZX"/>
-                                    <constraint firstItem="fpi-hW-loS" firstAttribute="centerY" secondItem="wYk-4D-pyL" secondAttribute="centerY" id="cnu-ff-D2O"/>
                                     <constraint firstAttribute="bottom" secondItem="fpi-hW-loS" secondAttribute="bottom" id="qi0-Bf-JVc"/>
                                     <constraint firstAttribute="trailing" secondItem="fpi-hW-loS" secondAttribute="trailing" id="xmo-W3-4t0"/>
+                                    <constraint firstItem="fpi-hW-loS" firstAttribute="top" secondItem="wYk-4D-pyL" secondAttribute="top" id="yVt-C3-pco"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
