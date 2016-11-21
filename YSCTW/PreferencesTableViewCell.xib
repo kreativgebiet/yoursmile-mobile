@@ -27,14 +27,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXX-T3-0HH">
+                        <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Vmc-C7-itO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PNv-CU-fG5"/>
+                    <constraint firstAttribute="bottom" secondItem="TXX-T3-0HH" secondAttribute="bottom" id="Ttf-aS-mSt"/>
                     <constraint firstAttribute="trailing" secondItem="Vmc-C7-itO" secondAttribute="trailing" id="eLh-yZ-XXL"/>
+                    <constraint firstItem="TXX-T3-0HH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gpH-aS-KRW"/>
                     <constraint firstAttribute="bottom" secondItem="Vmc-C7-itO" secondAttribute="bottom" id="hlB-1B-JE1"/>
+                    <constraint firstItem="TXX-T3-0HH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="uo4-vu-PQN"/>
+                    <constraint firstItem="Vmc-C7-itO" firstAttribute="leading" secondItem="TXX-T3-0HH" secondAttribute="trailing" constant="8" id="yQg-iw-qjG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="mainLabel" destination="TXX-T3-0HH" id="jBt-QD-Nag"/>
                 <outlet property="rightLabel" destination="Vmc-C7-itO" id="IXs-WX-ofn"/>
             </connections>
         </tableViewCell>

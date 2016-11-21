@@ -11,10 +11,12 @@ import UIKit
 class PreferencesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var mainLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.mainLabel.textColor = navigationBarGray
+    
 //        self.rightImageView.image = #imageLiteral(resourceName: "close-icon")
         
     }

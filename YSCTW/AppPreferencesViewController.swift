@@ -90,9 +90,7 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
         let dict = self.data[indexPath.section]
         let dictData = dict?["data"] as! [String]
         
-        cell.textLabel?.text = dictData[indexPath.row].localized
-        cell.textLabel?.textColor = navigationBarGray
-        cell.textLabel?.font = UIFont(name: "Gotham-Book", size: 15)
+        cell.mainLabel.text = dictData[indexPath.row].localized
         
         if dict?["title"] as! String != "INFORMATIONS" {
             cell.accessoryType = .disclosureIndicator
@@ -104,10 +102,25 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
             if let versionNumberString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                 cell.rightLabel.text = versionNumberString
                 cell.bringSubview(toFront: cell.rightLabel)
+                cell.selectionStyle = .none
             }
         }
     
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        //Version is not selectable
+        if indexPath.section == 4 {
+            return nil
+        }
+        
+        return indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
     }
 
     /*

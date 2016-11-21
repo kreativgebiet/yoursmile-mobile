@@ -95,42 +95,49 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let mail = self.emailTextField.text
         let password = self.passwordTextField.text
         
-        let parameters: [String : String] = [
-            "email": mail!,
-            "password": password!
-        ]
+        var errorMessage = ""
         
-        let requestURL = baseURL + "auth/sign_in/"
+        if !(mail?.isValidEmail)! {
+            errorMessage = errorMessage + "MAIL_ERROR".localized + " "
+        }
         
-        Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-            print(response.result.value)
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print(json)
-                
-                switch json["status"] {
-                case "error":
-                    print(json["errors"])
-                    break
-                default:
-                    print(json["errors"])
-                }
-                
-                break
-            case .failure(let error):
-                
-                print(error)
+        if (password?.characters.count)! < 8 {
+            errorMessage = errorMessage + "PASSWORD_ERROR".localized
+        }
+        
+        if errorMessage.characters.count > 0 {
+            
+            self.showAlertViewWith(errorMessage: errorMessage)
+            
+            return
+        }
+        
+        let callback = { (success: Bool, errorMessage: String) in
+            
+            if success {
+                self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
+            } else {
+                self.showAlertViewWith(errorMessage: errorMessage)
             }
             
         }
         
-        self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
+        DataManager().login(email: mail!, password: password!, callback: callback)
 
     }
     
     @IBAction func facebookButton(_ sender: AnyObject) {
         
+    }
+    
+    func showAlertViewWith(errorMessage: String) {
+        
+        let alertController = UIAlertController(title: "ERROR".localized, message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - TextField Delegates

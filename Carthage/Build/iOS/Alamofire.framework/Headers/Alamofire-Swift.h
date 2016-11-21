@@ -134,9 +134,15 @@ SWIFT_CLASS("_TtC9Alamofire12TaskDelegate")
   The serial operation queue used to execute all operations after the task completes.
 */
 @property (nonatomic, readonly, strong) NSOperationQueue * _Nonnull queue;
-@property (nonatomic, strong) NSURLSessionTask * _Nullable task;
+/**
+  The data returned by the server.
+*/
 @property (nonatomic, readonly, copy) NSData * _Nullable data;
+/**
+  The error generated throughout the lifecyle of the task.
+*/
 @property (nonatomic) NSError * _Nullable error;
+@property (nonatomic, strong) NSURLSessionTask * _Nullable task;
 @property (nonatomic, strong) NSURLCredential * _Nullable credential;
 @property (nonatomic, strong) id _Nullable metrics;
 - (nonnull instancetype)initWithTask:(NSURLSessionTask * _Nullable)task OBJC_DESIGNATED_INITIALIZER;

@@ -136,48 +136,38 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             errorMessage = errorMessage + "PASSWORD_ERROR".localized
         }
         
-        
         if errorMessage.characters.count > 0 {
-            let alert = UIAlertView()
-            alert.title = "ERROR".localized
-            alert.message = String(describing: errorMessage)
-            alert.addButton(withTitle: "OK")
-            alert.show()
+            
+            self.showAlertViewWith(errorMessage: errorMessage)
             
             return
         }
         
-        let sign_up = "auth/"
-        let requestURL = baseURL + sign_up
-        
-        let parameters: [String : String] = [
-            "nickname": name!,
-            "email": mail!,
-            "password": password!,
-            "name": name!            
-        ]
-        
-        Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseString { response in
-            print(response.result.value)
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print(json)
+        let callback = { (success: Bool, errorMessage: String) in
+            
+            if success {
                 
-                let alert = UIAlertView()
-                alert.title = "An error occured"
-                alert.message = String(describing: json["errors"])
-                alert.addButton(withTitle: "OK")
-                alert.show()
+//                DataManager().login(email: mail!, password: password!)
                 
-                break
-            case .failure(let error):
-                
-                print(error)
+            } else {
+                self.showAlertViewWith(errorMessage: errorMessage)
             }
             
         }
-
+        
+        DataManager().registerUser(name: name!, email: mail!, password: password!, callback: callback)
+        
+        
+    }
+    
+    func showAlertViewWith(errorMessage: String) {
+        
+        let alertController = UIAlertController(title: "ERROR".localized, message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
         
     // MARK: - Keyboard animations
