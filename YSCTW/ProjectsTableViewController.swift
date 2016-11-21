@@ -17,7 +17,6 @@ class ProjectsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "PROJECTS".localized
         self.applyTableViewStyle()
     }
 
@@ -28,6 +27,12 @@ class ProjectsTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         self.tableView.backgroundColor = .white
         self.tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "PROJECTS".localized
+        self.reload()
     }
     
     public func reload() {

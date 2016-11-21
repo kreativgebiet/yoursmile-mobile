@@ -142,12 +142,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
         
         if error.characters.count > 0 {
             
-            let alertController = UIAlertController(title: "ERROR".localized, message: error, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
-                print("OK")
-            }
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
+            HelperFunctions.presentAlertViewfor(error: error, presenter: self)
             
         } else {
             self.performSegue(withIdentifier: "donationDescriptionSegue", sender: self)

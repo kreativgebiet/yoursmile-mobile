@@ -92,6 +92,10 @@
 		A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CB61DD341CB002C4562 /* ProjectTableViewCell.swift */; };
 		A1CF0CB91DD341CB002C4562 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0CB71DD341CB002C4562 /* ProjectTableViewCell.xib */; };
 		A1D6F4BF1DE32DD600A0A8F9 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D6F4BE1DE32DD600A0A8F9 /* Locksmith.framework */; };
+		A1D6F4C21DE34DF100A0A8F9 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D6F4C11DE34DF100A0A8F9 /* Preferences.storyboard */; };
+		A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C31DE34E9700A0A8F9 /* TextViewController.swift */; };
+		A1D6F4C61DE36F4000A0A8F9 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C51DE36F4000A0A8F9 /* LanguageManager.swift */; };
+		A1D6F4C81DE3725500A0A8F9 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C71DE3725500A0A8F9 /* LanguageSelectionViewController.swift */; };
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
@@ -224,6 +228,10 @@
 		A1CF0CB71DD341CB002C4562 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
 		A1D6F4BE1DE32DD600A0A8F9 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		A1D6F4C01DE3346400A0A8F9 /* YSCTW.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YSCTW.entitlements; sourceTree = "<group>"; };
+		A1D6F4C11DE34DF100A0A8F9 /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		A1D6F4C31DE34E9700A0A8F9 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		A1D6F4C51DE36F4000A0A8F9 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		A1D6F4C71DE3725500A0A8F9 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUpTestData.swift; sourceTree = "<group>"; };
@@ -306,6 +314,7 @@
 				A16407281DDF181E00BA1853 /* Font */,
 				A12A454C1DCF8C76002977DF /* AppDelegate.swift */,
 				A12A45501DCF8C76002977DF /* Main.storyboard */,
+				A1D6F4C11DE34DF100A0A8F9 /* Preferences.storyboard */,
 				A12A45531DCF8C76002977DF /* Assets.xcassets */,
 				A12A45551DCF8C76002977DF /* LaunchScreen.storyboard */,
 				A12A45581DCF8C76002977DF /* Info.plist */,
@@ -315,6 +324,7 @@
 				A1F8D8E81DD3648400AFAB4F /* DataManager.swift */,
 				A11029071DD9C55E00633343 /* StringExtension.swift */,
 				A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */,
+				A1D6F4C51DE36F4000A0A8F9 /* LanguageManager.swift */,
 				A153909E1DD0E37100B7ADA0 /* ViewController */,
 				A153909F1DD0E37D00B7ADA0 /* Views */,
 				A1ED19A51DD1F75500538B78 /* TableViewCells */,
@@ -361,6 +371,8 @@
 				A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */,
 				A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */,
 				A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */,
+				A1D6F4C31DE34E9700A0A8F9 /* TextViewController.swift */,
+				A1D6F4C71DE3725500A0A8F9 /* LanguageSelectionViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -593,6 +605,7 @@
 				A11028F51DD5136400633343 /* AddedProjectButtonView.xib in Resources */,
 				A164071A1DDF181800BA1853 /* Gotham-Light.otf in Resources */,
 				A12A45571DCF8C76002977DF /* LaunchScreen.storyboard in Resources */,
+				A1D6F4C21DE34DF100A0A8F9 /* Preferences.storyboard in Resources */,
 				A16407211DDF181800BA1853 /* Gotham-ThinItalic.otf in Resources */,
 				A135467E1DDE100F00931139 /* DonationSuccessOverlay.xib in Resources */,
 				A12A45541DCF8C76002977DF /* Assets.xcassets in Resources */,
@@ -673,6 +686,7 @@
 				A1F8D8E71DD3632800AFAB4F /* MockUpTestData.swift in Sources */,
 				A154FDF11DDF5BC200D88306 /* ImagePickerViewController.swift in Sources */,
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
+				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
 				A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */,
 				A1CF0CA41DD238C9002C4562 /* DonationDetailHeaderView.swift in Sources */,
@@ -696,6 +710,7 @@
 				A1CF0CA91DD25DAA002C4562 /* TableViewFooterView.swift in Sources */,
 				A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */,
 				A15390AB1DD0F61F00B7ADA0 /* CameraViewController.swift in Sources */,
+				A1D6F4C61DE36F4000A0A8F9 /* LanguageManager.swift in Sources */,
 				A15390A51DD0EE1800B7ADA0 /* TabBarViewController.swift in Sources */,
 				A16407061DDE723A00BA1853 /* PreferencesTableViewCell.swift in Sources */,
 				A11028F31DD5135C00633343 /* AddedProjectButtonView.swift in Sources */,
@@ -707,6 +722,7 @@
 				A153909B1DD0CD9200B7ADA0 /* RoundedButton.swift in Sources */,
 				A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */,
 				A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */,
+				A1D6F4C81DE3725500A0A8F9 /* LanguageSelectionViewController.swift in Sources */,
 				A15390991DD0C8A700B7ADA0 /* DividerView.swift in Sources */,
 				A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */,
 				A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */,

@@ -53,6 +53,19 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.corners = UIRectCorner.bottomLeft.union(UIRectCorner.bottomRight)
         self.passwordTextField.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTap))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         //Localization
         self.registerButton.setTitle("LOGIN".localized, for: .normal)
         self.registerButton.setTitle("LOGIN".localized, for: .selected)
@@ -70,16 +83,6 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         self.gotoLoginButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoLoginButton.setAttributedTitle(mutableString, for: .selected)
         self.gotoLoginButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTap))
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - TextField Delegates
@@ -137,20 +140,16 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
         
         if errorMessage.characters.count > 0 {
-            
-            self.showAlertViewWith(errorMessage: errorMessage)
-            
+            HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
             return
         }
         
         let callback = { (success: Bool, errorMessage: String) in
             
             if success {
-                
 //                DataManager().login(email: mail!, password: password!)
-                
             } else {
-                self.showAlertViewWith(errorMessage: errorMessage)
+                HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
             }
             
         }
@@ -158,16 +157,6 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         DataManager().registerUser(name: name!, email: mail!, password: password!, callback: callback)
         
         
-    }
-    
-    func showAlertViewWith(errorMessage: String) {
-        
-        let alertController = UIAlertController(title: "ERROR".localized, message: errorMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
-            print("OK")
-        }
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
     }
         
     // MARK: - Keyboard animations

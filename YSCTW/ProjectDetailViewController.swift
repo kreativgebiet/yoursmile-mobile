@@ -23,16 +23,10 @@ class ProjectDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "PROJECT".localized
-        
         self.projectDescriptionLabel.text = self.project.projectDescription
         self.projectImageView.image = self.project.projectImage
         
         self.transparentProjectView.projects.append(self.project)
-        
-        //Localization
-        self.supportButton.setTitle("SUPPORT".localized, for: .normal)
-        self.supportButton.setTitle("SUPPORT".localized, for: .selected)
         
         if !UIAccessibilityIsReduceTransparencyEnabled() {
             self.transparentProjectView.transparentView.backgroundColor = UIColor.clear
@@ -44,6 +38,14 @@ class ProjectDetailViewController: UIViewController {
             
             self.transparentProjectView.insertSubview(blurEffectView, at: 0)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //Localization
+        self.title = "PROJECT".localized
+        self.supportButton.setTitle("SUPPORT".localized, for: .normal)
+        self.supportButton.setTitle("SUPPORT".localized, for: .selected)
     }
 
     @IBAction func supportButtonTapped(_ sender: AnyObject) {

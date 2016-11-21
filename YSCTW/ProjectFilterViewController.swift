@@ -32,9 +32,6 @@ class ProjectFilterViewController: UIViewController {
         self.rightLabel.backgroundColor = .clear
         self.view.backgroundColor = customLightGray
         
-        //Localization
-        self.leftLabel.text = "ALL".localized
-        self.rightLabel.text = "ALL".localized
         self.leftLabel.textColor = navigationBarGray
         self.rightLabel.textColor = navigationBarGray
         
@@ -46,6 +43,13 @@ class ProjectFilterViewController: UIViewController {
         
         self.leftView.addGestureRecognizer(tapLeft)
         self.rightView.addGestureRecognizer(tapRight)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //Localization
+        self.leftLabel.text = "ALL".localized
+        self.rightLabel.text = "ALL".localized
     }
     
     func handleLeftTap() {

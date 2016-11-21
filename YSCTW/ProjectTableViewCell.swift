@@ -27,13 +27,6 @@ class ProjectTableViewCell: UITableViewCell {
         self.detailButton.backgroundColor = customGray
         self.detailButton.setTitleColor(navigationBarGray, for: .normal)
         
-        //Localization
-        self.detailButton.setTitle("SHOW_DETAILS".localized, for: .normal)
-        self.detailButton.setTitle("SHOW_DETAILS".localized, for: .selected)
-        
-        self.supportButton.setTitle("SUPPORT".localized, for: .normal)
-        self.supportButton.setTitle("SUPPORT".localized, for: .selected)
-        
         if !UIAccessibilityIsReduceTransparencyEnabled() {
             self.transparentProjectView.transparentView.backgroundColor = UIColor.clear
             let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
@@ -48,6 +41,13 @@ class ProjectTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        //Localization
+        self.detailButton.setTitle("SHOW_DETAILS".localized, for: .normal)
+        self.detailButton.setTitle("SHOW_DETAILS".localized, for: .selected)
+        
+        self.supportButton.setTitle("SUPPORT".localized, for: .normal)
+        self.supportButton.setTitle("SUPPORT".localized, for: .selected)
         
         self.projectImageView.image = project?.projectImage
         self.descriptionLabel.text = project?.projectDescription

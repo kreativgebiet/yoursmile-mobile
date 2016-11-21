@@ -33,7 +33,6 @@ class FeedTableViewCell: UITableViewCell {
         super.awakeFromNib()        
         self.donorLogoImageView.backgroundColor = .white
         self.donorTimeLabel.textColor = timeGray
-        self.donationLabelView.text = "SHOW_IMAGE_DETAIL".localized
         
         self.donorLogoImageView.isUserInteractionEnabled = true
         
@@ -46,6 +45,8 @@ class FeedTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.donationLabelView.text = "SHOW_IMAGE_DETAIL".localized
         
         self.donorLogoImageView.layer.cornerRadius = self.donorLogoImageView.frame.size.width/2
         self.donorLogoImageView.clipsToBounds = true

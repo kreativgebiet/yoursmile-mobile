@@ -25,8 +25,6 @@ class PreferencesViewController: UIViewController {
         self.spacerView.backgroundColor = customDarkerGray
         
         self.segmentedControl.tintColor = orange
-        self.segmentedControl.setTitle("YSCTW", forSegmentAt: 0)
-        self.segmentedControl.setTitle("ACCOUNT_SETTINGS_SEGMENTED_TITLE".localized, forSegmentAt: 1)
         self.segmentedControl.backgroundColor = .white
         
         let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 13)!]
@@ -38,6 +36,12 @@ class PreferencesViewController: UIViewController {
         self.appPreferencesViewController.view.backgroundColor = customLightGray
         
         self.addViewControllerAsChildViewController(viewController: self.appPreferencesViewController)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.segmentedControl.setTitle("YSCTW", forSegmentAt: 0)
+        self.segmentedControl.setTitle("ACCOUNT_SETTINGS_SEGMENTED_TITLE".localized, forSegmentAt: 1)
     }
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {

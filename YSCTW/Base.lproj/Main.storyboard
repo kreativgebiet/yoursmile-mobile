@@ -56,7 +56,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="EXD-uh-78H"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="login-with-facebook"/>
+                                <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="57" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Mit Facebook anmelden" backgroundImage="login-with-facebook"/>
                                 <connections>
                                     <action selector="facebookButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkF-hs-tyM"/>
                                 </connections>
@@ -165,6 +167,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="Mgd-j1-PT2" id="8j4-uT-HeK"/>
                         <outlet property="facebookButtonTopSpaceConstraint" destination="vDv-lR-xnp" id="bpQ-QN-mgz"/>
+                        <outlet property="facebookLoginButton" destination="8xn-Lc-eD1" id="Fwd-bb-Ohi"/>
                         <outlet property="gotoRegistrationButton" destination="iiE-1n-E6o" id="Jzt-2y-fnP"/>
                         <outlet property="loginButton" destination="KAd-gt-2Et" id="GrL-gb-MaQ"/>
                         <outlet property="logoTitleLabel" destination="GDQ-1A-2fD" id="RSz-gF-azv"/>

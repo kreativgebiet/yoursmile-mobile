@@ -43,6 +43,11 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
         self.tableView.tableFooterView = UIView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     // MARK: - TableView datasource and delegate
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

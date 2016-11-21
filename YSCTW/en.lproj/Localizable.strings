@@ -7,6 +7,7 @@
 */
 //Login
 "LOGIN" = "Login";
+"LOGIN_WITH_FB" = "Login with Facebook";
 "NO_ACCOUNT_LABEL" = "No account yet?";
 "REGISTER_BUTTON" = "Register!";
 "OR" = "OR";
@@ -59,6 +60,7 @@
 "MAIL_ERROR" = "Please enter a valid E-mail address";
 "PASSWORD_ERROR" = "The password must be at least 8 characters long";
 "ERROR" = "An error occured";
+"NO_MAIL" = "Sorry, but you need to have the Mail-App installed to use this feature";
 
 //Project cell
 "SHOW_DETAILS" = "Show details";

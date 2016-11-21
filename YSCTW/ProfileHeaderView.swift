@@ -46,8 +46,6 @@ class ProfileHeaderView: UIView {
         self.subscribedLabel.textColor = customGray
         self.subscriberLabel.textColor = customGray
         
-        self.profileLabel.text = "PROFILE".localized
-        
         self.profileNameLabel.textColor = .white
         self.projectNumberLabel.textColor = customGray
         
@@ -73,6 +71,9 @@ class ProfileHeaderView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.profileLabel.text = "PROFILE".localized
+        
         self.profileImageView.layer.cornerRadius = self.profileImageViewWidthConstraint.constant/2
         self.topImageView.layer.cornerRadius = self.topImageView.frame.size.height/2
         

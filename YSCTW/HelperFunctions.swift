@@ -9,13 +9,21 @@
 import UIKit
 import Photos
 
-//http://stackoverflow.com/questions/28259961/swift-how-to-get-last-taken-3-photos-from-photo-library
-
 class HelperFunctions: NSObject {
     
+   class func presentAlertViewfor(error: String, presenter: UIViewController) {
+        let alertController = UIAlertController(title: "ERROR".localized, message: error, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        alertController.addAction(okAction)
+        presenter.present(alertController, animated: true, completion: nil)
+    }
+    
+    //http://stackoverflow.com/questions/28259961/swift-how-to-get-last-taken-3-photos-from-photo-library
     var images: [UIImage] = [UIImage]()
     
-   public func fetchLastPhoto(targetSize: CGSize) -> UIImage? {
+    public func fetchLastPhoto(targetSize: CGSize) -> UIImage? {
         self.fetchPhotoAtIndexFromEnd(targetSize: targetSize, 0)
         
         return images.last

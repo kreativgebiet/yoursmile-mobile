@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var facebookButtonTopSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoTopSpaceConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var gotoRegistrationButton: UIButton!
     @IBOutlet weak var loginButton: RoundedButton!
     @IBOutlet weak var orLabel: UILabel!
@@ -25,7 +26,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var defaultFacebookButtonTopSpaceConstraintConstant: CGFloat?
     var defaultlogoTopSpaceConstraintConstant: CGFloat?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,9 +50,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.text = ""
         self.passwordTextField.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTap))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         //Localization
         self.loginButton.setTitle("LOGIN".localized, for: .normal)
         self.loginButton.setTitle("LOGIN".localized, for: .selected)
+        
+        self.facebookLoginButton.setTitle("LOGIN_WITH_FB".localized, for: .normal)
+        self.facebookLoginButton.setTitle("LOGIN_WITH_FB".localized, for: .selected)
+        
         self.orLabel.text = "OR".localized
         self.emailTextField.placeholder = "EMAIL".localized
         self.passwordTextField.placeholder = "PASSWORD".localized
@@ -68,16 +86,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .selected)
         self.gotoRegistrationButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTap))
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Button handler
@@ -106,9 +114,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         if errorMessage.characters.count > 0 {
-            
-            self.showAlertViewWith(errorMessage: errorMessage)
-            
+            HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
             return
         }
         
@@ -117,7 +123,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if success {
                 self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
             } else {
-                self.showAlertViewWith(errorMessage: errorMessage)
+                HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
             }
             
         }
@@ -128,16 +134,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func facebookButton(_ sender: AnyObject) {
         
-    }
-    
-    func showAlertViewWith(errorMessage: String) {
-        
-        let alertController = UIAlertController(title: "ERROR".localized, message: errorMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
-            print("OK")
-        }
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - TextField Delegates

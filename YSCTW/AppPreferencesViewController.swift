@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import MessageUI
 
-class AppPreferencesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AppPreferencesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var data = [
         0 : [
             "title" : "ABOUT",
-            "data" : ["ABOUT_YSCTW", "TERMS_CONDITIONS", "YOUR_FEEDBACK", "STATISTICS"]
+            "data" : ["ABOUT_YSCTW", "TERMS_CONDITIONS", "YOUR_FEEDBACK"]
         ],
         1 : [
             "title" : "APP_SETTINGS",
@@ -39,6 +40,11 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView.sectionHeaderHeight = 40
         self.tableView.backgroundColor = customLightGray
         self.tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
 
     // MARK: - TableView datasource and delegate
@@ -91,6 +97,7 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
         let dictData = dict?["data"] as! [String]
         
         cell.mainLabel.text = dictData[indexPath.row].localized
+        cell.selectionStyle = .none
         
         if dict?["title"] as! String != "INFORMATIONS" {
             cell.accessoryType = .disclosureIndicator
@@ -102,7 +109,6 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
             if let versionNumberString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                 cell.rightLabel.text = versionNumberString
                 cell.bringSubview(toFront: cell.rightLabel)
-                cell.selectionStyle = .none
             }
         }
     
@@ -120,7 +126,78 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        switch indexPath.section {
+        case 0:
+            
+            switch indexPath.row {
+            case 0:
+                
+                //About
+                let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "TextViewController") as!  TextViewController
+                
+                viewController.text = "safasfsadfsadfsfdsad"
+                viewController.title = "ABOUT_YSCTW".localized
+                
+                self.navigationController?.pushViewController(viewController, animated: true)
+                
+                break
+            case 1:
+                
+                //Terms and conditions
+                let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "TextViewController") as!  TextViewController
+                
+                viewController.text = "safasfsadfsadfsfdsad"
+                viewController.title = "TERMS_CONDITIONS".localized
+                
+                self.navigationController?.pushViewController(viewController, animated: true)
+                
+                break
+            case 2:
+                
+                //Terms and conditions
+                if MFMailComposeViewController.canSendMail() {
+                    let mail = MFMailComposeViewController()
+                    mail.mailComposeDelegate = self
+                    mail.setToRecipients(["support@mail.com"])
+                    mail.setSubject("Support App")
+                    mail.setMessageBody("<p>Send us your issue!</p>", isHTML: true)
+                    self.present(mail, animated: true, completion: nil)
+                } else {
+                    HelperFunctions.presentAlertViewfor(error: "NO_MAIL", presenter: self)                    
+                }
+                
+                break
+            default:
+                break
+                
+            }
+            
+            
+            break
+        case 1:
+            //Change language
+            let selectedLanguage = LanguageManager.sharedInstance.getSelectedLocale()
+            let availableLanguages = LanguageManager.sharedInstance.availableLocales
+            
+            let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "LanguageSelectionViewController") as!  LanguageSelectionViewController
+            
+            viewController.selectedLanguage = selectedLanguage
+            viewController.availableLanguages = availableLanguages
+            viewController.title = "CHANGE_LANGUAGE".localized
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+
+            break
+            
+        default:
+            break
+            
+        }
         
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 
     /*

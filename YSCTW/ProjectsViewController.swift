@@ -18,8 +18,8 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var filterViewController: ProjectFilterViewController!
     
     var picker: UIPickerView!
-    let pickerDataLeft = ["NO_FILTER_SELECTED".localized,"VISITED_FAVORITES".localized,"EDUCTION".localized,"FOOD".localized,"HEALTH".localized] as [String]
-    var pickerDataRight: [String] = ["NO_FILTER_SELECTED".localized]
+    var pickerDataLeft: [String]!
+    var pickerDataRight: [String]!
     var leftPicker = false
     
     var projects: [Project]!
@@ -31,13 +31,22 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let countrys = self.projects.filter({$0.country != nil}).filter({$0.country != ""}).map({ $0.country }) as! [String]
-        self.pickerDataRight.append(contentsOf: countrys)
-        
         self.picker = UIPickerView()
         self.picker.backgroundColor = customLightGray
         self.picker.delegate = self
         self.picker.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.pickerDataLeft = ["NO_FILTER_SELECTED".localized,"VISITED_FAVORITES".localized,"EDUCTION".localized,"FOOD".localized,"HEALTH".localized]
+        self.pickerDataRight = ["NO_FILTER_SELECTED".localized]
+        
+        let countrys = self.projects.filter({$0.country != nil}).filter({$0.country != ""}).map({ $0.country }) as! [String]
+        self.pickerDataRight.append(contentsOf: countrys)
+        
+        self.picker.reloadAllComponents()
     }
     
     func togglePicker() {
