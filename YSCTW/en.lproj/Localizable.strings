@@ -59,6 +59,7 @@
 "NAME_ERROR" = "Please enter your name";
 "MAIL_ERROR" = "Please enter a valid E-mail address";
 "PASSWORD_ERROR" = "The password must be at least 8 characters long";
+"PASSWORD_CONFIRM_ERROR" = "Both passwords need to match";
 "ERROR" = "An error occured";
 "NO_MAIL" = "Sorry, but you need to have the Mail-App installed to use this feature";
 
@@ -127,3 +128,8 @@
 "NEW_PASSWORD_CONFIRMATION_PH" = "Confirm new password";
 "NEW_EMAIL_PH" = "New email";
 "NEW_EMAIL_CONFIRMATION_PH" = "Confirm new email";
+
+//Information
+
+"INFORMATION" = "Information";
+"PASSWORD_CHANGED" = "Passwor has been changed";

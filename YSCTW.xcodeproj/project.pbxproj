@@ -99,6 +99,9 @@
 		A1D6F4CA1DE461A300A0A8F9 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C91DE461A300A0A8F9 /* PasswordChangeViewController.swift */; };
 		A1D6F4CC1DE4674300A0A8F9 /* EmailChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4CB1DE4674300A0A8F9 /* EmailChangeViewController.swift */; };
 		A1D6F4CE1DE469F400A0A8F9 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4CD1DE469F400A0A8F9 /* DeleteAccountViewController.swift */; };
+		A1D6F4D21DE484C200A0A8F9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4D11DE484C200A0A8F9 /* APIClient.swift */; };
+		A1D6F4D51DE4854100A0A8F9 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4D41DE4854100A0A8F9 /* NetworkHelper.swift */; };
+		A1D6F4D71DE4889200A0A8F9 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4D61DE4889200A0A8F9 /* LoadingScreen.swift */; };
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
@@ -238,6 +241,9 @@
 		A1D6F4C91DE461A300A0A8F9 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
 		A1D6F4CB1DE4674300A0A8F9 /* EmailChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailChangeViewController.swift; sourceTree = "<group>"; };
 		A1D6F4CD1DE469F400A0A8F9 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
+		A1D6F4D11DE484C200A0A8F9 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A1D6F4D41DE4854100A0A8F9 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		A1D6F4D61DE4889200A0A8F9 /* LoadingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUpTestData.swift; sourceTree = "<group>"; };
@@ -331,6 +337,7 @@
 				A11029071DD9C55E00633343 /* StringExtension.swift */,
 				A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */,
 				A1D6F4C51DE36F4000A0A8F9 /* LanguageManager.swift */,
+				A1D6F4D31DE484CD00A0A8F9 /* ServiceLayer */,
 				A153909E1DD0E37100B7ADA0 /* ViewController */,
 				A153909F1DD0E37D00B7ADA0 /* Views */,
 				A1ED19A51DD1F75500538B78 /* TableViewCells */,
@@ -425,6 +432,7 @@
 				A13546811DDE166900931139 /* DonationFeeOverlayView.xib */,
 				A154FDF21DDF66DB00D88306 /* CancelableProgressView.swift */,
 				A154FDF41DDF66E300D88306 /* CancelableProgressView.xib */,
+				A1D6F4D61DE4889200A0A8F9 /* LoadingScreen.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -471,6 +479,15 @@
 				A16407171DDF181800BA1853 /* Gotham-Black.otf */,
 			);
 			name = Font;
+			sourceTree = "<group>";
+		};
+		A1D6F4D31DE484CD00A0A8F9 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A1D6F4D11DE484C200A0A8F9 /* APIClient.swift */,
+				A1D6F4D41DE4854100A0A8F9 /* NetworkHelper.swift */,
+			);
+			name = ServiceLayer;
 			sourceTree = "<group>";
 		};
 		A1ED19A51DD1F75500538B78 /* TableViewCells */ = {
@@ -697,6 +714,7 @@
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
+				A1D6F4D51DE4854100A0A8F9 /* NetworkHelper.swift in Sources */,
 				A1D6F4CC1DE4674300A0A8F9 /* EmailChangeViewController.swift in Sources */,
 				A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */,
 				A1CF0CA41DD238C9002C4562 /* DonationDetailHeaderView.swift in Sources */,
@@ -715,6 +733,7 @@
 				A11028ED1DD4DA2C00633343 /* DonationViewController.swift in Sources */,
 				A11028FF1DD5E23500633343 /* AccountPreferencesViewController.swift in Sources */,
 				A1F8D8F91DD3AA2400AFAB4F /* HelperFunctions.swift in Sources */,
+				A1D6F4D71DE4889200A0A8F9 /* LoadingScreen.swift in Sources */,
 				A12A457B1DCF9383002977DF /* constants.swift in Sources */,
 				A110290D1DD9EDA300633343 /* ProjectView.swift in Sources */,
 				A15390AF1DD0F64100B7ADA0 /* PreferencesViewController.swift in Sources */,
@@ -749,6 +768,7 @@
 				A1CF0C9E1DD234A7002C4562 /* CommentView.swift in Sources */,
 				A12A457F1DD080C9002977DF /* LeftViewImageTextField.swift in Sources */,
 				A1F8D8F51DD38D0D00AFAB4F /* ProgressView.swift in Sources */,
+				A1D6F4D21DE484C200A0A8F9 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

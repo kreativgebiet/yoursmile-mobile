@@ -47,6 +47,44 @@ class PasswordChangeViewController: UIViewController {
     
     @IBAction func handleSaveButtonTapped(_ sender: AnyObject) {
         
+        let password = self.newPasswordTextField.text
+        let passwordConfirm = self.newPasswordConfirmationTextField.text
+        
+        var errorMessage = ""
+        
+        if password != passwordConfirm {
+            errorMessage = "PASSWORD_CONFIRM_ERROR".localized
+        }
+        
+        if (password?.characters.count)! < 8 {
+            errorMessage = (errorMessage.characters.count > 0 ? errorMessage + " " : errorMessage)
+            errorMessage = errorMessage + "PASSWORD_ERROR".localized
+        }
+        
+        if errorMessage.characters.count > 0 {
+            HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+            return
+        }
+        
+        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+        
+        self.view.endEditing(true)
+        self.view.addSubview(loadingScreen)
+        
+        let callback = { (success: Bool, errorMessage: String) in
+            
+            loadingScreen.removeFromSuperview()
+            
+            if success {
+                HelperFunctions.presentAlertViewfor(information: "PASSWORD_CHANGED".localized, presenter: self)
+            } else {
+                HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+            }
+            
+        }
+        
+        APIClient.resetPassword(newPassword: password, callback:  callback)
+        
     }
 
     /*

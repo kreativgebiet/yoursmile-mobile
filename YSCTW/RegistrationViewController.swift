@@ -144,17 +144,24 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+        
+        self.view.endEditing(true)
+        self.view.addSubview(loadingScreen)
+        
         let callback = { (success: Bool, errorMessage: String) in
             
-            if success {
-//                DataManager().login(email: mail!, password: password!)
+            loadingScreen.removeFromSuperview()
+            
+            if success {                
+                //TODO
             } else {
                 HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
             }
             
         }
         
-        DataManager().registerUser(name: name!, email: mail!, password: password!, callback: callback)
+        APIClient.registerUser(name: name!, email: mail!, password: password!, callback: callback)
         
         
     }

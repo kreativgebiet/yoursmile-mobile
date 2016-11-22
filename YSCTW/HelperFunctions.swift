@@ -8,11 +8,23 @@
 
 import UIKit
 import Photos
+import Locksmith
 
 class HelperFunctions: NSObject {
     
-   class func presentAlertViewfor(error: String, presenter: UIViewController) {
+    class func presentAlertViewfor(error: String, presenter: UIViewController) {
         let alertController = UIAlertController(title: "ERROR".localized, message: error, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        alertController.addAction(okAction)
+        presenter.present(alertController, animated: true, completion: nil)
+    }
+    
+    //Information
+    
+    class func presentAlertViewfor(information: String, presenter: UIViewController) {
+        let alertController = UIAlertController(title: "INFORMATION".localized, message: information, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
             print("OK")
         }

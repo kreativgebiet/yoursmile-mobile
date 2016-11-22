@@ -118,7 +118,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+
+        self.view.endEditing(true)
+        self.view.addSubview(loadingScreen)
+        
         let callback = { (success: Bool, errorMessage: String) in
+            
+            loadingScreen.removeFromSuperview()
             
             if success {
                 self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
@@ -128,7 +135,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         }
         
-        DataManager().login(email: mail!, password: password!, callback: callback)
+        APIClient.login(email: mail!, password: password!, callback: callback)
 
     }
     
@@ -156,7 +163,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
-        
+        self.emailTextField.text = ""
+        self.passwordTextField.text = ""
     }
     
     // MARK: - Keyboard animation handling
