@@ -14,6 +14,7 @@ class DeleteAccountViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var deleteButton: RoundedButton!
     
+    public var callback: (() -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,8 @@ class DeleteAccountViewController: UIViewController {
         self.deleteButton.setTitle("DELETE_ACCOUNT".localized, for: .selected)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func handleDeleteAccountButtonTapped(_ sender: AnyObject) {
+        self.callback()
     }
 
     /*

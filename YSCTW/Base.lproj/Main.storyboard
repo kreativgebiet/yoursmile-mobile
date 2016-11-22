@@ -1023,9 +1023,11 @@
                         <segue destination="3N6-wb-z9T" kind="show" identifier="donationDetailSegue" id="ePq-pT-5TA"/>
                         <segue destination="uz4-UT-GN6" kind="show" identifier="cameraSegue" id="YeD-Mo-IE5"/>
                         <segue destination="TCu-2B-KhK" kind="show" identifier="profileSegue" id="h9h-li-DOP"/>
+                        <segue destination="EGG-R5-kAU" kind="unwind" identifier="logoutSegue" unwindAction="unwindToLoginWithSegue:" id="ib1-ed-5PE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eci-3O-5eK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EGG-R5-kAU" userLabel="Exit" sceneMemberID="exit"/>
                 <navigationItem id="pZJ-eU-fZB">
                     <barButtonItem key="backBarButtonItem" title=" " id="NBy-yQ-SnE"/>
                 </navigationItem>

@@ -247,6 +247,7 @@
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
                                 <state key="normal" title="Account löschen"/>
                                 <connections>
+                                    <action selector="handleDeleteAccountButtonTapped:" destination="0wr-Yo-qaE" eventType="touchUpInside" id="Urb-if-Sx1"/>
                                     <action selector="handleEmailAdresseButtonTapped:" destination="OOJ-hq-g9Y" eventType="touchUpInside" id="y0p-TF-2uA"/>
                                     <action selector="handleSaveButtonTapped:" destination="DIP-pp-6W8" eventType="touchUpInside" id="p5a-mg-kjY"/>
                                 </connections>

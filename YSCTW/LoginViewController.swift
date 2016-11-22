@@ -155,6 +155,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.layoutIfNeeded()
     }
     
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+        
+    }
+    
     // MARK: - Keyboard animation handling
     
     func animateWithKeyboard(notification: NSNotification) {

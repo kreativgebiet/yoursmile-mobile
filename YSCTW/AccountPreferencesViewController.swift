@@ -145,6 +145,10 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
                     let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "DeleteAccountViewController") as!  DeleteAccountViewController
                     viewController.title = "DELETE_ACCOUNT".localized
                     
+                    viewController.callback = {                        
+                        self.navigationController?.performSegue(withIdentifier: "logoutSegue", sender: self)
+                    }
+                    
                     self.navigationController?.pushViewController(viewController, animated: true)
                     
                     break
