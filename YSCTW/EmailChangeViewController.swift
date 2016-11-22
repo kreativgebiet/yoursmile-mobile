@@ -33,6 +33,43 @@ class EmailChangeViewController: UIViewController {
 
     @IBAction func handleEmailAdresseButtonTapped(_ sender: AnyObject) {
         
+        let email = self.emailTextField.text
+        let emailConfirm = self.emailConfirmationTextField.text
+        
+        var errorMessage = ""
+        
+        if email != emailConfirm {
+            errorMessage = "EMAIL_CONFIRM_ERROR".localized
+        }
+        
+        if email?.isValidEmail == false {
+            errorMessage = (errorMessage.characters.count > 0 ? errorMessage + " " : errorMessage)
+            errorMessage = errorMessage + "MAIL_ERROR".localized
+        }
+        
+        if errorMessage.characters.count > 0 {
+            HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+            return
+        }
+        
+        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+        
+        self.view.endEditing(true)
+        self.view.addSubview(loadingScreen)
+        
+        let callback = { (success: Bool, errorMessage: String) in
+            
+            loadingScreen.removeFromSuperview()
+            
+            if success {
+                HelperFunctions.presentAlertViewfor(information: "EMAIL_CHANGED".localized, presenter: self)
+            } else {
+                HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+            }
+            
+        }
+        
+        APIClient.updateUser(email: email!, callback: callback)
     }
     
     /*

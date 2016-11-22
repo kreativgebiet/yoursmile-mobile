@@ -46,26 +46,38 @@ class NetworkHelper: NSObject {
     
     class func saveTokenFromResponse(response: HTTPURLResponse) {
         
-        let token = response.allHeaderFields["Access-Token"] as! String
-        let expiryDate = response.allHeaderFields["Expiry"] as! String
-        let uid = response.allHeaderFields["Uid"] as! String
-        let client = response.allHeaderFields["Client"] as! String
+        let token = response.allHeaderFields["Access-Token"] as? String
+        let expiryDate = response.allHeaderFields["Expiry"] as? String
+        let uid = response.allHeaderFields["Uid"] as? String
+        let client = response.allHeaderFields["Client"] as? String
         
-        let headerDict = [
-            "access-token": token,
-            "token-type":   "Bearer",
-            "client":       client,
-            "expiry":       expiryDate,
-            "uid":          uid
-        ]
-        
+        if token != nil && expiryDate != nil && uid != nil && client != nil {
+            let headerDict = [
+                "access-token": token!,
+                "token-type":   "Bearer",
+                "client":       client!,
+                "expiry":       expiryDate!,
+                "uid":          uid!
+            ]
+                        
+            do {
+                try Locksmith.updateData(data: headerDict, forUserAccount: "myUserAccount")
+            } catch _ {
+                
+            }
+            
+        }
+    }
+    
+    class func deleteToken() {
         do {
-            try Locksmith.updateData(data: headerDict, forUserAccount: "myUserAccount")
+            try Locksmith.deleteDataForUserAccount(userAccount: "myUserAccount")
         } catch _ {
             
         }
-        
     }
+    
+    // MARK: Response handling
     
     class func standardResponseHandling(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         

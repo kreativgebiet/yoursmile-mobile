@@ -118,5 +118,31 @@ class APIClient: NSObject {
             NetworkHelper.standardResponseHandling(response: response, callback: callback)
         }
     }
+    
+    class func deleteUser(callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        
+        let dictionary = Locksmith.loadDataForUserAccount(userAccount: "myUserAccount") as! [String:String]
+        let requestURL = baseURL + "auth/"
+        
+        Alamofire.request(requestURL, method: .delete, headers: dictionary)
+            .responseJSON { response in
+                NetworkHelper.standardResponseHandling(response: response, callback: callback)
+        }
+    }
+    
+    class func updateUser(email: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        
+        let dictionary = Locksmith.loadDataForUserAccount(userAccount: "myUserAccount") as! [String:String]
+        let requestURL = baseURL + "auth/"
+        
+        let parameters: [String : String] = [
+            "email": email
+        ]
+        
+        Alamofire.request(requestURL, method: .patch, parameters: parameters, headers: dictionary)
+            .responseJSON { response in
+                NetworkHelper.standardResponseHandling(response: response, callback: callback)
+        }
+    }
 
 }

@@ -31,7 +31,35 @@ class DeleteAccountViewController: UIViewController {
     }
 
     @IBAction func handleDeleteAccountButtonTapped(_ sender: AnyObject) {
-        self.callback()
+        
+        let alertController = UIAlertController(title: "INFORMATION".localized, message: "DELETE_ACCOUNT_DESC".localized, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
+            
+            let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+            
+            self.view.endEditing(true)
+            self.view.addSubview(loadingScreen)
+            
+            APIClient.deleteUser { (success: Bool, errorMessage: String) in
+                loadingScreen.removeFromSuperview()
+                
+                if success {
+                    NetworkHelper.deleteToken()
+                    self.callback()
+                } else {
+                    HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+                }
+                
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "CANCEL".localized, style: .cancel) { (result : UIAlertAction) -> Void in
+            
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 
     /*
