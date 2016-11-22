@@ -63,6 +63,7 @@
 "EMAIL_CONFIRM_ERROR" = "Beide E-Mail Adressen müssen übereinstimmen";
 "ERROR" = "Ein Fehler ist aufgetreten";
 "NO_MAIL" = "Sorry, die Mail-App muss installiert sein um diese Feature zu benutzen.";
+"NO_MAIL_FB_LOGIN" = "Sorry, ohne eine Freigabe der E-Mail Adresse kann kein Login erfolgen";
 
 //Project cell
 "SHOW_DETAILS" = "Details anzeigen";

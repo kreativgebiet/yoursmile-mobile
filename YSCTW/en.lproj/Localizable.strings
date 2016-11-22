@@ -63,6 +63,7 @@
 "EMAIL_CONFIRM_ERROR" = "Both E-mail adresses need to match";
 "ERROR" = "An error occured";
 "NO_MAIL" = "Sorry, but you need to have the Mail-App installed to use this feature";
+"NO_MAIL_FB_LOGIN" = "Sorry, your email needs to approved to login";
 
 //Project cell
 "SHOW_DETAILS" = "Show details";

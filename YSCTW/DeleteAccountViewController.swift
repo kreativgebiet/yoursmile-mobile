@@ -48,6 +48,8 @@ class DeleteAccountViewController: UIViewController {
                 
                 if success {
                     NetworkHelper.deleteToken()
+                    FBSDKLoginManager().logOut()
+                    UserDefaults.standard.setValue(false, forKey: "loggedIn")
                     self.callback()
                 } else {
                     HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)

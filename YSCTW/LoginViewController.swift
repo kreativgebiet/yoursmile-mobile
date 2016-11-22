@@ -25,6 +25,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var defaultFacebookButtonTopSpaceConstraintConstant: CGFloat?
     var defaultlogoTopSpaceConstraintConstant: CGFloat?
+    
+    var loadingScreen: LoadingScreen!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,30 +120,94 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+        self.loadingScreen = LoadingScreen.init(frame: self.view.bounds)
 
         self.view.endEditing(true)
         self.view.addSubview(loadingScreen)
         
+        self.loginWith(mail!, password!)
+    }
+    
+    func loginWith(_ email: String, _ password: String) {
         let callback = { (success: Bool, errorMessage: String) in
-            
-            loadingScreen.removeFromSuperview()
+            self.loadingScreen.removeFromSuperview()
             
             if success {
+                UserDefaults.standard.setValue(true, forKey: "loggedIn")
                 self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
             } else {
                 HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
             }
-            
         }
         
-        APIClient.login(email: mail!, password: password!, callback: callback)
-
+        APIClient.login(email: email, password: password, callback: callback)
     }
+    
+    // MARK: - Facebook Login
     
     @IBAction func facebookButton(_ sender: AnyObject) {
         
+        loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+        
+        self.view.endEditing(true)
+        self.view.addSubview(loadingScreen)
+        
+        let loginmanager = FBSDKLoginManager()
+        loginmanager.logIn(withReadPermissions: ["public_profile", "user_birthday", "email"], from: self) { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
+            
+            if ((error) != nil) {
+                self.loadingScreen.removeFromSuperview()
+                HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!, presenter: self)
+            } else if (result?.isCancelled)! {
+                self.loadingScreen.removeFromSuperview()
+            } else {
+    
+                if (result?.grantedPermissions.contains("email") )!{
+                    
+                    let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email, name"])
+                    graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+                        
+                        if ((error) != nil) {
+                            self.loadingScreen.removeFromSuperview()
+                            print("Error: \(error)")
+                        } else {
+                            let dict = result as! [String : String]
+                            
+                            let userName = dict["name"] as! NSString
+                            let userEmail = dict["email"] as! NSString
+                            
+                            APIClient.registerUser(name: userName as String, email: userEmail as String, password: "facebook1234", callback: { (success: Bool, errorMessage: String) in
+                                
+                                if success == true {
+                                    self.loginWith(userEmail as String, "facebook1234")
+                                } else {
+                                    
+                                    if (errorMessage == "Email already in use") {
+                                        self.loadingScreen.removeFromSuperview()
+                                        self.loginWith(userEmail as String, "facebook1234")
+                                    } else {
+                                        HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+                                    }
+                                    
+                                }
+                                
+                            })
+                            
+                            
+                        }
+                    })
+                    
+                    
+                } else {
+                    HelperFunctions.presentAlertViewfor(error: "NO_MAIL_FB_LOGIN".localized, presenter: self)
+                }
+            }
+            
+            
+        }
+        
     }
+    
     
     // MARK: - TextField Delegates
     
