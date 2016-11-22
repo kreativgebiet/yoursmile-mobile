@@ -103,7 +103,6 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
             cell.accessoryType = .disclosureIndicator
             cell.rightLabel.isHidden = true
         } else {
-//            cell.rightImageView.isHidden = true
             cell.rightLabel.isHidden = false
             
             if let versionNumberString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -158,12 +157,14 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
                 if MFMailComposeViewController.canSendMail() {
                     let mail = MFMailComposeViewController()
                     mail.mailComposeDelegate = self
+                    
+                    //TODO get correct email
                     mail.setToRecipients(["support@mail.com"])
                     mail.setSubject("Support App")
                     mail.setMessageBody("<p>Send us your issue!</p>", isHTML: true)
                     self.present(mail, animated: true, completion: nil)
                 } else {
-                    HelperFunctions.presentAlertViewfor(error: "NO_MAIL", presenter: self)                    
+                    HelperFunctions.presentAlertViewfor(error: "NO_MAIL".localized, presenter: self)
                 }
                 
                 break

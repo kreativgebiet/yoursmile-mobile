@@ -10,15 +10,15 @@ import UIKit
 
 class PreferencesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var mainLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.mainLabel.textColor = navigationBarGray
-    
-//        self.rightImageView.image = #imageLiteral(resourceName: "close-icon")
-        
+        self.rightImageView.isHidden = true
+        self.rightImageView.isUserInteractionEnabled = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -96,6 +96,9 @@
 		A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C31DE34E9700A0A8F9 /* TextViewController.swift */; };
 		A1D6F4C61DE36F4000A0A8F9 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C51DE36F4000A0A8F9 /* LanguageManager.swift */; };
 		A1D6F4C81DE3725500A0A8F9 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C71DE3725500A0A8F9 /* LanguageSelectionViewController.swift */; };
+		A1D6F4CA1DE461A300A0A8F9 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C91DE461A300A0A8F9 /* PasswordChangeViewController.swift */; };
+		A1D6F4CC1DE4674300A0A8F9 /* EmailChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4CB1DE4674300A0A8F9 /* EmailChangeViewController.swift */; };
+		A1D6F4CE1DE469F400A0A8F9 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4CD1DE469F400A0A8F9 /* DeleteAccountViewController.swift */; };
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
@@ -232,6 +235,9 @@
 		A1D6F4C31DE34E9700A0A8F9 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		A1D6F4C51DE36F4000A0A8F9 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		A1D6F4C71DE3725500A0A8F9 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
+		A1D6F4C91DE461A300A0A8F9 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
+		A1D6F4CB1DE4674300A0A8F9 /* EmailChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailChangeViewController.swift; sourceTree = "<group>"; };
+		A1D6F4CD1DE469F400A0A8F9 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUpTestData.swift; sourceTree = "<group>"; };
@@ -373,6 +379,9 @@
 				A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */,
 				A1D6F4C31DE34E9700A0A8F9 /* TextViewController.swift */,
 				A1D6F4C71DE3725500A0A8F9 /* LanguageSelectionViewController.swift */,
+				A1D6F4C91DE461A300A0A8F9 /* PasswordChangeViewController.swift */,
+				A1D6F4CB1DE4674300A0A8F9 /* EmailChangeViewController.swift */,
+				A1D6F4CD1DE469F400A0A8F9 /* DeleteAccountViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -688,8 +697,10 @@
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
+				A1D6F4CC1DE4674300A0A8F9 /* EmailChangeViewController.swift in Sources */,
 				A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */,
 				A1CF0CA41DD238C9002C4562 /* DonationDetailHeaderView.swift in Sources */,
+				A1D6F4CA1DE461A300A0A8F9 /* PasswordChangeViewController.swift in Sources */,
 				A12A454D1DCF8C76002977DF /* AppDelegate.swift in Sources */,
 				A1F8D8EF1DD36DCD00AFAB4F /* ProjectFilterViewController.swift in Sources */,
 				A15390A71DD0F5E300B7ADA0 /* FeedViewController.swift in Sources */,
@@ -716,6 +727,7 @@
 				A11028F31DD5135C00633343 /* AddedProjectButtonView.swift in Sources */,
 				A1CF0CAD1DD26AB1002C4562 /* DonationDetailOverlayView.swift in Sources */,
 				A1CF0CA71DD252D9002C4562 /* DonationDetailViewController.swift in Sources */,
+				A1D6F4CE1DE469F400A0A8F9 /* DeleteAccountViewController.swift in Sources */,
 				A135467C1DDE0FFF00931139 /* DonationSuccessOverlay.swift in Sources */,
 				A12A45811DD081FF002977DF /* LoginViewController.swift in Sources */,
 				A13546721DDDEC7900931139 /* PaymentSelectionView.swift in Sources */,

@@ -32,10 +32,18 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear-icon" translatesAutoresizingMaskIntoConstraints="NO" id="GxA-YA-RFl">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="WTr-pB-UiF"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="GxA-YA-RFl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NEC-Lg-ai5"/>
                     <constraint firstItem="Vmc-C7-itO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PNv-CU-fG5"/>
                     <constraint firstAttribute="bottom" secondItem="TXX-T3-0HH" secondAttribute="bottom" id="Ttf-aS-mSt"/>
+                    <constraint firstAttribute="bottom" secondItem="GxA-YA-RFl" secondAttribute="bottom" id="U6m-Ja-MJ1"/>
+                    <constraint firstAttribute="trailing" secondItem="GxA-YA-RFl" secondAttribute="trailing" id="XYn-Ss-k30"/>
                     <constraint firstAttribute="trailing" secondItem="Vmc-C7-itO" secondAttribute="trailing" id="eLh-yZ-XXL"/>
                     <constraint firstItem="TXX-T3-0HH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gpH-aS-KRW"/>
                     <constraint firstAttribute="bottom" secondItem="Vmc-C7-itO" secondAttribute="bottom" id="hlB-1B-JE1"/>
@@ -45,8 +53,12 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="mainLabel" destination="TXX-T3-0HH" id="jBt-QD-Nag"/>
+                <outlet property="rightImageView" destination="GxA-YA-RFl" id="gWR-t8-z3u"/>
                 <outlet property="rightLabel" destination="Vmc-C7-itO" id="IXs-WX-ofn"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="clear-icon" width="14" height="14"/>
+    </resources>
 </document>

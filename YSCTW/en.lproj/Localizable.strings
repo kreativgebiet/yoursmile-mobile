@@ -115,3 +115,15 @@
 "PAYMENT_OPTIONS" = "PAYMENT OPTIONS";
 "PAYMENT_PAYPAL" = "PayPal";
 "PAYMENT_CREDIT_CARD" = "Credit card";
+"CURRENT_PASSWORD" = "CURRENT PASSWORD";
+"NEW_PASSWORD" = "NEW PASSWORD";
+"NEW_EMAIL" = "NEW EMAIL";
+"SAVE" = "Save";
+"DELETE_ACCOUNT_DESC" = "Do you really want to delete your account?";
+"DELETE_ACCOUNT" = "Delete Account";
+
+"CURRENT_PASSWORD_PH" = "Current password";
+"NEW_PASSWORD_PH" = "New password";
+"NEW_PASSWORD_CONFIRMATION_PH" = "Confirm new password";
+"NEW_EMAIL_PH" = "New email";
+"NEW_EMAIL_CONFIRMATION_PH" = "Confirm new email";

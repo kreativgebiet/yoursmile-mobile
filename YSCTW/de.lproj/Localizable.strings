@@ -115,3 +115,15 @@
 "PAYMENT_OPTIONS" = "ZAHLUNGSMETHODEN";
 "PAYMENT_PAYPAL" = "PayPal";
 "PAYMENT_CREDIT_CARD" = "Kreditkarte";
+"CURRENT_PASSWORD" = "AKTUELLES PASSWORT";
+"NEW_PASSWORD" = "NEUES PASSWORT";
+"NEW_EMAIL" = "NEUE E-MAIL";
+"SAVE" = "Änderungen speichern";
+"DELETE_ACCOUNT_DESC" = "Wollen Sie wirklich Ihren Account unwiederuflich löschen?";
+"DELETE_ACCOUNT" = "Account löschen";
+
+"CURRENT_PASSWORD_PH" = "Aktuelles Passwort";
+"NEW_PASSWORD_PH" = "Neues Passwort";
+"NEW_PASSWORD_CONFIRMATION_PH" = "Neues Passwort bestätigen";
+"NEW_EMAIL_PH" = "Neue E-Mail";
+"NEW_EMAIL_CONFIRMATION_PH" = "Neue E-Mail bestätigen";

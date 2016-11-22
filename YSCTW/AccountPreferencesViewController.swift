@@ -100,20 +100,64 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
         cell.textLabel?.text = dictData[indexPath.row].localized
         cell.textLabel?.textColor = navigationBarGray
         cell.textLabel?.font = UIFont(name: "Gotham-Book", size: 15)
+        cell.rightImageView.isHidden = true
+        cell.rightLabel.isHidden = true
         
         if dict?["title"] as! String != "DISPLAY_NAME" {
             cell.accessoryType = .disclosureIndicator
-//            cell.rightImageView.isHidden = true
-            cell.rightLabel.isHidden = true
         } else {
             cell.accessoryType = .none
             cell.textLabel?.font = UIFont(name: "Gotham-Medium", size: 15)
             cell.textLabel?.text = self.profile?.userName
-//            cell.rightImageView.isHidden = false
-            cell.rightLabel.isHidden = true
         }
         
         return cell
+    }
+    
+    // MARK: - Selection
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.section {
+        case 0:
+            break
+        case 1:
+                        
+            switch indexPath.row {
+                //Change Password
+                case 0:
+                    let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "PasswordChangeViewController") as!  PasswordChangeViewController
+                    viewController.title = "CHANGE_PASSWORD".localized
+                    
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                    
+                    break
+                //Change Mail
+                case 1:
+                    let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "EmailChangeViewController") as!  EmailChangeViewController
+                    viewController.title = "CHANGE_MAIL".localized
+                    
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                    
+                    break
+                //Delete Account
+                case 2:
+                    let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "DeleteAccountViewController") as!  DeleteAccountViewController
+                    viewController.title = "DELETE_ACCOUNT".localized
+                    
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                    
+                    break
+                default:
+                    break
+            }
+            
+            
+        default:
+            break
+            
+        }
+        
     }
     
     /*
