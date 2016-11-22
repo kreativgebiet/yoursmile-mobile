@@ -100,7 +100,7 @@ class APIClient: NSObject {
         return MockUpTestData().projects()
     }
     
-    // MARK: Reset Password
+    // MARK: User handling
     
     class func resetPassword(newPassword: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         

@@ -18,6 +18,7 @@ class EmailChangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = customLightGray
+        self.titleLabel.textColor = customMiddleGray
     }
     
     override func viewWillAppear(_ animated: Bool) {

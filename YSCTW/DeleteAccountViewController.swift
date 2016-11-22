@@ -19,11 +19,13 @@ class DeleteAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = customLightGray
+        self.titleLabel.textColor = customMiddleGray
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.titleLabel.text = "DELETE_ACCOUNT".localized.uppercased()
+        
         self.descriptionLabel.text = "DELETE_ACCOUNT_DESC".localized
         
         self.deleteButton.setTitle("DELETE_ACCOUNT".localized, for: .normal)
