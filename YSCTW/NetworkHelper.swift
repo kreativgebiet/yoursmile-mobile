@@ -13,29 +13,32 @@ import Locksmith
 class NetworkHelper: NSObject {
     
     // MARK: Error handling
-    class func findErrorsIn(_ json: [String:AnyObject]) -> String {
+    class func findErrorsIn(_ json: Any) -> String {
         
         var errorMessage = ""
         
-        if let status = json["status"] {
-            if  status as! String == "error" {
-                let errors = json["errors"]?["full_messages"] as! [String]
-                errorMessage = errors.joined()
+        if let dictionary = json as? [String: AnyObject] {
+            if let status = dictionary["status"] {
+                if  status as! String == "error" {
+                    let errors = dictionary["errors"]?["full_messages"] as! [String]
+                    errorMessage = errors.joined()
+                }
+            }
+            
+            if let errors = dictionary["errors"] as? [String]{
+                
+                errorMessage = (errorMessage.characters.count > 0 ? errorMessage + " " : errorMessage)
+                errorMessage = errorMessage +  errors.joined()
             }
         }
         
-        if let errors = json["errors"] as? [String]{
-            
-            errorMessage = (errorMessage.characters.count > 0 ? errorMessage + " " : errorMessage)
-            errorMessage = errorMessage +  errors.joined()
-        }
-        
+
         return errorMessage
     }
     
-    class func parseResponseToJSON(data: Data) -> [String:AnyObject]? {
+    class func parseResponseToJSON(data: Data) -> Any? {
         do {
-            let json = try JSONSerialization.jsonObject(with: data as Data, options:.allowFragments) as! [String:AnyObject]
+            let json = try JSONSerialization.jsonObject(with: data as Data, options:.allowFragments)
             return json
         } catch _ {
             return nil
@@ -97,4 +100,42 @@ class NetworkHelper: NSObject {
             }
         }
     }
+    
+    // MARK: Projects Response handling
+    
+    class func parseProjectsFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ projects: [Project]) -> ())) {
+        
+        NetworkHelper.standardResponseHandling(response: response) { (success: Bool, error: String) in
+            
+            if success {
+                
+                let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [AnyObject]
+                debugPrint("JSON: \(json)")
+                
+                var projects = [Project]()
+                
+                for dict in json {
+                    
+                    let description = dict["description"]
+                    let name = dict["name"]
+                    let logo = dict["logo"]
+                    let id = dict["id"] as! Int
+                    
+                    debugPrint("JSON: \(json)")
+                    
+                    let project = Project(name: name as! String, description: description as! String, image: nil, logo: nil, id: String(id))
+                    
+                    projects.append(project)
+                }
+                
+                callback(true, projects)
+                
+            } else {
+                callback(false, [])
+            }
+            
+        }
+        
+    }
+    
 }

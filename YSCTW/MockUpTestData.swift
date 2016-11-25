@@ -12,39 +12,39 @@ class MockUpTestData: NSObject {
     
     func projects() -> [Project] {
         
-        var project1 = Project(name: "wwf-fund", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        var project1 = Project(name: "wwf-fund", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"), id: "1")
         
             project1.country = ""
             project1.sector = "HEALTH".localized
         
-        var project2 = Project(name: "wwf-fund1longtextfund1longtextfund1longtext", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        var project2 = Project(name: "wwf-fund1longtextfund1longtextfund1longtext", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"), id: "1")
         
             project2.country = "Deutschland"
             project2.sector = "EDUCTION".localized
         
-        var project3 = Project(name: "wwf-fund2", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        var project3 = Project(name: "wwf-fund2", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"), id: "1")
         
             project3.country = "Frankreich"
             project3.sector = "FOOD".localized
         
-        let project4 = Project(name: "wwf-fund3", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        let project4 = Project(name: "wwf-fund3", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"), id: "1")
         
-        var project5 = Project(name: "wwf-fund5", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        var project5 = Project(name: "wwf-fund5", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"), id: "1")
         
         project5.country = ""
         project5.sector = "HEALTH".localized
         
-        var project6 = Project(name: "wwf-fund1longtextfund1longtextfund1longtext123", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        var project6 = Project(name: "wwf-fund1longtextfund1longtextfund1longtext123", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"), id: "1")
         
         project6.country = "Deutschland"
         project6.sector = "EDUCTION".localized
         
-        var project7 = Project(name: "wwf-fund7", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        var project7 = Project(name: "wwf-fund7", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"), id: "1")
         
         project7.country = "Frankreich"
         project7.sector = "FOOD".localized
         
-        let project8 = Project(name: "wwf-fund8", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"))
+        let project8 = Project(name: "wwf-fund8", description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et", image: #imageLiteral(resourceName: "Project-Image"), logo: #imageLiteral(resourceName: "wwf-logo"), id: "1")
         
         return [project1, project2, project3, project4, project5, project6, project7, project8]
     }

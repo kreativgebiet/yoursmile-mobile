@@ -115,6 +115,9 @@
 		A1D6F4F21DE5CA3600A0A8F9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D6F4F11DE5CA3600A0A8F9 /* SystemConfiguration.framework */; };
 		A1D6F4F41DE5CA3F00A0A8F9 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D6F4F31DE5CA3F00A0A8F9 /* SafariServices.framework */; };
 		A1D6F4FE1DE5CDE300A0A8F9 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D6F4F61DE5CDE300A0A8F9 /* libPayPalMobile.a */; };
+		A1D6F5001DE5DDDF00A0A8F9 /* FeeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4FF1DE5DDDF00A0A8F9 /* FeeCalculator.swift */; };
+		A1D6F5021DE5E43B00A0A8F9 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */; };
+		A1D6F5061DE5E98E00A0A8F9 /* PayPalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */; };
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
@@ -278,6 +281,9 @@
 		A1D6F4FB1DE5CDE300A0A8F9 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
 		A1D6F4FC1DE5CDE300A0A8F9 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
 		A1D6F4FD1DE5CDE300A0A8F9 /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
+		A1D6F4FF1DE5DDDF00A0A8F9 /* FeeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeeCalculator.swift; sourceTree = "<group>"; };
+		A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
+		A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayPalViewController.swift; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUpTestData.swift; sourceTree = "<group>"; };
@@ -392,17 +398,18 @@
 				A12A45581DCF8C76002977DF /* Info.plist */,
 				A11029041DD9C36D00633343 /* Localizable.strings */,
 				A12A457A1DCF9383002977DF /* constants.swift */,
-				A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */,
 				A1F8D8E81DD3648400AFAB4F /* DataManager.swift */,
-				A11029071DD9C55E00633343 /* StringExtension.swift */,
-				A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */,
 				A1D6F4C51DE36F4000A0A8F9 /* LanguageManager.swift */,
+				A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */,
+				A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */,
+				A1D6F4FF1DE5DDDF00A0A8F9 /* FeeCalculator.swift */,
 				A1D6F4DC1DE4AC8400A0A8F9 /* Bridging-Header.h */,
+				A1D6F5041DE5E97300A0A8F9 /* TestData */,
+				A1D6F5031DE5E96600A0A8F9 /* Extensions */,
 				A1D6F4D31DE484CD00A0A8F9 /* ServiceLayer */,
 				A153909E1DD0E37100B7ADA0 /* ViewController */,
 				A153909F1DD0E37D00B7ADA0 /* Views */,
 				A1ED19A51DD1F75500538B78 /* TableViewCells */,
-				A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */,
 			);
 			path = YSCTW;
 			sourceTree = "<group>";
@@ -565,6 +572,24 @@
 			);
 			name = PayPalMobile;
 			path = YSCTW/Frameworks/PayPalMobile;
+			sourceTree = "<group>";
+		};
+		A1D6F5031DE5E96600A0A8F9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A11029071DD9C55E00633343 /* StringExtension.swift */,
+				A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		A1D6F5041DE5E97300A0A8F9 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */,
+				A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */,
+			);
+			name = TestData;
 			sourceTree = "<group>";
 		};
 		A1ED19A51DD1F75500538B78 /* TableViewCells */ = {
@@ -784,6 +809,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D6F5001DE5DDDF00A0A8F9 /* FeeCalculator.swift in Sources */,
 				A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */,
 				A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */,
 				A1F8D8E71DD3632800AFAB4F /* MockUpTestData.swift in Sources */,
@@ -791,8 +817,10 @@
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
+				A1D6F5021DE5E43B00A0A8F9 /* FloatExtension.swift in Sources */,
 				A1D6F4D51DE4854100A0A8F9 /* NetworkHelper.swift in Sources */,
 				A1D6F4CC1DE4674300A0A8F9 /* EmailChangeViewController.swift in Sources */,
+				A1D6F5061DE5E98E00A0A8F9 /* PayPalViewController.swift in Sources */,
 				A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */,
 				A1CF0CA41DD238C9002C4562 /* DonationDetailHeaderView.swift in Sources */,
 				A1D6F4CA1DE461A300A0A8F9 /* PasswordChangeViewController.swift in Sources */,

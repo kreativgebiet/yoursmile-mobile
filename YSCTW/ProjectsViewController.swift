@@ -22,8 +22,8 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var pickerDataRight: [String]!
     var leftPicker = false
     
-    var projects: [Project]!
-    var projectsToShow: [Project]!
+    var projects = [Project]()
+    var projectsToShow = [Project]()
     
     var leftSelectedIndex = 0
     var rightSelectedIndex = 0
@@ -37,9 +37,7 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.picker.dataSource = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    public func reload() {
         self.pickerDataLeft = ["NO_FILTER_SELECTED".localized,"VISITED_FAVORITES".localized,"EDUCTION".localized,"FOOD".localized,"HEALTH".localized]
         self.pickerDataRight = ["NO_FILTER_SELECTED".localized]
         
@@ -47,6 +45,16 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.pickerDataRight.append(contentsOf: countrys)
         
         self.picker.reloadAllComponents()
+        
+        self.projectsTableViewController.projects = self.projects
+        self.projectsTableViewController.reload()
+        
+        self.projectsToShow = self.projects
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reload()
     }
     
     func togglePicker() {

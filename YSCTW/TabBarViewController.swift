@@ -126,12 +126,21 @@ class TabBarViewController: UIViewController, BarViewDelegate {
                 return self.feedViewController!
             case .donation:
                 if self.projectsViewController == nil {
-                    self.projectsViewController = self.instantiateViewController(withIdentifier: "ProjectsViewController") as? ProjectsViewController
-                    self.projectsViewController?.projects = self.dataManager?.projects()
                     
-                    self.projectsViewController?.supportCallback = { selectedProject in                        
+                    self.projectsViewController = self.instantiateViewController(withIdentifier: "ProjectsViewController") as? ProjectsViewController
+                    self.projectsViewController?.supportCallback = { selectedProject in
                         self.navigationController?.performSegue(withIdentifier: "cameraSegue", sender: selectedProject)
                     }
+                    
+                    let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+                    self.view.addSubview(loadingScreen)
+                    
+                    self.dataManager?.projects({ (projects) in
+                        
+                        loadingScreen.removeFromSuperview()
+                        self.projectsViewController?.projects = projects
+                        self.projectsViewController?.reload()
+                    })
                     
                 }
             

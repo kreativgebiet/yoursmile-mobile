@@ -19,7 +19,7 @@ class DonationFeeOverlayView: UIView {
     
     public var callback: (() -> Void)!
     
-    override init(frame: CGRect) {
+    public init(frame: CGRect, numberOfProjects: Int, paymentType: Payment) {
         super.init(frame: frame)
         
         view = self.loadViewFromNib()
@@ -39,7 +39,9 @@ class DonationFeeOverlayView: UIView {
         self.paymentLabel.text = "FEE_TITLE".localized
         self.paymentLabel.textColor = navigationBarGray
         
-        self.paymentDescriptionLabel.text = "FEE_TEXT".localized
+        let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(numberOfProjects), paymentType: paymentType)
+        
+        self.paymentDescriptionLabel.text = "FEE_TEXT".localized.replacingOccurrences(of: "%@", with: String(fee))
         self.paymentDescriptionLabel.textColor = green
     }
 

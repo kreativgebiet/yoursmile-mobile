@@ -27,21 +27,19 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
     public var dataManager: DataManager?
     public var selectedProject: Project?
     
-    var projects: [Project]?
+    var projects = [Project]()
     var supportedProjects = [Project]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.projects = self.dataManager?.projects()
-        
-        self.paymentSelectionView.callback = {
+                
+        self.paymentSelectionView.callback = { paymentType in
             let navigationView = self.navigationController?.view
-            let overlay = DonationFeeOverlayView(frame: (navigationView?.bounds)!)
+            let overlay = DonationFeeOverlayView.init(frame: (navigationView?.bounds)!, numberOfProjects: self.supportedProjects.count, paymentType: paymentType)
             navigationView?.addSubview(overlay)
 
             overlay.callback = {
-            overlay.removeFromSuperview()
+                overlay.removeFromSuperview()
             }
         }
         
@@ -153,7 +151,18 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
     func addProjectButtonTapped() {
         
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProjectsViewController") as! ProjectsViewController
-        viewController.projects = self.projects?.filter({!self.supportedProjects.contains($0)})
+        
+        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+        self.view.addSubview(loadingScreen)
+        
+        self.dataManager?.projects({ (projects) in
+            
+            loadingScreen.removeFromSuperview()
+            self.projects = projects
+            
+            viewController.projects = (self.projects.filter({!self.supportedProjects.contains($0)}))
+            viewController.reload()
+        })
         
         viewController.supportCallback = { selectedSupportProject in
             self.supportedProjects.append(selectedSupportProject)

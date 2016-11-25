@@ -10,8 +10,8 @@ import UIKit
 
 class DataManager: NSObject {
     
-    func projects() -> [Project] {
-        return APIClient.projects()
+    func projects(_ callback: @escaping ((_ projects: [Project]) -> () )) {
+        APIClient.projects(callback: callback)
     }
     
     func donations() -> [Donation] {

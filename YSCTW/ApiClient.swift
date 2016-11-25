@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import Locksmith
+import SwiftyJSON
 
 let sign_up = "auth/"
 
@@ -35,7 +36,7 @@ class APIClient: NSObject {
             if (json == nil) {
                 callback(true, "ERROR".localized)
             } else {
-                let errors = NetworkHelper.findErrorsIn(json!) as String
+                let errors = NetworkHelper.findErrorsIn(json! as! [String : AnyObject]) as String
                     
                 if errors.characters.count > 0 {
                     callback(false, errors)
@@ -65,7 +66,7 @@ class APIClient: NSObject {
     
     // MARK: Projects
     
-    class func projects() -> [Project] {
+    class func projects(callback: @escaping ((_ projects: [Project]) -> () )) {
         
         let dictionary = Locksmith.loadDataForUserAccount(userAccount: "myUserAccount") as! [String:String]
         
@@ -73,31 +74,63 @@ class APIClient: NSObject {
         
         Alamofire.request(requestURL, method: .get, headers: dictionary)
             .responseJSON { response in
+                debugPrint("projects")
                 debugPrint(response)
+                
+                NetworkHelper.parseProjectsFrom(response: response, callback: { (success: Bool, projects: [Project]) in
+                    callback(projects)
+                })
         }
         
-        return MockUpTestData().projects()
+//        let requestURL2 = baseURL + "uploads"
+//        
+//        Alamofire.request(requestURL2, method: .get, headers: dictionary)
+//            .responseJSON { response in
+//                debugPrint("uploads")
+//                debugPrint(response)
+//        }
     }
     
     // MARK: Upload Selfies
     
-    class func uploadSelfie() -> [Project] {
+    class func uploadSelfie(image: UIImage, description: String, userId: String, projectIds: [Int]) {
         
         let dictionary = Locksmith.loadDataForUserAccount(userAccount: "myUserAccount") as! [String:String]
-        
         let requestURL = baseURL + "uploads"
+        let imageData = UIImageJPEGRepresentation(image, 0.0001)!
+
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            
+            multipartFormData.append(imageData, withName: "upload[image]", fileName: "test", mimeType: "image/jpeg")
+            multipartFormData.append(description.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")            
+            multipartFormData.append("\(projectIds[0])".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[project_ids][]")
+            
+
+            }, to: requestURL, method: .post, headers: dictionary,
+                encodingCompletion: { encodingResult in
+                    
+                    switch encodingResult {
+                    case .success(let upload, _, _):
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: showUploadNotificationIdentifier), object: nil, userInfo: ["request": upload])
+
+                        upload.uploadProgress { progress in
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: uploadProgressNotificationIdentifier), object: nil, userInfo: ["progress": progress])
+                            print(Float(progress.fractionCompleted))
+                        }
+                        
+                        upload.response { response in
+                            debugPrint(response)
+                            debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
+                        }
+                        
+                    case .failure(let encodingError):
+                        print("error:\(encodingError)")
+                    }
+                    
+            })
+
         
-        let parameters: [String : String] = [
-            "password": "test1234",
-            "password_confirmation": "test1234"
-        ]
-        
-        Alamofire.request(requestURL, method: .post, parameters: parameters, headers: dictionary)
-            .responseJSON { response in
-                debugPrint(response)
-        }
-        
-        return MockUpTestData().projects()
     }
     
     // MARK: User handling

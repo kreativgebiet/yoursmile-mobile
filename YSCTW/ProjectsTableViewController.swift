@@ -13,7 +13,7 @@ class ProjectsTableViewController: UITableViewController {
     public var supportCallback: ((_ project: Project) -> Void)!
     public var detailCallback: ((_ project: Project) -> Void)!
     
-    public var projects: [Project]?
+    public var projects = [Project]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +46,13 @@ class ProjectsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.projects?.count)!
+        return (self.projects.count)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectTableViewCell
         
-        let project = self.projects?[indexPath.row]
+        let project = self.projects[indexPath.row]
         cell.project = project
         
         cell.detailCallback = { project in

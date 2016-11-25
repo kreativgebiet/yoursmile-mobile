@@ -119,10 +119,51 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
         text = text.replacingOccurrences(of: "%1", with: (self.projects.count > 1 ? "PROJECTS_WORD".localized : "PROJECT_WORD".localized))
         self.projectsDonationInfoLabel.text = text
         
-        self.feeLabel.text = "FEE_INFO".localized.replacingOccurrences(of: "%@", with: "100")
+        let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(self.projects.count), paymentType: self.payment)
+        self.feeLabel.text = "FEE_INFO".localized.replacingOccurrences(of: "%@", with: String(fee))
     }
     
     func proceedTapped() {
+        
+        self.handleDonationSuccess()
+        
+//        if self.payment == .payPal {
+//            
+//            let callback: ((_ success: Bool, _ error: String) -> ()) = { (success, error) in
+//                self.handleDonationSuccess()
+//            }
+//            
+//            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(self.projects.count), paymentType: self.payment)
+//            
+//            let paymentViewController = PayPalViewController()
+//            paymentViewController.callback = callback
+//            
+//            self.present(paymentViewController, animated: false, completion: nil)
+//            paymentViewController.showPayPalPaymentFor(amount: Float(self.projects.count),fee: fee, projects: self.projects)
+//            
+//        } else if self.payment == .creditCard {
+//            
+//        } else {
+//            print("ERROR")
+//        }
+        
+    }
+    
+    func uploadSelfie() {
+        
+        let description = (self.descriptionTextField.text.characters.count > 0 ? self.descriptionTextField.text : "")
+        
+        let projectIds = self.projects.map({ $0.id })
+        
+        let ids = [1] as [Int]
+        
+        APIClient.uploadSelfie(image: self.selfieImage, description: description! , userId: "c@d.de", projectIds: ids)
+    }
+    
+    func handleDonationSuccess() {
+        
+        self.uploadSelfie()
+        
         self.view.endEditing(true)
         
         let navigationView = self.navigationController?.view
@@ -133,7 +174,6 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
             overlay2.removeFromSuperview()
             _ = self.navigationController?.popToRootViewController(animated: false)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: showUploadNotificationIdentifier), object: nil)
         }
     }
 

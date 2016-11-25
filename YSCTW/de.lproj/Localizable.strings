@@ -95,7 +95,7 @@
 "THANK_YOU_TEXT" = "Du bist ein wahrer Held! Deine Spende wurde erfolgreich weitergegeben.";
 "THANK_YOU_BUTTON" = "Zurück zum Feed";
 "FEE_TITLE" = "Bezahlinformation";
-"FEE_TEXT" = "Für diese Zahlungsart müssen wir eine Gebühr erheben, denn wir wollen, dass das Projekt den vollen Betrag von 1 € ohne Abzüge erhält. Die Gebühr beträgt 0,21 € und wird auf den Betrag hinzugefügt.";
+"FEE_TEXT" = "Für diese Zahlungsart müssen wir eine Gebühr erheben, denn wir wollen, dass das Projekt den vollen Betrag von 1 € ohne Abzüge erhält. Die Gebühr beträgt %@€ und wird auf den Betrag hinzugefügt.";
 "FEE_BUTTON" = "Okay";
 
 

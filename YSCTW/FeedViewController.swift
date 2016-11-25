@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class FeedViewController: UIViewController {
     
@@ -19,7 +20,10 @@ class FeedViewController: UIViewController {
         self.progressViewHeightConstraint.constant = 0
         self.progressView.isHidden = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showUploadProgress), name: NSNotification.Name(rawValue: showUploadNotificationIdentifier), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showUploadProgress(_:)), name: NSNotification.Name(rawValue: showUploadNotificationIdentifier), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(uploadProgress(_:)), name: NSNotification.Name(rawValue: uploadProgressNotificationIdentifier), object: nil)
+        
         
         self.progressView.cancel = {
             self.progressViewHeightConstraint.constant = 0
@@ -31,31 +35,31 @@ class FeedViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    var timer: Timer!
+    var currentRequest: Request?
     
-    func showUploadProgress() {
+    func showUploadProgress(_ notification: NSNotification) {
+        
+        if let request = notification.userInfo?["request"] as? Request {
+            currentRequest = request
+        }
+        
         self.progressView.isHidden = false
         self.progressViewHeightConstraint.constant = 34
         self.progressView.progress = 0
         
-        self.timer = Timer.scheduledTimer(timeInterval: 1,
-                                          target: self,
-                                          selector: #selector(updateTimer),
-                                          userInfo: nil,
-                                          repeats: true)
-        
     }
     
-    func updateTimer() {
+    func uploadProgress(_ notification: NSNotification) {
         
-        let progress = self.progressView.progressView.progress + 0.1
-        
-        if progress < 1 {
-            self.progressView.progress = progress
-        } else {
-            self.timer.invalidate()
-            self.progressViewHeightConstraint.constant = 0
-            self.progressView.isHidden = true
+        if let progress = notification.userInfo?["progress"] as? Progress {
+            
+            let value = progress.fractionCompleted
+            if value < 1 {
+                self.progressView.progress = Float(value)
+            } else {
+                self.progressViewHeightConstraint.constant = 0
+                self.progressView.isHidden = true
+            }
         }
         
     }

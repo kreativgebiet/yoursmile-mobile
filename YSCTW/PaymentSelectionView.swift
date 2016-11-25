@@ -8,22 +8,15 @@
 
 import UIKit
 
-enum Payment {
-    case none
-    case itunes
-    case payPal
-    case creditCard
-}
-
 class PaymentSelectionView: UIView {
-    @IBOutlet weak var payPalImageView: UIImageView!
-    @IBOutlet var view: UIView!
-    @IBOutlet weak var itunesImageView: UIImageView!
-    @IBOutlet weak var creditCardImageView: UIImageView!
     
+    @IBOutlet var view: UIView!
+    @IBOutlet weak var payPalView: UIView!
+    @IBOutlet weak var creditCardView: UIView!
+
     public var selectedPayment = Payment.none
     
-    public var callback: (() -> Void)!
+    public var callback: ((_ paymentType: Payment) -> Void)!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -38,54 +31,37 @@ class PaymentSelectionView: UIView {
         self.backgroundColor = .clear
         self.view.backgroundColor = .clear
         
-        self.payPalImageView.layer.cornerRadius = 5
-        self.payPalImageView.layer.borderColor = customDarkerGray.cgColor
-        self.payPalImageView.layer.borderWidth = 1
-        self.payPalImageView.isUserInteractionEnabled = true
+        self.payPalView.layer.cornerRadius = 5
+        self.payPalView.layer.borderColor = customDarkerGray.cgColor
+        self.payPalView.layer.borderWidth = 1
+        self.payPalView.isUserInteractionEnabled = true
+        self.payPalView.backgroundColor = .white
         
-        self.itunesImageView.layer.cornerRadius = 5
-        self.itunesImageView.layer.borderColor = customDarkerGray.cgColor
-        self.itunesImageView.layer.borderWidth = 1
-        self.itunesImageView.isUserInteractionEnabled = true
-        
-        self.creditCardImageView.layer.cornerRadius = 5
-        self.creditCardImageView.layer.borderColor = customDarkerGray.cgColor
-        self.creditCardImageView.layer.borderWidth = 1
-        self.creditCardImageView.isUserInteractionEnabled = true
-        self.creditCardImageView.backgroundColor = .white
-        self.creditCardImageView.isUserInteractionEnabled = true
+        self.creditCardView.layer.cornerRadius = 5
+        self.creditCardView.layer.borderColor = customDarkerGray.cgColor
+        self.creditCardView.layer.borderWidth = 1
+        self.creditCardView.isUserInteractionEnabled = true
+        self.creditCardView.backgroundColor = .white
         
         let payPalTap = UITapGestureRecognizer(target: self, action: #selector(payPalTapped))
-        let itunesTap = UITapGestureRecognizer(target: self, action: #selector(itunesTapped))
         let creditCardTap = UITapGestureRecognizer(target: self, action: #selector(creditCardTapped))
         
-        self.payPalImageView.addGestureRecognizer(payPalTap)
-        self.itunesImageView.addGestureRecognizer(itunesTap)
-        self.creditCardImageView.addGestureRecognizer(creditCardTap)
+        self.payPalView.addGestureRecognizer(payPalTap)
+        self.creditCardView.addGestureRecognizer(creditCardTap)
     }
     
     func payPalTapped() {
         self.selectedPayment = Payment.payPal
-        self.payPalImageView.layer.borderColor = orange.cgColor
-        self.itunesImageView.layer.borderColor = customDarkerGray.cgColor
-        self.creditCardImageView.layer.borderColor = customDarkerGray.cgColor
-        self.callback()
-    }
-    
-    func itunesTapped() {
-        self.selectedPayment = Payment.itunes
-        self.itunesImageView.layer.borderColor = orange.cgColor
-        self.payPalImageView.layer.borderColor = customDarkerGray.cgColor
-        self.creditCardImageView.layer.borderColor = customDarkerGray.cgColor
-        self.callback()
+        self.payPalView.layer.borderColor = orange.cgColor
+        self.creditCardView.layer.borderColor = customDarkerGray.cgColor
+        self.callback(self.selectedPayment)
     }
     
     func creditCardTapped() {
         self.selectedPayment = Payment.creditCard
-        self.creditCardImageView.layer.borderColor = orange.cgColor
-        self.itunesImageView.layer.borderColor = customDarkerGray.cgColor
-        self.payPalImageView.layer.borderColor = customDarkerGray.cgColor
-        self.callback()
+        self.creditCardView.layer.borderColor = orange.cgColor
+        self.payPalView.layer.borderColor = customDarkerGray.cgColor
+        self.callback(self.selectedPayment)
     }
 
 }
