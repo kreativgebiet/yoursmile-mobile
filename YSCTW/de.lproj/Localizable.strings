@@ -65,6 +65,7 @@
 "NO_MAIL" = "Sorry, die Mail-App muss installiert sein um diese Feature zu benutzen.";
 "NO_MAIL_FB_LOGIN" = "Sorry, ohne eine Freigabe der E-Mail Adresse kann kein Login erfolgen";
 "LOGOUT_ERROR" = "Sorry, dein Login ist ungültig geworden. Bitte erneut mit Email und Passwort anmelden.";
+"INSTAGRAM_ERROR" = "Die Instagram-App konnte nicht gefunden werden";
 
 //Project cell
 "SHOW_DETAILS" = "Details anzeigen";

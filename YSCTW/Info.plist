@@ -18,6 +18,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>com.paypal.ppclient.touch.v2</string>
+		<string>instagram</string>
 		<string>org-appextension-feature-password-management
 </string>
 		<string>com.paypal.ppclient.touch.v1</string>

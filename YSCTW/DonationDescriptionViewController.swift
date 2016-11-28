@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DonationDescriptionViewController: UIViewController, UITextViewDelegate, FBSDKSharingDelegate {
+class DonationDescriptionViewController: UIViewController, UITextViewDelegate, FBSDKSharingDelegate, UIDocumentInteractionControllerDelegate {
     
     public var projects: [Project]!
     public var selfieImage: UIImage!
@@ -25,7 +25,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     @IBOutlet weak var containerView: UIView!
     
     var placeholderLabel: UILabel!
-    var loadingScreen: LoadingScreen
+    var loadingScreen: LoadingScreen!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,9 +180,33 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     // MARK: - Share Button Action
     
+    var docController: UIDocumentInteractionController!
+    
     @IBAction func handleInstagramShare(_ sender: AnyObject) {
+        
+        let instagramURL = NSURL(string: "instagram://app")!
+        if UIApplication.shared.canOpenURL(instagramURL as URL) {
+            
+            let filePath = (NSTemporaryDirectory() as NSString).appendingPathComponent("InstagramImage.igo")
+            let imageData = UIImageJPEGRepresentation(self.selfieImage.resizeImageTo(maxWidth: 600, maxHeight: 600), 1.0)
+            
+            do {
+                try imageData?.write(to: URL(fileURLWithPath: filePath), options: .atomic)
+                let imageURL = NSURL.fileURL(withPath: filePath)
+                docController  = UIDocumentInteractionController(url: imageURL)
+                docController.delegate = self
+                docController.uti = "com.instagram.exclusivegram"                
+                docController.presentOpenInMenu(from: CGRect.zero, in: self.view, animated: true)
+            } catch {
+                print(error)
+            }
+            
+        } else {
+            HelperFunctions.presentAlertViewfor(error: "INSTAGRAM_ERROR".localized, presenter: self)
+        }
+        
     }
-
+    
     @IBAction func handleFacebookShare(_ sender: AnyObject) {
         
         loadingScreen = LoadingScreen.init(frame: self.view.bounds)
@@ -236,6 +260,16 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
         self.loadingScreen.removeFromSuperview()
+    }
+    
+    // MARK: - UIDocumentInteractionController delegates
+    
+    func documentInteractionController(_ controller: UIDocumentInteractionController, willBeginSendingToApplication application: String?) {
+        
+    }
+    
+    func documentInteractionController(_ controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
+        
     }
     
     // MARK: - Navigation
