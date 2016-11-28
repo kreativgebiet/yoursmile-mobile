@@ -76,6 +76,8 @@ class APIClient: NSObject {
             .responseJSON { response in
                 debugPrint("projects")
                 debugPrint(response)
+                debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
+
                 
                 NetworkHelper.parseProjectsFrom(response: response, callback: { (success: Bool, projects: [Project]) in
                     callback(projects)
@@ -102,7 +104,7 @@ class APIClient: NSObject {
         Alamofire.upload(multipartFormData: { multipartFormData in
             
             multipartFormData.append(imageData, withName: "upload[image]", fileName: "test", mimeType: "image/jpeg")
-            multipartFormData.append(description.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")            
+            multipartFormData.append(description.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")
             multipartFormData.append("\(projectIds[0])".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[project_ids][]")
             
 

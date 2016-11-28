@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import Down
 
 class AppPreferencesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
     
@@ -134,7 +135,26 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
                 //About
                 let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "TextViewController") as!  TextViewController
                 
-                viewController.text = "safasfsadfsadfsfdsad"
+                let bundle = Bundle.main
+                let path = bundle.path(forResource: "acknowledgments", ofType: "md")
+                
+                if let string = try? String(contentsOfFile: path!) {
+                    let markdownString = Down(markdownString: string)
+                    
+                    do {
+                        let html = try markdownString.toHTML()
+                        let data = html.data(using: .utf8)
+                        
+                        let attrStr = try NSAttributedString(data: data!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil)
+                        
+                        viewController.attributedText = attrStr
+                        
+                    } catch _ {
+                        print("Markdown File parsing error")
+                    }
+                    
+                }
+                
                 viewController.title = "ABOUT_YSCTW".localized
                 
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -145,7 +165,17 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
                 //Terms and conditions
                 let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "TextViewController") as!  TextViewController
                 
-                viewController.text = "safasfsadfsadfsfdsad"
+                do {
+                    let text = "safasfsadfsadfsfdsad"
+                    let data = text.data(using: .utf8)
+                    
+                    let attrString = try NSAttributedString(data: data!, options: [:], documentAttributes: nil)
+                    viewController.attributedText = attrString
+                } catch _ {
+                    print("parsing error")
+                }
+                
+                
                 viewController.title = "TERMS_CONDITIONS".localized
                 
                 self.navigationController?.pushViewController(viewController, animated: true)

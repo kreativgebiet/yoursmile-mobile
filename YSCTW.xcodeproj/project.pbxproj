@@ -73,6 +73,8 @@
 		A16407251DDF181800BA1853 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407151DDF181800BA1853 /* Gotham-Book.otf */; };
 		A16407261DDF181800BA1853 /* Gotham-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407161DDF181800BA1853 /* Gotham-BlackItalic.otf */; };
 		A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407171DDF181800BA1853 /* Gotham-Black.otf */; };
+		A19677761DEC3CD500C1CBBC /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19677751DEC3CD500C1CBBC /* Down.framework */; };
+		A19677771DEC40F000C1CBBC /* acknowledgments.md in Resources */ = {isa = PBXBuildFile; fileRef = A196776D1DEC33F000C1CBBC /* acknowledgments.md */; };
 		A1B2B9CC1DDF7B3600C27A26 /* PhotoCropEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */; };
 		A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */; };
 		A1CF0C981DD2170A002C4562 /* DonationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */; };
@@ -230,6 +232,8 @@
 		A16407151DDF181800BA1853 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Book.otf"; path = "Resources/Gotham-Book.otf"; sourceTree = "<group>"; };
 		A16407161DDF181800BA1853 /* Gotham-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-BlackItalic.otf"; path = "Resources/Gotham-BlackItalic.otf"; sourceTree = "<group>"; };
 		A16407171DDF181800BA1853 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Black.otf"; path = "Resources/Gotham-Black.otf"; sourceTree = "<group>"; };
+		A196776D1DEC33F000C1CBBC /* acknowledgments.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = acknowledgments.md; sourceTree = "<group>"; };
+		A19677751DEC3CD500C1CBBC /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
 		A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropNavigationController.swift; sourceTree = "<group>"; };
 		A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19677761DEC3CD500C1CBBC /* Down.framework in Frameworks */,
 				A1D6F4F41DE5CA3F00A0A8F9 /* SafariServices.framework in Frameworks */,
 				A1D6F4F21DE5CA3600A0A8F9 /* SystemConfiguration.framework in Frameworks */,
 				A1D6F4F01DE5CA2E00A0A8F9 /* MobileCoreServices.framework in Frameworks */,
@@ -343,6 +348,7 @@
 		A11029141DDB231D00633343 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A19677751DEC3CD500C1CBBC /* Down.framework */,
 				A1D6F4F51DE5CDE300A0A8F9 /* PayPalMobile */,
 				A1D6F4F31DE5CA3F00A0A8F9 /* SafariServices.framework */,
 				A1D6F4F11DE5CA3600A0A8F9 /* SystemConfiguration.framework */,
@@ -400,10 +406,10 @@
 				A12A457A1DCF9383002977DF /* constants.swift */,
 				A1F8D8E81DD3648400AFAB4F /* DataManager.swift */,
 				A1D6F4C51DE36F4000A0A8F9 /* LanguageManager.swift */,
-				A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */,
 				A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */,
 				A1D6F4FF1DE5DDDF00A0A8F9 /* FeeCalculator.swift */,
 				A1D6F4DC1DE4AC8400A0A8F9 /* Bridging-Header.h */,
+				A196776F1DEC33FD00C1CBBC /* Credits */,
 				A1D6F5041DE5E97300A0A8F9 /* TestData */,
 				A1D6F5031DE5E96600A0A8F9 /* Extensions */,
 				A1D6F4D31DE484CD00A0A8F9 /* ServiceLayer */,
@@ -438,6 +444,7 @@
 				A15390B41DD1EC6D00B7ADA0 /* TabBarViewController */,
 				A15390B51DD1EC8100B7ADA0 /* TabBarContentViewController */,
 				A15390A01DD0E4D900B7ADA0 /* NavigationViewController.swift */,
+				A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */,
 				A153909C1DD0CEFF00B7ADA0 /* RegistrationViewController.swift */,
 				A12A45801DD081FF002977DF /* LoginViewController.swift */,
 				A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */,
@@ -547,6 +554,14 @@
 				A16407171DDF181800BA1853 /* Gotham-Black.otf */,
 			);
 			name = Font;
+			sourceTree = "<group>";
+		};
+		A196776F1DEC33FD00C1CBBC /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				A196776D1DEC33F000C1CBBC /* acknowledgments.md */,
+			);
+			name = Credits;
 			sourceTree = "<group>";
 		};
 		A1D6F4D31DE484CD00A0A8F9 /* ServiceLayer */ = {
@@ -724,6 +739,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19677771DEC40F000C1CBBC /* acknowledgments.md in Resources */,
 				A16407251DDF181800BA1853 /* Gotham-Book.otf in Resources */,
 				A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */,
 				A110290F1DD9EDB100633343 /* ProjectView.xib in Resources */,
@@ -795,6 +811,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PhotoCropEditor.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Down.framework",
 			);
 			outputPaths = (
 			);

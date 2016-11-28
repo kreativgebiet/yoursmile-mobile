@@ -12,11 +12,11 @@ class TextViewController: UIViewController {
     
     @IBOutlet weak var textLabel: UILabel!
     
-    public var text: String!
+    public var attributedText: NSAttributedString!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textLabel.text = text        
+        textLabel.attributedText = attributedText
     }
 
     override func didReceiveMemoryWarning() {

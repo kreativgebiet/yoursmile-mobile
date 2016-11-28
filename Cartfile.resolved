@@ -1,4 +1,5 @@
 github "Alamofire/Alamofire" "4.2.0"
 github "sprint84/CropViewController" "1.2.4"
+github "iwasrobbed/Down" "v0.3"
 github "matthewpalmer/Locksmith" "3.0.0"
 github "SwiftyJSON/SwiftyJSON" "3.1.3"
