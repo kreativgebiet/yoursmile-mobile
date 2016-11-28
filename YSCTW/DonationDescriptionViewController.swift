@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
+class DonationDescriptionViewController: UIViewController, UITextViewDelegate, FBSDKSharingDelegate {
     
     public var projects: [Project]!
     public var selfieImage: UIImage!
@@ -25,6 +25,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var containerView: UIView!
     
     var placeholderLabel: UILabel!
+    var loadingScreen: LoadingScreen
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,7 +177,67 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
         }
     }
+    
+    // MARK: - Share Button Action
+    
+    @IBAction func handleInstagramShare(_ sender: AnyObject) {
+    }
 
+    @IBAction func handleFacebookShare(_ sender: AnyObject) {
+        
+        loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+        
+        self.view.endEditing(true)
+        self.view.addSubview(loadingScreen)
+        
+        if FBSDKAccessToken.current().hasGranted("publish_actions") {
+            let content = self.createFBSharePhotoContent()
+            FBSDKShareAPI.share(with: content, delegate: self)
+        } else {
+            let loginmanager = FBSDKLoginManager()
+            
+            loginmanager.logIn(withPublishPermissions: ["publish_actions"], from: self, handler: { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
+                
+                if ((error) != nil) {
+                    HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)! , presenter: self)
+                } else {
+                    let content = self.createFBSharePhotoContent()
+                    FBSDKShareAPI.share(with: content, delegate: self)
+                }
+                
+            })
+            
+        }
+        
+    }
+    
+    func createFBSharePhotoContent() -> FBSDKSharePhotoContent {
+        let sharePhoto = FBSDKSharePhoto.init()
+        sharePhoto.image = self.selfieImage
+        sharePhoto.isUserGenerated = true
+        sharePhoto.caption = self.descriptionTextField.text
+        
+        let content = FBSDKSharePhotoContent.init()
+        content.photos = [sharePhoto]
+        
+        return content
+    }
+    
+    // MARK: - FBSDK Share Delegates
+    
+    func sharerDidCancel(_ sharer: FBSDKSharing!) {
+        self.loadingScreen.removeFromSuperview()
+    }
+    
+    func sharer(_ sharer: FBSDKSharing!, didFailWithError error: Error!) {
+        self.loadingScreen.removeFromSuperview()
+        HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)! , presenter: self)
+    }
+    
+    func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
+        self.loadingScreen.removeFromSuperview()
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

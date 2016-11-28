@@ -10,6 +10,7 @@
 #define Bridging_Header_h
 
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 #import "PayPalMobile.h"
 
 #endif /* Bridging_Header_h */

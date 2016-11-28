@@ -689,6 +689,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <state key="normal" title="Facebook" image="facebook-icon"/>
+                                <connections>
+                                    <action selector="handleFacebookShare:" destination="Pmb-zv-XnQ" eventType="touchUpInside" id="Zem-SX-4bH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-qJ-egp" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
                                 <constraints>
@@ -697,6 +700,9 @@
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="6" minY="10" maxX="0.0" maxY="10"/>
                                 <state key="normal" title="Instagram" image="instagram-icon"/>
+                                <connections>
+                                    <action selector="handleInstagramShare:" destination="Pmb-zv-XnQ" eventType="touchUpInside" id="o1W-8H-3i2"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*zzgl. 30 Cent Gebühren" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-1q-hcS">
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="10"/>
