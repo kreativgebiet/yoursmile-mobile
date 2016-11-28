@@ -64,6 +64,7 @@
 "ERROR" = "An error occured";
 "NO_MAIL" = "Sorry, but you need to have the Mail-App installed to use this feature";
 "NO_MAIL_FB_LOGIN" = "Sorry, your email needs to approved to login";
+"LOGOUT_ERROR" = "Sorry, your login got invalid please login again";
 
 //Project cell
 "SHOW_DETAILS" = "Show details";

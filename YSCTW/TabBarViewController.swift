@@ -68,6 +68,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(openFeed), name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(preferencesTapped), name: NSNotification.Name(rawValue: preferencesNotificationIdentifier), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(logout), name: NSNotification.Name(rawValue: logoutNotificationIdentifier), object: nil)
     }
     
     deinit {
@@ -82,6 +83,12 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     func preferencesTapped() {
         self.didSelectButtonOf(type: .preferences)
         self.barViewController.selectButtonOf(type: .preferences)
+    }
+    
+    func logout() {
+        HelperFunctions.presentAlertViewfor(error: "LOGOUT_ERROR".localized, presenter: self, {
+          self.navigationController?.performSegue(withIdentifier: "logoutSegue", sender: self)
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

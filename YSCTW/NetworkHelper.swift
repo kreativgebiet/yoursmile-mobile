@@ -72,6 +72,25 @@ class NetworkHelper: NSObject {
         }
     }
     
+    class func verifyToken(callback: ((_ token: [String : String]) -> Void)!) {
+        let dictionary = Locksmith.loadDataForUserAccount(userAccount: "myUserAccount") as! [String:String]
+        
+        if let expiryTimeStamp = dictionary["expiry"] {
+            let timeStamp = Double(expiryTimeStamp)
+            let expiryDate = Date(timeIntervalSince1970: timeStamp!)
+            
+            if Date() < expiryDate {
+               callback(dictionary)
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: logoutNotificationIdentifier), object: nil)
+            }
+
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: logoutNotificationIdentifier), object: nil)
+        }
+
+    }
+    
     class func deleteToken() {
         do {
             try Locksmith.deleteDataForUserAccount(userAccount: "myUserAccount")

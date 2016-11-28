@@ -12,10 +12,12 @@ import Locksmith
 
 class HelperFunctions: NSObject {
     
-    class func presentAlertViewfor(error: String, presenter: UIViewController) {
+    class func presentAlertViewfor(error: String, presenter: UIViewController, _ callback: (() -> Void)? = nil) {
         let alertController = UIAlertController(title: "ERROR".localized, message: error, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
-            print("OK")
+            if callback != nil {
+                callback!()
+            }
         }
         alertController.addAction(okAction)
         presenter.present(alertController, animated: true, completion: nil)
