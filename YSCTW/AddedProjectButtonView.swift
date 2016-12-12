@@ -32,9 +32,8 @@ class AddedProjectButtonView: UIView {
         
         self.logoImageView.backgroundColor = .white
         
-        if let image = self.project?.logoImage {
-            self.logoImageView.image = image
-        }
+        let logoURL = URL(string: self.project.logoURL)!
+        self.logoImageView.af_setImage(withURL: logoURL)
         
         if let name = self.project?.projectName {
             self.projectNameLabel.text = name

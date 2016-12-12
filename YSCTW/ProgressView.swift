@@ -13,7 +13,16 @@ class ProgressView: UIView {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressLabel: UILabel!
     
-    let progress = 80
+    //Progress expected in range of [0:1]
+    public var progress: Float {
+        set {
+            self.progressView.progress = newValue
+        }
+        
+        get {
+            return self.progressView.progress
+        }
+    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -33,8 +42,9 @@ class ProgressView: UIView {
         self.progressView.trackTintColor = customDarkerGray
         self.progressView.progressTintColor = orange
         
-        self.progressView.progress = 0.8
-        self.progressLabel.text = "TARGET_REACHED1".localized + " " + String(self.progress) + "%" + " " + "TARGET_REACHED2".localized
+        let progessAsInt = Int(self.progress * 100)
+        
+        self.progressLabel.text = "TARGET_REACHED1".localized + " " + String(progessAsInt) + "%" + " " + "TARGET_REACHED2".localized
     }
 
 }

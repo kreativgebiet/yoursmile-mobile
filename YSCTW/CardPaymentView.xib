@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gotham-Bold.otf">
+            <string>Gotham-Bold</string>
+        </array>
+        <array key="Gotham-Book.otf">
+            <string>Gotham-Book</string>
+        </array>
+        <array key="Gotham-Medium.otf">
+            <string>Gotham-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardPaymentView" customModule="YSCTW" customModuleProvider="target">
+            <connections>
+                <outlet property="cardNumberTitleContainerView" destination="IQS-qJ-XH7" id="UHB-L0-kVu"/>
+                <outlet property="cardNumberTitleLabel" destination="R7J-EL-Wv4" id="cXc-Ch-PyC"/>
+                <outlet property="cardOwnerNameTextField" destination="OPA-aN-LGR" id="H3m-9f-Bnh"/>
+                <outlet property="cardOwnerTitleContainerView" destination="Mb7-Sa-Qj0" id="dl8-tQ-py2"/>
+                <outlet property="cardOwnerTitleLabel" destination="VbT-wv-A55" id="EHC-Kq-DXr"/>
+                <outlet property="payButton" destination="CgR-NJ-YQM" id="GAD-DE-R3K"/>
+                <outlet property="paymentCardTextFieldContainer" destination="4iC-xR-IRb" id="7km-ys-ehI"/>
+                <outlet property="priceLabel" destination="Blw-io-yXt" id="TEN-l3-ini"/>
+                <outlet property="priceTitleContainerView" destination="szd-YT-nNq" id="dod-k6-oG7"/>
+                <outlet property="view" destination="iN0-l3-epB" id="ZBO-rN-5R0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szd-YT-nNq" userLabel="Price Label View">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preis:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Blw-io-yXt">
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="DKy-Aq-nT2"/>
+                        <constraint firstAttribute="bottom" secondItem="Blw-io-yXt" secondAttribute="bottom" constant="4" id="T4z-4m-9FS"/>
+                        <constraint firstItem="Blw-io-yXt" firstAttribute="leading" secondItem="szd-YT-nNq" secondAttribute="leading" constant="15" id="Ypi-s2-XFN"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="l2i-ZX-2pD"/>
+                        <constraint firstAttribute="trailing" secondItem="Blw-io-yXt" secondAttribute="trailing" constant="15" id="rlc-vh-L2F"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mb7-Sa-Qj0" userLabel="Name Label View">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Karteninhaber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbT-wv-A55">
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="637-9L-mXS"/>
+                        <constraint firstAttribute="bottom" secondItem="VbT-wv-A55" secondAttribute="bottom" constant="4" id="9Co-Ph-IHo"/>
+                        <constraint firstAttribute="trailing" secondItem="VbT-wv-A55" secondAttribute="trailing" constant="15" id="9vY-uy-j2R"/>
+                        <constraint firstItem="VbT-wv-A55" firstAttribute="leading" secondItem="Mb7-Sa-Qj0" secondAttribute="leading" constant="15" id="Nns-B4-N51"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNw-PP-Eoq" userLabel="Name TextField View">
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Karteninhaber" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OPA-aN-LGR">
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="OHt-dg-P9P"/>
+                        <constraint firstAttribute="bottom" secondItem="OPA-aN-LGR" secondAttribute="bottom" id="TDI-ux-ayW"/>
+                        <constraint firstAttribute="trailing" secondItem="OPA-aN-LGR" secondAttribute="trailing" constant="15" id="V5K-gA-HSh"/>
+                        <constraint firstItem="OPA-aN-LGR" firstAttribute="top" secondItem="pNw-PP-Eoq" secondAttribute="top" id="Xgq-aN-irZ"/>
+                        <constraint firstItem="OPA-aN-LGR" firstAttribute="leading" secondItem="pNw-PP-Eoq" secondAttribute="leading" constant="15" id="x8w-nc-Kx6"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQS-qJ-XH7" userLabel="Card Number Label">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kartennummer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7J-EL-Wv4">
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="CQH-Jn-ZoS"/>
+                        <constraint firstAttribute="trailing" secondItem="R7J-EL-Wv4" secondAttribute="trailing" constant="15" id="Oju-Fg-0ir"/>
+                        <constraint firstAttribute="height" constant="40" id="TfB-Sy-q8S"/>
+                        <constraint firstAttribute="bottom" secondItem="R7J-EL-Wv4" secondAttribute="bottom" constant="4" id="dPS-fl-QWy"/>
+                        <constraint firstItem="R7J-EL-Wv4" firstAttribute="leading" secondItem="IQS-qJ-XH7" secondAttribute="leading" constant="15" id="fMA-wY-HGr"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iC-xR-IRb" userLabel="PaymentCardTextFieldContainer">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="vze-n4-pGS"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgR-NJ-YQM" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="eF6-WU-IOc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
+                    <state key="normal" title="Bezahlen"/>
+                    <connections>
+                        <action selector="payButtonPressed:" destination="-1" eventType="touchUpInside" id="cgZ-wa-qgp"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="szd-YT-nNq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PrH-Dw-6rE"/>
+                <constraint firstAttribute="trailing" secondItem="szd-YT-nNq" secondAttribute="trailing" id="QXm-KR-UOt"/>
+                <constraint firstAttribute="trailing" secondItem="4iC-xR-IRb" secondAttribute="trailing" id="Xia-Ng-o2q"/>
+                <constraint firstItem="4iC-xR-IRb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XuV-Gl-U8m"/>
+                <constraint firstAttribute="trailing" secondItem="IQS-qJ-XH7" secondAttribute="trailing" id="ZVi-qH-LD9"/>
+                <constraint firstItem="CgR-NJ-YQM" firstAttribute="top" secondItem="4iC-xR-IRb" secondAttribute="bottom" constant="50" id="hRE-N6-VKk"/>
+                <constraint firstItem="IQS-qJ-XH7" firstAttribute="top" secondItem="pNw-PP-Eoq" secondAttribute="bottom" id="hUJ-Yg-k1G"/>
+                <constraint firstAttribute="trailing" secondItem="Mb7-Sa-Qj0" secondAttribute="trailing" id="jOw-fJ-6Cs"/>
+                <constraint firstItem="pNw-PP-Eoq" firstAttribute="top" secondItem="Mb7-Sa-Qj0" secondAttribute="bottom" id="kZI-QJ-Pz3"/>
+                <constraint firstItem="szd-YT-nNq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lQr-iM-OaJ"/>
+                <constraint firstAttribute="trailing" secondItem="pNw-PP-Eoq" secondAttribute="trailing" id="m2Y-1i-TCZ"/>
+                <constraint firstItem="IQS-qJ-XH7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pSO-sA-iEC"/>
+                <constraint firstItem="Mb7-Sa-Qj0" firstAttribute="top" secondItem="szd-YT-nNq" secondAttribute="bottom" constant="40" id="qYW-Un-esR"/>
+                <constraint firstItem="4iC-xR-IRb" firstAttribute="top" secondItem="IQS-qJ-XH7" secondAttribute="bottom" constant="-1" id="rr1-29-M2m"/>
+                <constraint firstAttribute="trailing" secondItem="CgR-NJ-YQM" secondAttribute="trailing" constant="15" id="s7A-MK-Qif"/>
+                <constraint firstItem="Mb7-Sa-Qj0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v1L-It-cl0"/>
+                <constraint firstItem="pNw-PP-Eoq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vAo-ED-4lg"/>
+                <constraint firstItem="CgR-NJ-YQM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="yHd-f1-QPa"/>
+            </constraints>
+            <point key="canvasLocation" x="90.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

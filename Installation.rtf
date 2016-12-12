@@ -6,9 +6,19 @@
 
 \f0\fs24 \cf0 YSCTW Installation Guide:\
 \
+Building the App:\
+\
+The App uses Carthage dependency Manager\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 For usage refer to {\field{\*\fldinst{HYPERLINK "https://github.com/Carthage/Carthage"}}{\fldrslt https://github.com/Carthage/Carthage}}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Use \'84carthage update --platform ios\'93 to avoid unnecessary long builds for other operation platforms\
+\
 Before submitting to the App-Store change the following settings:\
 \
 x change Bundle ID\
 x change Facebook App-ID ({\field{\*\fldinst{HYPERLINK "https://developers.facebook.com/docs/ios/getting-started"}}{\fldrslt https://developers.facebook.com/docs/ios/getting-started}})\
 	- This needs to be done in info.plist file. Change \'84FacebookAppID\'93 and \'84FacebookDisplayName\'93 according to your account settings in Facebook.\
+\
+x make sure \'84Keychain Access Groups\'93 use the new BundleID\
 }

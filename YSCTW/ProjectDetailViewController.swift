@@ -24,9 +24,12 @@ class ProjectDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.projectDescriptionLabel.text = self.project.projectDescription
-        self.projectImageView.image = self.project.projectImage
+        let imageUrl = URL(string: project.imageURL)!
+        self.projectImageView.af_setImage(withURL: imageUrl)
         
         self.transparentProjectView.projects.append(self.project)
+        
+        self.progressView.progress = (Float(self.project.progress)/100.0).roundTo(places: 2)
         
         if !UIAccessibilityIsReduceTransparencyEnabled() {
             self.transparentProjectView.transparentView.backgroundColor = UIColor.clear

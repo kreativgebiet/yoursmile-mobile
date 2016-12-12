@@ -45,7 +45,12 @@ class ProjectView: UIView {
         self.projectLabel.backgroundColor = .clear
         
         self.projectLabel.text = self.project?.projectName
-        self.projectLogoImageView.image = self.project?.logoImage
+        
+        if (self.project?.logoURL.characters.count)! > 0 {
+            let logoURL = URL(string: (self.project?.logoURL)!)!
+            self.projectLogoImageView.af_setImage(withURL: logoURL)
+        }
+        
     }
     
     private func loadViewFromNib() -> UIView {

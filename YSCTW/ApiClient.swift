@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import Locksmith
 import SwiftyJSON
 
@@ -78,22 +79,48 @@ class APIClient: NSObject {
                     debugPrint(response)
                     debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
                     
-                    
                     NetworkHelper.parseProjectsFrom(response: response, callback: { (success: Bool, projects: [Project]) in
-                        callback(projects)
+                        
+                        if success == true {                            
+                            callback(projects)
+                        } else {
+                            callback([])
+                        }
+                        
+                    })
+            }
+            
+        }
+    
+    }
+    
+    // MARK: Uploads
+
+    class func uploads(callback: @escaping ((_ uploads: [Donation]) -> () )) {
+        
+        NetworkHelper.verifyToken { (token) in
+            
+            let requestURL = baseURL + "uploads"
+            
+            Alamofire.request(requestURL, method: .get, headers: token)
+                .responseJSON { response in
+                    debugPrint("uploads")
+                    debugPrint(response)
+                    debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
+                    
+                    NetworkHelper.parseUploadsFrom(response: response, callback: { (success: Bool, uploads: [Donation]) in
+                        
+                        if success == true {
+                            callback(uploads)
+                        } else {
+                            callback([])
+                        }
+                        
                     })
             }
             
         }
         
-        
-//        let requestURL2 = baseURL + "uploads"
-//        
-//        Alamofire.request(requestURL2, method: .get, headers: dictionary)
-//            .responseJSON { response in
-//                debugPrint("uploads")
-//                debugPrint(response)
-//        }
     }
     
     // MARK: Upload Selfies
@@ -103,14 +130,16 @@ class APIClient: NSObject {
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "uploads"
-            let imageData = UIImageJPEGRepresentation(image, 0.0001)!
+            let imageData = UIImageJPEGRepresentation(image, 0.1)!
             
             Alamofire.upload(multipartFormData: { multipartFormData in
                 
                 multipartFormData.append(imageData, withName: "upload[image]", fileName: "test", mimeType: "image/jpeg")
                 multipartFormData.append(description.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")
-                multipartFormData.append("\(projectIds[0])".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[project_ids][]")
                 
+                for projectId in projectIds {
+                    multipartFormData.append("\(projectId)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[project_ids][]")
+                }
                 
                 }, to: requestURL, method: .post, headers: token,
                    encodingCompletion: { encodingResult in

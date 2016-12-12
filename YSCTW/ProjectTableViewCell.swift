@@ -49,9 +49,13 @@ class ProjectTableViewCell: UITableViewCell {
         self.supportButton.setTitle("SUPPORT".localized, for: .normal)
         self.supportButton.setTitle("SUPPORT".localized, for: .selected)
         
-        self.projectImageView.image = project?.projectImage
+        let imageUrl = URL(string: project.imageURL)!
+        self.projectImageView.af_setImage(withURL: imageUrl)
+        
         self.descriptionLabel.text = project?.projectDescription
-        self.transparentProjectView.projects.append(self.project)
+        self.transparentProjectView.projects = [self.project]
+        self.transparentProjectView.setNeedsLayout()
+        self.transparentProjectView.layoutIfNeeded()
     }
     
     @IBAction func handleDetailButtonTapped(_ sender: AnyObject) {

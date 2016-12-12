@@ -128,26 +128,34 @@ class NetworkHelper: NSObject {
             
             if success {
                 
-                let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [AnyObject]
+                let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
                 debugPrint("JSON: \(json)")
                 
-                var projects = [Project]()
-                
-                for dict in json {
+                if let data = json["data"] as? [AnyObject] {
+                    var projects = [Project]()
                     
-                    let description = dict["description"]
-                    let name = dict["name"]
-                    let logo = dict["logo"]
-                    let id = dict["id"] as! Int
+                    for dict in data {
+                        
+                        let description = dict["description"] as! String
+                        let name = dict["name"] as! String
+                        let logoURL = dict["logo"] as! String
+                        let imageURL = dict["image"] as! String
+                        let progress = dict["progress"] as! Int
+                        let id = dict["id"] as! Int
+                        let countryCode = dict["country_code"] as! String
+                        let sectorCode = dict["sector_code"] as! String
+                        
+                        debugPrint("JSON: \(json)")
+                        
+                        let project = Project(name: name, description: description, progress: progress, id: String(id), imageURL: imageURL, logoURL: logoURL, countryCode: countryCode, sectorCode: sectorCode)
+                        
+                        projects.append(project)
+                    }
                     
-                    debugPrint("JSON: \(json)")
-                    
-                    let project = Project(name: name as! String, description: description as! String, image: nil, logo: nil, id: String(id))
-                    
-                    projects.append(project)
+                    callback(true, projects)
+                } else {
+                    callback(false, [])
                 }
-                
-                callback(true, projects)
                 
             } else {
                 callback(false, [])
@@ -157,4 +165,49 @@ class NetworkHelper: NSObject {
         
     }
     
+    // MARK: Uploads Response handling
+
+    class func parseUploadsFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ uploads: [Donation]) -> ())) {
+        
+        NetworkHelper.standardResponseHandling(response: response) { (success: Bool, error: String) in
+            
+            if success {
+                
+                let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
+                debugPrint("JSON: \(json)")
+                
+                if let data = json["data"] as? [AnyObject] {
+                    var uploads = [Donation]()
+                    
+                    for dict in data {
+                        
+//                        let description = dict["description"] as! String
+//                        let name = dict["name"] as! String
+//                        let logoURL = dict["logo"] as! String
+//                        let imageURL = dict["image"] as! String
+//                        let progress = dict["progress"] as! Int
+//                        let id = dict["id"] as! Int
+//                        let countryCode = dict["country_code"] as! String
+//                        let sectorCode = dict["sector_code"] as! String
+//                        
+//                        debugPrint("JSON: \(json)")
+//                        
+//                        let project = Project(name: name, description: description, progress: progress, id: String(id), imageURL: imageURL, logoURL: logoURL, countryCode: countryCode, sectorCode: sectorCode)
+                        
+//                        
+//                        uploads.append(project)
+                    }
+                    
+                    callback(true, uploads)
+                } else {
+                    callback(false, [])
+                }
+                
+            } else {
+                callback(false, [])
+            }
+            
+        }
+        
+    }
 }

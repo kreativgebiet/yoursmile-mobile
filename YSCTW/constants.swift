@@ -20,8 +20,10 @@ let logoutNotificationIdentifier: String = "LogoutProgressNotificationIdentifier
 let orange = UIColor(red: 252.0/255.0, green: 168/255.0, blue: 78/255.0, alpha: 1.0) as UIColor
 let green = UIColor(red: 0/255.0, green: 151.0/255.0, blue: 137.0/255.0, alpha: 1.0) as UIColor
 let customRed = UIColor(red: 250.0/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0) as UIColor
+let placeholderColor = UIColor(red: 199.0/255.0, green: 199.0/255.0, blue: 205.0/255.0, alpha: 1.0) as UIColor
 let customLightGray = UIColor.init(white: 248.0/256.0, alpha: 1)
 let customGray = UIColor.init(white: 235.0/256.0, alpha: 1)
+let customGray2 = UIColor.init(white: 248.0/256.0, alpha: 1)
 let timeGray = UIColor.init(white: 169.0/256.0, alpha: 1)
 let customDarkGray = UIColor.init(white: 180.0/256.0, alpha: 1)
 let customDarkerGray = UIColor.init(white: 216.0/256.0, alpha: 1)
@@ -50,26 +52,33 @@ struct Profile {
 
 struct Project {
     var projectImage: UIImage?
+    var logoImage: UIImage?
+    var countryCode: String?
+    var sectorCode: String?
+
     var projectName: String
     var projectDescription: String
-    var logoImage: UIImage?
-    var country: String?
-    var sector: String?
+    var progress: Int
     var id: String!
+    var imageURL: String
+    var logoURL: String
     
-    init(name: String, description: String, image: UIImage?, logo: UIImage?, id: String) {
-        self.projectImage = image
+    init(name: String, description: String, progress: Int, id: String, imageURL: String, logoURL: String, countryCode: String, sectorCode: String) {
         self.projectName = name
         self.projectDescription = description
-        self.logoImage = logo
         self.id = id
+        self.progress = progress
+        self.logoURL = logoURL
+        self.imageURL = imageURL
+        self.countryCode = countryCode
+        self.sectorCode = sectorCode
     }
 }
 
 extension Project: Equatable {
     static public func ==(lhs: Project, rhs: Project) -> Bool
     {
-        return lhs.projectName == rhs.projectName && lhs.sector == rhs.sector && lhs.projectDescription == rhs.projectDescription
+        return lhs.projectName == rhs.projectName && lhs.sectorCode == rhs.sectorCode && lhs.projectDescription == rhs.projectDescription
     }
 }
 

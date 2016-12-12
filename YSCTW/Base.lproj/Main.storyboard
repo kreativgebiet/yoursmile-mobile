@@ -306,6 +306,38 @@
             </objects>
             <point key="canvasLocation" x="3176.8000000000002" y="817.24137931034488"/>
         </scene>
+        <!--Stripe Payment View Controller-->
+        <scene sceneID="92a-j0-70I">
+            <objects>
+                <viewController restorationIdentifier="StripePaymentViewController" storyboardIdentifier="StripePaymentViewController" id="s5H-ia-iBI" customClass="StripePaymentViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ow5-Xr-0l6"/>
+                        <viewControllerLayoutGuide type="bottom" id="m1r-Nd-Bn0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A4f-5c-qd6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BU7-HI-6e8" customClass="CardPaymentView" customModule="YSCTW" customModuleProvider="target">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BU7-HI-6e8" firstAttribute="top" secondItem="A4f-5c-qd6" secondAttribute="top" id="RPX-p5-qLT"/>
+                            <constraint firstItem="BU7-HI-6e8" firstAttribute="leading" secondItem="A4f-5c-qd6" secondAttribute="leading" id="ma7-C5-veq"/>
+                            <constraint firstItem="m1r-Nd-Bn0" firstAttribute="top" secondItem="BU7-HI-6e8" secondAttribute="bottom" id="qhg-0c-QxG"/>
+                            <constraint firstAttribute="trailing" secondItem="BU7-HI-6e8" secondAttribute="trailing" id="v97-Gc-aAA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardPaymentView" destination="BU7-HI-6e8" id="lh2-sF-Qq7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4AL-ZH-o7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3132" y="1744.6776611694154"/>
+        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="Wzn-v0-nBp">
             <objects>
@@ -926,7 +958,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQn-mj-f58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5159" y="-531"/>
+            <point key="canvasLocation" x="5148" y="-648"/>
         </scene>
         <!--Donation Detail View Controller-->
         <scene sceneID="Ue2-gq-eNM">

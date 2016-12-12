@@ -41,7 +41,7 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.pickerDataLeft = ["NO_FILTER_SELECTED".localized,"VISITED_FAVORITES".localized,"EDUCTION".localized,"FOOD".localized,"HEALTH".localized]
         self.pickerDataRight = ["NO_FILTER_SELECTED".localized]
         
-        let countrys = self.projects.filter({$0.country != nil}).filter({$0.country != ""}).map({ $0.country }) as! [String]
+        let countrys = self.projects.filter({$0.countryCode != nil}).filter({$0.countryCode != ""}).map({ $0.countryCode }) as! [String]
         self.pickerDataRight.append(contentsOf: countrys)
         
         self.picker.reloadAllComponents()
@@ -108,14 +108,14 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             
             if self.leftSelectedIndex == 0 {
                 let country = self.pickerDataRight[self.rightSelectedIndex]
-                self.projectsToShow = self.projects.filter({$0.country == country})
+                self.projectsToShow = self.projects.filter({$0.countryCode == country})
             } else if self.rightSelectedIndex == 0 {
                 let sector = self.pickerDataLeft[self.leftSelectedIndex]
-                self.projectsToShow = self.projects.filter({$0.sector == sector})
+                self.projectsToShow = self.projects.filter({$0.sectorCode == sector})
             } else {
                 let country = self.pickerDataRight[self.rightSelectedIndex]
                 let sector = self.pickerDataLeft[self.leftSelectedIndex]
-                self.projectsToShow = self.projects.filter({$0.sector == sector}).filter({$0.country == country})
+                self.projectsToShow = self.projects.filter({$0.sectorCode == sector}).filter({$0.countryCode == country})
             }
 
         }
