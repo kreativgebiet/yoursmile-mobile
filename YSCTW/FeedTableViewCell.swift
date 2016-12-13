@@ -57,8 +57,8 @@ class FeedTableViewCell: UITableViewCell {
         let imageURL = URL(string: self.donation.imageURL)!
         self.selfieImageView.af_setImage(withURL: imageURL)
         
-        self.donorLogoImageView.image = donation.profile?.profileImage
-        self.donorNameLabel.text = donation.profile?.userName
+        self.donorLogoImageView.image = donation.profile?.image
+        self.donorNameLabel.text = donation.profile?.name
         
         self.donorTimeLabel.text = donation.date.offset(from: Date())
         self.numberCommentsLabel.text = donation.numberOfComments

@@ -14,13 +14,23 @@ class DonationDetailViewController: UIViewController {
     @IBOutlet weak var commentViewBottomSpaceConstraint: NSLayoutConstraint!
     
     public var donation: Upload?
+    public var dataManager: DataManager?
+    
+    var donationDetailTableViewController: DonationDetailTableViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.commentView.callback = { text in
-            
+            self.dataManager?.postCommentsWith((self.donation?.id)!, text, { (comments) in
+                
+            })
         }
+        
+        self.dataManager?.commentsWith((donation?.id)!, { (comments) in
+            self.donationDetailTableViewController.comments = comments
+            self.donationDetailTableViewController.tableView.reloadData()
+        })
         
         let button = UIButton()
         button.frame = CGRect(x: 0, y:  0, width: 51, height: 31)
@@ -43,6 +53,8 @@ class DonationDetailViewController: UIViewController {
                 
         NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        
     }
     
     deinit {
@@ -84,8 +96,8 @@ class DonationDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "donationDetailTableVCSegue" {
-            let destination = segue.destination as! DonationDetailTableViewController
-            destination.donation = self.donation
+            self.donationDetailTableViewController = segue.destination as! DonationDetailTableViewController
+            self.donationDetailTableViewController.donation = self.donation
         }
         
     } 

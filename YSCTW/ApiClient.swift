@@ -168,6 +168,42 @@ class APIClient: NSObject {
         }
     }
     
+    // MARK: Comment handling
+    
+    class func commentsWith(_ uploadId: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
+        
+        NetworkHelper.verifyToken { (token) in
+            let requestURL = baseURL + "uploads/" + uploadId + "/comments"
+            
+            Alamofire.request(requestURL, method: .get, headers: token)
+                .responseJSON { response in
+                NetworkHelper.parseCommentsFrom(response: response, callback: { (success, comments) in
+                    callback((success ? comments : []))
+                })
+            }
+        }
+        
+    }
+    
+    class func postCommentWith(_ uploadId: String, _ text: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
+        
+        NetworkHelper.verifyToken { (token) in
+            let requestURL = baseURL + "uploads/" + uploadId + "/comments"
+            
+            let parameters: [String : String] = [
+                "comment[text]": ""
+            ]
+            
+            Alamofire.request(requestURL, method: .post, parameters: parameters, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.parseCommentsFrom(response: response, callback: { (success, comments) in
+                        callback((success ? comments : []))
+                    })
+            }
+        }
+        
+    }
+    
     // MARK: User handling
     
     class func resetPassword(newPassword: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {

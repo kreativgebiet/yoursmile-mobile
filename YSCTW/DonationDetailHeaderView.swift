@@ -49,8 +49,8 @@ class DonationDetailHeaderView: UIView {
     
     func addHeaderData() {
         
-        self.donatorProfileImageView.image = self.donation?.profile?.profileImage
-        self.donatorNameLabel.text = self.donation?.profile?.userName
+        self.donatorProfileImageView.image = self.donation?.profile?.image
+        self.donatorNameLabel.text = self.donation?.profile?.name
         self.transparentProjectView.projects = (self.donation?.projects)!
 
         let imageURL = URL(string: (self.donation?.imageURL)!)!

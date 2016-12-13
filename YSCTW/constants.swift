@@ -31,22 +31,36 @@ let spacerGray = UIColor.init(white: 102.0/256.0, alpha: 1)
 let navigationBarGray = UIColor.init(white: 68.0/256.0, alpha: 1)
 let customMiddleGray = UIColor.init(white: 135.0/256.0, alpha: 1)
 
-//Mock data structure
-
 enum Payment {
     case none
     case payPal
     case creditCard
 }
 
+//Data structure
+
+//       "id": 10,
+//        "name": "nick",
+//        "avatar": null,
+//        "email": "nick@kreativgebiet.com",
+//        "nickname": "nicknick"
+
 struct Profile {
-    var profileImage: UIImage?
-    var userName: String
-    var numberOfDonations: Int?
     
-    init(name: String, image: UIImage?) {
-        self.profileImage = image
-        self.userName = name
+    var id: Int
+    var name: String
+    var email: String
+    var nickname: String
+    var avatarURL: String
+    
+    var image: UIImage?
+    
+    init(id: Int, name: String, email: String, nickname: String, avatarURL: String) {
+        self.id = id
+        self.name = name
+        self.email = email
+        self.nickname = nickname
+        self.avatarURL = avatarURL
     }
 }
 
@@ -83,14 +97,23 @@ extension Project: Equatable {
 }
 
 struct Comment {
-    var commentProfileImage: UIImage
-    var commentName: String
-    var comment: String
     
-    init(name: String, text: String, image: UIImage) {
-        self.comment = text
-        self.commentName = name
-        self.commentProfileImage = image
+    var id: Int
+    var text: String
+    var date: Date
+    
+    var profile: Profile
+    
+    init(id: Int, text: String, created_at: String, profile: Profile) {
+        self.id = id
+        self.text = text
+        self.profile = profile
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let dateObj = dateFormatter.date(from: created_at)
+        
+        self.date = dateObj!
     }
 }
 

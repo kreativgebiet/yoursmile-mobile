@@ -169,6 +169,54 @@ class NetworkHelper: NSObject {
         return projects
     }
     
+    // MARK: Comments Response handling
+    
+    class func parseCommentsFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ comments: [Comment]) -> ())) {
+        
+        NetworkHelper.standardResponseHandling(response: response) { (success: Bool, error: String) in
+            
+            if success {
+                
+                let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
+                
+                if let data = json["data"] as? [AnyObject] {
+                    
+                    let comments = NetworkHelper.parseCommentsFrom(data: data)
+                    
+                    callback(true, comments)
+                } else {
+                    callback(false, [])
+                }
+                
+            } else {
+                callback(false, [])
+            }
+            
+        }
+        
+    }
+    
+    class func parseCommentsFrom(data: [AnyObject]) -> [Comment] {
+        var comments = [Comment]()
+        
+        for dict in data {
+            
+            let id = dict["id"] as! Int
+            let text = dict["text"] as! String
+            let createdAt = dict["created_at"] as! String
+            
+            let author  = dict["author"] as! [String : AnyObject]
+            
+            let profile = NetworkHelper.parseProfileFrom(data: author)
+            
+            let comment = Comment(id: id, text: text, created_at: createdAt, profile: profile)
+            
+            comments.append(comment)
+        }
+
+        return comments
+    }
+    
     // MARK: Uploads Response handling
 
     class func parseUploadsFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ uploads: [Upload]) -> ())) {
@@ -188,26 +236,13 @@ class NetworkHelper: NSObject {
                         let description = dict["description"] as! String
                         let imageURL = dict["image"] as! String
                         let id = dict["id"] as! Int
-                        let author  = dict["author"] as! [String : AnyObject]
                         let commentCount = dict["comment_count"] as! Int
                         let createdAt = dict["created_at"] as! String
+
                         let projectsData = dict["projects"] as! [AnyObject]
+                        let author  = dict["author"] as! [String : AnyObject]
                         
-                        var name = author["email"] as! String
-                        
-                        if let authorName = author["nickname"] as? String {
-                            name = authorName
-                        }
-                        
-                        //TODO cleanup
-                        let image = #imageLiteral(resourceName: "user-icon")
-                        
-//                        if let imagePath = author["avatar"] as? String {
-//                            
-//                        }
-                        
-                        let profile = Profile(name: name, image: image)
-                        
+                        let profile = NetworkHelper.parseProfileFrom(data: author)
                         let projects = NetworkHelper.parseProjectsFrom(data: projectsData)
                         
                         var upload = Upload(supportedProjects: [], imageURL: imageURL, id: String(id), created_at: createdAt, description: description, profile: profile)
@@ -231,13 +266,32 @@ class NetworkHelper: NSObject {
         
     }
     
-//    class func parseProfile(json: [String : AnyObject]) -> Profile{
-//        
-//        let name = json["name"] as! String
-//        let id = json["id"] as! String
-//        let email = json["email"] as! String
-//        let avatar = json["avatar"] as! String
-//        
-//        return Profile(name: name, avatarURL: avatar)
-//    }
+    class func parseProfileFrom(data: [String : AnyObject]) -> Profile {
+
+        let id = data["id"] as! Int
+        let email = data["email"] as! String
+        var nickname = ""
+        var name = ""
+        let image = #imageLiteral(resourceName: "user-icon")
+        var imageURL = ""
+        
+        if let authorNickName = data["nickname"] as? String {
+            nickname = authorNickName
+        }
+        
+        if let authorName = data["name"] as? String {
+            name = authorName
+        }
+        
+        if let avatarURL = data["avatar"] as? String {
+            imageURL = avatarURL
+        }
+        
+        //TODO cleanup
+        
+        var profile = Profile(id: id, name: name, email: email, nickname: nickname, avatarURL: imageURL)
+        profile.image = image
+        
+        return profile
+    }
 }

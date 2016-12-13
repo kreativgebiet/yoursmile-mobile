@@ -23,11 +23,11 @@ class MockUpTestData: NSObject {
     }
     
     public func profile() -> Profile {
-        return Profile(name: "Max Mustermann", image: #imageLiteral(resourceName: "Profile-Pic"))
+        return Profile(id: 1, name: "Max Z", email: "test@mail.de", nickname: "nick", avatarURL: "asflkj")
     }
     
     public func userProfile() -> Profile {
-        return Profile(name: "Max Mustermann 2", image: nil)
+        return Profile(id: 1, name: "Max M.", email: "test@mail.de", nickname: "nick", avatarURL: "asflkj")
     }
 
 }

@@ -21,6 +21,18 @@ class DataManager: NSObject {
         }
     }
     
+    func commentsWith(_ uploadId: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
+        APIClient.commentsWith(uploadId) { (comments) in
+            callback(comments)
+        }
+    }
+    
+    func postCommentsWith(_ uploadId: String, _ text: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
+        APIClient.postCommentWith(uploadId, text) { (comments) in
+            callback(comments)
+        }
+    }
+    
     func profile() -> Profile {
         return MockUpTestData().profile()
     }

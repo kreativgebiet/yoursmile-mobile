@@ -13,6 +13,8 @@ class DonationDetailTableViewController: UITableViewController {
     @IBOutlet weak var donationHeaderView: DonationDetailHeaderView!
     
     public var donation: Upload?
+    public var comments: [Comment]?
+
     var maximumComments = 3
     var footerView: TableViewFooterView?
     
@@ -21,13 +23,13 @@ class DonationDetailTableViewController: UITableViewController {
         
         self.donationHeaderView.donation = self.donation
         
-        if ((self.donation?.comments != nil) && (self.donation?.comments?.count)! > maximumComments) {
+        if ((self.comments != nil) && (self.comments?.count)! > maximumComments) {
             self.footerView = TableViewFooterView(frame: CGRect(x: 0,y: 0,width: tableView.frame.size.width,height: 40))
-            self.footerView?.numberOfComments = (self.donation?.comments?.count)!
+            self.footerView?.numberOfComments = (self.comments?.count)!
             
             self.footerView?.selectionCallback = {
                 self.tableView.tableFooterView = nil
-                self.maximumComments = (self.donation?.comments?.count)!
+                self.maximumComments = (self.comments?.count)!
                 self.tableView.reloadData()
             }
             
@@ -72,8 +74,8 @@ class DonationDetailTableViewController: UITableViewController {
         
         var numberOfRows = 0
         
-        if self.donation?.comments?.count != nil {
-            numberOfRows = min((self.donation?.comments?.count)!, self.maximumComments)
+        if self.comments?.count != nil {
+            numberOfRows = min((self.comments?.count)!, self.maximumComments)
         }
         
         return numberOfRows
@@ -82,11 +84,11 @@ class DonationDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
         
-        let comment = self.donation?.comments?[indexPath.row]
+        let comment = self.comments?[indexPath.row]
         
-        cell.profileImageView.image = comment?.commentProfileImage
-        cell.nameLabel.text = comment?.commentName
-        cell.commentLabel.text = comment?.comment
+        cell.profileImageView.image = comment?.profile.image
+        cell.nameLabel.text = comment?.profile.name
+        cell.commentLabel.text = comment?.text
         
         return cell
     }

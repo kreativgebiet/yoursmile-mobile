@@ -43,6 +43,7 @@ class NavigationViewController: UINavigationController {
         if segue.identifier == "donationDetailSegue" {
             let destinationVC = segue.destination as! DonationDetailViewController
             let donation = sender as! Upload
+            destinationVC.dataManager = self.dataManager
             destinationVC.donation = donation
         } else if segue.identifier == "cameraSegue" {
             let destination = segue.destination as! CameraViewController

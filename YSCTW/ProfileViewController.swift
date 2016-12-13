@@ -18,11 +18,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     public var profileImage: UIImage {
         
         get {
-            return self.userProfile.profileImage!
+            return self.userProfile.image!
         }
         
         set {
-            self.userProfile.profileImage = newValue
+            self.userProfile.image = newValue
             self.profileView.userProfile = self.userProfile
         }
         
@@ -105,7 +105,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.profileView.topImageView.alpha = 1
                     
                     let profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
-                    self.profileView.profileLabel.text = profileToUse.userName
+                    self.profileView.profileLabel.text = profileToUse.name
                     
                 }, completion: { (completed) in
                     scrollView.setContentOffset(CGPoint(x: 0, y: 1), animated: true)

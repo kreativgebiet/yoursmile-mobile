@@ -90,20 +90,22 @@ class ProfileHeaderView: UIView {
         //If no specific profile is selected user profile is used
         let profileToUse = ((self.profile != nil) ? self.profile : self.userProfile)!
         
-        self.profileNameLabel.text = profileToUse.userName
+        self.profileNameLabel.text = profileToUse.name
+
+        //TODO
+//        let numberOfProjectsSupported = profileToUse.numberOfDonations != nil ? profileToUse.numberOfDonations : 0
+        let numberOfProjectsSupported = 0
         
-        let numberOfProjectsSupported = profileToUse.numberOfDonations != nil ? profileToUse.numberOfDonations : 0
-        
-        self.projectNumberLabel.text = String(Int(numberOfProjectsSupported!)) + " " + "PROJECTS_SUPPORTED".localized
+        self.projectNumberLabel.text = String(Int(numberOfProjectsSupported)) + " " + "PROJECTS_SUPPORTED".localized
         
         self.subscriberLabel.text = "0" + " " + "SUBSCRIBER".localized
         self.subscribedLabel.text = "0" + " " + "SUBSCRIBED".localized
         
-        if profileToUse.profileImage != nil {
-            self.profileImageView.image = profileToUse.profileImage
-            self.backgroundImageView.image = profileToUse.profileImage
+        if profileToUse.image != nil {
+            self.profileImageView.image = profileToUse.image
+            self.backgroundImageView.image = profileToUse.image
             self.profileImageView.clipsToBounds = true
-            self.topImageView.image = profileToUse.profileImage
+            self.topImageView.image = profileToUse.image
 
         } else {
             

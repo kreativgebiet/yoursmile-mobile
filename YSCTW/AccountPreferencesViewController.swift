@@ -108,7 +108,7 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
         } else {
             cell.accessoryType = .none
             cell.textLabel?.font = UIFont(name: "Gotham-Medium", size: 15)
-            cell.textLabel?.text = self.profile?.userName
+            cell.textLabel?.text = self.profile?.name
         }
         
         return cell
