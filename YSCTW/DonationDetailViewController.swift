@@ -29,7 +29,7 @@ class DonationDetailViewController: UIViewController {
         
         self.dataManager?.commentsWith((donation?.id)!, { (comments) in
             self.donationDetailTableViewController.comments = comments
-            self.donationDetailTableViewController.tableView.reloadData()
+            self.donationDetailTableViewController.reloadData()
         })
         
         let button = UIButton()
@@ -37,7 +37,7 @@ class DonationDetailViewController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "more-icon"), for: .normal)
         button.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
         
-        button.transform = CGAffineTransform(translationX: 15, y: 0)
+        button.transform = CGAffineTransform(translationX: 15, y: 3)
         
         let containerView = UIView()
         containerView.frame = button.frame

@@ -22,7 +22,19 @@ class DonationDetailTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.donationHeaderView.donation = self.donation
+        self.tableView.reloadData()
         
+        self.applyTableViewStyle()
+        self.sizeHeaderToFit()
+        self.applyFooterStyle()
+    }
+    
+    func reloadData() {
+        self.applyFooterStyle()
+        self.tableView.reloadData()
+    }
+    
+    func applyFooterStyle() {
         if ((self.comments != nil) && (self.comments?.count)! > maximumComments) {
             self.footerView = TableViewFooterView(frame: CGRect(x: 0,y: 0,width: tableView.frame.size.width,height: 40))
             self.footerView?.numberOfComments = (self.comments?.count)!
@@ -37,9 +49,6 @@ class DonationDetailTableViewController: UITableViewController {
         } else {
             self.tableView.tableFooterView = UIView()
         }
-        
-        self.applyTableViewStyle()
-        self.sizeHeaderToFit()
     }
     
     func applyTableViewStyle() {

@@ -21,6 +21,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="led-bE-6DG">
+                    <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="Sh5-11-Xy3"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alle X Kommentare anzeigen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4P1-VN-Uyw">
                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="14"/>
                     <nil key="textColor"/>
@@ -29,9 +35,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="led-bE-6DG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Kqf-nx-e4W"/>
                 <constraint firstItem="4P1-VN-Uyw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="P5h-5X-Jh8"/>
                 <constraint firstItem="4P1-VN-Uyw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Qar-e0-GH7"/>
                 <constraint firstAttribute="trailing" secondItem="4P1-VN-Uyw" secondAttribute="trailing" constant="8" id="Tq7-NB-fVO"/>
+                <constraint firstItem="led-bE-6DG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="hpM-3w-xSC"/>
+                <constraint firstAttribute="trailing" secondItem="led-bE-6DG" secondAttribute="trailing" constant="15" id="wrj-MY-Iu5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="57.5" y="87"/>

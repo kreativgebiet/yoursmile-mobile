@@ -22,7 +22,7 @@ class NavigationViewController: UINavigationController {
         let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 18)!, NSForegroundColorAttributeName: UIColor.white]
         self.navigationBar.titleTextAttributes = attributes
         
-        self.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back-icon")
+        self.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back-icon").withAlignmentRectInsets(UIEdgeInsetsMake(12, 0, 0, 0))
         self.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back-icon")
         
         self.navigationController?.navigationBar.barStyle = .black

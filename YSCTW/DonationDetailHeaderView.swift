@@ -45,6 +45,8 @@ class DonationDetailHeaderView: UIView {
 
         self.donationReceiverView.backgroundColor = navigationBarGray.withAlphaComponent(0.6)
         self.timeLabel.textColor = timeGray
+        
+        self.selfieCommentLabel.textColor = spacerGray
     }
     
     func addHeaderData() {
@@ -57,6 +59,8 @@ class DonationDetailHeaderView: UIView {
         self.selfieImageView.af_setImage(withURL: imageURL)
         
         self.selfieCommentLabel.text = self.donation?.description
+        
+        self.timeLabel.text = self.donation?.date.offset(from: Date())
     }
     
 }

@@ -5,6 +5,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Gotham-Bold.otf">
+            <string>Gotham-Bold</string>
+        </array>
         <array key="Gotham-Book.otf">
             <string>Gotham-Book</string>
         </array>
@@ -44,7 +47,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQO-SV-uOY">
-                                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
+                                    <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -98,7 +101,7 @@
                         <constraint firstAttribute="trailing" secondItem="wwH-AW-bSv" secondAttribute="trailing" constant="8" id="bxA-sJ-6rf"/>
                         <constraint firstItem="BxR-mi-HAw" firstAttribute="top" secondItem="WKa-d5-BBq" secondAttribute="top" id="ddn-om-Dk5"/>
                         <constraint firstItem="6Zm-We-VPy" firstAttribute="top" secondItem="BxR-mi-HAw" secondAttribute="bottom" constant="-42" id="gPt-V3-iZq"/>
-                        <constraint firstItem="wwH-AW-bSv" firstAttribute="top" secondItem="fQO-SV-uOY" secondAttribute="bottom" id="hp3-ye-dzD"/>
+                        <constraint firstItem="wwH-AW-bSv" firstAttribute="top" secondItem="fQO-SV-uOY" secondAttribute="bottom" constant="10" id="hp3-ye-dzD"/>
                         <constraint firstAttribute="trailing" secondItem="pJ6-C3-wHs" secondAttribute="trailing" id="oey-Wz-LDF"/>
                         <constraint firstAttribute="trailing" secondItem="BxR-mi-HAw" secondAttribute="trailing" id="sUX-aY-d9x"/>
                         <constraint firstAttribute="trailing" secondItem="6Zm-We-VPy" secondAttribute="trailing" id="yJU-Uj-7QG"/>

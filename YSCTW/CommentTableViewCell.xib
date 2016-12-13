@@ -41,10 +41,10 @@
                 <constraint firstAttribute="trailing" secondItem="GoF-ZK-F9P" secondAttribute="trailing" id="JnM-Iz-ZOn"/>
                 <constraint firstAttribute="trailing" secondItem="6ax-b5-rJp" secondAttribute="trailing" id="OPB-HZ-anO"/>
                 <constraint firstItem="6ax-b5-rJp" firstAttribute="leading" secondItem="Srg-hB-rS9" secondAttribute="trailing" constant="16" id="fIv-9a-PhS"/>
-                <constraint firstItem="Srg-hB-rS9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="iI3-J7-WgV"/>
+                <constraint firstItem="Srg-hB-rS9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="iI3-J7-WgV"/>
                 <constraint firstItem="GoF-ZK-F9P" firstAttribute="leading" secondItem="Srg-hB-rS9" secondAttribute="trailing" constant="16" id="mRi-qW-Qwy"/>
-                <constraint firstAttribute="bottom" secondItem="6ax-b5-rJp" secondAttribute="bottom" constant="6" id="nMz-kn-eiT"/>
-                <constraint firstItem="GoF-ZK-F9P" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="pEr-L8-WFJ"/>
+                <constraint firstAttribute="bottom" secondItem="6ax-b5-rJp" secondAttribute="bottom" constant="20" id="nMz-kn-eiT"/>
+                <constraint firstItem="GoF-ZK-F9P" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="pEr-L8-WFJ"/>
                 <constraint firstItem="Srg-hB-rS9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="tm2-Wu-lg3"/>
                 <constraint firstItem="6ax-b5-rJp" firstAttribute="top" secondItem="GoF-ZK-F9P" secondAttribute="bottom" constant="4.5" id="usN-S4-gnx"/>
             </constraints>
