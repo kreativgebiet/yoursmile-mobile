@@ -52,6 +52,8 @@ class FeedTableViewCell: UITableViewCell {
         self.donorLogoImageView.clipsToBounds = true
         
         self.transparentProjectView.projects = self.donation.projects
+        self.transparentProjectView.setNeedsLayout()
+        self.transparentProjectView.layoutIfNeeded()
         
         self.selfieImageView.image = nil
         let imageURL = URL(string: self.donation.imageURL)!
