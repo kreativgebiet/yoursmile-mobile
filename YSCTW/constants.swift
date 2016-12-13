@@ -94,27 +94,32 @@ struct Comment {
     }
 }
 
-struct Donation {
-    
-    var selfie: UIImage?
-    var donorProfileImage: UIImage?
-    var donorName: String?
-    var donationTime: String?
-    var numberOfComments: String
-    
-    var selfieUserComment: String?
-    var comments: [Comment]?
+struct Upload {
     
     var projects: [Project]
+    var imageURL: String
+    var id: String
+    
+    var date: Date
+    var description: String
     var profile: Profile?
     
-    init(supportedProjects: [Project], selfieImage: UIImage, profileImage: UIImage, name: String, time: String, comments: String) {
-        projects = supportedProjects
-        selfie = selfieImage
-        donorProfileImage = profileImage
-        donorName = name
-        donationTime = time
-        numberOfComments = comments
+    var numberOfComments: String?
+    var comments: [Comment]?
+    
+    init(supportedProjects: [Project], imageURL: String, id: String, created_at: String, description: String, profile: Profile) {
+        self.projects = supportedProjects
+        self.imageURL = imageURL
+        self.id = id
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let dateObj = dateFormatter.date(from: created_at)
+        
+        self.date = dateObj!
+        
+        self.description = description
+        self.profile = profile
     }
     
 }

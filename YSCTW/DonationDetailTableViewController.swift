@@ -12,7 +12,7 @@ class DonationDetailTableViewController: UITableViewController {
 
     @IBOutlet weak var donationHeaderView: DonationDetailHeaderView!
     
-    public var donation: Donation?
+    public var donation: Upload?
     var maximumComments = 3
     var footerView: TableViewFooterView?
     

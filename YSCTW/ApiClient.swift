@@ -96,7 +96,7 @@ class APIClient: NSObject {
     
     // MARK: Uploads
 
-    class func uploads(callback: @escaping ((_ uploads: [Donation]) -> () )) {
+    class func uploads(callback: @escaping ((_ uploads: [Upload]) -> () )) {
         
         NetworkHelper.verifyToken { (token) in
             
@@ -108,7 +108,7 @@ class APIClient: NSObject {
                     debugPrint(response)
                     debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
                     
-                    NetworkHelper.parseUploadsFrom(response: response, callback: { (success: Bool, uploads: [Donation]) in
+                    NetworkHelper.parseUploadsFrom(response: response, callback: { (success: Bool, uploads: [Upload]) in
                         
                         if success == true {
                             callback(uploads)

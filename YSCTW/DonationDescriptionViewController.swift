@@ -126,13 +126,11 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     func proceedTapped() {
         
-//        self.handleDonationSuccess()
+        let callback: ((_ success: Bool, _ error: String) -> ()) = { (success, error) in
+            self.handleDonationSuccess()
+        }
         
         if self.payment == .payPal {
-            
-            let callback: ((_ success: Bool, _ error: String) -> ()) = { (success, error) in
-                self.handleDonationSuccess()
-            }
             
             let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(self.projects.count), paymentType: self.payment)
             
@@ -149,7 +147,8 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
             let total = Int(fee*100) + self.projects.count * 100
             
             let paymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StripePaymentViewController") as!  StripePaymentViewController
-            
+
+            paymentViewController.callback = callback
             paymentViewController.totalPrice = total
 
             self.navigationController?.pushViewController(paymentViewController, animated: true)

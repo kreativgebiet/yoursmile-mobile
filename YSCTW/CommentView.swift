@@ -14,6 +14,8 @@ class CommentView: UIView {
     @IBOutlet var view: CommentView!
     @IBOutlet weak var sendButton: RoundedButton!
     
+    public var callback: ((_ text: String) -> Void)!
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         UINib(nibName: "CommentView", bundle: nil).instantiate(withOwner: self, options: nil)
@@ -33,8 +35,9 @@ class CommentView: UIView {
     
     //:Mark - Button handling
     @IBAction func handleSendCommentButtonTapped(_ sender: AnyObject) {
-        
+        if (self.commentTextField.text?.characters.count)! > 0 {
+            self.callback(self.commentTextField.text!)
+        }
     }
-    
 
 }

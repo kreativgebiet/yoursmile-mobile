@@ -20,7 +20,7 @@ class DonationDetailHeaderView: UIView {
     @IBOutlet weak var selfieCommentLabel: UILabel!
     @IBOutlet weak var transparentProjectView: TransparentProjectView!
     
-    public var donation: Donation?
+    public var donation: Upload?
     
     @IBOutlet var view: UIView!
     
@@ -48,12 +48,15 @@ class DonationDetailHeaderView: UIView {
     }
     
     func addHeaderData() {
-        self.donatorProfileImageView.image = self.donation?.donorProfileImage
-        self.donatorNameLabel.text = self.donation?.donorName
+        
+        self.donatorProfileImageView.image = self.donation?.profile?.profileImage
+        self.donatorNameLabel.text = self.donation?.profile?.userName
         self.transparentProjectView.projects = (self.donation?.projects)!
 
-        self.selfieImageView.image = self.donation?.selfie
-        self.selfieCommentLabel.text = self.donation?.selfieUserComment
+        let imageURL = URL(string: (self.donation?.imageURL)!)!
+        self.selfieImageView.af_setImage(withURL: imageURL)
+        
+        self.selfieCommentLabel.text = self.donation?.description
     }
     
 }

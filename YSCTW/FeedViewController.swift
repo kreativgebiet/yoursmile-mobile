@@ -12,6 +12,9 @@ import Alamofire
 class FeedViewController: UIViewController {
     
     public var dataManager: DataManager?
+    public var uploads = [Upload]()
+    var feedTableViewController: FeedTableViewController!
+    
     @IBOutlet weak var progressView: CancelableProgressView!
     @IBOutlet weak var progressViewHeightConstraint: NSLayoutConstraint!
 
@@ -64,12 +67,28 @@ class FeedViewController: UIViewController {
         
     }
     
+    // MARK: - Reload
+    
+    func reload() {
+        self.feedTableViewController.uploads = self.uploads
+        self.feedTableViewController.reloadData()
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! FeedTableViewController
-        destinationVC.donations = self.dataManager?.donations()
+        self.feedTableViewController = segue.destination as! FeedTableViewController
+        self.feedTableViewController.uploads = self.uploads
+        
+        self.feedTableViewController.refreshCallback = {
+            
+            self.dataManager?.uploads({ (uploads) in
+                self.uploads = uploads
+                self.reload()
+            })
+            
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

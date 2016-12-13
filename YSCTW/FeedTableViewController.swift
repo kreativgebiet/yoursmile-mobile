@@ -10,14 +10,26 @@ import UIKit
 
 class FeedTableViewController: UITableViewController {
     
-    public var selectedDonation: Donation?
-    public var donations: [Donation]?
+    public var selectedDonation: Upload?
+    public var uploads: [Upload]?
+    public var refreshCallback: (() -> Void)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 467
         self.tableView.allowsSelection = false
         self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
+        
+        self.refreshControl?.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
+    }
+    
+    func loadData() {
+        self.refreshCallback()
+    }
+    
+    public func reloadData() {
+        self.refreshControl?.endRefreshing()
+        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,21 +45,21 @@ class FeedTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-        return (self.donations?.count)!
+        return (self.uploads?.count)!
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as! FeedTableViewCell
         
-        let donation = (self.donations?[indexPath.row])! as Donation
+        let donation = (self.uploads?[indexPath.row])! as Upload
 
         cell.donation = donation
         
-        cell.detailCallback = { (donation: Donation) in
+        cell.detailCallback = { (donation: Upload) in
             self.navigationController?.performSegue(withIdentifier: "donationDetailSegue", sender: donation)
         }
         
-        cell.profileCallback = { (donation: Donation) in
+        cell.profileCallback = { (donation: Upload) in
             self.navigationController?.performSegue(withIdentifier: "profileSegue", sender: donation)
         }
 

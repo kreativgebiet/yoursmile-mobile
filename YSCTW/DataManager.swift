@@ -14,8 +14,11 @@ class DataManager: NSObject {
         APIClient.projects(callback: callback)
     }
     
-    func donations() -> [Donation] {
-        return MockUpTestData().donations()
+    func uploads(_ callback: @escaping ((_ uploads: [Upload]) -> () )) {
+        APIClient.uploads { (uploads) in
+            let sortedUploads = uploads.sorted(by: { $0.date > $1.date })
+            callback(sortedUploads)
+        }
     }
     
     func profile() -> Profile {

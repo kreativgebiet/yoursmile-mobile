@@ -25,9 +25,9 @@ class FeedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var transparentProjectView: TransparentProjectView!
     
-    public var detailCallback: ((_ donation: Donation) -> Void)?
-    public var profileCallback: ((_ donation: Donation) -> Void)?
-    public var donation: Donation!
+    public var detailCallback: ((_ donation: Upload) -> Void)?
+    public var profileCallback: ((_ donation: Upload) -> Void)?
+    public var donation: Upload!
     
     override func awakeFromNib() {
         super.awakeFromNib()        
@@ -53,12 +53,14 @@ class FeedTableViewCell: UITableViewCell {
         
         self.transparentProjectView.projects = self.donation.projects
         
-        self.selfieImageView.image = donation.selfie
+        self.selfieImageView.image = nil
+        let imageURL = URL(string: self.donation.imageURL)!
+        self.selfieImageView.af_setImage(withURL: imageURL)
         
         self.donorLogoImageView.image = donation.profile?.profileImage
         self.donorNameLabel.text = donation.profile?.userName
         
-        self.donorTimeLabel.text = donation.donationTime
+        self.donorTimeLabel.text = donation.date.offset(from: Date())
         self.numberCommentsLabel.text = donation.numberOfComments
     }
     

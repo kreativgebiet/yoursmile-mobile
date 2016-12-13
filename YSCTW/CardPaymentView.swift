@@ -26,6 +26,8 @@ class CardPaymentView: UIView, STPPaymentCardTextFieldDelegate {
     var paymentField: STPPaymentCardTextField!
     var price: Float!
     
+    public var callback: ((_ success: Bool) -> Void)!
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         
@@ -49,8 +51,8 @@ class CardPaymentView: UIView, STPPaymentCardTextFieldDelegate {
         
         self.priceLabel.text = String(format: "%@: %@ €", "PRICE".localized, String(Float(self.price/100.0).roundTo(places: 2)))
         
-        self.payButton.setTitle("PRICE".localized, for: .normal)
-        self.payButton.setTitle("PRICE".localized, for: .selected)
+        self.payButton.setTitle("PAY".localized, for: .normal)
+        self.payButton.setTitle("PAY".localized, for: .selected)
         
         self.cardNumberTitleLabel.text = "CARD_NUMBER".localized.uppercased()
         self.cardOwnerTitleLabel.text = "CARD_HOLDER".localized.uppercased()
@@ -73,9 +75,9 @@ class CardPaymentView: UIView, STPPaymentCardTextFieldDelegate {
     @IBAction func payButtonPressed(_ sender: AnyObject) {
         
         if self.paymentField.isValid {
-            
+            self.callback(true)
         } else {
-//            HelperFunctions.presentAlertViewfor(error: "".localized , presenter: self)
+            self.callback(false)
         }
         
     }

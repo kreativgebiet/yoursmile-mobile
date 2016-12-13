@@ -33,13 +33,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
     var initialProfileViewHeightConstraint: CGFloat!
-    var donations: [Donation]?
+    var donations: [Upload]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        self.donations = self.dataManager?.donations()
-        
+
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.tableHeaderView = UIView(frame: CGRect.zero)
@@ -156,15 +154,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as! FeedTableViewCell
         
-        let donation = (self.donations?[indexPath.row])! as Donation
+        let donation = (self.donations?[indexPath.row])! as Upload
         
         cell.donation = donation
         
-        cell.detailCallback = { (donation: Donation) in
+        cell.detailCallback = { (donation: Upload) in
             self.navigationController?.performSegue(withIdentifier: "donationDetailSegue", sender: donation)
         }
         
-        cell.profileCallback = { (donation: Donation) in
+        cell.profileCallback = { (donation: Upload) in
             self.navigationController?.performSegue(withIdentifier: "profileSegue", sender: donation)
         }
         

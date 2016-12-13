@@ -66,6 +66,7 @@
 "NO_MAIL_FB_LOGIN" = "Sorry, your email needs to approved to login";
 "LOGOUT_ERROR" = "Sorry, your login got invalid please login again";
 "INSTAGRAM_ERROR" = "The Instagram-App couldn't be found";
+"CREDIT_CARD_ERROR" = "Please enter a valid credit card number.";
 
 //Project cell
 "SHOW_DETAILS" = "Show details";

@@ -132,26 +132,8 @@ class NetworkHelper: NSObject {
                 debugPrint("JSON: \(json)")
                 
                 if let data = json["data"] as? [AnyObject] {
-                    var projects = [Project]()
-                    
-                    for dict in data {
-                        
-                        let description = dict["description"] as! String
-                        let name = dict["name"] as! String
-                        let logoURL = dict["logo"] as! String
-                        let imageURL = dict["image"] as! String
-                        let progress = dict["progress"] as! Int
-                        let id = dict["id"] as! Int
-                        let countryCode = dict["country_code"] as! String
-                        let sectorCode = dict["sector_code"] as! String
-                        
-                        debugPrint("JSON: \(json)")
-                        
-                        let project = Project(name: name, description: description, progress: progress, id: String(id), imageURL: imageURL, logoURL: logoURL, countryCode: countryCode, sectorCode: sectorCode)
-                        
-                        projects.append(project)
-                    }
-                    
+                  
+                    let projects = NetworkHelper.parseProjectsFrom(data: data)
                     callback(true, projects)
                 } else {
                     callback(false, [])
@@ -165,9 +147,31 @@ class NetworkHelper: NSObject {
         
     }
     
+    class func parseProjectsFrom(data: [AnyObject]) -> [Project] {
+        var projects = [Project]()
+        
+        for dict in data {
+            
+            let description = dict["description"] as! String
+            let name = dict["name"] as! String
+            let logoURL = dict["logo"] as! String
+            let imageURL = dict["image"] as! String
+            let progress = dict["progress"] as! Int
+            let id = dict["id"] as! Int
+            let countryCode = dict["country_code"] as! String
+            let sectorCode = dict["sector_code"] as! String
+            
+            let project = Project(name: name, description: description, progress: progress, id: String(id), imageURL: imageURL, logoURL: logoURL, countryCode: countryCode, sectorCode: sectorCode)
+            
+            projects.append(project)
+        }
+        
+        return projects
+    }
+    
     // MARK: Uploads Response handling
 
-    class func parseUploadsFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ uploads: [Donation]) -> ())) {
+    class func parseUploadsFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ uploads: [Upload]) -> ())) {
         
         NetworkHelper.standardResponseHandling(response: response) { (success: Bool, error: String) in
             
@@ -177,25 +181,41 @@ class NetworkHelper: NSObject {
                 debugPrint("JSON: \(json)")
                 
                 if let data = json["data"] as? [AnyObject] {
-                    var uploads = [Donation]()
+                    var uploads = [Upload]()
                     
                     for dict in data {
+
+                        let description = dict["description"] as! String
+                        let imageURL = dict["image"] as! String
+                        let id = dict["id"] as! Int
+                        let author  = dict["author"] as! [String : AnyObject]
+                        let commentCount = dict["comment_count"] as! Int
+                        let createdAt = dict["created_at"] as! String
+                        let projectsData = dict["projects"] as! [AnyObject]
                         
-//                        let description = dict["description"] as! String
-//                        let name = dict["name"] as! String
-//                        let logoURL = dict["logo"] as! String
-//                        let imageURL = dict["image"] as! String
-//                        let progress = dict["progress"] as! Int
-//                        let id = dict["id"] as! Int
-//                        let countryCode = dict["country_code"] as! String
-//                        let sectorCode = dict["sector_code"] as! String
-//                        
-//                        debugPrint("JSON: \(json)")
-//                        
-//                        let project = Project(name: name, description: description, progress: progress, id: String(id), imageURL: imageURL, logoURL: logoURL, countryCode: countryCode, sectorCode: sectorCode)
+                        var name = author["email"] as! String
                         
-//                        
-//                        uploads.append(project)
+                        if let authorName = author["nickname"] as? String {
+                            name = authorName
+                        }
+                        
+                        //TODO cleanup
+                        let image = #imageLiteral(resourceName: "user-icon")
+                        
+//                        if let imagePath = author["avatar"] as? String {
+//                            
+//                        }
+                        
+                        let profile = Profile(name: name, image: image)
+                        
+                        let projects = NetworkHelper.parseProjectsFrom(data: projectsData)
+                        
+                        var upload = Upload(supportedProjects: [], imageURL: imageURL, id: String(id), created_at: createdAt, description: description, profile: profile)
+                        
+                        upload.numberOfComments = String(commentCount)
+                        upload.projects = projects
+                        
+                        uploads.append(upload)
                     }
                     
                     callback(true, uploads)
@@ -210,4 +230,14 @@ class NetworkHelper: NSObject {
         }
         
     }
+    
+//    class func parseProfile(json: [String : AnyObject]) -> Profile{
+//        
+//        let name = json["name"] as! String
+//        let id = json["id"] as! String
+//        let email = json["email"] as! String
+//        let avatar = json["avatar"] as! String
+//        
+//        return Profile(name: name, avatarURL: avatar)
+//    }
 }

@@ -15,6 +15,7 @@ class StripePaymentViewController: UIViewController, STPPaymentContextDelegate {
     
     var paymentContext: STPPaymentContext?
     public var totalPrice: Int!
+    public var callback: ((_ success: Bool, _ error: String) -> ())!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,17 @@ class StripePaymentViewController: UIViewController, STPPaymentContextDelegate {
         self.paymentContext?.hostViewController = self
         
         self.cardPaymentView.price = Float(totalPrice)
+        
+        self.cardPaymentView.callback = { success in
+            
+            if success {
+                self.callback(true, "")
+            } else {
+                HelperFunctions.presentAlertViewfor(error: "CREDIT_CARD_ERROR".localized, presenter: self)
+            }
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

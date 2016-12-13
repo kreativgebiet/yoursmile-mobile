@@ -13,10 +13,14 @@ class DonationDetailViewController: UIViewController {
     @IBOutlet weak var commentView: CommentView!
     @IBOutlet weak var commentViewBottomSpaceConstraint: NSLayoutConstraint!
     
-    public var donation: Donation?
+    public var donation: Upload?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.commentView.callback = { text in
+            
+        }
         
         let button = UIButton()
         button.frame = CGRect(x: 0, y:  0, width: 51, height: 31)
