@@ -22,10 +22,6 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
         1 : [
             "title" : "ACCOUNT_SETTINGS",
             "data" : ["CHANGE_PASSWORD", "CHANGE_MAIL", "DELETE_ACCOUNT"]
-        ],
-        2 : [
-            "title" : "PAYMENT_OPTIONS",
-            "data" : ["PAYMENT_PAYPAL", "PAYMENT_CREDIT_CARD"]
         ]
     ] as [Int : [String:Any]]
     

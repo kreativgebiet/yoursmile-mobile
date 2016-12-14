@@ -52,7 +52,13 @@ class ProjectTableViewCell: UITableViewCell {
         let imageUrl = URL(string: project.imageURL)!
         self.projectImageView.af_setImage(withURL: imageUrl)
         
-        self.descriptionLabel.text = project?.projectDescription
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        
+        let attrString = NSMutableAttributedString(string: (project?.projectDescription)!)
+        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        
+        self.descriptionLabel.attributedText = attrString
         self.transparentProjectView.projects = [self.project]
         self.transparentProjectView.setNeedsLayout()
         self.transparentProjectView.layoutIfNeeded()

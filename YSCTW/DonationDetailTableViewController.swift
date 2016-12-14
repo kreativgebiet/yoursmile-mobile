@@ -97,7 +97,14 @@ class DonationDetailTableViewController: UITableViewController {
         
         cell.profileImageView.image = comment?.profile.image
         cell.nameLabel.text = comment?.profile.name
-        cell.commentLabel.text = comment?.text
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        
+        let attrString = NSMutableAttributedString(string: (comment?.text)!)
+        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        
+        cell.commentLabel.attributedText = attrString
         
         return cell
     }

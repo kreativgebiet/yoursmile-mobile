@@ -887,10 +887,16 @@
                                                     <constraint firstAttribute="height" constant="50" id="XoS-Ch-BZE"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAm-NR-Cy7">
-                                                <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
-                                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAm-NR-Cy7">
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <mutableString key="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</mutableString>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="Gotham-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EN-MJ-ltf" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
@@ -1334,9 +1340,8 @@
                                     <constraint firstItem="9Y6-Gj-dau" firstAttribute="leading" secondItem="WHj-0w-jTz" secondAttribute="trailing" constant="8" id="779-y7-Aih"/>
                                     <constraint firstItem="IkQ-Ns-kSM" firstAttribute="leading" secondItem="6Dy-33-QBV" secondAttribute="leading" constant="20" id="AMl-A9-Nde"/>
                                     <constraint firstItem="IkQ-Ns-kSM" firstAttribute="centerY" secondItem="6Dy-33-QBV" secondAttribute="centerY" id="Gzv-ip-u5v"/>
-                                    <constraint firstItem="WHj-0w-jTz" firstAttribute="top" secondItem="6Dy-33-QBV" secondAttribute="top" constant="17" id="M6E-Bk-bXe"/>
+                                    <constraint firstItem="WHj-0w-jTz" firstAttribute="top" secondItem="6Dy-33-QBV" secondAttribute="top" constant="18" id="M6E-Bk-bXe"/>
                                     <constraint firstItem="WHj-0w-jTz" firstAttribute="leading" secondItem="IkQ-Ns-kSM" secondAttribute="trailing" constant="8" id="dM8-zB-o5s"/>
-                                    <constraint firstAttribute="bottom" secondItem="WHj-0w-jTz" secondAttribute="bottom" constant="8" id="h5u-la-pux"/>
                                     <constraint firstItem="9Y6-Gj-dau" firstAttribute="centerY" secondItem="6Dy-33-QBV" secondAttribute="centerY" id="s0p-rI-PaL"/>
                                     <constraint firstAttribute="trailing" secondItem="9Y6-Gj-dau" secondAttribute="trailing" constant="21" id="tuI-P2-uxn"/>
                                 </constraints>
@@ -1373,9 +1378,8 @@
                                     <constraint firstAttribute="trailing" secondItem="f8p-Vm-bci" secondAttribute="trailing" constant="21" id="GzO-1a-97T"/>
                                     <constraint firstItem="tdJ-zq-NoK" firstAttribute="leading" secondItem="giW-eB-ZEf" secondAttribute="trailing" constant="8" id="QKy-K0-nIT"/>
                                     <constraint firstItem="giW-eB-ZEf" firstAttribute="centerY" secondItem="Y4t-e1-egF" secondAttribute="centerY" id="UYM-K3-WBg"/>
-                                    <constraint firstAttribute="bottom" secondItem="tdJ-zq-NoK" secondAttribute="bottom" constant="8" id="dUM-7F-gJ9"/>
                                     <constraint firstItem="giW-eB-ZEf" firstAttribute="leading" secondItem="Y4t-e1-egF" secondAttribute="leading" constant="20" id="ehq-5C-rse"/>
-                                    <constraint firstItem="tdJ-zq-NoK" firstAttribute="top" secondItem="Y4t-e1-egF" secondAttribute="top" constant="17" id="kwt-Bz-wJ8"/>
+                                    <constraint firstItem="tdJ-zq-NoK" firstAttribute="top" secondItem="Y4t-e1-egF" secondAttribute="top" constant="18" id="kwt-Bz-wJ8"/>
                                     <constraint firstItem="f8p-Vm-bci" firstAttribute="leading" secondItem="tdJ-zq-NoK" secondAttribute="trailing" constant="8" id="mRU-tw-Y0X"/>
                                 </constraints>
                             </view>

@@ -23,7 +23,13 @@ class ProjectDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.projectDescriptionLabel.text = self.project.projectDescription
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        
+        let attrString = NSMutableAttributedString(string: (project?.projectDescription)!)
+        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        
+        self.projectDescriptionLabel.attributedText = attrString
         let imageUrl = URL(string: project.imageURL)!
         self.projectImageView.af_setImage(withURL: imageUrl)
         

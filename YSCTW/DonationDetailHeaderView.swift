@@ -58,7 +58,13 @@ class DonationDetailHeaderView: UIView {
         let imageURL = URL(string: (self.donation?.imageURL)!)!
         self.selfieImageView.af_setImage(withURL: imageURL)
         
-        self.selfieCommentLabel.text = self.donation?.description
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        
+        let attrString = NSMutableAttributedString(string: (self.donation?.description)!)
+        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        
+        self.selfieCommentLabel.attributedText = attrString
         
         self.timeLabel.text = self.donation?.date.offset(from: Date())
     }
