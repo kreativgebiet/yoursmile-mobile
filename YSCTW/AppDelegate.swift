@@ -16,9 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_YUjXb9pTlZ7y1R8VPz45qzOx"
-        
         //Enter your credentials
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_HoCc151BfYh437wFFtMoRVUy"
         PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YOUR_CLIENT_ID_FOR_PRODUCTION",
                                                                 PayPalEnvironmentSandbox: "YOUR_CLIENT_ID_FOR_SANDBOX"])
         

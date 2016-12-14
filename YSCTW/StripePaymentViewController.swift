@@ -8,6 +8,7 @@
 
 import UIKit
 import Stripe
+import Locksmith
 
 class StripePaymentViewController: UIViewController, STPPaymentContextDelegate {
     
@@ -20,34 +21,60 @@ class StripePaymentViewController: UIViewController, STPPaymentContextDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let config = STPPaymentConfiguration.shared()
-        config.publishableKey = "fadsasfdsadf"
-        //        config.appleMerchantIdentifier = self.appleMerchantID
-        config.companyName = "YSCTW GmbH"
-        config.requiredBillingAddressFields = STPBillingAddressFields.full
-        config.requiredShippingAddressFields = .all
-        //        config.shippingType =
-        config.additionalPaymentMethods = STPPaymentMethodType()
-        config.smsAutofillDisabled = false
-        
-        self.paymentContext? = STPPaymentContext(apiAdapter: StripeBackendApiClient.sharedClient,
-                                                 configuration: config,
-                                                 theme: STPTheme.default())
-        let userInformation = STPUserInformation()
-        
-        self.paymentContext?.prefilledInformation = userInformation
-        self.paymentContext?.paymentAmount = self.totalPrice
-        self.paymentContext?.paymentCurrency = "EUR"
-        
-        self.paymentContext?.delegate = self
-        self.paymentContext?.hostViewController = self
-        
+//        let config = STPPaymentConfiguration.shared()
+//        config.publishableKey =
+//        config.companyName = "YSCTW GmbH"
+//        config.requiredBillingAddressFields = STPBillingAddressFields.full
+//        config.requiredShippingAddressFields = .name
+//        config.additionalPaymentMethods = STPPaymentMethodType()
+//        config.smsAutofillDisabled = false
+//        
+//        self.paymentContext? = STPPaymentContext(apiAdapter: StripeBackendApiClient.sharedClient,
+//                                                 configuration: config,
+//                                                 theme: STPTheme.default())
+//        
+//        let userInformation = STPUserInformation()
+//        
+//        self.paymentContext?.prefilledInformation = userInformation
+//        self.paymentContext?.paymentAmount = self.totalPrice
+//        self.paymentContext?.paymentCurrency = "EUR"
+//        
+//        self.paymentContext?.delegate = self
+//        self.paymentContext?.hostViewController = self
+//        
         self.cardPaymentView.price = Float(totalPrice)
         
         self.cardPaymentView.callback = { success in
             
             if success {
-                self.callback(true, "")
+                
+                // If you have your own form for getting credit card information, you can construct
+                // your own STPCardParams from number, month, year, and CVV.
+                let card = self.cardPaymentView.paymentField.cardParams
+                
+                STPAPIClient.shared().createToken(withCard: card) { token, error in
+                    guard let stripeToken = token else {
+                        NSLog("Error creating token: %@", error!.localizedDescription);
+                        return
+                    }
+                    
+                    // TODO: send the token to your server so it can create a charge
+                    let alert = UIAlertController(title: "Welcome to Stripe", message: "Token created: \(stripeToken)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    let dictionary = Locksmith.loadDataForUserAccount(userAccount: "myUserAccount") as! [String:String]
+                    print(dictionary)
+
+                    
+                    APIClient.postPaymentSource((token?.tokenId)!, { (success, errorMessage) in
+                        
+                        self.callback(true, "")
+                    
+                    })
+                    
+                }
+                
             } else {
                 HelperFunctions.presentAlertViewfor(error: "CREDIT_CARD_ERROR".localized, presenter: self)
             }

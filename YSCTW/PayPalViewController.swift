@@ -16,7 +16,7 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
     
     public func showPayPalPaymentFor(amount: Float, fee: Float, projects: [Project]) -> () {
         
-        payPalConfig.acceptCreditCards = true
+        payPalConfig.acceptCreditCards = false
         payPalConfig.merchantName = "YSCTW GmbH"
         payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
         payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")

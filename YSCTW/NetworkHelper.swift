@@ -152,14 +152,34 @@ class NetworkHelper: NSObject {
         
         for dict in data {
             
-            let description = dict["description"] as! String
+            let id = dict["id"] as! Int
             let name = dict["name"] as! String
             let logoURL = dict["logo"] as! String
-            let imageURL = dict["image"] as! String
-            let progress = dict["progress"] as! Int
-            let id = dict["id"] as! Int
-            let countryCode = dict["country_code"] as! String
-            let sectorCode = dict["sector_code"] as! String
+            
+            var description = ""
+            if let desc = dict["description"] as? String {
+                description = desc
+            }
+            
+            var imageURL = ""
+            if let desc = dict["image"] as? String {
+                imageURL = desc
+            }
+            
+            var progress = 0
+            if let desc = dict["progress"] as? Int {
+                progress = desc
+            }
+            
+            var countryCode = ""
+            if let desc = dict["country_code"] as? String {
+                countryCode = desc
+            }
+            
+            var sectorCode = ""
+            if let desc = dict["sector_code"] as? String {
+                sectorCode = desc
+            }
             
             let project = Project(name: name, description: description, progress: progress, id: String(id), imageURL: imageURL, logoURL: logoURL, countryCode: countryCode, sectorCode: sectorCode)
             

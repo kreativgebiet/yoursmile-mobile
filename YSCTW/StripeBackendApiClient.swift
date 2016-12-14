@@ -13,7 +13,7 @@ class StripeBackendApiClient: NSObject, STPBackendAPIAdapter {
     
     static let sharedClient = StripeBackendApiClient()
     let session: URLSession
-    var baseURLString: String? = nil
+    var baseURLString: String? = baseURL
     var defaultSource: STPCard? = nil
     var sources: [STPCard] = []
     

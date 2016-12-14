@@ -16,7 +16,7 @@ class FeeCalculator: NSObject {
         
         if paymentType == .payPal {
             //https://www.paypal.com/webapps/mpp/paypal-fees
-            //1.9 % + 35€
+            //1.9 % + 0.35€
             fee = amount*0.019 + 0.35
         } else if paymentType == .creditCard {
             //https://stripe.com/de/pricing
@@ -26,7 +26,6 @@ class FeeCalculator: NSObject {
         }
         
         return fee.roundTo(places: 2)
-        
     }
     
 }

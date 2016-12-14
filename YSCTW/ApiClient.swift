@@ -204,6 +204,38 @@ class APIClient: NSObject {
         
     }
     
+    // MARK: Stripe Payment
+    
+    class func postPaymentSource(_ stripeToken: String, _ callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
+        
+        NetworkHelper.verifyToken { (token) in
+            let requestURL = baseURL + "sources"
+            
+            let parameters: [String : String] = [
+                "source": stripeToken
+            ]
+            
+            Alamofire.request(requestURL, method: .post, parameters: parameters, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.standardResponseHandling(response: response, callback: callback)
+            }
+        }
+        
+    }
+    
+    class func postPayment(_ uploadId: String, _ callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
+        
+        NetworkHelper.verifyToken { (token) in
+            let requestURL = baseURL + "uploads/" + uploadId + "/pay"
+            
+            Alamofire.request(requestURL, method: .post, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.standardResponseHandling(response: response, callback: callback)
+            }
+        }
+        
+    }
+    
     // MARK: User handling
     
     class func resetPassword(newPassword: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
