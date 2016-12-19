@@ -182,7 +182,7 @@ class APIClient: NSObject {
                                     
                                     if uploadModel.isStripePayment == true {
                                         let id = upload?.id
-                                        uploadModel.backendId = id
+                                        uploadModel.backendId = id!
                                         manager.save()
                                         
                                         APIClient.postPayment(id!, { (success, error) in
@@ -205,7 +205,6 @@ class APIClient: NSObject {
                                 debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
                                 
                             })
-                            
                             
                         }
                         
