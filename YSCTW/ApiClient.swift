@@ -182,16 +182,23 @@ class APIClient: NSObject {
                                     
                                     if uploadModel.isStripePayment == true {
                                         let id = upload?.id
+                                        uploadModel.backendId = id
+                                        manager.save()
                                         
                                         APIClient.postPayment(id!, { (success, error) in
+                                            
+                                            if success {
+                                                let manager = CoreDataController()
+                                                let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
+                                                manager.managedObjectContext.delete(uploadModel)
+                                                manager.save()
+                                            }
                                             
                                         })
                                     }
                                     
                                     uploadModel.isUploaded = NSNumber(booleanLiteral: true) as Bool
-                                    
                                     manager.save()
-
                                 }
                                 
                                 debugPrint(response)

@@ -27,6 +27,7 @@
 		A11428381E03EA310033844A /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11428371E03EA310033844A /* CoreDataController.swift */; };
 		A114283B1E03EB940033844A /* UploadModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11428391E03EB940033844A /* UploadModel+CoreDataClass.swift */; };
 		A114283C1E03EB940033844A /* UploadModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114283A1E03EB940033844A /* UploadModel+CoreDataProperties.swift */; };
+		A114283F1E08274F0033844A /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114283E1E08274F0033844A /* UIApplicationExtension.swift */; };
 		A12A454D1DCF8C76002977DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A454C1DCF8C76002977DF /* AppDelegate.swift */; };
 		A12A45521DCF8C76002977DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12A45501DCF8C76002977DF /* Main.storyboard */; };
 		A12A45541DCF8C76002977DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A12A45531DCF8C76002977DF /* Assets.xcassets */; };
@@ -195,6 +196,7 @@
 		A11428371E03EA310033844A /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		A11428391E03EB940033844A /* UploadModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UploadModel+CoreDataClass.swift"; path = "../UploadModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A114283A1E03EB940033844A /* UploadModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UploadModel+CoreDataProperties.swift"; path = "../UploadModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A114283E1E08274F0033844A /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		A12A45491DCF8C76002977DF /* YSCTW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSCTW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12A454C1DCF8C76002977DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12A45511DCF8C76002977DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 				A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */,
 				A19677781DEC47B300C1CBBC /* DateExtension.swift */,
 				A196777C1DEC6E8900C1CBBC /* UIImageExtension.swift */,
+				A114283E1E08274F0033844A /* UIApplicationExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				A1D6F4C81DE3725500A0A8F9 /* LanguageSelectionViewController.swift in Sources */,
 				A15390991DD0C8A700B7ADA0 /* DividerView.swift in Sources */,
 				A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */,
+				A114283F1E08274F0033844A /* UIApplicationExtension.swift in Sources */,
 				A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */,
 				A154FDF31DDF66DB00D88306 /* CancelableProgressView.swift in Sources */,
 				A11028F71DD5307700633343 /* ProfileHeaderView.swift in Sources */,

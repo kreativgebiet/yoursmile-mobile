@@ -21,6 +21,7 @@ extension UploadModel {
     @NSManaged public var isUploaded: Bool
     @NSManaged public var image: Data?
     @NSManaged public var stripeToken: String?
+    @NSManaged public var backendId: String
     @NSManaged public var projectIds: [Int]
 
 }

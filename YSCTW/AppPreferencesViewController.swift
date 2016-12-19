@@ -194,7 +194,7 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
                     mail.setMessageBody("<p>Send us your issue!</p>", isHTML: true)
                     self.present(mail, animated: true, completion: nil)
                 } else {
-                    HelperFunctions.presentAlertViewfor(error: "NO_MAIL".localized, presenter: self)
+                    HelperFunctions.presentAlertViewfor(error: "NO_MAIL".localized)
                 }
                 
                 break

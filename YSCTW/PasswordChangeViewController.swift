@@ -57,7 +57,7 @@ class PasswordChangeViewController: UIViewController {
         }
         
         if errorMessage.characters.count > 0 {
-            HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+            HelperFunctions.presentAlertViewfor(error: errorMessage)
             return
         }
         
@@ -73,7 +73,7 @@ class PasswordChangeViewController: UIViewController {
             if success {
                 HelperFunctions.presentAlertViewfor(information: "PASSWORD_CHANGED".localized, presenter: self)
             } else {
-                HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+                HelperFunctions.presentAlertViewfor(error: errorMessage)
             }
             
         }

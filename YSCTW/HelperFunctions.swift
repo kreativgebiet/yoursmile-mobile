@@ -21,14 +21,11 @@ class HelperFunctions: NSObject {
             }
         }
         alertController.addAction(okAction)
+
+        if let topController = UIApplication.topViewController() {
+            topController.present(alertController, animated: true, completion: nil)
+        }        
         
-        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
-        
-        if let navigationController = rootViewController as? UINavigationController {
-            rootViewController = navigationController.viewControllers.first
-        }
-        
-        rootViewController!.present(alertController, animated: true, completion: nil)
     }
     
     //Information

@@ -91,7 +91,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     }
     
     func logout() {
-        HelperFunctions.presentAlertViewfor(error: "LOGOUT_ERROR".localized, presenter: self, {
+        HelperFunctions.presentAlertViewfor(error: "LOGOUT_ERROR".localized, {
           self.navigationController?.performSegue(withIdentifier: "logoutSegue", sender: self)
         })
     }

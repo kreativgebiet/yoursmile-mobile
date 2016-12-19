@@ -49,7 +49,7 @@ class EmailChangeViewController: UIViewController {
         }
         
         if errorMessage.characters.count > 0 {
-            HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+            HelperFunctions.presentAlertViewfor(error: errorMessage)
             return
         }
         
@@ -65,7 +65,7 @@ class EmailChangeViewController: UIViewController {
             if success {
                 HelperFunctions.presentAlertViewfor(information: "EMAIL_CHANGED".localized, presenter: self)
             } else {
-                HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+                HelperFunctions.presentAlertViewfor(error: errorMessage)
             }
             
         }

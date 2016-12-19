@@ -52,7 +52,7 @@ class DeleteAccountViewController: UIViewController {
                     UserDefaults.standard.setValue(false, forKey: "loggedIn")
                     self.callback()
                 } else {
-                    HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+                    HelperFunctions.presentAlertViewfor(error: errorMessage)
                 }
                 
             }
