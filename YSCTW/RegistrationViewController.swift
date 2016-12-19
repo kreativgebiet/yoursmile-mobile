@@ -146,7 +146,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
         
         if errorMessage.characters.count > 0 {
-            HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+            HelperFunctions.presentAlertViewfor(error: errorMessage)
             return
         }
         
@@ -166,7 +166,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                 })
                 
             } else {
-                HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+                HelperFunctions.presentAlertViewfor(error: errorMessage)
             }
             
         }

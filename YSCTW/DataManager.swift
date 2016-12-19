@@ -27,7 +27,7 @@ class DataManager: NSObject {
         }
     }
     
-    func postCommentsWith(_ uploadId: String, _ text: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
+    func postCommentWith(_ uploadId: String, _ text: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
         APIClient.postCommentWith(uploadId, text) { (comments) in
             callback(comments)
         }

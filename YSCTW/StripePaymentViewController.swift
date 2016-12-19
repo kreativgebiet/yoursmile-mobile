@@ -36,7 +36,7 @@ class StripePaymentViewController: UIViewController {
                 STPAPIClient.shared().createToken(withCard: card) { token, error in
                     
                     guard let stripeToken = token else {
-                        HelperFunctions.presentAlertViewfor(error: "ERROR".localized, presenter: self)
+                        HelperFunctions.presentAlertViewfor(error: "ERROR".localized)
                         loadingScreen.removeFromSuperview()
                         self.callback(nil, false, "")
                         return
@@ -58,7 +58,7 @@ class StripePaymentViewController: UIViewController {
                             
                             self.callback(uploadModel, true, "")
                         } else {
-                            HelperFunctions.presentAlertViewfor(error: "ERROR".localized, presenter: self)
+                            HelperFunctions.presentAlertViewfor(error: "ERROR".localized)
                             self.callback(nil, false, "")
                         }
 
@@ -67,7 +67,7 @@ class StripePaymentViewController: UIViewController {
                 }
                 
             } else {
-                HelperFunctions.presentAlertViewfor(error: "CREDIT_CARD_ERROR".localized, presenter: self)
+                HelperFunctions.presentAlertViewfor(error: "CREDIT_CARD_ERROR".localized)
             }
             
         }

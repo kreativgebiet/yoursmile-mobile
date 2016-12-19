@@ -12,7 +12,8 @@ import Locksmith
 
 class HelperFunctions: NSObject {
     
-    class func presentAlertViewfor(error: String, presenter: UIViewController, _ callback: (() -> Void)? = nil) {
+    class func presentAlertViewfor(error: String, _ callback: (() -> Void)? = nil) {
+        
         let alertController = UIAlertController(title: "ERROR".localized, message: error, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
             if callback != nil {
@@ -20,7 +21,14 @@ class HelperFunctions: NSObject {
             }
         }
         alertController.addAction(okAction)
-        presenter.present(alertController, animated: true, completion: nil)
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        
+        rootViewController!.present(alertController, animated: true, completion: nil)
     }
     
     //Information

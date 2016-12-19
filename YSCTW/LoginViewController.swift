@@ -118,7 +118,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         if errorMessage.characters.count > 0 {
-            HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+            HelperFunctions.presentAlertViewfor(error: errorMessage)
             return
         }
         
@@ -141,7 +141,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 UserDefaults.standard.setValue(true, forKey: "loggedIn")
                 self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
             } else {
-                HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+                HelperFunctions.presentAlertViewfor(error: errorMessage)
             }
         }
         
@@ -162,7 +162,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             if ((error) != nil) {
                 self.loadingScreen.removeFromSuperview()
-                HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!, presenter: self)
+                HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!)
             } else if (result?.isCancelled)! {
                 self.loadingScreen.removeFromSuperview()
             } else {
@@ -191,7 +191,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                         self.loadingScreen.removeFromSuperview()
                                         self.loginWith(userEmail as String, "facebook1234")
                                     } else {
-                                        HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
+                                        HelperFunctions.presentAlertViewfor(error: errorMessage)
                                     }
                                     
                                 }
@@ -204,7 +204,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     
                 } else {
-                    HelperFunctions.presentAlertViewfor(error: "NO_MAIL_FB_LOGIN".localized, presenter: self)
+                    HelperFunctions.presentAlertViewfor(error: "NO_MAIL_FB_LOGIN".localized)
                 }
             }
             

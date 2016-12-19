@@ -113,8 +113,7 @@ class NetworkHelper: NSObject {
             
             if errors.characters.count > 0 {
                 callback(false, errors)
-                //TODO
-//                HelperFunctions.
+                HelperFunctions.presentAlertViewfor(error: errors)
             } else {
                 NetworkHelper.saveTokenFromResponse(response: response.response!)
                 callback(true, "")

@@ -22,8 +22,11 @@ class DonationDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.commentView.callback = { text in
-            self.dataManager?.postCommentsWith((self.donation?.id)!, text, { (comments) in
-                
+            let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+            self.view.addSubview(loadingScreen)
+            
+            self.dataManager?.postCommentWith((self.donation?.id)!, text, { (comments) in
+                loadingScreen.removeFromSuperview()
             })
         }
         

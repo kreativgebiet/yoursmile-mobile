@@ -218,7 +218,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
             }
             
         } else {
-            HelperFunctions.presentAlertViewfor(error: "INSTAGRAM_ERROR".localized, presenter: self)
+            HelperFunctions.presentAlertViewfor(error: "INSTAGRAM_ERROR".localized)
         }
         
     }
@@ -239,7 +239,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
             loginmanager.logIn(withPublishPermissions: ["publish_actions"], from: self, handler: { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
                 
                 if ((error) != nil) {
-                    HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)! , presenter: self)
+                    HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!)
                 } else {
                     let content = self.createFBSharePhotoContent()
                     FBSDKShareAPI.share(with: content, delegate: self)
@@ -271,7 +271,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     func sharer(_ sharer: FBSDKSharing!, didFailWithError error: Error!) {
         self.loadingScreen.removeFromSuperview()
-        HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)! , presenter: self)
+        HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!)
     }
     
     func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
