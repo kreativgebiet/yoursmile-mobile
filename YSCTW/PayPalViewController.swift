@@ -10,7 +10,7 @@ import Foundation
 
 class PayPalViewController: UIViewController, PayPalPaymentDelegate {
     
-    public var callback: ((_ success: Bool, _ error: String) -> ())!
+    public var callback: ((_ upload: UploadModel?, _ success: Bool, _ error: String) -> ())!
     
     var payPalConfig = PayPalConfiguration()
     
@@ -62,7 +62,7 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
         print("PayPal Payment Cancelled")
         paymentViewController.dismiss(animated: true, completion: nil)
         self.dismiss(animated: true, completion: nil)
-        self.callback(false, "Canceled")
+        self.callback(nil, false, "Canceled")
     }
     
     func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
@@ -70,7 +70,13 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
         paymentViewController.dismiss(animated: true, completion: { () -> Void in            
             self.dismiss(animated: true, completion: nil)
             print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
-            self.callback(true, "Canceled")
+            
+            let uploadModel = CoreDataController().createUploadModel()
+            uploadModel.isStripePayment = NSNumber(booleanLiteral: false) as Bool
+            uploadModel.stripeToken = ""
+            uploadModel.isUploaded = NSNumber(booleanLiteral: false) as Bool
+            
+            self.callback(uploadModel, true, "")
         })
     }
     

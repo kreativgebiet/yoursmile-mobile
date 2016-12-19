@@ -1,4 +1,4 @@
-//
+ //
 //  ApiClient.swift
 //  YSCTW
 //
@@ -21,9 +21,10 @@ class APIClient: NSObject {
     class func registerUser(name: String, email: String, password: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())
         ) {
         let requestURL = baseURL + sign_up
+        let nickname = name.replacingOccurrences(of: " ", with: "").lowercased()
         
         let parameters: [String : String] = [
-            "nickname": name,
+            "nickname": nickname,
             "email": email,
             "password": password,
             "name": name
@@ -125,17 +126,33 @@ class APIClient: NSObject {
     
     // MARK: Upload Selfies
     
-    class func uploadSelfie(image: UIImage, description: String, userId: String, projectIds: [Int]) {
+    class func uploadSelfies () {
+        let uploadModels = CoreDataController().fetchUploadModelsToUpload()
+        
+        for upload in uploadModels {
+            APIClient.uploadSelfie(model: upload)
+        }
+
+    }
+    
+    
+    class func uploadSelfie(model: UploadModel) {
+        
+        //Core Data is not threadsafe so the Object needs to be fetched by ObjectID
+        let objectID = model.objectID
         
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "uploads"
-            let imageData = UIImageJPEGRepresentation(image, 0.1)!
+            
+            let imageData = model.image
+            let descriptionText = model.descriptionText!
+            let projectIds = model.projectIds
             
             Alamofire.upload(multipartFormData: { multipartFormData in
                 
-                multipartFormData.append(imageData, withName: "upload[image]", fileName: "test", mimeType: "image/jpeg")
-                multipartFormData.append(description.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")
+                multipartFormData.append(imageData!, withName: "upload[image]", fileName: "test", mimeType: "image/jpeg")
+                multipartFormData.append(descriptionText.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")
                 
                 for projectId in projectIds {
                     multipartFormData.append("\(projectId)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[project_ids][]")
@@ -155,8 +172,34 @@ class APIClient: NSObject {
                         }
                         
                         upload.response { response in
-                            debugPrint(response)
-                            debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
+                            
+                            NetworkHelper.parseUploadResponseFrom(response: response, callback: { (success, upload) in
+                                
+                                let manager = CoreDataController()
+                                let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
+                                
+                                if success == true {
+                                    
+                                    if uploadModel.isStripePayment == true {
+                                        let id = upload?.id
+                                        
+                                        APIClient.postPayment(id!, { (success, error) in
+                                            
+                                        })
+                                    }
+                                    
+                                    uploadModel.isUploaded = NSNumber(booleanLiteral: true) as Bool
+                                    
+                                    manager.save()
+
+                                }
+                                
+                                debugPrint(response)
+                                debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
+                                
+                            })
+                            
+                            
                         }
                         
                     case .failure(let encodingError):
@@ -191,7 +234,7 @@ class APIClient: NSObject {
             let requestURL = baseURL + "uploads/" + uploadId + "/comments"
             
             let parameters: [String : String] = [
-                "comment[text]": ""
+                "comment[text]": text
             ]
             
             Alamofire.request(requestURL, method: .post, parameters: parameters, headers: token)

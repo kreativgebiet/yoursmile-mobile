@@ -23,9 +23,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logoTitleLabel: UILabel!
     @IBOutlet weak var gotoLoginButton: UIButton!
     
-    
     var defaultLogoTopSpaceConstraintConstant: CGFloat?
     var defaultnameTextFieldTopSpaceConstraintConstant: CGFloat?
+    
+    var loginViewController: LoginViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,11 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loginViewController = self.presentingViewController as! LoginViewController!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -153,8 +159,12 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             
             loadingScreen.removeFromSuperview()
             
-            if success {                
-                //TODO
+            if success {
+                
+                self.dismiss(animated: false, completion: { 
+                    self.loginViewController.loginWith(mail!, password!)
+                })
+                
             } else {
                 HelperFunctions.presentAlertViewfor(error: errorMessage, presenter: self)
             }
@@ -162,8 +172,6 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
         
         APIClient.registerUser(name: name!, email: mail!, password: password!, callback: callback)
-        
-        
     }
         
     // MARK: - Keyboard animations

@@ -126,7 +126,21 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     func proceedTapped() {
         
-        let callback: ((_ success: Bool, _ error: String) -> ()) = { (success, error) in
+        let callback: ((_ uploadModel: UploadModel?, _ success: Bool, _ error: String) -> ()) = { (uploadModel, success, error) in
+
+            let description = (self.descriptionTextField.text.characters.count > 0 ? self.descriptionTextField.text : "")
+            uploadModel?.image = UIImageJPEGRepresentation(self.selfieImage, 0.5)! as Data?
+            uploadModel?.descriptionText = description
+            
+            let projectIds = self.projects.map({ Int($0.id)! })
+            uploadModel?.projectIds = projectIds
+            
+            do {
+                try uploadModel?.managedObjectContext?.save()
+            } catch {
+                fatalError("Failure to save context: \(error)")
+            }
+            
             self.handleDonationSuccess()
         }
         
@@ -160,12 +174,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     }
     
     func uploadSelfie() {
-        
-        let description = (self.descriptionTextField.text.characters.count > 0 ? self.descriptionTextField.text : "")
-        
-        let projectIds = self.projects.map({ Int($0.id)! })
-        
-        APIClient.uploadSelfie(image: self.selfieImage, description: description! , userId: "c@d.de", projectIds: projectIds)
+        APIClient.uploadSelfies()
     }
     
     func handleDonationSuccess() {

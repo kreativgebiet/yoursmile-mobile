@@ -107,7 +107,28 @@ class NetworkHelper: NSObject {
         debugPrint("JSON: \(json)")
         
         if (json == nil) {
-            callback(true, "ERROR".localized)
+            callback(false, "ERROR".localized)
+        } else {
+            let errors = NetworkHelper.findErrorsIn(json!) as String
+            
+            if errors.characters.count > 0 {
+                callback(false, errors)
+                //TODO
+//                HelperFunctions.
+            } else {
+                NetworkHelper.saveTokenFromResponse(response: response.response!)
+                callback(true, "")
+            }
+        }
+    }
+    
+    class func uploadResponseHandling(response: Alamofire.DefaultDataResponse,callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        
+        let json = NetworkHelper.parseResponseToJSON(data: response.data!)
+        debugPrint("JSON: \(json)")
+        
+        if (json == nil) {
+            callback(false, "ERROR".localized)
         } else {
             let errors = NetworkHelper.findErrorsIn(json!) as String
             
@@ -238,6 +259,30 @@ class NetworkHelper: NSObject {
     }
     
     // MARK: Uploads Response handling
+    
+    class func parseUploadResponseFrom(response: Alamofire.DefaultDataResponse,callback: @escaping ((_ success: Bool, _ upload: Upload?) -> ())) {
+        
+        NetworkHelper.uploadResponseHandling(response: response) { (success, errorString) in
+            
+            if success {
+                
+                let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
+                debugPrint("JSON: \(json)")
+                
+                if let data = json["data"] as? [String : AnyObject] {
+                    let upload = NetworkHelper.parseUploadFrom(data: data)
+                    
+                    callback(true, upload)
+                } else {
+                    callback(false, nil)
+                }
+                
+            } else {
+                callback(false, nil)
+            }
+            
+        }
+    }
 
     class func parseUploadsFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ uploads: [Upload]) -> ())) {
         
@@ -248,29 +293,13 @@ class NetworkHelper: NSObject {
                 let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
                 debugPrint("JSON: \(json)")
                 
-                if let data = json["data"] as? [AnyObject] {
+                if let data = json["data"] as? [[String : AnyObject]] {
                     var uploads = [Upload]()
                     
                     for dict in data {
 
-                        let description = dict["description"] as! String
-                        let imageURL = dict["image"] as! String
-                        let id = dict["id"] as! Int
-                        let commentCount = dict["comment_count"] as! Int
-                        let createdAt = dict["created_at"] as! String
-
-                        let projectsData = dict["projects"] as! [AnyObject]
-                        let author  = dict["author"] as! [String : AnyObject]
-                        
-                        let profile = NetworkHelper.parseProfileFrom(data: author)
-                        let projects = NetworkHelper.parseProjectsFrom(data: projectsData)
-                        
-                        var upload = Upload(supportedProjects: [], imageURL: imageURL, id: String(id), created_at: createdAt, description: description, profile: profile)
-                        
-                        upload.numberOfComments = String(commentCount)
-                        upload.projects = projects
-                        
-                        uploads.append(upload)
+                        let parsedUpload = NetworkHelper.parseUploadFrom(data: dict) as Upload
+                        uploads.append(parsedUpload)
                     }
                     
                     callback(true, uploads)
@@ -284,6 +313,27 @@ class NetworkHelper: NSObject {
             
         }
         
+    }
+    
+    class func parseUploadFrom(data: [String : AnyObject]) -> Upload {
+        
+        let description = data["description"] as! String
+        let imageURL = data["image"] as! String
+        let id = data["id"] as! Int
+        let commentCount = data["comment_count"] as! Int
+        let createdAt = data["created_at"] as! String
+        
+        let projectsData = data["projects"] as! [AnyObject]
+        let author  = data["author"] as! [String : AnyObject]
+        
+        let profile = NetworkHelper.parseProfileFrom(data: author)
+        let projects = NetworkHelper.parseProjectsFrom(data: projectsData)
+        
+        var upload = Upload(supportedProjects: projects, imageURL: imageURL, id: String(id), created_at: createdAt, description: description, profile: profile)
+        
+        upload.numberOfComments = String(commentCount)
+        
+        return upload
     }
     
     class func parseProfileFrom(data: [String : AnyObject]) -> Profile {

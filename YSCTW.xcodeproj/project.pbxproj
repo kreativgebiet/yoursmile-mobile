@@ -23,6 +23,10 @@
 		A110290F1DD9EDB100633343 /* ProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A110290E1DD9EDB100633343 /* ProjectView.xib */; };
 		A11029111DD9FE1900633343 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11029101DD9FE1900633343 /* RoundImageView.swift */; };
 		A11029131DDA1F3400633343 /* LogoNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11029121DDA1F3400633343 /* LogoNavigationBarView.swift */; };
+		A11428361E03E8930033844A /* YSCTW.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A11428341E03E8930033844A /* YSCTW.xcdatamodeld */; };
+		A11428381E03EA310033844A /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11428371E03EA310033844A /* CoreDataController.swift */; };
+		A114283B1E03EB940033844A /* UploadModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11428391E03EB940033844A /* UploadModel+CoreDataClass.swift */; };
+		A114283C1E03EB940033844A /* UploadModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114283A1E03EB940033844A /* UploadModel+CoreDataProperties.swift */; };
 		A12A454D1DCF8C76002977DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A454C1DCF8C76002977DF /* AppDelegate.swift */; };
 		A12A45521DCF8C76002977DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12A45501DCF8C76002977DF /* Main.storyboard */; };
 		A12A45541DCF8C76002977DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A12A45531DCF8C76002977DF /* Assets.xcassets */; };
@@ -187,6 +191,10 @@
 		A11029121DDA1F3400633343 /* LogoNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoNavigationBarView.swift; sourceTree = "<group>"; };
 		A11029151DDB231E00633343 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		A11029171DDB232000633343 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		A11428351E03E8930033844A /* YSCTW.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YSCTW.xcdatamodel; sourceTree = "<group>"; };
+		A11428371E03EA310033844A /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		A11428391E03EB940033844A /* UploadModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UploadModel+CoreDataClass.swift"; path = "../UploadModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A114283A1E03EB940033844A /* UploadModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UploadModel+CoreDataProperties.swift"; path = "../UploadModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A12A45491DCF8C76002977DF /* YSCTW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSCTW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12A454C1DCF8C76002977DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12A45511DCF8C76002977DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -398,6 +406,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A114283D1E03EBA30033844A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A11428371E03EA310033844A /* CoreDataController.swift */,
+				A11428391E03EB940033844A /* UploadModel+CoreDataClass.swift */,
+				A114283A1E03EB940033844A /* UploadModel+CoreDataProperties.swift */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		A12A45401DCF8C76002977DF = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +440,7 @@
 		A12A454B1DCF8C76002977DF /* YSCTW */ = {
 			isa = PBXGroup;
 			children = (
+				A11428341E03E8930033844A /* YSCTW.xcdatamodeld */,
 				A1D6F4C01DE3346400A0A8F9 /* YSCTW.entitlements */,
 				A16407281DDF181E00BA1853 /* Font */,
 				A12A454C1DCF8C76002977DF /* AppDelegate.swift */,
@@ -437,6 +456,7 @@
 				A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */,
 				A1D6F4FF1DE5DDDF00A0A8F9 /* FeeCalculator.swift */,
 				A1D6F4DC1DE4AC8400A0A8F9 /* Bridging-Header.h */,
+				A114283D1E03EBA30033844A /* CoreData */,
 				A196776F1DEC33FD00C1CBBC /* Credits */,
 				A1D6F5041DE5E97300A0A8F9 /* TestData */,
 				A1D6F5031DE5E96600A0A8F9 /* Extensions */,
@@ -869,7 +889,10 @@
 				A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */,
 				A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */,
 				A1F8D8E71DD3632800AFAB4F /* MockUpTestData.swift in Sources */,
+				A11428381E03EA310033844A /* CoreDataController.swift in Sources */,
+				A114283B1E03EB940033844A /* UploadModel+CoreDataClass.swift in Sources */,
 				A154FDF11DDF5BC200D88306 /* ImagePickerViewController.swift in Sources */,
+				A11428361E03E8930033844A /* YSCTW.xcdatamodeld in Sources */,
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A12D45A11DED8D7C004CD066 /* Networking.swift in Sources */,
@@ -902,6 +925,7 @@
 				A15390AF1DD0F64100B7ADA0 /* PreferencesViewController.swift in Sources */,
 				A196777D1DEC6E8900C1CBBC /* UIImageExtension.swift in Sources */,
 				A1CF0CA91DD25DAA002C4562 /* TableViewFooterView.swift in Sources */,
+				A114283C1E03EB940033844A /* UploadModel+CoreDataProperties.swift in Sources */,
 				A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */,
 				A15390AB1DD0F61F00B7ADA0 /* CameraViewController.swift in Sources */,
 				A1D6F4C61DE36F4000A0A8F9 /* LanguageManager.swift in Sources */,
@@ -1254,6 +1278,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A11428341E03E8930033844A /* YSCTW.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A11428351E03E8930033844A /* YSCTW.xcdatamodel */,
+			);
+			currentVersion = A11428351E03E8930033844A /* YSCTW.xcdatamodel */;
+			path = YSCTW.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A12A45411DCF8C76002977DF /* Project object */;
 }

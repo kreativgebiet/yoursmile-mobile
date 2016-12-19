@@ -66,6 +66,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+        
         //Localization
         self.loginButton.setTitle("LOGIN".localized, for: .normal)
         self.loginButton.setTitle("LOGIN".localized, for: .selected)
@@ -120,15 +122,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        self.loadingScreen = LoadingScreen.init(frame: self.view.bounds)
-
         self.view.endEditing(true)
-        self.view.addSubview(loadingScreen)
+        self.view.addSubview(self.loadingScreen)
         
         self.loginWith(mail!, password!)
     }
     
     func loginWith(_ email: String, _ password: String) {
+        
+        if self.loadingScreen.superview == nil {
+            self.view.addSubview(self.loadingScreen)
+        }
+        
         let callback = { (success: Bool, errorMessage: String) in
             self.loadingScreen.removeFromSuperview()
             

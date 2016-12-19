@@ -88,6 +88,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        if scrollView.contentSize.height == 0 {
+            return
+        }
+        
         //Animation is happening here
         if scrollView.contentOffset.y > 0 {
             
