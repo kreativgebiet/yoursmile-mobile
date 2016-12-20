@@ -67,8 +67,7 @@ class NetworkHelper: NSObject {
                 try Locksmith.updateData(data: headerDict, forUserAccount: "myUserAccount")
             } catch _ {
                 
-            }
-            
+            }   
         }
     }
     

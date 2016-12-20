@@ -36,6 +36,7 @@ class ProjectsTableViewController: UITableViewController {
     }
     
     public func reload() {
+        self.tableView.setContentOffset(CGPoint.zero, animated: false)
         self.tableView.reloadData()
     }
 

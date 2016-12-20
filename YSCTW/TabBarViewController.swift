@@ -91,6 +91,9 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     }
     
     func logout() {
+        UserDefaults.standard.setValue(false, forKey: "loggedIn")
+        NetworkHelper.deleteToken()
+        FBSDKLoginManager().logOut()
         HelperFunctions.presentAlertViewfor(error: "LOGOUT_ERROR".localized, {
           self.navigationController?.performSegue(withIdentifier: "logoutSegue", sender: self)
         })

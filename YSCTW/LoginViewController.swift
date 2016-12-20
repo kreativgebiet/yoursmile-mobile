@@ -63,8 +63,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.view.isHidden = false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let loggedIn = UserDefaults.standard.value(forKey: "loggedIn") as? Bool {
+            if loggedIn == true {
+                DispatchQueue.main.async {
+                    self.view.isHidden = true
+                    self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
+                }
+            }
+        }
         
         self.loadingScreen = LoadingScreen.init(frame: self.view.bounds)
         

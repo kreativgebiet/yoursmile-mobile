@@ -28,6 +28,8 @@
 		A114283B1E03EB940033844A /* UploadModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11428391E03EB940033844A /* UploadModel+CoreDataClass.swift */; };
 		A114283C1E03EB940033844A /* UploadModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114283A1E03EB940033844A /* UploadModel+CoreDataProperties.swift */; };
 		A114283F1E08274F0033844A /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114283E1E08274F0033844A /* UIApplicationExtension.swift */; };
+		A11428411E0935900033844A /* countrylist_iso_3166.json in Resources */ = {isa = PBXBuildFile; fileRef = A11428401E0935900033844A /* countrylist_iso_3166.json */; };
+		A11428441E0935DD0033844A /* CountrListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11428431E0935DD0033844A /* CountrListManager.swift */; };
 		A12A454D1DCF8C76002977DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A454C1DCF8C76002977DF /* AppDelegate.swift */; };
 		A12A45521DCF8C76002977DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12A45501DCF8C76002977DF /* Main.storyboard */; };
 		A12A45541DCF8C76002977DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A12A45531DCF8C76002977DF /* Assets.xcassets */; };
@@ -138,6 +140,7 @@
 		A1D6F5061DE5E98E00A0A8F9 /* PayPalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */; };
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
+		A1DB37741E094D1F003EAFCF /* SectorListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37731E094D1F003EAFCF /* SectorListManager.swift */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
 		A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */; };
 		A1F8D8E71DD3632800AFAB4F /* MockUpTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */; };
@@ -197,6 +200,8 @@
 		A11428391E03EB940033844A /* UploadModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UploadModel+CoreDataClass.swift"; path = "../UploadModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A114283A1E03EB940033844A /* UploadModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UploadModel+CoreDataProperties.swift"; path = "../UploadModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A114283E1E08274F0033844A /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		A11428401E0935900033844A /* countrylist_iso_3166.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = countrylist_iso_3166.json; path = Resources/countrylist_iso_3166.json; sourceTree = "<group>"; };
+		A11428431E0935DD0033844A /* CountrListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrListManager.swift; sourceTree = "<group>"; };
 		A12A45491DCF8C76002977DF /* YSCTW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSCTW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12A454C1DCF8C76002977DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12A45511DCF8C76002977DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -320,6 +325,7 @@
 		A1D6F4FF1DE5DDDF00A0A8F9 /* FeeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeeCalculator.swift; sourceTree = "<group>"; };
 		A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayPalViewController.swift; sourceTree = "<group>"; };
+		A1DB37731E094D1F003EAFCF /* SectorListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectorListManager.swift; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUpTestData.swift; sourceTree = "<group>"; };
@@ -418,6 +424,15 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		A11428421E09359A0033844A /* CountryList */ = {
+			isa = PBXGroup;
+			children = (
+				A11428401E0935900033844A /* countrylist_iso_3166.json */,
+				A11428431E0935DD0033844A /* CountrListManager.swift */,
+			);
+			name = CountryList;
+			sourceTree = "<group>";
+		};
 		A12A45401DCF8C76002977DF = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +473,8 @@
 				A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */,
 				A1D6F4FF1DE5DDDF00A0A8F9 /* FeeCalculator.swift */,
 				A1D6F4DC1DE4AC8400A0A8F9 /* Bridging-Header.h */,
+				A1DB37731E094D1F003EAFCF /* SectorListManager.swift */,
+				A11428421E09359A0033844A /* CountryList */,
 				A114283D1E03EBA30033844A /* CoreData */,
 				A196776F1DEC33FD00C1CBBC /* Credits */,
 				A1D6F5041DE5E97300A0A8F9 /* TestData */,
@@ -808,6 +825,7 @@
 				A11028F51DD5136400633343 /* AddedProjectButtonView.xib in Resources */,
 				A164071A1DDF181800BA1853 /* Gotham-Light.otf in Resources */,
 				A12A45571DCF8C76002977DF /* LaunchScreen.storyboard in Resources */,
+				A11428411E0935900033844A /* countrylist_iso_3166.json in Resources */,
 				A1D6F4C21DE34DF100A0A8F9 /* Preferences.storyboard in Resources */,
 				A16407211DDF181800BA1853 /* Gotham-ThinItalic.otf in Resources */,
 				A135467E1DDE100F00931139 /* DonationSuccessOverlay.xib in Resources */,
@@ -914,6 +932,8 @@
 				A1F8D8EB1DD367D100AFAB4F /* FeedTableViewController.swift in Sources */,
 				A11029131DDA1F3400633343 /* LogoNavigationBarView.swift in Sources */,
 				A11029111DD9FE1900633343 /* RoundImageView.swift in Sources */,
+				A1DB37741E094D1F003EAFCF /* SectorListManager.swift in Sources */,
+				A11428441E0935DD0033844A /* CountrListManager.swift in Sources */,
 				A13546781DDE085000931139 /* DonationDescriptionLogoView.swift in Sources */,
 				A1CF0C981DD2170A002C4562 /* DonationDetailTableViewController.swift in Sources */,
 				A11028FD1DD5E22900633343 /* AppPreferencesViewController.swift in Sources */,

@@ -27,7 +27,7 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     var leftSelectedIndex = 0
     var rightSelectedIndex = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,10 +38,11 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     public func reload() {
-        self.pickerDataLeft = ["NO_FILTER_SELECTED".localized,"VISITED_FAVORITES".localized,"EDUCTION".localized,"FOOD".localized,"HEALTH".localized]
+        
+        self.pickerDataLeft = ["NO_FILTER_SELECTED".localized,"EDUCTION".localized,"ENVIRONMENT".localized,"FOOD".localized,"HEALTH".localized]
         self.pickerDataRight = ["NO_FILTER_SELECTED".localized]
         
-        let countrys = self.projects.filter({$0.countryCode != nil}).filter({$0.countryCode != ""}).map({ $0.countryCode }) as! [String]
+        let countrys = self.projects.filter({$0.countryCode != nil}).filter({$0.country != ""}).map({ $0.country }) 
         self.pickerDataRight.append(contentsOf: countrys)
         
         self.picker.reloadAllComponents()
@@ -108,14 +109,14 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             
             if self.leftSelectedIndex == 0 {
                 let country = self.pickerDataRight[self.rightSelectedIndex]
-                self.projectsToShow = self.projects.filter({$0.countryCode == country})
+                self.projectsToShow = self.projects.filter({$0.country == country})
             } else if self.rightSelectedIndex == 0 {
                 let sector = self.pickerDataLeft[self.leftSelectedIndex]
-                self.projectsToShow = self.projects.filter({$0.sectorCode == sector})
+                self.projectsToShow = self.projects.filter({$0.sector == sector})
             } else {
                 let country = self.pickerDataRight[self.rightSelectedIndex]
                 let sector = self.pickerDataLeft[self.leftSelectedIndex]
-                self.projectsToShow = self.projects.filter({$0.sectorCode == sector}).filter({$0.countryCode == country})
+                self.projectsToShow = self.projects.filter({$0.sector == sector}).filter({$0.country == country})
             }
 
         }

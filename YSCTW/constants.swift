@@ -68,7 +68,9 @@ struct Project {
     var projectImage: UIImage?
     var logoImage: UIImage?
     var countryCode: String?
+    var country: String
     var sectorCode: String?
+    var sector: String
 
     var projectName: String
     var projectDescription: String
@@ -86,6 +88,12 @@ struct Project {
         self.imageURL = imageURL
         self.countryCode = countryCode
         self.sectorCode = sectorCode
+        
+        let countryManager = CountrListManager()
+        self.country = countryManager.countryNameFor(code: countryCode)
+        
+        let sectorManager = SectorListManager()
+        self.sector = sectorManager.sectorStringFor(code: sectorCode)
     }
 }
 
