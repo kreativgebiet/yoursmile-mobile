@@ -218,9 +218,15 @@ class NetworkHelper: NSObject {
                 
                 let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
                 
-                if let data = json["data"] as? [AnyObject] {
+                if let data = json["data"] {
                     
-                    let comments = NetworkHelper.parseCommentsFrom(data: data)
+                    var comments = [Comment]()
+                    
+                    if data is [AnyObject] {
+                        comments = NetworkHelper.parseCommentsFrom(data: data as! [AnyObject])
+                    } else {
+                        comments = NetworkHelper.parseCommentsFrom(data: [data])
+                    }
                     
                     callback(true, comments)
                 } else {

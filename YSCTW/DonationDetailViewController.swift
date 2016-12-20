@@ -26,6 +26,11 @@ class DonationDetailViewController: UIViewController {
             self.view.addSubview(loadingScreen)
             
             self.dataManager?.postCommentWith((self.donation?.id)!, text, { (comments) in
+                self.donationDetailTableViewController.comments?.append(contentsOf: comments)
+                self.donationDetailTableViewController.reloadData()
+                self.commentView.commentTextField.text = ""
+                self.commentView.endEditing(true)
+                
                 loadingScreen.removeFromSuperview()
             })
         }
