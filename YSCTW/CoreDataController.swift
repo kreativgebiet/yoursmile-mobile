@@ -42,6 +42,59 @@ class CoreDataController: NSObject {
         
     }
     
+    func profileModel() -> ProfileModel {
+        
+        let profileModel = self.fetchProfileModel()
+        
+        if profileModel == nil {
+            return  NSEntityDescription.insertNewObject(forEntityName: "ProfileModel", into: self.managedObjectContext) as! ProfileModel
+        } else {
+            return profileModel!
+        }
+        
+    }
+    
+    func fetchProfileModel() -> ProfileModel? {
+        let fetchRequest: NSFetchRequest<ProfileModel> = ProfileModel.fetchRequest()
+
+        do {
+            let searchResults = try self.managedObjectContext.fetch(fetchRequest)
+            print ("num of results = \(searchResults.count)")
+            return searchResults.count > 0 ? searchResults[0] : nil
+            
+        } catch {
+            print("Error with request: \(error)")
+            return nil
+        }
+    }
+    
+    func save(profile: Profile) {
+        let profileModel = self.profileModel()
+        
+        profileModel.id = profile.id as NSNumber?
+        profileModel.name = profile.name
+        profileModel.email = profile.email
+        profileModel.nickname = profile.nickname
+        profileModel.avatar_url = profile.avatarUrl
+        profileModel.avatar_thumb_url = profile.avatarThumbUrl
+        
+        self.save()
+    }
+    
+    func profile() -> Profile {
+        let profileModel = self.profileModel()
+        
+        return Profile(id: Int(profileModel.id!), name: profileModel.name!, email: profileModel.email!, nickname: profileModel.nickname!, avatarURL: profileModel.avatar_url!, avatarThumbUrl: profileModel.avatar_thumb_url)
+    }
+    
+    public func deleteProfileModel() {
+        let profile = self.fetchProfileModel()
+        
+        if profile != nil {
+            self.managedObjectContext.delete(profile!)
+        }
+    }
+    
     public func createUploadModel() -> UploadModel {
         
         let entity = NSEntityDescription.insertNewObject(forEntityName: "UploadModel", into: self.managedObjectContext) as! UploadModel

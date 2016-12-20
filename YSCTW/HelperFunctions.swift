@@ -33,7 +33,7 @@ class HelperFunctions: NSObject {
     class func presentAlertViewfor(information: String, presenter: UIViewController) {
         let alertController = UIAlertController(title: "INFORMATION".localized, message: information, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (result : UIAlertAction) -> Void in
-            print("OK")
+
         }
         alertController.addAction(okAction)
         presenter.present(alertController, animated: true, completion: nil)

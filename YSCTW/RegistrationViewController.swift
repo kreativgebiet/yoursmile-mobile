@@ -153,7 +153,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             if success {
                 DataManager().login(email: mail!, password: password!, { (success) in
                     loadingScreen.removeFromSuperview()
-                    self.performSegue(withIdentifier: "registrationNavigationControllerSegue", sender: self)
+                    if success {
+                        self.performSegue(withIdentifier: "registrationNavigationControllerSegue", sender: self)
+                    }
                 })
             } else {
                 loadingScreen.removeFromSuperview()

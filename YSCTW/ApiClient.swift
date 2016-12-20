@@ -33,7 +33,6 @@ class APIClient: NSObject {
         Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             
             let json = NetworkHelper.parseResponseToJSON(data: response.data!)
-            debugPrint("JSON: \(json)")
             
             if (json == nil) {
                 callback(true, "ERROR".localized)
@@ -51,7 +50,7 @@ class APIClient: NSObject {
     
     // MARK: Login
     
-    class func login(email: String, password: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+    class func login(email: String, password: String, callback: @escaping ((_ success: Bool, _ errorMessage: String, _ profile: Profile?) -> ())) {
         
         let requestURL = baseURL + "auth/sign_in/"
         
@@ -61,7 +60,9 @@ class APIClient: NSObject {
         ]
         
         Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-            NetworkHelper.standardResponseHandling(response: response, callback: callback)
+            NetworkHelper.loginResponseHandling(response: response, callback: { (success, errorString, profile) in
+                callback(success, errorString, profile)
+            })
         }
         
     }
@@ -76,10 +77,6 @@ class APIClient: NSObject {
             
             Alamofire.request(requestURL, method: .get, headers: token)
                 .responseJSON { response in
-                    debugPrint("projects")
-                    debugPrint(response)
-                    debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
-                    
                     NetworkHelper.parseProjectsFrom(response: response, callback: { (success: Bool, projects: [Project]) in
                         
                         if success == true {                            
@@ -105,10 +102,6 @@ class APIClient: NSObject {
             
             Alamofire.request(requestURL, method: .get, headers: token)
                 .responseJSON { response in
-                    debugPrint("uploads")
-                    debugPrint(response)
-                    debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
-                    
                     NetworkHelper.parseUploadsFrom(response: response, callback: { (success: Bool, uploads: [Upload]) in
                         
                         if success == true {
@@ -200,9 +193,6 @@ class APIClient: NSObject {
                                     uploadModel.isUploaded = NSNumber(booleanLiteral: true) as Bool
                                     manager.save()
                                 }
-                                
-                                debugPrint(response)
-                                debugPrint(String(data: response.data!, encoding: String.Encoding.utf8))
                                 
                             })
                             

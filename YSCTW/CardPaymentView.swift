@@ -85,7 +85,7 @@ class CardPaymentView: UIView, STPPaymentCardTextFieldDelegate {
     // MARK: - Payment Field Delegates
 
     func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
-        print(textField.isValid)
+        
     }
 
 }

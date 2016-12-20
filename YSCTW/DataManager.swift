@@ -10,6 +10,9 @@ import UIKit
 
 class DataManager: NSObject {
     
+    let coreDataController = CoreDataController()
+    var userProfileModel: ProfileModel? = nil
+    
     func projects(_ callback: @escaping ((_ projects: [Project]) -> () )) {
         APIClient.projects(callback: callback)
     }
@@ -33,20 +36,18 @@ class DataManager: NSObject {
         }
     }
     
-    func profile() -> Profile {
-        return MockUpTestData().profile()
-    }
-    
     func userProfile() -> Profile {
-        return MockUpTestData().userProfile()
+        return self.coreDataController.profile()
     }
     
     func login(email: String, password: String,_ callback: @escaping ((_ success: Bool) -> () )) {
         
-        let callback = { (success: Bool, errorMessage: String) in
+        let callback = { (success: Bool, errorMessage: String, profile: Profile?) in
         
             if success {
-                UserDefaults.standard.setValue(true, forKey: "loggedIn")
+                UserDefaults.standard.setValue(true, forKey: "loggedIn")                
+                self.coreDataController.save(profile: profile!)
+                
             } else {
                 HelperFunctions.presentAlertViewfor(error: errorMessage)
             }

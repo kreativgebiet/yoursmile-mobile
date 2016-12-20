@@ -89,6 +89,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         UserDefaults.standard.setValue(false, forKey: "loggedIn")
         NetworkHelper.deleteToken()
         FBSDKLoginManager().logOut()
+        CoreDataController().deleteProfileModel()
         HelperFunctions.presentAlertViewfor(error: "LOGOUT_ERROR".localized, {
           self.navigationController?.performSegue(withIdentifier: "logoutSegue", sender: self)
         })
@@ -171,7 +172,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
                     self.preferencesViewController = self.instantiateViewController(withIdentifier: "PreferencesViewController") as? PreferencesViewController
                 }
                 
-                self.preferencesViewController?.profile = self.dataManager?.profile()
+                self.preferencesViewController?.profile = self.dataManager?.userProfile()
             
                 return self.preferencesViewController!
             case .profile:

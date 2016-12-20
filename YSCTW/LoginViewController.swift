@@ -148,18 +148,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.view.addSubview(self.loadingScreen)
         }
         
-        let callback = { (success: Bool, errorMessage: String) in
+        let callback = { (success: Bool) in
             self.loadingScreen.removeFromSuperview()
-            
             if success {
-                UserDefaults.standard.setValue(true, forKey: "loggedIn")
                 self.performSegue(withIdentifier: "navigationControllerSegue", sender: self)
-            } else {
-                HelperFunctions.presentAlertViewfor(error: errorMessage)
             }
         }
         
-        APIClient.login(email: email, password: password, callback: callback)
+        DataManager().login(email: email, password: password, callback)
+        
+
     }
     
     // MARK: - Facebook Login

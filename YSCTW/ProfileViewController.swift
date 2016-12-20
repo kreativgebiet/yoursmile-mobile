@@ -13,7 +13,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     public var dataManager: DataManager?
     public var currentProfile: Profile?
     public var userProfile = DataManager().userProfile()
-
     
     public var profileImage: UIImage {
         

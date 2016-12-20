@@ -141,9 +141,11 @@
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
 		A1DB37741E094D1F003EAFCF /* SectorListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37731E094D1F003EAFCF /* SectorListManager.swift */; };
+		A1DB37761E098368003EAFCF /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37751E098368003EAFCF /* ErrorManager.swift */; };
+		A1DB37791E098D75003EAFCF /* ProfileModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37771E098D75003EAFCF /* ProfileModel+CoreDataClass.swift */; };
+		A1DB377A1E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37781E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
 		A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */; };
-		A1F8D8E71DD3632800AFAB4F /* MockUpTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */; };
 		A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8E81DD3648400AFAB4F /* DataManager.swift */; };
 		A1F8D8EB1DD367D100AFAB4F /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */; };
 		A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */; };
@@ -326,9 +328,11 @@
 		A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayPalViewController.swift; sourceTree = "<group>"; };
 		A1DB37731E094D1F003EAFCF /* SectorListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectorListManager.swift; sourceTree = "<group>"; };
+		A1DB37751E098368003EAFCF /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		A1DB37771E098D75003EAFCF /* ProfileModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProfileModel+CoreDataClass.swift"; path = "../ProfileModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A1DB37781E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProfileModel+CoreDataProperties.swift"; path = "../ProfileModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
-		A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUpTestData.swift; sourceTree = "<group>"; };
 		A1F8D8E81DD3648400AFAB4F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
@@ -417,6 +421,8 @@
 		A114283D1E03EBA30033844A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A1DB37771E098D75003EAFCF /* ProfileModel+CoreDataClass.swift */,
+				A1DB37781E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift */,
 				A11428371E03EA310033844A /* CoreDataController.swift */,
 				A11428391E03EB940033844A /* UploadModel+CoreDataClass.swift */,
 				A114283A1E03EB940033844A /* UploadModel+CoreDataProperties.swift */,
@@ -484,6 +490,7 @@
 				A153909F1DD0E37D00B7ADA0 /* Views */,
 				A1ED19A51DD1F75500538B78 /* TableViewCells */,
 				A19677801DEC889E00C1CBBC /* StripePaymentContext.swift */,
+				A1DB37751E098368003EAFCF /* ErrorManager.swift */,
 			);
 			path = YSCTW;
 			sourceTree = "<group>";
@@ -677,7 +684,6 @@
 		A1D6F5041DE5E97300A0A8F9 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
-				A1F8D8E61DD3632800AFAB4F /* MockUpTestData.swift */,
 				A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */,
 			);
 			name = TestData;
@@ -909,12 +915,12 @@
 				A1D6F5001DE5DDDF00A0A8F9 /* FeeCalculator.swift in Sources */,
 				A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */,
 				A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */,
-				A1F8D8E71DD3632800AFAB4F /* MockUpTestData.swift in Sources */,
 				A11428381E03EA310033844A /* CoreDataController.swift in Sources */,
 				A114283B1E03EB940033844A /* UploadModel+CoreDataClass.swift in Sources */,
 				A154FDF11DDF5BC200D88306 /* ImagePickerViewController.swift in Sources */,
 				A11428361E03E8930033844A /* YSCTW.xcdatamodeld in Sources */,
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
+				A1DB37791E098D75003EAFCF /* ProfileModel+CoreDataClass.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A12D45A11DED8D7C004CD066 /* Networking.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
@@ -930,6 +936,7 @@
 				A15390A71DD0F5E300B7ADA0 /* FeedViewController.swift in Sources */,
 				A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */,
 				A1F8D8EB1DD367D100AFAB4F /* FeedTableViewController.swift in Sources */,
+				A1DB377A1E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift in Sources */,
 				A11029131DDA1F3400633343 /* LogoNavigationBarView.swift in Sources */,
 				A11029111DD9FE1900633343 /* RoundImageView.swift in Sources */,
 				A1DB37741E094D1F003EAFCF /* SectorListManager.swift in Sources */,
@@ -940,6 +947,7 @@
 				A153909D1DD0CEFF00B7ADA0 /* RegistrationViewController.swift in Sources */,
 				A11028ED1DD4DA2C00633343 /* DonationViewController.swift in Sources */,
 				A11028FF1DD5E23500633343 /* AccountPreferencesViewController.swift in Sources */,
+				A1DB37761E098368003EAFCF /* ErrorManager.swift in Sources */,
 				A1F8D8F91DD3AA2400AFAB4F /* HelperFunctions.swift in Sources */,
 				A1D6F4D71DE4889200A0A8F9 /* LoadingScreen.swift in Sources */,
 				A12A457B1DCF9383002977DF /* constants.swift in Sources */,

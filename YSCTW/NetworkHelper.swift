@@ -13,6 +13,7 @@ import Locksmith
 class NetworkHelper: NSObject {
     
     // MARK: Error handling
+    
     class func findErrorsIn(_ json: Any) -> String {
         
         var errorMessage = ""
@@ -54,6 +55,9 @@ class NetworkHelper: NSObject {
         let uid = response.allHeaderFields["Uid"] as? String
         let client = response.allHeaderFields["Client"] as? String
         
+        debugPrint("save token")
+        debugPrint(token)
+        
         if token != nil && expiryDate != nil && uid != nil && client != nil {
             let headerDict = [
                 "access-token": token!,
@@ -77,6 +81,9 @@ class NetworkHelper: NSObject {
         if let expiryTimeStamp = dictionary["expiry"] {
             let timeStamp = Double(expiryTimeStamp)
             let expiryDate = Date(timeIntervalSince1970: timeStamp!)
+            
+            debugPrint("verify token")
+            debugPrint(dictionary["access-token"])
             
             if Date() < expiryDate {
                callback(dictionary)
@@ -103,7 +110,6 @@ class NetworkHelper: NSObject {
     class func standardResponseHandling(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         
         let json = NetworkHelper.parseResponseToJSON(data: response.data!)
-        debugPrint("JSON: \(json)")
         
         if (json == nil) {
             callback(false, "ERROR".localized)
@@ -113,6 +119,7 @@ class NetworkHelper: NSObject {
             if errors.characters.count > 0 {
                 callback(false, errors)
                 HelperFunctions.presentAlertViewfor(error: errors)
+                ErrorManager.handleRequest(response.response!)
             } else {
                 NetworkHelper.saveTokenFromResponse(response: response.response!)
                 callback(true, "")
@@ -120,10 +127,36 @@ class NetworkHelper: NSObject {
         }
     }
     
+    // MARK: Login Response handling
+    
+    class func loginResponseHandling(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ errorString: String, _ profile: Profile?) -> ())) {
+        
+        NetworkHelper.standardResponseHandling(response: response) { (success, errorString) in
+            
+            if success {
+                
+                let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
+                
+                if let data = json["data"] as? [String : AnyObject] {
+                    let profile = NetworkHelper.parseProfileFrom(data: data)                    
+                    callback(true, errorString, profile)
+                } else {
+                    callback(false, errorString, nil)
+                }
+                
+            } else {
+                callback(false, errorString, nil)
+            }
+        }
+        
+    }
+        
+    
+    // MARK: Upload Response handling
+    
     class func uploadResponseHandling(response: Alamofire.DefaultDataResponse,callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         
         let json = NetworkHelper.parseResponseToJSON(data: response.data!)
-        debugPrint("JSON: \(json)")
         
         if (json == nil) {
             callback(false, "ERROR".localized)
@@ -148,7 +181,6 @@ class NetworkHelper: NSObject {
             if success {
                 
                 let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
-                debugPrint("JSON: \(json)")
                 
                 if let data = json["data"] as? [AnyObject] {
                   
@@ -271,7 +303,6 @@ class NetworkHelper: NSObject {
             if success {
                 
                 let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
-                debugPrint("JSON: \(json)")
                 
                 if let data = json["data"] as? [String : AnyObject] {
                     let upload = NetworkHelper.parseUploadFrom(data: data)
@@ -295,7 +326,6 @@ class NetworkHelper: NSObject {
             if success {
                 
                 let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
-                debugPrint("JSON: \(json)")
                 
                 if let data = json["data"] as? [[String : AnyObject]] {
                     var uploads = [Upload]()
@@ -357,13 +387,12 @@ class NetworkHelper: NSObject {
             name = authorName
         }
         
-        if let avatarURL = data["avatar"] as? String {
+        if let avatarURL = data["avatar"]?["url"] as? String {
             imageURL = avatarURL
         }
         
-        //TODO cleanup
+        var profile = Profile(id: id, name: name, email: email, nickname: nickname, avatarURL: imageURL, avatarThumbUrl: nil)
         
-        var profile = Profile(id: id, name: name, email: email, nickname: nickname, avatarURL: imageURL)
         profile.image = image
         
         return profile

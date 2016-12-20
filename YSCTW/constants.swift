@@ -39,28 +39,24 @@ enum Payment {
 
 //Data structure
 
-//       "id": 10,
-//        "name": "nick",
-//        "avatar": null,
-//        "email": "nick@kreativgebiet.com",
-//        "nickname": "nicknick"
-
 struct Profile {
     
     var id: Int
     var name: String
     var email: String
     var nickname: String
-    var avatarURL: String
-    
+    var avatarUrl: String
+    var avatarThumbUrl: String?
     var image: UIImage?
+    var uid: String?
     
-    init(id: Int, name: String, email: String, nickname: String, avatarURL: String) {
+    init(id: Int, name: String, email: String, nickname: String, avatarURL: String, avatarThumbUrl: String?) {
         self.id = id
         self.name = name
         self.email = email
         self.nickname = nickname
-        self.avatarURL = avatarURL
+        self.avatarUrl = avatarURL
+        self.avatarThumbUrl = avatarThumbUrl
     }
 }
 
