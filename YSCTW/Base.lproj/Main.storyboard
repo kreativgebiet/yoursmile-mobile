@@ -1205,6 +1205,7 @@
                         <outlet property="nameTextFieldTopSpaceConstraint" destination="ZJd-Ry-i9C" id="JId-Ig-XKi"/>
                         <outlet property="passwordTextField" destination="j1w-qR-uwc" id="QaR-LK-hR8"/>
                         <outlet property="registerButton" destination="pIJ-Ea-7BH" id="YJQ-7E-Qok"/>
+                        <segue destination="S3D-hc-yly" kind="show" identifier="registrationNavigationControllerSegue" id="XbG-WZ-FBm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8p9-5u-8Ys" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1431,7 +1432,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MU8-Y1-OYZ" id="keJ-qc-966">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1473,7 +1474,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sMb-pT-tdO" id="FI8-LF-equ">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1521,4 +1522,7 @@
         <image name="tabbar-preferences-selected" width="21" height="5"/>
         <image name="world-icon" width="18" height="18"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XbG-WZ-FBm"/>
+    </inferredMetricsTieBreakers>
 </document>

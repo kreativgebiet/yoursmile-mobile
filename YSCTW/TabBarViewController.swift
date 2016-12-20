@@ -64,11 +64,6 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         self.feedViewController = self.viewControllerOf(type: .feed) as? FeedViewController
         self.feedViewController?.dataManager = self.dataManager
         
-        self.dataManager?.uploads({ (uploads) in
-            self.feedViewController?.uploads = uploads
-            self.feedViewController?.reload()
-        })
-        
         self.addViewControllerAsChildViewController(viewController: self.feedViewController!)
         
         NotificationCenter.default.addObserver(self, selector: #selector(openFeed), name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)

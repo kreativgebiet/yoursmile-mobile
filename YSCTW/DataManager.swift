@@ -40,5 +40,21 @@ class DataManager: NSObject {
     func userProfile() -> Profile {
         return MockUpTestData().userProfile()
     }
+    
+    func login(email: String, password: String,_ callback: @escaping ((_ success: Bool) -> () )) {
+        
+        let callback = { (success: Bool, errorMessage: String) in
+        
+            if success {
+                UserDefaults.standard.setValue(true, forKey: "loggedIn")
+            } else {
+                HelperFunctions.presentAlertViewfor(error: errorMessage)
+            }
+            
+            callback(success)
+        }
+        
+        APIClient.login(email: email, password: password, callback: callback)
+    }
 
 }

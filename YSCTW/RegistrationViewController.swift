@@ -26,8 +26,6 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     var defaultLogoTopSpaceConstraintConstant: CGFloat?
     var defaultnameTextFieldTopSpaceConstraintConstant: CGFloat?
     
-    var loginViewController: LoginViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,11 +61,6 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.loginViewController = self.presentingViewController as! LoginViewController!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -157,15 +150,13 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         
         let callback = { (success: Bool, errorMessage: String) in
             
-            loadingScreen.removeFromSuperview()
-            
             if success {
-                
-                self.dismiss(animated: false, completion: { 
-                    self.loginViewController.loginWith(mail!, password!)
+                DataManager().login(email: mail!, password: password!, { (success) in
+                    loadingScreen.removeFromSuperview()
+                    self.performSegue(withIdentifier: "registrationNavigationControllerSegue", sender: self)
                 })
-                
             } else {
+                loadingScreen.removeFromSuperview()
                 HelperFunctions.presentAlertViewfor(error: errorMessage)
             }
             
