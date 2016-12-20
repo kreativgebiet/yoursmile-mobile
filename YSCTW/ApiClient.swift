@@ -70,7 +70,7 @@ class APIClient: NSObject {
     // MARK: Projects
     
     class func projects(callback: @escaping ((_ projects: [Project]) -> () )) {
-        
+        debugPrint("projects get")
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "projects"
@@ -95,7 +95,7 @@ class APIClient: NSObject {
     // MARK: Uploads
 
     class func uploads(callback: @escaping ((_ uploads: [Upload]) -> () )) {
-        
+        debugPrint("uploads get")
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "uploads"
@@ -133,7 +133,7 @@ class APIClient: NSObject {
         
         //Core Data is not threadsafe so the Object needs to be fetched by ObjectID
         let objectID = model.objectID
-        
+        debugPrint("uploads post")
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "uploads"
@@ -210,7 +210,7 @@ class APIClient: NSObject {
     // MARK: Comment handling
     
     class func commentsWith(_ uploadId: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
-        
+        debugPrint("comments get")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "uploads/" + uploadId + "/comments"
             
@@ -225,7 +225,7 @@ class APIClient: NSObject {
     }
     
     class func postCommentWith(_ uploadId: String, _ text: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
-        
+        debugPrint("comments post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "uploads/" + uploadId + "/comments"
             
@@ -246,7 +246,7 @@ class APIClient: NSObject {
     // MARK: Stripe Payment
     
     class func postPaymentSource(_ stripeToken: String, _ callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
-        
+        debugPrint("sources post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "sources"
             
@@ -263,7 +263,7 @@ class APIClient: NSObject {
     }
     
     class func postPayment(_ uploadId: String, _ callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
-        
+        debugPrint("upload payment post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "uploads/" + uploadId + "/pay"
             
@@ -278,7 +278,7 @@ class APIClient: NSObject {
     // MARK: User handling
     
     class func resetPassword(newPassword: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
-        
+        debugPrint("password post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "auth/password"
             
@@ -295,7 +295,7 @@ class APIClient: NSObject {
     }
     
     class func deleteUser(callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
-        
+        debugPrint("delete user post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "auth/"
             

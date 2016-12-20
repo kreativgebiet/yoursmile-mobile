@@ -138,7 +138,7 @@ class NetworkHelper: NSObject {
                 let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
                 
                 if let data = json["data"] as? [String : AnyObject] {
-                    let profile = NetworkHelper.parseProfileFrom(data: data)                    
+                    let profile = NetworkHelper.parseProfileFrom(data: data)
                     callback(true, errorString, profile)
                 } else {
                     callback(false, errorString, nil)
