@@ -119,16 +119,7 @@ class APIClient: NSObject {
     
     // MARK: Upload Selfies
     
-    class func uploadSelfies () {
-        let uploadModels = CoreDataController().fetchUploadModelsToUpload()
-        
-        for upload in uploadModels {
-            APIClient.uploadSelfie(model: upload)
-        }
-
-    }
-    
-    class func uploadSelfie(model: UploadModel) {
+    class func uploadSelfie(model: UploadModel, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         
         //Core Data is not threadsafe so the Object needs to be fetched by ObjectID
         let objectID = model.objectID
@@ -178,19 +169,22 @@ class APIClient: NSObject {
                                         manager.save()
                                         
                                         APIClient.postPayment(id!, { (success, error) in
-                                            
                                             if success {
                                                 let manager = CoreDataController()
                                                 let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
                                                 manager.managedObjectContext.delete(uploadModel)
                                                 manager.save()
                                             }
-                                            
+                                            callback(success, error)
                                         })
+                                    } else {
+                                        callback(success, "upload error")
                                     }
                                     
                                     uploadModel.isUploaded = NSNumber(booleanLiteral: true) as Bool
                                     manager.save()
+                                } else {
+                                    callback(success, "upload error")
                                 }
                                 
                             })
@@ -199,6 +193,7 @@ class APIClient: NSObject {
                         
                     case .failure(let encodingError):
                         print("error:\(encodingError)")
+                        callback(false, String(describing: encodingError))
                     }
                     
             })

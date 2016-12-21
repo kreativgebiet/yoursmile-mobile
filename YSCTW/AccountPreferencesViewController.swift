@@ -125,6 +125,7 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
                 case 0:
                     let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "PasswordChangeViewController") as!  PasswordChangeViewController
                     viewController.title = "CHANGE_PASSWORD".localized
+                    viewController.dataManager = self.dataManager
                     
                     self.navigationController?.pushViewController(viewController, animated: true)
                     
@@ -133,6 +134,7 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
                 case 1:
                     let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "EmailChangeViewController") as!  EmailChangeViewController
                     viewController.title = "CHANGE_MAIL".localized
+                    viewController.dataManager = self.dataManager
                     
                     self.navigationController?.pushViewController(viewController, animated: true)
                     

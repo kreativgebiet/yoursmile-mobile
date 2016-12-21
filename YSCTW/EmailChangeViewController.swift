@@ -15,6 +15,8 @@ class EmailChangeViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailConfirmationTextField: UITextField!
     
+    public var dataManager: DataManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = customLightGray
@@ -70,7 +72,7 @@ class EmailChangeViewController: UIViewController {
             
         }
         
-        APIClient.updateUser(email: email!, callback: callback)
+        self.dataManager.updateUser(email: email!, callback: callback)
     }
     
     /*

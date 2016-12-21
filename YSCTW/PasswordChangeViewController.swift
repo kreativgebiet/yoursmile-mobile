@@ -15,6 +15,8 @@ class PasswordChangeViewController: UIViewController {
     @IBOutlet weak var newPasswordConfirmationTextField: UITextField!
     @IBOutlet weak var saveButton: RoundedButton!
     
+    public var dataManager: DataManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,7 +80,7 @@ class PasswordChangeViewController: UIViewController {
             
         }
         
-        APIClient.resetPassword(newPassword: password, callback:  callback)
+        self.dataManager.resetPassword(password: password!, callback:  callback)
         
     }
 

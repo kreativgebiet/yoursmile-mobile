@@ -14,6 +14,8 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     public var selfieImage: UIImage!
     public var payment: Payment!
     
+    public var dataManager: DataManager!
+    
     @IBOutlet weak var projectsLogoView: DonationDescriptionLogoView!
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var selfieImageView: UIImageView!
@@ -161,9 +163,10 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
             let total = Int(fee*100) + self.projects.count * 100
             
             let paymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StripePaymentViewController") as!  StripePaymentViewController
-
+            
             paymentViewController.callback = callback
             paymentViewController.totalPrice = total
+            paymentViewController.dataManager = self.dataManager
 
             self.navigationController?.pushViewController(paymentViewController, animated: true)
             
@@ -174,7 +177,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     }
     
     func uploadSelfie() {
-        APIClient.uploadSelfies()
+        self.dataManager.uploadSelfies()
     }
     
     func handleDonationSuccess() {

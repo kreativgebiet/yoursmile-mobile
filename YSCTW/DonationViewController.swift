@@ -246,6 +246,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
             destination.selfieImage = self.selfieImage
             destination.projects = self.supportedProjects
             destination.payment = self.paymentSelectionView.selectedPayment
+            destination.dataManager = self.dataManager
         }
     }
 

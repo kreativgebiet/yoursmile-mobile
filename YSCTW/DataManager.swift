@@ -55,6 +55,30 @@ class DataManager: NSObject {
         self.queue.addOperation(operation)
     }
     
+    func updateUser(email: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        let operation = UpdateUserOperation(email, callback)
+        self.queue.addOperation(operation)
+    }
+    
+    func resetPassword(password: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        let operation = ResetPasswordOperation(password, callback)
+        self.queue.addOperation(operation)
+    }
+    
+    func postPaymentSource(tokenId: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        let operation = PostPaymentSourceOperation(tokenId, callback)
+        self.queue.addOperation(operation)
+    }
+    
+    func uploadSelfies () {
+        let uploadModels = CoreDataController().fetchUploadModelsToUpload()
+        
+        for upload in uploadModels {
+            let operation = UploadSelfiesOperation(upload)
+            self.queue.addOperation(operation)
+        }
+    }
+    
     func userProfile() -> Profile {
         return self.coreDataController.profile()
     }

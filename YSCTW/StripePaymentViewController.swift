@@ -17,6 +17,7 @@ class StripePaymentViewController: UIViewController {
     var paymentContext: STPPaymentContext?
     public var totalPrice: Int!
     public var callback: ((_ upload: UploadModel?, _ success: Bool, _ error: String) -> ())!
+    public var dataManager: DataManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ class StripePaymentViewController: UIViewController {
                         return
                     }
 
-                    APIClient.postPaymentSource(stripeToken.tokenId, { (success, errorMessage) in
+                    self.dataManager.postPaymentSource(tokenId: stripeToken.tokenId, callback: { (success, errorMessage) in
                         
                         loadingScreen.removeFromSuperview()
                         
