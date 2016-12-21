@@ -159,7 +159,6 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
         self.view.addSubview(loadingScreen)
         
         self.dataManager?.projects({ (projects) in
-            
             loadingScreen.removeFromSuperview()
             self.projects = projects
             

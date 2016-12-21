@@ -10,7 +10,8 @@ import UIKit
 
 class PreferencesViewController: UIViewController {
     
-    public var profile: Profile?
+    var profile: Profile?
+    public var dataManager: DataManager!
     
     @IBOutlet weak var spacerView: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -21,6 +22,7 @@ class PreferencesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.profile = self.dataManager?.userProfile()
         
         self.spacerView.backgroundColor = customDarkerGray
         
@@ -54,8 +56,8 @@ class PreferencesViewController: UIViewController {
                 if self.accountPreferencesViewController == nil {
                     self.accountPreferencesViewController = self.instantiateViewController(withIdentifier: "AccountPreferencesViewController") as? AccountPreferencesViewController
                     
-                    
                     self.accountPreferencesViewController.profile = self.profile
+                    self.accountPreferencesViewController.dataManager = self.dataManager
                 }
                 
                 self.addViewControllerAsChildViewController(viewController: self.accountPreferencesViewController)

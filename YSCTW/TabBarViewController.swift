@@ -172,7 +172,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
                     self.preferencesViewController = self.instantiateViewController(withIdentifier: "PreferencesViewController") as? PreferencesViewController
                 }
                 
-                self.preferencesViewController?.profile = self.dataManager?.userProfile()
+                self.preferencesViewController?.dataManager = self.dataManager
             
                 return self.preferencesViewController!
             case .profile:

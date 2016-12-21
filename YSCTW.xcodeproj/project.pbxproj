@@ -39,8 +39,6 @@
 		A12A457B1DCF9383002977DF /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A457A1DCF9383002977DF /* constants.swift */; };
 		A12A457F1DD080C9002977DF /* LeftViewImageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A457E1DD080C9002977DF /* LeftViewImageTextField.swift */; };
 		A12A45811DD081FF002977DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A45801DD081FF002977DF /* LoginViewController.swift */; };
-		A12D459F1DED8C55004CD066 /* StripeBackendApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D459E1DED8C55004CD066 /* StripeBackendApiClient.swift */; };
-		A12D45A11DED8D7C004CD066 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D45A01DED8D7C004CD066 /* Networking.swift */; };
 		A13546721DDDEC7900931139 /* PaymentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13546711DDDEC7900931139 /* PaymentSelectionView.swift */; };
 		A13546741DDDEC8700931139 /* PaymentSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13546731DDDEC8700931139 /* PaymentSelectionView.xib */; };
 		A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13546751DDDF45300931139 /* DonationDescriptionViewController.swift */; };
@@ -90,7 +88,6 @@
 		A196777B1DEC607200C1CBBC /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A196777A1DEC607200C1CBBC /* FBSDKShareKit.framework */; };
 		A196777D1DEC6E8900C1CBBC /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196777C1DEC6E8900C1CBBC /* UIImageExtension.swift */; };
 		A196777F1DEC85AD00C1CBBC /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A196777E1DEC85AD00C1CBBC /* Stripe.framework */; };
-		A19677811DEC889E00C1CBBC /* StripePaymentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19677801DEC889E00C1CBBC /* StripePaymentContext.swift */; };
 		A19677831DEC929400C1CBBC /* StripePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19677821DEC929400C1CBBC /* StripePaymentViewController.swift */; };
 		A19A31B51DFEC13B0054BA3E /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */; };
 		A1B2B9CC1DDF7B3600C27A26 /* PhotoCropEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */; };
@@ -144,6 +141,12 @@
 		A1DB37761E098368003EAFCF /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37751E098368003EAFCF /* ErrorManager.swift */; };
 		A1DB37791E098D75003EAFCF /* ProfileModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37771E098D75003EAFCF /* ProfileModel+CoreDataClass.swift */; };
 		A1DB377A1E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37781E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift */; };
+		A1DB377E1E0A95B4003EAFCF /* ProjectsDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB377D1E0A95B4003EAFCF /* ProjectsDownloadOperation.swift */; };
+		A1DB37851E0A99AF003EAFCF /* UploadsDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37841E0A99AF003EAFCF /* UploadsDownloadOperation.swift */; };
+		A1DB37871E0A99CE003EAFCF /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37861E0A99CE003EAFCF /* NetworkOperation.swift */; };
+		A1DB37891E0A9C14003EAFCF /* CommentDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37881E0A9C14003EAFCF /* CommentDownloadOperation.swift */; };
+		A1DB378B1E0A9CF5003EAFCF /* PostCommentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB378A1E0A9CF5003EAFCF /* PostCommentOperation.swift */; };
+		A1DB378D1E0A9DF5003EAFCF /* DeleteUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB378C1E0A9DF5003EAFCF /* DeleteUserOperation.swift */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
 		A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */; };
 		A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8E81DD3648400AFAB4F /* DataManager.swift */; };
@@ -219,8 +222,6 @@
 		A12A457A1DCF9383002977DF /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		A12A457E1DD080C9002977DF /* LeftViewImageTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewImageTextField.swift; sourceTree = "<group>"; };
 		A12A45801DD081FF002977DF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		A12D459E1DED8C55004CD066 /* StripeBackendApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeBackendApiClient.swift; sourceTree = "<group>"; };
-		A12D45A01DED8D7C004CD066 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		A13546711DDDEC7900931139 /* PaymentSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSelectionView.swift; sourceTree = "<group>"; };
 		A13546731DDDEC8700931139 /* PaymentSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentSelectionView.xib; sourceTree = "<group>"; };
 		A13546751DDDF45300931139 /* DonationDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationDescriptionViewController.swift; sourceTree = "<group>"; };
@@ -270,7 +271,6 @@
 		A196777A1DEC607200C1CBBC /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = YSCTW/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		A196777C1DEC6E8900C1CBBC /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		A196777E1DEC85AD00C1CBBC /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
-		A19677801DEC889E00C1CBBC /* StripePaymentContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripePaymentContext.swift; sourceTree = "<group>"; };
 		A19677821DEC929400C1CBBC /* StripePaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripePaymentViewController.swift; sourceTree = "<group>"; };
 		A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
@@ -331,6 +331,12 @@
 		A1DB37751E098368003EAFCF /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		A1DB37771E098D75003EAFCF /* ProfileModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProfileModel+CoreDataClass.swift"; path = "../ProfileModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1DB37781E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProfileModel+CoreDataProperties.swift"; path = "../ProfileModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A1DB377D1E0A95B4003EAFCF /* ProjectsDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsDownloadOperation.swift; sourceTree = "<group>"; };
+		A1DB37841E0A99AF003EAFCF /* UploadsDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadsDownloadOperation.swift; sourceTree = "<group>"; };
+		A1DB37861E0A99CE003EAFCF /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
+		A1DB37881E0A9C14003EAFCF /* CommentDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentDownloadOperation.swift; sourceTree = "<group>"; };
+		A1DB378A1E0A9CF5003EAFCF /* PostCommentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCommentOperation.swift; sourceTree = "<group>"; };
+		A1DB378C1E0A9DF5003EAFCF /* DeleteUserOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteUserOperation.swift; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1F8D8E81DD3648400AFAB4F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -489,7 +495,6 @@
 				A153909E1DD0E37100B7ADA0 /* ViewController */,
 				A153909F1DD0E37D00B7ADA0 /* Views */,
 				A1ED19A51DD1F75500538B78 /* TableViewCells */,
-				A19677801DEC889E00C1CBBC /* StripePaymentContext.swift */,
 				A1DB37751E098368003EAFCF /* ErrorManager.swift */,
 			);
 			path = YSCTW;
@@ -647,8 +652,12 @@
 			children = (
 				A1D6F4D11DE484C200A0A8F9 /* APIClient.swift */,
 				A1D6F4D41DE4854100A0A8F9 /* NetworkHelper.swift */,
-				A12D459E1DED8C55004CD066 /* StripeBackendApiClient.swift */,
-				A12D45A01DED8D7C004CD066 /* Networking.swift */,
+				A1DB37861E0A99CE003EAFCF /* NetworkOperation.swift */,
+				A1DB377D1E0A95B4003EAFCF /* ProjectsDownloadOperation.swift */,
+				A1DB37841E0A99AF003EAFCF /* UploadsDownloadOperation.swift */,
+				A1DB37881E0A9C14003EAFCF /* CommentDownloadOperation.swift */,
+				A1DB378A1E0A9CF5003EAFCF /* PostCommentOperation.swift */,
+				A1DB378C1E0A9DF5003EAFCF /* DeleteUserOperation.swift */,
 			);
 			name = ServiceLayer;
 			sourceTree = "<group>";
@@ -922,7 +931,6 @@
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
 				A1DB37791E098D75003EAFCF /* ProfileModel+CoreDataClass.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
-				A12D45A11DED8D7C004CD066 /* Networking.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
 				A1D6F5021DE5E43B00A0A8F9 /* FloatExtension.swift in Sources */,
 				A1D6F4D51DE4854100A0A8F9 /* NetworkHelper.swift in Sources */,
@@ -930,6 +938,7 @@
 				A1D6F5061DE5E98E00A0A8F9 /* PayPalViewController.swift in Sources */,
 				A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */,
 				A1CF0CA41DD238C9002C4562 /* DonationDetailHeaderView.swift in Sources */,
+				A1DB37891E0A9C14003EAFCF /* CommentDownloadOperation.swift in Sources */,
 				A1D6F4CA1DE461A300A0A8F9 /* PasswordChangeViewController.swift in Sources */,
 				A12A454D1DCF8C76002977DF /* AppDelegate.swift in Sources */,
 				A1F8D8EF1DD36DCD00AFAB4F /* ProjectFilterViewController.swift in Sources */,
@@ -951,16 +960,16 @@
 				A1F8D8F91DD3AA2400AFAB4F /* HelperFunctions.swift in Sources */,
 				A1D6F4D71DE4889200A0A8F9 /* LoadingScreen.swift in Sources */,
 				A12A457B1DCF9383002977DF /* constants.swift in Sources */,
-				A19677811DEC889E00C1CBBC /* StripePaymentContext.swift in Sources */,
+				A1DB378D1E0A9DF5003EAFCF /* DeleteUserOperation.swift in Sources */,
 				A110290D1DD9EDA300633343 /* ProjectView.swift in Sources */,
 				A15390AF1DD0F64100B7ADA0 /* PreferencesViewController.swift in Sources */,
 				A196777D1DEC6E8900C1CBBC /* UIImageExtension.swift in Sources */,
 				A1CF0CA91DD25DAA002C4562 /* TableViewFooterView.swift in Sources */,
 				A114283C1E03EB940033844A /* UploadModel+CoreDataProperties.swift in Sources */,
+				A1DB37871E0A99CE003EAFCF /* NetworkOperation.swift in Sources */,
 				A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */,
 				A15390AB1DD0F61F00B7ADA0 /* CameraViewController.swift in Sources */,
 				A1D6F4C61DE36F4000A0A8F9 /* LanguageManager.swift in Sources */,
-				A12D459F1DED8C55004CD066 /* StripeBackendApiClient.swift in Sources */,
 				A15390A51DD0EE1800B7ADA0 /* TabBarViewController.swift in Sources */,
 				A16407061DDE723A00BA1853 /* PreferencesTableViewCell.swift in Sources */,
 				A161B5581DEDA06300356514 /* CardPaymentView.swift in Sources */,
@@ -969,9 +978,11 @@
 				A1CF0CA71DD252D9002C4562 /* DonationDetailViewController.swift in Sources */,
 				A1D6F4CE1DE469F400A0A8F9 /* DeleteAccountViewController.swift in Sources */,
 				A135467C1DDE0FFF00931139 /* DonationSuccessOverlay.swift in Sources */,
+				A1DB377E1E0A95B4003EAFCF /* ProjectsDownloadOperation.swift in Sources */,
 				A12A45811DD081FF002977DF /* LoginViewController.swift in Sources */,
 				A13546721DDDEC7900931139 /* PaymentSelectionView.swift in Sources */,
 				A153909B1DD0CD9200B7ADA0 /* RoundedButton.swift in Sources */,
+				A1DB37851E0A99AF003EAFCF /* UploadsDownloadOperation.swift in Sources */,
 				A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */,
 				A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */,
 				A1D6F4C81DE3725500A0A8F9 /* LanguageSelectionViewController.swift in Sources */,
@@ -979,6 +990,7 @@
 				A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */,
 				A114283F1E08274F0033844A /* UIApplicationExtension.swift in Sources */,
 				A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */,
+				A1DB378B1E0A9CF5003EAFCF /* PostCommentOperation.swift in Sources */,
 				A154FDF31DDF66DB00D88306 /* CancelableProgressView.swift in Sources */,
 				A11028F71DD5307700633343 /* ProfileHeaderView.swift in Sources */,
 				A1CF0CB11DD26CD3002C4562 /* CornerButton.swift in Sources */,

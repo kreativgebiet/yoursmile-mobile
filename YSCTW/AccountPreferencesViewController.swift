@@ -10,7 +10,8 @@ import UIKit
 
 class AccountPreferencesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    public var profile:Profile?
+    public var profile: Profile?
+    public var dataManager: DataManager!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -140,6 +141,7 @@ class AccountPreferencesViewController: UIViewController, UITableViewDataSource,
                 case 2:
                     let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "DeleteAccountViewController") as!  DeleteAccountViewController
                     viewController.title = "DELETE_ACCOUNT".localized
+                    viewController.dataManager = self.dataManager
                     
                     viewController.callback = {
                         self.navigationController?.performSegue(withIdentifier: "logoutSegue", sender: self)

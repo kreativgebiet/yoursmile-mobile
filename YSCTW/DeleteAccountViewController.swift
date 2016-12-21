@@ -15,6 +15,7 @@ class DeleteAccountViewController: UIViewController {
     @IBOutlet weak var deleteButton: RoundedButton!
     
     public var callback: (() -> Void)!
+    public var dataManager: DataManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class DeleteAccountViewController: UIViewController {
             self.view.endEditing(true)
             self.view.addSubview(loadingScreen)
             
-            APIClient.deleteUser { (success: Bool, errorMessage: String) in
+            self.dataManager.deleteUser { (success: Bool, errorMessage: String) in
                 loadingScreen.removeFromSuperview()
                 
                 if success {
@@ -56,6 +57,7 @@ class DeleteAccountViewController: UIViewController {
                 }
                 
             }
+            
         }
         
         let cancelAction = UIAlertAction(title: "CANCEL".localized, style: .cancel) { (result : UIAlertAction) -> Void in
