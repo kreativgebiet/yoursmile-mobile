@@ -128,7 +128,6 @@ class APIClient: NSObject {
 
     }
     
-    
     class func uploadSelfie(model: UploadModel) {
         
         //Core Data is not threadsafe so the Object needs to be fetched by ObjectID

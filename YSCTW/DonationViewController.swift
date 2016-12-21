@@ -152,6 +152,9 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
         
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProjectsViewController") as! ProjectsViewController
         
+        viewController.view.setNeedsLayout()
+        viewController.view.layoutIfNeeded()
+        
         let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
         self.view.addSubview(loadingScreen)
         

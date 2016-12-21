@@ -11,10 +11,19 @@ import UIKit
 class DataManager: NSObject {
     
     let coreDataController = CoreDataController()
-    var userProfileModel: ProfileModel? = nil
+    var projects = [Project]()
     
     func projects(_ callback: @escaping ((_ projects: [Project]) -> () )) {
-        APIClient.projects(callback: callback)
+        
+        if self.projects.count == 0 {
+            APIClient.projects(callback: { (projects) in
+                self.projects = projects
+                callback(self.projects)
+            })
+        } else {
+            callback(self.projects)
+        }
+        
     }
     
     func uploads(_ callback: @escaping ((_ uploads: [Upload]) -> () )) {
