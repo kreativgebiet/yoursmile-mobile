@@ -11,6 +11,7 @@
 
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 #import "PayPalMobile.h"
 
 #endif /* Bridging_Header_h */

@@ -188,6 +188,12 @@
 		A1DB37911E0AA204003EAFCF /* ResetPasswordOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37901E0AA204003EAFCF /* ResetPasswordOperation.swift */; };
 		A1DB37931E0AA303003EAFCF /* PostPaymentSourceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37921E0AA303003EAFCF /* PostPaymentSourceOperation.swift */; };
 		A1DB37951E0AA4A6003EAFCF /* UploadSelfieOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37941E0AA4A6003EAFCF /* UploadSelfieOperation.swift */; };
+		A1DC71061F4DF8E1003DFE35 /* GoogleAppUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DC71011F4DF8E1003DFE35 /* GoogleAppUtilities.framework */; };
+		A1DC71071F4DF8E1003DFE35 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1DC71021F4DF8E1003DFE35 /* GoogleSignIn.bundle */; };
+		A1DC71081F4DF8E1003DFE35 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DC71031F4DF8E1003DFE35 /* GoogleSignIn.framework */; };
+		A1DC71091F4DF8E1003DFE35 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DC71041F4DF8E1003DFE35 /* GoogleSignInDependencies.framework */; };
+		A1DC710A1F4DF8E1003DFE35 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DC71051F4DF8E1003DFE35 /* GoogleSymbolUtilities.framework */; };
+		A1DC710D1F4DF9F4003DFE35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1DC710C1F4DF9F4003DFE35 /* GoogleService-Info.plist */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
 		A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */; };
 		A1EF7F9E1E1BBCBD003C92E4 /* UserDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */; };
@@ -428,6 +434,13 @@
 		A1DB37921E0AA303003EAFCF /* PostPaymentSourceOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPaymentSourceOperation.swift; sourceTree = "<group>"; };
 		A1DB37941E0AA4A6003EAFCF /* UploadSelfieOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSelfieOperation.swift; sourceTree = "<group>"; };
 		A1DC71001F4DF156003DFE35 /* YSCTW 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YSCTW 3.xcdatamodel"; sourceTree = "<group>"; };
+		A1DC71011F4DF8E1003DFE35 /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppUtilities.framework; sourceTree = "<group>"; };
+		A1DC71021F4DF8E1003DFE35 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		A1DC71031F4DF8E1003DFE35 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		A1DC71041F4DF8E1003DFE35 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		A1DC71051F4DF8E1003DFE35 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		A1DC710B1F4DF941003DFE35 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		A1DC710C1F4DF9F4003DFE35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataOperation.swift; sourceTree = "<group>"; };
@@ -455,14 +468,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D6F4F21DE5CA3600A0A8F9 /* SystemConfiguration.framework in Frameworks */,
+				A1D6F4F41DE5CA3F00A0A8F9 /* SafariServices.framework in Frameworks */,
 				A15157A01E8A6FB100C0498D /* OneSignal.framework in Frameworks */,
 				A151579E1E8A6B7700C0498D /* PhotoCropEditor.framework in Frameworks */,
 				A19A31B51DFEC13B0054BA3E /* AlamofireImage.framework in Frameworks */,
 				A196777F1DEC85AD00C1CBBC /* Stripe.framework in Frameworks */,
+				A1DC710A1F4DF8E1003DFE35 /* GoogleSymbolUtilities.framework in Frameworks */,
 				A196777B1DEC607200C1CBBC /* FBSDKShareKit.framework in Frameworks */,
 				A19677761DEC3CD500C1CBBC /* Down.framework in Frameworks */,
-				A1D6F4F41DE5CA3F00A0A8F9 /* SafariServices.framework in Frameworks */,
-				A1D6F4F21DE5CA3600A0A8F9 /* SystemConfiguration.framework in Frameworks */,
+				A1DC71081F4DF8E1003DFE35 /* GoogleSignIn.framework in Frameworks */,
 				A1D6F4F01DE5CA2E00A0A8F9 /* MobileCoreServices.framework in Frameworks */,
 				A1D6F4EE1DE5CA2600A0A8F9 /* MessageUI.framework in Frameworks */,
 				A1D6F4FE1DE5CDE300A0A8F9 /* libPayPalMobile.a in Frameworks */,
@@ -472,11 +487,13 @@
 				A1D6F4E61DE5C9FC00A0A8F9 /* AudioToolbox.framework in Frameworks */,
 				A1D6F4E41DE5C9F300A0A8F9 /* Accelerate.framework in Frameworks */,
 				A1D6F4E01DE4AF4100A0A8F9 /* Bolts.framework in Frameworks */,
+				A1DC71091F4DF8E1003DFE35 /* GoogleSignInDependencies.framework in Frameworks */,
 				A1D6F4BF1DE32DD600A0A8F9 /* Locksmith.framework in Frameworks */,
 				A1D6F4DE1DE4AD8300A0A8F9 /* FBSDKCoreKit.framework in Frameworks */,
 				A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */,
 				A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */,
 				A1D6F4DB1DE4AC4A00A0A8F9 /* FBSDKLoginKit.framework in Frameworks */,
+				A1DC71061F4DF8E1003DFE35 /* GoogleAppUtilities.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +517,12 @@
 		A11029141DDB231D00633343 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1DC710B1F4DF941003DFE35 /* GoogleSignIn.bundle */,
+				A1DC71011F4DF8E1003DFE35 /* GoogleAppUtilities.framework */,
+				A1DC71021F4DF8E1003DFE35 /* GoogleSignIn.bundle */,
+				A1DC71031F4DF8E1003DFE35 /* GoogleSignIn.framework */,
+				A1DC71041F4DF8E1003DFE35 /* GoogleSignInDependencies.framework */,
+				A1DC71051F4DF8E1003DFE35 /* GoogleSymbolUtilities.framework */,
 				A151579F1E8A6FB100C0498D /* OneSignal.framework */,
 				A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */,
 				A196777E1DEC85AD00C1CBBC /* Stripe.framework */,
@@ -571,6 +594,7 @@
 		A12A454B1DCF8C76002977DF /* YSCTW */ = {
 			isa = PBXGroup;
 			children = (
+				A1DC710C1F4DF9F4003DFE35 /* GoogleService-Info.plist */,
 				A11428341E03E8930033844A /* YSCTW.xcdatamodeld */,
 				A1D6F4C01DE3346400A0A8F9 /* YSCTW.entitlements */,
 				A16407281DDF181E00BA1853 /* Font */,
@@ -997,6 +1021,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DC71071F4DF8E1003DFE35 /* GoogleSignIn.bundle in Resources */,
 				A1D5E7A41F4A31C1001DCE57 /* Zufo-Bold.otf in Resources */,
 				A19677771DEC40F000C1CBBC /* acknowledgments.md in Resources */,
 				A16407251DDF181800BA1853 /* Gotham-Book.otf in Resources */,
@@ -1021,6 +1046,7 @@
 				A1F8D8F31DD37AE400AFAB4F /* TransparentProjectView.xib in Resources */,
 				A11028F91DD5308700633343 /* ProfileHeaderView.xib in Resources */,
 				A1CF0CA21DD23875002C4562 /* DonationDetailHeaderView.xib in Resources */,
+				A1DC710D1F4DF9F4003DFE35 /* GoogleService-Info.plist in Resources */,
 				A1D86BED1EFACD6600D69F37 /* FeedCollectionViewCell.xib in Resources */,
 				A1CF0CAF1DD26AB9002C4562 /* DonationDetailOverlayView.xib in Resources */,
 				A13546821DDE166900931139 /* DonationFeeOverlayView.xib in Resources */,
@@ -1393,6 +1419,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/YSCTW/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = YSCTW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1425,6 +1452,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/YSCTW/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = YSCTW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

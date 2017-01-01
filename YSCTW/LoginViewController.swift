@@ -10,13 +10,14 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var emailTextField: LeftViewImageTextField!
     @IBOutlet weak var passwordTextField: LeftViewImageTextField!
     @IBOutlet weak var facebookButtonTopSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoTopSpaceConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var googleLoginButton: UIButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var gotoRegistrationButton: UIButton!
     @IBOutlet weak var gotoPasswordResetButton: UIButton!
@@ -33,11 +34,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         loginButton.backgroundColor = blue
         
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
         let screenSize: CGRect = UIScreen.main.bounds
         
         if screenSize.height <= 568  {
             self.facebookButtonTopSpaceConstraint.constant = 80
         }
+        
+        self.googleLoginButton.layer.cornerRadius = 4
         
         self.facebookLoginButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
@@ -180,6 +186,56 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         DataManager().login(email: email, password: password, callback)
         
 
+    }
+    
+    // MARK: - Google Login
+    
+    @IBAction func handleGoogleButtonTap(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
+        
+    }
+    
+    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+        
+    }
+    
+    func sign(_ signIn: GIDSignIn!,
+              present viewController: UIViewController!) {
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func sign(_ signIn: GIDSignIn!,
+              dismiss viewController: UIViewController!) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if (error == nil) {
+            let fullName = user.profile.name
+            let email = user.profile.email
+            
+            APIClient.registerUser(name: fullName!, email: email!, password: "google1234", callback: { (success: Bool, errorMessage: String) in
+                
+                if success == true {
+                    self.loginWith(email!, "google1234")
+                } else {
+                    
+                    if (errorMessage == "Email already in use") {
+                        self.loadingScreen.removeFromSuperview()
+                        self.loginWith(email!, "google1234")
+                    } else {
+                        HelperFunctions.presentAlertViewfor(error: errorMessage)
+                    }
+                    
+                }
+                
+            })
+            
+            
+        } else {
+            HelperFunctions.presentAlertViewfor(error: "NO_MAIL_FB_LOGIN".localized)
+        }
     }
     
     // MARK: - Facebook Login

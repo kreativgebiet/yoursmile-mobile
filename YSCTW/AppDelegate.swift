@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        var configureError: NSError?
+        GIDSignIn.sharedInstance().clientID = "323620439998-4p4cqackip97sqod9mua8sct5has46a4.apps.googleusercontent.com"
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
         //Enter your OneSignal credentials
         OneSignal.initWithLaunchOptions(launchOptions, appId: "f1531894-9c55-479b-b7c2-035beed48864")
         
@@ -54,7 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let isHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as! String!, annotation: options[.annotation])
-        return isHandled
+        
+        let google = GIDSignIn.sharedInstance().handle(url, sourceApplication: options   [UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                    annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        return isHandled || google
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
