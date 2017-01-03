@@ -94,11 +94,17 @@ class APIClient: NSObject {
     
     // MARK: Uploads
 
-    class func uploads(callback: @escaping ((_ uploads: [Upload]) -> () )) {
+    class func uploadsWith(id: String?, callback: @escaping ((_ uploads: [Upload]) -> () )) {
         debugPrint("uploads get")
         NetworkHelper.verifyToken { (token) in
             
-            let requestURL = baseURL + "uploads"
+            var requestURL = ""
+            
+            if id != nil {
+                requestURL = baseURL + "user/" + id! + "/uploads"
+            } else {
+                requestURL = baseURL + "uploads"
+            }
             
             Alamofire.request(requestURL, method: .get, headers: token)
                 .responseJSON { response in
@@ -273,6 +279,21 @@ class APIClient: NSObject {
     }
     
     // MARK: User handling
+    
+    class func userDataFor(id: String!, callback: @escaping ((_ profile: Profile?) -> ())) {
+        debugPrint("user data post")
+        
+        NetworkHelper.verifyToken { (token) in
+            let requestURL = baseURL + "user/" + id
+            
+            Alamofire.request(requestURL, method: .post, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.parseProfileFrom(response: response, callback: { (success, profile) in
+                        callback(profile)
+                    })
+            }
+        }
+    }
     
     class func resetPassword(newPassword: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         debugPrint("password post")

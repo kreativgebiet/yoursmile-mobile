@@ -133,7 +133,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
                     self.feedViewController = self.instantiateViewController(withIdentifier: "FeedViewController") as? FeedViewController
                 }
                 
-                self.dataManager?.uploads({ (uploads) in
+                self.dataManager?.uploadsWith(nil, { (uploads) in
                     self.feedViewController?.uploads = uploads
                     self.feedViewController?.reload()
                 })

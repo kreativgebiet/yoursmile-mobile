@@ -11,17 +11,19 @@ import UIKit
 class UploadsDownloadOperation: NetworkOperation {
     
     public var callback: ((_ uploads: [Upload]) -> () )
+    var userId: String?
     
-    init(callback: @escaping ((_ uploads: [Upload]) -> () ) ) {
+    init(userId: String?, callback: @escaping ((_ uploads: [Upload]) -> () ) ) {
+        self.userId = userId
         self.callback = callback
     }
     
     override func start() {
         super.start()
-        APIClient.uploads { (uploads) in
+        APIClient.uploadsWith(id: self.userId, callback: { (uploads) in
             self.callback(uploads)
             self.isFinished = true
-        }
+        })
     }
 
 }

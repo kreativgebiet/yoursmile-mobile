@@ -153,6 +153,7 @@
 		A1DB37951E0AA4A6003EAFCF /* UploadSelfieOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37941E0AA4A6003EAFCF /* UploadSelfieOperation.swift */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
 		A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */; };
+		A1EF7F9E1E1BBCBD003C92E4 /* UserDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */; };
 		A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8E81DD3648400AFAB4F /* DataManager.swift */; };
 		A1F8D8EB1DD367D100AFAB4F /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */; };
 		A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */; };
@@ -347,6 +348,7 @@
 		A1DB37941E0AA4A6003EAFCF /* UploadSelfieOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSelfieOperation.swift; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
+		A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataOperation.swift; sourceTree = "<group>"; };
 		A1F8D8E81DD3648400AFAB4F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				A1DB37901E0AA204003EAFCF /* ResetPasswordOperation.swift */,
 				A1DB37921E0AA303003EAFCF /* PostPaymentSourceOperation.swift */,
 				A1DB37941E0AA4A6003EAFCF /* UploadSelfieOperation.swift */,
+				A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */,
 			);
 			name = ServiceLayer;
 			sourceTree = "<group>";
@@ -942,6 +945,7 @@
 				A11428361E03E8930033844A /* YSCTW.xcdatamodeld in Sources */,
 				A15390A11DD0E4D900B7ADA0 /* NavigationViewController.swift in Sources */,
 				A1DB37951E0AA4A6003EAFCF /* UploadSelfieOperation.swift in Sources */,
+				A1EF7F9E1E1BBCBD003C92E4 /* UserDataOperation.swift in Sources */,
 				A1DB37911E0AA204003EAFCF /* ResetPasswordOperation.swift in Sources */,
 				A1DB37791E098D75003EAFCF /* ProfileModel+CoreDataClass.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,

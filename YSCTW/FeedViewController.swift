@@ -83,7 +83,7 @@ class FeedViewController: UIViewController {
         
         self.feedTableViewController.refreshCallback = {
             
-            self.dataManager?.uploads({ (uploads) in
+            self.dataManager?.uploadsWith(nil, { (uploads) in
                 self.uploads = uploads
                 self.reload()
             })

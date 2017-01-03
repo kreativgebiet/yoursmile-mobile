@@ -331,7 +331,6 @@ class NetworkHelper: NSObject {
                     var uploads = [Upload]()
                     
                     for dict in data {
-
                         let parsedUpload = NetworkHelper.parseUploadFrom(data: dict) as Upload
                         uploads.append(parsedUpload)
                     }
@@ -370,6 +369,31 @@ class NetworkHelper: NSObject {
         return upload
     }
     
+    // MARK: Profile Response handling
+    
+     class func parseProfileFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ profile: Profile?) -> ())) {
+        
+        NetworkHelper.standardResponseHandling(response: response) { (success: Bool, error: String) in
+            
+            if success {
+                
+                let json = NetworkHelper.parseResponseToJSON(data: response.data!) as! [String : AnyObject]
+                
+                if let data = json["data"] as? [String : AnyObject] {
+                    let profile = NetworkHelper.parseProfileFrom(data: data)
+                    callback(true, profile)
+                } else {
+                    callback(false, nil)
+                }
+                
+            } else {
+                callback(false, nil)
+            }
+            
+        }
+        
+    }
+    
     class func parseProfileFrom(data: [String : AnyObject]) -> Profile {
 
         let id = data["id"] as! Int
@@ -378,6 +402,8 @@ class NetworkHelper: NSObject {
         var name = ""
         let image = #imageLiteral(resourceName: "user-icon")
         var imageURL = ""
+        var followingCount = 0
+        var followerCount = 0
         
         if let authorNickName = data["nickname"] as? String {
             nickname = authorNickName
@@ -391,9 +417,19 @@ class NetworkHelper: NSObject {
             imageURL = avatarURL
         }
         
+        if let number = data["following_count"] as? Int{
+            followingCount = number
+        }
+        
+        if let number = data["followers_count"] as? Int {
+            followerCount = number
+        }
+        
         var profile = Profile(id: id, name: name, email: email, nickname: nickname, avatarURL: imageURL, avatarThumbUrl: nil)
         
         profile.image = image
+        profile.followerCount = followerCount
+        profile.followingCount = followingCount
         
         return profile
     }

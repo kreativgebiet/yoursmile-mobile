@@ -44,9 +44,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.profileView.profile = self.currentProfile
         self.profileView.userProfile = self.userProfile
+        self.profileView.layoutIfNeeded()
+        
+        
+//        self.dataManager?.userDataFor(id: self.currentProfile?.id, { (profile) in
+//            
+//        })
         
         if self.currentProfile == nil {
             self.profileViewHeightConstraint.constant = 285
+        } else {
+            let id = (self.currentProfile?.id)! as Int!
+            let idString = "\(id!)"
+            self.dataManager?.uploadsWith(idString, { (uploads) in
+                self.donations = uploads
+                self.tableView.reloadData()
+            })
         }
         
         self.initialProfileViewHeightConstraint = self.profileViewHeightConstraint.constant

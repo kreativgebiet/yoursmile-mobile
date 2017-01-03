@@ -19,6 +19,13 @@ class DataManager: NSObject {
         self.queue.maxConcurrentOperationCount = 1
     }
     
+    func userDataFor(id: String, _ callback: @escaping ((_ user: Profile?) -> () )) {
+        let operation = UserDataOperation(id, {profile in
+            callback(profile)
+        })
+        self.queue.addOperation(operation)
+    }
+    
     func projects(_ callback: @escaping ((_ projects: [Project]) -> () )) {
         
         if self.projects.count == 0 {
@@ -35,11 +42,11 @@ class DataManager: NSObject {
         
     }
     
-    func uploads(_ callback: @escaping ((_ uploads: [Upload]) -> () )) {
-        let operation = UploadsDownloadOperation { (uploads) in
+    func uploadsWith(_ userId: String?, _ callback: @escaping ((_ uploads: [Upload]) -> () )) {
+        let operation = UploadsDownloadOperation(userId: userId, callback: { (uploads) in
             let sortedUploads = uploads.sorted(by: { $0.date > $1.date })
             callback(sortedUploads)
-        }
+        })
         self.queue.addOperation(operation)
     }
     

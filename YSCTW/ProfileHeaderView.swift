@@ -98,8 +98,8 @@ class ProfileHeaderView: UIView {
         
         self.projectNumberLabel.text = String(Int(numberOfProjectsSupported)) + " " + "PROJECTS_SUPPORTED".localized
         
-        self.subscriberLabel.text = "0" + " " + "SUBSCRIBER".localized
-        self.subscribedLabel.text = "0" + " " + "SUBSCRIBED".localized
+        self.subscriberLabel.text = "\(profileToUse.followerCount!)" + " " + "SUBSCRIBER".localized
+        self.subscribedLabel.text = "\(profileToUse.followingCount!)" + " " + "SUBSCRIBED".localized
         
         if profileToUse.image != nil {
             self.profileImageView.image = profileToUse.image
