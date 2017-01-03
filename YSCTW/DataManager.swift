@@ -23,7 +23,10 @@ class DataManager: NSObject {
         
         if self.projects.count == 0 {
             
-            let operation = ProjectsDownloadOperation(callback: callback)
+            let operation = ProjectsDownloadOperation(callback: { (projects) in
+                self.projects = projects
+                callback(self.projects)
+            })
             self.queue.addOperation(operation)
             
         } else {
@@ -90,7 +93,6 @@ class DataManager: NSObject {
             if success {
                 UserDefaults.standard.setValue(true, forKey: "loggedIn")                
                 self.coreDataController.save(profile: profile!)
-                
             } else {
                 HelperFunctions.presentAlertViewfor(error: errorMessage)
             }

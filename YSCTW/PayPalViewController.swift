@@ -71,10 +71,13 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
             self.dismiss(animated: true, completion: nil)
             print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
             
-            let uploadModel = CoreDataController().createUploadModel()
+            let controller = CoreDataController()
+            let uploadModel = controller.createUploadModel()
             uploadModel.isStripePayment = NSNumber(booleanLiteral: false) as Bool
             uploadModel.stripeToken = ""
             uploadModel.isUploaded = NSNumber(booleanLiteral: false) as Bool
+            
+            controller.save()
             
             self.callback(uploadModel, true, "")
         })

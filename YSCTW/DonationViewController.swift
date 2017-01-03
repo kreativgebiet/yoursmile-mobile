@@ -152,6 +152,15 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
         
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProjectsViewController") as! ProjectsViewController
         
+        viewController.supportCallback = { selectedSupportProject in
+            self.supportedProjects.append(selectedSupportProject)
+            self.loadSupportedProjects()
+            
+            _ = self.navigationController?.popToViewController(self, animated: true)
+        }
+        
+        viewController.title = "PROJECTS".localized
+        
         viewController.view.setNeedsLayout()
         viewController.view.layoutIfNeeded()
         
@@ -165,15 +174,6 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
             viewController.projects = (self.projects.filter({!self.supportedProjects.contains($0)}))
             viewController.reload()
         })
-        
-        viewController.supportCallback = { selectedSupportProject in
-            self.supportedProjects.append(selectedSupportProject)
-            self.loadSupportedProjects()
-            
-            _ = self.navigationController?.popToViewController(self, animated: true)
-        }
-        
-        viewController.title = "PROJECTS".localized
         
         self.navigationController?.pushViewController(viewController, animated: true)
     }

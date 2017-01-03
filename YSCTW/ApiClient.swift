@@ -128,9 +128,12 @@ class APIClient: NSObject {
             
             let requestURL = baseURL + "uploads"
             
-            let imageData = model.image
-            let descriptionText = model.descriptionText!
-            let projectIds = model.projectIds
+            let manager = CoreDataController()
+            let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
+            
+            let imageData = uploadModel.image
+            let descriptionText = uploadModel.descriptionText!
+            let projectIds = uploadModel.projectIds
             
             Alamofire.upload(multipartFormData: { multipartFormData in
                 
