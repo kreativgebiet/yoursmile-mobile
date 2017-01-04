@@ -26,5 +26,7 @@ extension ProfileModel {
     @NSManaged public var uid: String?
     @NSManaged public var name: String?
     @NSManaged public var image: String?
+    @NSManaged public var followerCount: NSNumber?
+    @NSManaged public var followingCount: NSNumber?
 
 }

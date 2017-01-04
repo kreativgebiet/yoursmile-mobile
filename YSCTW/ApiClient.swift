@@ -286,10 +286,58 @@ class APIClient: NSObject {
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "user/" + id
             
-            Alamofire.request(requestURL, method: .post, headers: token)
+            Alamofire.request(requestURL, method: .get, headers: token)
                 .responseJSON { response in
                     NetworkHelper.parseProfileFrom(response: response, callback: { (success, profile) in
                         callback(profile)
+                    })
+            }
+        }
+    }
+    
+    class func followUserWith(id: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        debugPrint("follow user post")
+        
+        NetworkHelper.verifyToken { (token) in
+    
+            let requestURL = baseURL + "user/" + id + "/follow"
+            
+            Alamofire.request(requestURL, method: .post, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.standardResponseHandling(response: response, callback: { (success, errorString) in
+                        callback(success, errorString)
+                    })
+            }
+        }
+    }
+    
+    class func followerForUserWith(id: String!, callback: @escaping ((_ profiles: [ProfileRelation]) -> ())) {
+        debugPrint("follower users get")
+        
+        NetworkHelper.verifyToken { (token) in
+            
+            let requestURL = baseURL + "user/" + id + "/followers"
+            
+            Alamofire.request(requestURL, method: .get, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.parseProfileRelationsFrom(response: response, callback: { (profileRelation) in
+                        callback(profileRelation!)
+                    })
+            }
+        }
+    }
+    
+    class func followingUsersForUserWith(id: String!, callback: @escaping ((_ profiles: [ProfileRelation]) -> ())) {
+        debugPrint("following users with data")
+        
+        NetworkHelper.verifyToken { (token) in
+            
+            let requestURL = baseURL + "user/" + id + "/following"
+            
+            Alamofire.request(requestURL, method: .get, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.parseProfileRelationsFrom(response: response, callback: { (profileRelation) in
+                        callback(profileRelation!)
                     })
             }
         }

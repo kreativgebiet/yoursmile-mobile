@@ -20,6 +20,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var gotoRegistrationButton: UIButton!
+    @IBOutlet weak var gotoPasswordResetButton: UIButton!
     @IBOutlet weak var loginButton: RoundedButton!
     @IBOutlet weak var orLabel: UILabel!
     
@@ -140,6 +141,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(self.loadingScreen)
         
         self.loginWith(mail!, password!)
+    }
+    
+    @IBAction func handleGotoPasswordResetTapped(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "registrationSegue", sender: self)
     }
     
     func loginWith(_ email: String, _ password: String) {

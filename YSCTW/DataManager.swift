@@ -19,10 +19,29 @@ class DataManager: NSObject {
         self.queue.maxConcurrentOperationCount = 1
     }
     
+    func addOperationToQueue(operation: Operation) {
+        self.queue.addOperation(operation)
+    }
+    
     func userDataFor(id: String, _ callback: @escaping ((_ user: Profile?) -> () )) {
         let operation = UserDataOperation(id, {profile in
             callback(profile)
         })
+        self.queue.addOperation(operation)
+    }
+    
+    func followUserWith(id: String, _ callback: @escaping ((_ success: Bool, _ error: String) -> () )) {
+        let operation = FollowUserOperation(id, callback)
+        self.queue.addOperation(operation)
+    }
+    
+    func followerForUserWith(id: String, _ callback: @escaping ((_ profileRelations: [ProfileRelation]) -> () )) {
+        let operation = UserFollowerOperation(id, callback)
+        self.queue.addOperation(operation)
+    }
+    
+    func followingUsersForUserWith(id: String, _ callback: @escaping ((_ profileRelations: [ProfileRelation]) -> () )) {
+        let operation = UserFollowingOperation(id, callback)
         self.queue.addOperation(operation)
     }
     

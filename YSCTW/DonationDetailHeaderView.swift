@@ -51,7 +51,13 @@ class DonationDetailHeaderView: UIView {
     
     func addHeaderData() {
         
-        self.donatorProfileImageView.image = self.donation?.profile?.image
+        if (self.donation?.profile?.avatarUrl.characters.count)! > 0 {
+            let imageURL = URL(string: (self.donation?.profile?.avatarUrl)!)!
+            self.donatorProfileImageView.af_setImage(withURL: imageURL)
+        } else {
+            self.donatorProfileImageView.image = #imageLiteral(resourceName: "user-icon")
+        }
+        
         self.donatorNameLabel.text = self.donation?.profile?.name
         self.transparentProjectView.projects = (self.donation?.projects)!
 

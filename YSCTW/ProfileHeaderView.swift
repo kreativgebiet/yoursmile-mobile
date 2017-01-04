@@ -35,6 +35,18 @@ class ProfileHeaderView: UIView {
     public var subscribeCallback: (() -> Void)?
     public var cameraCallback: (() -> Void)?
     
+    public var numberOfSupportedProjects: Int {
+        
+        get {
+            return 0
+        }
+        
+        set {
+            self.projectNumberLabel.text = String(newValue) + " " + "PROJECTS_SUPPORTED".localized
+        }
+        
+    }
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)
@@ -69,6 +81,11 @@ class ProfileHeaderView: UIView {
         self.clipsToBounds = true
     }
     
+    func hideSubscribeButton() {
+        self.subscribeButtonHeight.constant = 0
+        self.subscribeButton.alpha = 0
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -79,10 +96,12 @@ class ProfileHeaderView: UIView {
         
         //A Profile of a different user is displayed
         if self.profile == nil {
-            self.subscribeButtonHeight.constant = 0
-            self.subscribeButton.alpha = 0
+            self.hideSubscribeButton()
             self.backButton.isHidden = true
             self.preferencesButton.isHidden = false
+        } else if self.profile?.id == self.userProfile?.id {
+            self.hideSubscribeButton()
+            self.preferencesButton.isHidden = true
         } else {
             self.preferencesButton.isHidden = true
         }
@@ -91,22 +110,17 @@ class ProfileHeaderView: UIView {
         let profileToUse = ((self.profile != nil) ? self.profile : self.userProfile)!
         
         self.profileNameLabel.text = profileToUse.name
-
-        //TODO
-//        let numberOfProjectsSupported = profileToUse.numberOfDonations != nil ? profileToUse.numberOfDonations : 0
-        let numberOfProjectsSupported = 0
-        
-        self.projectNumberLabel.text = String(Int(numberOfProjectsSupported)) + " " + "PROJECTS_SUPPORTED".localized
         
         self.subscriberLabel.text = "\(profileToUse.followerCount!)" + " " + "SUBSCRIBER".localized
         self.subscribedLabel.text = "\(profileToUse.followingCount!)" + " " + "SUBSCRIBED".localized
         
-        if profileToUse.image != nil {
-            self.profileImageView.image = profileToUse.image
-            self.backgroundImageView.image = profileToUse.image
+        if profileToUse.avatarUrl.characters.count > 0 {
+            let imageURL = URL(string: profileToUse.avatarUrl)!
+            
+            self.profileImageView.af_setImage(withURL: imageURL)
+            self.backgroundImageView.af_setImage(withURL: imageURL)
             self.profileImageView.clipsToBounds = true
-            self.topImageView.image = profileToUse.image
-
+            self.topImageView.af_setImage(withURL: imageURL)
         } else {
             
             if self.profile == nil {
@@ -115,6 +129,7 @@ class ProfileHeaderView: UIView {
             } else {
                 self.profileImageView.clipsToBounds = false
                 self.profileImageView.image = #imageLiteral(resourceName: "user-icon")
+                self.backgroundImageView.image = #imageLiteral(resourceName: "user-icon")
             }
             
         }

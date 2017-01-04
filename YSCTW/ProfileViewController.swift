@@ -14,20 +14,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     public var currentProfile: Profile?
     public var userProfile = DataManager().userProfile()
     
-    public var profileImage: UIImage {
-        
-        get {
-            return self.userProfile.image!
-        }
-        
-        set {
-            self.userProfile.image = newValue
-            self.profileView.userProfile = self.userProfile
-        }
-        
-    }
-    
-    @IBOutlet weak var profileView: ProfileHeaderView!
+    @IBOutlet weak var profileHeaderView: ProfileHeaderView!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
@@ -39,40 +26,83 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.tableHeaderView = UIView(frame: CGRect.zero)
-        self.tableView.contentInset = UIEdgeInsets.zero
         
-        self.profileView.profile = self.currentProfile
-        self.profileView.userProfile = self.userProfile
-        self.profileView.layoutIfNeeded()
+        self.profileHeaderView.profile = self.currentProfile
+        self.profileHeaderView.userProfile = self.userProfile
+        self.profileHeaderView.layoutIfNeeded()
         
-        
-//        self.dataManager?.userDataFor(id: self.currentProfile?.id, { (profile) in
-//            
-//        })
+        let profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
         
         if self.currentProfile == nil {
             self.profileViewHeightConstraint.constant = 285
-        } else {
+        }
+        
+        let loadingScreen = LoadingScreen(frame: self.view.bounds)
+        self.view.addSubview(loadingScreen)
+        
+        let id = profileToUse.id as Int!
+        let idString = "\(id!)"
+        
+        self.dataManager?.uploadsWith(idString, { (uploads) in
+            self.donations = uploads
+//Could be implemented instead of current implementation
+//            let supportedProjects = self.donations?.map({$0.projects})
+            self.profileHeaderView.numberOfSupportedProjects = (self.donations?.count)!
+            
+            self.tableView.reloadData()
+        })
+        
+        self.dataManager?.userDataFor(id: idString, { (profile) in
+            print(profile)
+            
+            if self.currentProfile == nil {
+                self.profileHeaderView.userProfile = profile
+            } else {
+                self.profileHeaderView.profile = profile
+            }
+            
+            self.profileHeaderView.layoutIfNeeded()
+            
+        })
+        
+        self.dataManager?.followerForUserWith(id: idString, { (relationProfiles) in
+            print(relationProfiles)
+            loadingScreen.removeFromSuperview()
+            let followerIds = relationProfiles.map({$0.followerId})
+            
+            if followerIds.contains(Int(self.userProfile.id)) {
+                self.profileHeaderView.hideSubscribeButton()
+            }
+            
+        })
+        
+        self.dataManager?.followingUsersForUserWith(id: idString, { (relationProfiles) in
+            print(relationProfiles)
+            loadingScreen.removeFromSuperview()             
+        })
+    
+        self.initialProfileViewHeightConstraint = self.profileViewHeightConstraint.constant
+        
+        self.profileHeaderView.subscribeCallback = {
+            let loadingScreen = LoadingScreen(frame: self.view.bounds)
+            self.view.addSubview(loadingScreen)
+            
             let id = (self.currentProfile?.id)! as Int!
             let idString = "\(id!)"
-            self.dataManager?.uploadsWith(idString, { (uploads) in
-                self.donations = uploads
-                self.tableView.reloadData()
+            self.dataManager?.followUserWith(id: idString, { (success, errorString) in
+                loadingScreen.removeFromSuperview()
+                
+                if success {
+                    self.profileHeaderView.hideSubscribeButton()
+                }
             })
         }
         
-        self.initialProfileViewHeightConstraint = self.profileViewHeightConstraint.constant
-        
-        self.profileView.subscribeCallback = {
-            
-        }
-        
-        self.profileView.backButtonCallback = {
+        self.profileHeaderView.backButtonCallback = {
             _ = self.navigationController?.popViewController(animated: true)
         }
         
-        self.profileView.cameraCallback = {
+        self.profileHeaderView.cameraCallback = {
             self.navigationController?.performSegue(withIdentifier: "cameraSegue", sender: self)
         }
         
@@ -94,13 +124,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        self.profileView.setNeedsLayout()
-        self.profileView.layoutIfNeeded()
+        self.profileHeaderView.setNeedsLayout()
+        self.profileHeaderView.layoutIfNeeded()
     }
+    
+    var animating = false
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if scrollView.contentSize.height == 0 {
+        if scrollView.contentSize.height == 0 || animating {
             return
         }
         
@@ -115,18 +147,20 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 scrollView.isScrollEnabled = false
                 
                 UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
+                    self.animating = true
                     self.view.setNeedsLayout()
                     self.view.layoutIfNeeded()
                     
-                    self.profileView.topImageView.alpha = 1
+                    self.profileHeaderView.topImageView.alpha = 1
                     
                     let profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
-                    self.profileView.profileLabel.text = profileToUse.name
+                    self.profileHeaderView.profileLabel.text = profileToUse.name
                     
                 }, completion: { (completed) in
+                    self.animating = false
                     scrollView.setContentOffset(CGPoint(x: 0, y: 1), animated: true)
                     scrollView.isScrollEnabled = true
-                } )
+                })
 
             }
             
@@ -138,11 +172,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.profileViewHeightConstraint.constant = newConstant
                 
                 UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
+                    self.animating = true
                     self.view.setNeedsLayout()
                     self.view.layoutIfNeeded()
                     
-                    self.profileView.topImageView.alpha = 0
-                    self.profileView.profileLabel.text = "PROFILE".localized
+                    self.profileHeaderView.topImageView.alpha = 0
+                    self.profileHeaderView.profileLabel.text = "PROFILE".localized
+                }, completion: { (completed) in
+                    self.animating = false
                 })
             }
             

@@ -110,20 +110,27 @@ class NetworkHelper: NSObject {
     class func standardResponseHandling(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         
         let json = NetworkHelper.parseResponseToJSON(data: response.data!)
-        
-        if (json == nil) {
+        NetworkHelper.saveTokenFromResponse(response: response.response!)
+
+        if (json == nil && (response.response?.statusCode)! > 300) {
             callback(false, "ERROR".localized)
         } else {
-            let errors = NetworkHelper.findErrorsIn(json!) as String
             
-            if errors.characters.count > 0 {
-                callback(false, errors)
-                HelperFunctions.presentAlertViewfor(error: errors)
-                ErrorManager.handleRequest(response.response!)
+            if json != nil {
+                let errors = NetworkHelper.findErrorsIn(json!) as String
+                
+                if errors.characters.count > 0 {
+                    print(errors)
+                    callback(false, errors)
+                    HelperFunctions.presentAlertViewfor(error: errors)
+                    ErrorManager.handleRequest(response.response!)
+                } else {
+                    callback(true, "")
+                }
             } else {
-                NetworkHelper.saveTokenFromResponse(response: response.response!)
                 callback(true, "")
             }
+            
         }
     }
     
@@ -371,7 +378,7 @@ class NetworkHelper: NSObject {
     
     // MARK: Profile Response handling
     
-     class func parseProfileFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ profile: Profile?) -> ())) {
+     class func parseProfileFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ profiles: Profile?) -> ())) {
         
         NetworkHelper.standardResponseHandling(response: response) { (success: Bool, error: String) in
             
@@ -394,13 +401,40 @@ class NetworkHelper: NSObject {
         
     }
     
+    class func parseProfileRelationsFrom(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ profiles: [ProfileRelation]?) -> ())) {
+        
+        NetworkHelper.standardResponseHandling(response: response) { (success: Bool, error: String) in
+            
+            if success {
+                
+                if let json = NetworkHelper.parseResponseToJSON(data: response.data!) as? [[String : AnyObject]] {
+                    
+                    var profileRelations = [ProfileRelation]()
+                    
+                    for dict in json {
+                        let profileRelation = NetworkHelper.parseProfileRelation(data: dict)
+                        profileRelations.append(profileRelation)
+                    }
+                    
+                    callback(profileRelations)
+                } else {
+                    callback([])
+                }
+                
+            } else {
+                callback([])
+            }
+            
+        }
+        
+    }
+    
     class func parseProfileFrom(data: [String : AnyObject]) -> Profile {
 
         let id = data["id"] as! Int
         let email = data["email"] as! String
         var nickname = ""
         var name = ""
-        let image = #imageLiteral(resourceName: "user-icon")
         var imageURL = ""
         var followingCount = 0
         var followerCount = 0
@@ -417,6 +451,10 @@ class NetworkHelper: NSObject {
             imageURL = avatarURL
         }
         
+        if let avatarURL = data["avatar"] as? String {
+            imageURL = avatarURL
+        }
+        
         if let number = data["following_count"] as? Int{
             followingCount = number
         }
@@ -427,10 +465,20 @@ class NetworkHelper: NSObject {
         
         var profile = Profile(id: id, name: name, email: email, nickname: nickname, avatarURL: imageURL, avatarThumbUrl: nil)
         
-        profile.image = image
         profile.followerCount = followerCount
         profile.followingCount = followingCount
         
         return profile
+    }
+    
+    class func parseProfileRelation(data: [String : AnyObject]) -> ProfileRelation {
+        
+        let id = data["id"] as! Int
+        let userId = data["user_id"] as! Int
+        let followerId = data["follower_id"] as! Int
+        let createdAt = data["created_at"] as! String
+        let updatedAt = data["updated_at"] as! String
+        
+        return ProfileRelation(id: id, userId: userId, followerId: followerId, createdAt: createdAt, updatedAt: updatedAt)
     }
 }

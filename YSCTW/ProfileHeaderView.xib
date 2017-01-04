@@ -100,7 +100,7 @@
                         <constraint firstAttribute="trailing" secondItem="sAc-JH-tcN" secondAttribute="trailing" constant="8" id="428-2s-VEk"/>
                         <constraint firstAttribute="height" constant="44" id="9Rl-vZ-xro"/>
                         <constraint firstItem="Tn3-bZ-dIP" firstAttribute="leading" secondItem="oV8-lN-ibh" secondAttribute="trailing" constant="8" id="M9m-zl-o2b"/>
-                        <constraint firstItem="oV8-lN-ibh" firstAttribute="top" secondItem="MG5-jd-wRX" secondAttribute="top" constant="5" id="Rfw-zz-85e"/>
+                        <constraint firstItem="oV8-lN-ibh" firstAttribute="top" secondItem="MG5-jd-wRX" secondAttribute="top" constant="3" id="Rfw-zz-85e"/>
                         <constraint firstAttribute="bottom" secondItem="Tn3-bZ-dIP" secondAttribute="bottom" constant="10" id="TIs-jR-YiB"/>
                         <constraint firstAttribute="bottom" secondItem="oV8-lN-ibh" secondAttribute="bottom" id="UL4-it-Tzp"/>
                         <constraint firstItem="Tn3-bZ-dIP" firstAttribute="top" secondItem="MG5-jd-wRX" secondAttribute="top" constant="10" id="VIZ-hL-smC"/>
@@ -108,7 +108,7 @@
                         <constraint firstAttribute="bottom" secondItem="sAc-JH-tcN" secondAttribute="bottom" id="muo-6U-VqQ"/>
                         <constraint firstItem="oV8-lN-ibh" firstAttribute="leading" secondItem="MG5-jd-wRX" secondAttribute="leading" constant="8" id="nMx-8M-s3M"/>
                         <constraint firstItem="Tn3-bZ-dIP" firstAttribute="centerX" secondItem="MG5-jd-wRX" secondAttribute="centerX" id="nwS-Aj-PQb"/>
-                        <constraint firstItem="sAc-JH-tcN" firstAttribute="top" secondItem="MG5-jd-wRX" secondAttribute="top" constant="5" id="tdJ-mu-SO5"/>
+                        <constraint firstItem="sAc-JH-tcN" firstAttribute="top" secondItem="MG5-jd-wRX" secondAttribute="top" constant="3" id="tdJ-mu-SO5"/>
                         <constraint firstItem="sAc-JH-tcN" firstAttribute="leading" secondItem="Tn3-bZ-dIP" secondAttribute="trailing" constant="8" id="w0a-Lp-j9W"/>
                     </constraints>
                 </view>

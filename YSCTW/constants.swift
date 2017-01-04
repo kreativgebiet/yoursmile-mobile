@@ -39,6 +39,29 @@ enum Payment {
 
 //Data structure
 
+struct ProfileRelation {
+    var id: Int
+    var userId: Int
+    var followerId: Int
+    var createdAt: Date
+    var updatedAt: Date
+    
+    init(id: Int, userId: Int, followerId: Int, createdAt: String, updatedAt: String) {
+        self.id = id
+        self.userId = userId
+        self.followerId = followerId
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        var dateObj = dateFormatter.date(from: createdAt)
+        self.createdAt = dateObj!
+        
+        dateObj = dateFormatter.date(from: updatedAt)
+        self.updatedAt = dateObj!
+    }
+}
+
 struct Profile {
     
     var id: Int
@@ -47,7 +70,6 @@ struct Profile {
     var nickname: String
     var avatarUrl: String
     var avatarThumbUrl: String?
-    var image: UIImage?
     var uid: String?
     var followingCount: Int?
     var followerCount: Int?

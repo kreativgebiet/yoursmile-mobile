@@ -154,6 +154,9 @@
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
 		A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */; };
 		A1EF7F9E1E1BBCBD003C92E4 /* UserDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */; };
+		A1EF7FA01E1BD2AC003C92E4 /* FollowUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7F9F1E1BD2AC003C92E4 /* FollowUserOperation.swift */; };
+		A1EF7FA21E1BD652003C92E4 /* UserFollowerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FA11E1BD652003C92E4 /* UserFollowerOperation.swift */; };
+		A1EF7FA41E1BEA81003C92E4 /* UserFollowingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FA31E1BEA81003C92E4 /* UserFollowingOperation.swift */; };
 		A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8E81DD3648400AFAB4F /* DataManager.swift */; };
 		A1F8D8EB1DD367D100AFAB4F /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */; };
 		A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */; };
@@ -349,6 +352,10 @@
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataOperation.swift; sourceTree = "<group>"; };
+		A1EF7F9F1E1BD2AC003C92E4 /* FollowUserOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUserOperation.swift; sourceTree = "<group>"; };
+		A1EF7FA11E1BD652003C92E4 /* UserFollowerOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowerOperation.swift; sourceTree = "<group>"; };
+		A1EF7FA31E1BEA81003C92E4 /* UserFollowingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowingOperation.swift; sourceTree = "<group>"; };
+		A1EF7FA51E1D11B0003C92E4 /* YSCTW 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YSCTW 2.xcdatamodel"; sourceTree = "<group>"; };
 		A1F8D8E81DD3648400AFAB4F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
@@ -673,6 +680,9 @@
 				A1DB37921E0AA303003EAFCF /* PostPaymentSourceOperation.swift */,
 				A1DB37941E0AA4A6003EAFCF /* UploadSelfieOperation.swift */,
 				A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */,
+				A1EF7F9F1E1BD2AC003C92E4 /* FollowUserOperation.swift */,
+				A1EF7FA11E1BD652003C92E4 /* UserFollowerOperation.swift */,
+				A1EF7FA31E1BEA81003C92E4 /* UserFollowingOperation.swift */,
 			);
 			name = ServiceLayer;
 			sourceTree = "<group>";
@@ -989,6 +999,8 @@
 				A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */,
 				A15390AB1DD0F61F00B7ADA0 /* CameraViewController.swift in Sources */,
 				A1D6F4C61DE36F4000A0A8F9 /* LanguageManager.swift in Sources */,
+				A1EF7FA01E1BD2AC003C92E4 /* FollowUserOperation.swift in Sources */,
+				A1EF7FA21E1BD652003C92E4 /* UserFollowerOperation.swift in Sources */,
 				A15390A51DD0EE1800B7ADA0 /* TabBarViewController.swift in Sources */,
 				A16407061DDE723A00BA1853 /* PreferencesTableViewCell.swift in Sources */,
 				A161B5581DEDA06300356514 /* CardPaymentView.swift in Sources */,
@@ -1006,6 +1018,7 @@
 				A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */,
 				A1D6F4C81DE3725500A0A8F9 /* LanguageSelectionViewController.swift in Sources */,
 				A15390991DD0C8A700B7ADA0 /* DividerView.swift in Sources */,
+				A1EF7FA41E1BEA81003C92E4 /* UserFollowingOperation.swift in Sources */,
 				A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */,
 				A114283F1E08274F0033844A /* UIApplicationExtension.swift in Sources */,
 				A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */,
@@ -1347,9 +1360,10 @@
 		A11428341E03E8930033844A /* YSCTW.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A1EF7FA51E1D11B0003C92E4 /* YSCTW 2.xcdatamodel */,
 				A11428351E03E8930033844A /* YSCTW.xcdatamodel */,
 			);
-			currentVersion = A11428351E03E8930033844A /* YSCTW.xcdatamodel */;
+			currentVersion = A1EF7FA51E1D11B0003C92E4 /* YSCTW 2.xcdatamodel */;
 			path = YSCTW.xcdatamodeld;
 			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;

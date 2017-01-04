@@ -53,7 +53,9 @@ class NavigationViewController: UINavigationController {
                 destination.selectedProject = selectedProject
             } else if let profileVC = sender as? ProfileViewController {
                 destination.customCallback = { image in
-                    profileVC.profileImage = image
+                    
+                    //todo upload image
+//                    profileVC.profileImage = image
                     _ = self.popViewController(animated: true)
                 }
             }

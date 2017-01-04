@@ -33,9 +33,12 @@ class CoreDataController: NSObject {
         /* The directory the application uses to store the Core Data store file.
          This code uses a file named "DataModel.sqlite" in the application's documents directory.
          */
+        let mOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
+                        NSInferMappingModelAutomaticallyOption: true]
+        
         let storeURL = docURL.appendingPathComponent("YSCTW")
         do {
-            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
+            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: mOptions)
         } catch {
             fatalError("Error migrating store: \(error)")
         }
@@ -56,6 +59,7 @@ class CoreDataController: NSObject {
     
     func fetchProfileModel() -> ProfileModel? {
         let fetchRequest: NSFetchRequest<ProfileModel> = ProfileModel.fetchRequest()
+        fetchRequest.fetchLimit = 2
 
         do {
             let searchResults = try self.managedObjectContext.fetch(fetchRequest)
@@ -77,14 +81,19 @@ class CoreDataController: NSObject {
         profileModel.nickname = profile.nickname
         profileModel.avatar_url = profile.avatarUrl
         profileModel.avatar_thumb_url = profile.avatarThumbUrl
+        profileModel.followerCount = profile.followerCount as NSNumber?
+        profileModel.followingCount = profile.followingCount as NSNumber?
         
         self.save()
     }
     
     func profile() -> Profile {
         let profileModel = self.profileModel()
+        var profile = Profile(id: Int(profileModel.id!), name: profileModel.name!, email: profileModel.email!, nickname: profileModel.nickname!, avatarURL: profileModel.avatar_url!, avatarThumbUrl: profileModel.avatar_thumb_url)
+        profile.followingCount = Int(profileModel.followingCount!)
+        profile.followerCount = Int(profileModel.followerCount!)
         
-        return Profile(id: Int(profileModel.id!), name: profileModel.name!, email: profileModel.email!, nickname: profileModel.nickname!, avatarURL: profileModel.avatar_url!, avatarThumbUrl: profileModel.avatar_thumb_url)
+        return profile
     }
     
     public func deleteProfileModel() {

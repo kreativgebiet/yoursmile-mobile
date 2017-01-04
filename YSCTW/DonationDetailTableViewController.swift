@@ -95,7 +95,13 @@ class DonationDetailTableViewController: UITableViewController {
         
         let comment = self.comments?[indexPath.row]
         
-        cell.profileImageView.image = comment?.profile.image
+        if (comment?.profile.avatarUrl.characters.count)! > 0 {
+            let imageURL = URL(string: (comment?.profile.avatarUrl)!)!
+            cell.profileImageView.af_setImage(withURL: imageURL)
+        } else {
+            cell.profileImageView.image = #imageLiteral(resourceName: "user-icon")
+        }
+        
         cell.nameLabel.text = comment?.profile.name
         
         let paragraphStyle = NSMutableParagraphStyle()

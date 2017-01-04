@@ -178,6 +178,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
             case .profile:
                 if self.profileViewController == nil {
                     self.profileViewController = self.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController
+                    self.profileViewController?.automaticallyAdjustsScrollViewInsets = false
                     self.profileViewController?.dataManager = self.dataManager
                 }
                 
