@@ -105,6 +105,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .selected)
         self.gotoRegistrationButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        let text3 = "PASSWORD_RESET_LABEL".localized + " "
+        let text4 = "PASSWORD_BUTTON".localized
+        
+        let mutableString2 = NSMutableAttributedString(
+            string: text3 + text4)
+        mutableString2.addAttribute(NSForegroundColorAttributeName, value: customDarkGray, range: NSMakeRange(0, text3.characters.count))
+        mutableString2.addAttribute(NSForegroundColorAttributeName, value: orange, range: NSMakeRange(text3.characters.count, text4.characters.count))
+        
+        self.gotoPasswordResetButton.setAttributedTitle(mutableString2, for: .normal)
+        self.gotoPasswordResetButton.setAttributedTitle(mutableString2, for: .selected)
+        self.gotoPasswordResetButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     // MARK: - Button handler
@@ -144,7 +156,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func handleGotoPasswordResetTapped(_ sender: AnyObject) {
-        self.performSegue(withIdentifier: "registrationSegue", sender: self)
+        self.performSegue(withIdentifier: "passwordResetSegue", sender: self)
     }
     
     func loginWith(_ email: String, _ password: String) {

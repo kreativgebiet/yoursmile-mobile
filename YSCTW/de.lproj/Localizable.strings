@@ -7,14 +7,18 @@
 */
 //Login
 "LOGIN" = "Anmelden";
+"RESET_PASSWORD" = "Passwort zurücksetzen";
 "LOGIN_WITH_FB" = "Mit Facebook anmelden";
 "NO_ACCOUNT_LABEL" = "Du hast noch keinen Account?";
+"PASSWORD_RESET_LABEL" = "Du hast dein Passwort vergessen?";
+"PASSWORD_BUTTON" = "Passwort zurücksetzen!";
 "REGISTER_BUTTON" = "Registrieren!";
 "OR" = "ODER";
+"PASSWORD_RESET_SUCCESS" = "Dein Passwort wurde erfolgreich zurückgesetzt. Bitte prüfe deine e-mails!";
 
 //Registration
 "REGISTER" = "Anmelden";
-"ACCOUNT_LABEL" = "Du hast noch keinen Account?";
+"ACCOUNT_LABEL" = "Du hast schon einen Account?";
 "LOGIN_BUTTON" = "Anmelden!";
 
 //Feed

@@ -156,6 +156,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="KAd-gt-2Et" secondAttribute="trailing" constant="25" id="DwY-IZ-9kX"/>
                             <constraint firstItem="B71-xi-DpT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JWi-aA-d8c"/>
                             <constraint firstItem="7Da-0i-uWV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MhS-LU-Lrb"/>
+                            <constraint firstItem="7Da-0i-uWV" firstAttribute="top" secondItem="KAd-gt-2Et" secondAttribute="bottom" constant="5" id="QAU-L9-WMR"/>
                             <constraint firstItem="7Da-0i-uWV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="Qzd-Kd-myf"/>
                             <constraint firstAttribute="trailing" secondItem="B71-xi-DpT" secondAttribute="trailing" id="RAT-82-IqK"/>
                             <constraint firstItem="fQN-7O-JfR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="RDc-Bm-FUK"/>
@@ -168,7 +169,6 @@
                             <constraint firstItem="x5Q-B9-hNT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="a4e-Zv-fBq"/>
                             <constraint firstItem="evX-o7-MtB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bYi-zZ-pYe"/>
                             <constraint firstItem="evX-o7-MtB" firstAttribute="top" secondItem="8xn-Lc-eD1" secondAttribute="bottom" constant="10" id="ddE-1u-ZRo"/>
-                            <constraint firstItem="iiE-1n-E6o" firstAttribute="top" secondItem="7Da-0i-uWV" secondAttribute="bottom" constant="10" id="eFG-99-hUD"/>
                             <constraint firstItem="Mgd-j1-PT2" firstAttribute="top" secondItem="evX-o7-MtB" secondAttribute="bottom" constant="6" id="gxR-mU-hPl"/>
                             <constraint firstItem="B71-xi-DpT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nJD-3s-GSy"/>
                             <constraint firstItem="GDQ-1A-2fD" firstAttribute="top" secondItem="x5Q-B9-hNT" secondAttribute="bottom" constant="-1" id="oyz-sD-ym9"/>
@@ -194,6 +194,7 @@
                         <outlet property="passwordTextField" destination="fQN-7O-JfR" id="xqQ-bH-Cxj"/>
                         <segue destination="oIj-Ku-mV1" kind="show" identifier="registrationSegue" id="pn0-KK-Y1k"/>
                         <segue destination="S3D-hc-yly" kind="show" identifier="navigationControllerSegue" id="5Ux-pY-fAz"/>
+                        <segue destination="dip-T4-cWI" kind="show" identifier="passwordResetSegue" id="vll-nM-JZI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1100,10 +1101,10 @@
             </objects>
             <point key="canvasLocation" x="1209" y="136"/>
         </scene>
-        <!--View Controller-->
+        <!--Reset Password View Controller-->
         <scene sceneID="1eY-gO-0H0">
             <objects>
-                <viewController id="dip-T4-cWI" sceneMemberID="viewController">
+                <viewController id="dip-T4-cWI" customClass="ResetPasswordViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tlb-2Y-5lp"/>
                         <viewControllerLayoutGuide type="bottom" id="0B1-ot-27b"/>
@@ -1141,6 +1142,7 @@
                                 <connections>
                                     <action selector="handleLoginBUttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ciP-I5-yEU"/>
                                     <action selector="handleRegisterButtonTapped:" destination="oIj-Ku-mV1" eventType="touchUpInside" id="SWn-vg-Bxh"/>
+                                    <action selector="handleResetPasswordButtonTapped:" destination="dip-T4-cWI" eventType="touchUpInside" id="6Zy-58-pQ9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMi-Vw-xAy" userLabel="Proceed to Registration">
@@ -1152,6 +1154,7 @@
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
+                                    <action selector="handleGotoLoginButtonTapped:" destination="dip-T4-cWI" eventType="touchUpInside" id="lUp-b7-koF"/>
                                     <action selector="handleLoginButtonTapped:" destination="oIj-Ku-mV1" eventType="touchUpInside" id="gBl-1r-Wdn"/>
                                     <action selector="handleRegistrationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W9Y-QH-rQQ"/>
                                 </connections>
@@ -1173,11 +1176,11 @@
                             <constraint firstItem="Ozk-36-Wge" firstAttribute="centerX" secondItem="7zM-YI-qVi" secondAttribute="centerX" id="8IF-5T-azW"/>
                             <constraint firstItem="oU8-Em-1ZB" firstAttribute="leading" secondItem="7zM-YI-qVi" secondAttribute="leading" id="Aiz-Mw-1Tp"/>
                             <constraint firstItem="oU8-Em-1ZB" firstAttribute="top" secondItem="7zM-YI-qVi" secondAttribute="top" id="GNt-2v-9Ju"/>
-                            <constraint firstItem="Ozk-36-Wge" firstAttribute="top" secondItem="XVh-6P-TGH" secondAttribute="bottom" constant="40" id="Hww-Lf-vvj"/>
+                            <constraint firstItem="Ozk-36-Wge" firstAttribute="top" secondItem="XVh-6P-TGH" secondAttribute="bottom" constant="70" id="Hww-Lf-vvj"/>
                             <constraint firstItem="0B1-ot-27b" firstAttribute="top" secondItem="iMi-Vw-xAy" secondAttribute="bottom" constant="10" id="IrG-23-ebv"/>
                             <constraint firstAttribute="trailing" secondItem="oU8-Em-1ZB" secondAttribute="trailing" id="K5c-Ul-zYj"/>
                             <constraint firstItem="iMi-Vw-xAy" firstAttribute="centerX" secondItem="7zM-YI-qVi" secondAttribute="centerX" id="OUb-ZS-aL5"/>
-                            <constraint firstItem="n5l-mE-k8W" firstAttribute="top" secondItem="Ozk-36-Wge" secondAttribute="bottom" constant="34" id="QwO-am-lzw"/>
+                            <constraint firstItem="n5l-mE-k8W" firstAttribute="top" secondItem="Ozk-36-Wge" secondAttribute="bottom" constant="10" id="QwO-am-lzw"/>
                             <constraint firstItem="zAC-b7-eJg" firstAttribute="top" secondItem="Tlb-2Y-5lp" secondAttribute="bottom" constant="60" id="S1e-ei-MDR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n5l-mE-k8W" secondAttribute="trailing" constant="25" id="cri-as-C9Y"/>
                             <constraint firstItem="n5l-mE-k8W" firstAttribute="leading" secondItem="7zM-YI-qVi" secondAttribute="leadingMargin" constant="25" id="hp9-D7-iSD"/>
@@ -1188,6 +1191,11 @@
                             <constraint firstAttribute="trailing" secondItem="iMi-Vw-xAy" secondAttribute="trailing" constant="10" id="xDJ-e8-BF6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Ozk-36-Wge" id="HH9-rk-i4T"/>
+                        <outlet property="gotoLoginButton" destination="iMi-Vw-xAy" id="Ohk-db-niw"/>
+                        <outlet property="resetPasswordButton" destination="n5l-mE-k8W" id="8bY-N1-Wis"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2T-yO-QSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

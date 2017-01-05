@@ -360,6 +360,22 @@ class APIClient: NSObject {
         }
     }
     
+    class func resetPasswordFor(email: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        debugPrint("password post")
+        NetworkHelper.verifyToken { (token) in
+            let requestURL = baseURL + "auth/password"
+            
+            let parameters: [String : String] = [
+                "email": email
+            ]
+            
+            Alamofire.request(requestURL, method: .post, parameters: parameters, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.standardResponseHandling(response: response, callback: callback)
+            }
+        }
+    }
+    
     class func deleteUser(callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         debugPrint("delete user post")
         NetworkHelper.verifyToken { (token) in

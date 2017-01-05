@@ -57,6 +57,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundTap))
         self.view.addGestureRecognizer(tapGesture)
+        
+        self.applyLocalization()
     }
     
     deinit {
@@ -65,6 +67,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.applyLocalization()
+    }
+    
+    func applyLocalization() {
         //Localization
         self.registerButton.setTitle("LOGIN".localized, for: .normal)
         self.registerButton.setTitle("LOGIN".localized, for: .selected)
@@ -111,8 +117,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
 
-    @IBAction func handleLoginButtonTapped(_ sender: AnyObject) {
-        
+    @IBAction func handleLoginButtonTapped(_ sender: AnyObject) {        
         self.dismiss(animated: true) {
             
         }

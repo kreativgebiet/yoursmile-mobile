@@ -76,10 +76,16 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
         })
         
-        self.dataManager?.followingUsersForUserWith(id: idString, { (relationProfiles) in
-            print(relationProfiles)
-            loadingScreen.removeFromSuperview()             
-        })
+//        self.dataManager?.followingUsersForUserWith(id: idString, { (relationProfiles) in
+//            print(relationProfiles)
+//            loadingScreen.removeFromSuperview()
+//            
+//            let followerIds = relationProfiles.map({$0.followerId})
+//            
+//            if followerIds.contains(Int(self.userProfile.id)) {
+//                self.profileHeaderView.hideSubscribeButton()
+//            }
+//        })
     
         self.initialProfileViewHeightConstraint = self.profileViewHeightConstraint.constant
         

@@ -7,10 +7,14 @@
 */
 //Login
 "LOGIN" = "Login";
+"RESET_PASSWORD" = "Reset password";
 "LOGIN_WITH_FB" = "Login with Facebook";
 "NO_ACCOUNT_LABEL" = "No account yet?";
+"PASSWORD_RESET_LABEL" = "Forgotten your password?";
+"PASSWORD_BUTTON" = "Reset Password!";
 "REGISTER_BUTTON" = "Register!";
 "OR" = "OR";
+"PASSWORD_RESET_SUCCESS" = "Your password has been reset. Please check your e-mails!";
 
 //Registration
 "REGISTER" = "Login";
