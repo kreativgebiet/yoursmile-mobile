@@ -74,6 +74,8 @@ class CardPaymentView: UIView, STPPaymentCardTextFieldDelegate {
     
     @IBAction func payButtonPressed(_ sender: AnyObject) {
         
+        self.view.endEditing(true)
+        
         if self.paymentField.isValid {
             self.callback(true)
         } else {

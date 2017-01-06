@@ -20,8 +20,8 @@ class DataManager: NSObject {
     }
     
     func addOperation(_ operation: NetworkOperation) {
-        let delayOperation = DelayOperation()
-        self.queue.addOperation(delayOperation)
+//        let delayOperation = DelayOperation()
+//        self.queue.addOperation(delayOperation)
         self.queue.addOperation(operation)
     }
     

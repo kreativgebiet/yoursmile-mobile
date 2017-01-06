@@ -140,6 +140,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.profileHeaderView.setNeedsLayout()
         self.profileHeaderView.layoutIfNeeded()
         
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        
         self.reloadData()
     }
     

@@ -15,6 +15,7 @@ class UpdateUserOperation: NetworkOperation {
     
     init(_ email: String, _ callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         self.callback = callback
+        self.email = email
     }
     
     override func start() {
