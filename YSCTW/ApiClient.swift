@@ -1,4 +1,4 @@
- //
+//
 //  ApiClient.swift
 //  YSCTW
 //
@@ -280,6 +280,44 @@ class APIClient: NSObject {
     
     // MARK: User handling
     
+    class func uploadUser(image: UIImage!, username: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
+        debugPrint("upload image")
+        
+        let imageData = UIImageJPEGRepresentation(image, 0.5)! as Data?
+        
+        NetworkHelper.verifyToken { (token) in
+            let requestURL = baseURL + "auth/"
+            
+            Alamofire.upload(multipartFormData: { multipartFormData in
+                
+                multipartFormData.append(imageData!, withName: "avatar", fileName: "test", mimeType: "image/jpeg")
+                multipartFormData.append(username.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "name")
+                
+                }, to: requestURL, method: .patch, headers: token,
+                   encodingCompletion: { encodingResult in
+                    
+                    switch encodingResult {
+                    case .success(let upload, _, _):
+                        
+                        upload.uploadProgress { progress in
+                            print(progress)
+                        }
+                        
+                        upload.response { response in
+                            print(response)
+                            callback(true, "")
+                        }
+                        
+                    case .failure(let encodingError):
+                        print("error:\(encodingError)")
+                        callback(false, String(describing: encodingError))
+                    }
+                    
+            })
+
+        }
+    }
+    
     class func userDataFor(id: String!, callback: @escaping ((_ profile: Profile?) -> ())) {
         debugPrint("user data post")
         
@@ -365,8 +403,12 @@ class APIClient: NSObject {
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "auth/password"
             
+            let bundleIdentifierSeperated =  Bundle.main.bundleIdentifier?.components(separatedBy: ".")
+            let redirectURL = (bundleIdentifierSeperated?.last)! + "://passwordreset"
+            
             let parameters: [String : String] = [
-                "email": email
+                "email": email,
+                "redirect_url": redirectURL
             ]
             
             Alamofire.request(requestURL, method: .post, parameters: parameters, headers: token)

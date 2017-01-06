@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
     var initialProfileViewHeightConstraint: CGFloat!
     var donations: [Upload]?
+    var profileToUse: Profile!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,62 +32,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.profileHeaderView.userProfile = self.userProfile
         self.profileHeaderView.layoutIfNeeded()
         
-        let profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
+        self.profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
         
         if self.currentProfile == nil {
             self.profileViewHeightConstraint.constant = 285
         }
         
-        let loadingScreen = LoadingScreen(frame: self.view.bounds)
-        self.view.addSubview(loadingScreen)
-        
-        let id = profileToUse.id as Int!
-        let idString = "\(id!)"
-        
-        self.dataManager?.uploadsWith(idString, { (uploads) in
-            self.donations = uploads
-//Could be implemented instead of current implementation
-//            let supportedProjects = self.donations?.map({$0.projects})
-            self.profileHeaderView.numberOfSupportedProjects = (self.donations?.count)!
-            
-            self.tableView.reloadData()
-        })
-        
-        self.dataManager?.userDataFor(id: idString, { (profile) in
-            print(profile)
-            
-            if self.currentProfile == nil {
-                self.profileHeaderView.userProfile = profile
-            } else {
-                self.profileHeaderView.profile = profile
-            }
-            
-            self.profileHeaderView.layoutIfNeeded()
-            
-        })
-        
-        self.dataManager?.followerForUserWith(id: idString, { (relationProfiles) in
-            print(relationProfiles)
-            loadingScreen.removeFromSuperview()
-            let followerIds = relationProfiles.map({$0.followerId})
-            
-            if followerIds.contains(Int(self.userProfile.id)) {
-                self.profileHeaderView.hideSubscribeButton()
-            }
-            
-        })
-        
-//        self.dataManager?.followingUsersForUserWith(id: idString, { (relationProfiles) in
-//            print(relationProfiles)
-//            loadingScreen.removeFromSuperview()
-//            
-//            let followerIds = relationProfiles.map({$0.followerId})
-//            
-//            if followerIds.contains(Int(self.userProfile.id)) {
-//                self.profileHeaderView.hideSubscribeButton()
-//            }
-//        })
-    
         self.initialProfileViewHeightConstraint = self.profileViewHeightConstraint.constant
         
         self.profileHeaderView.subscribeCallback = {
@@ -100,6 +51,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 if success {
                     self.profileHeaderView.hideSubscribeButton()
+                    self.reloadUserData()
                 }
             })
         }
@@ -113,6 +65,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         self.applyTableViewStyle()
+        self.reloadData()
     }
     
     func applyTableViewStyle() {
@@ -120,6 +73,60 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
         self.tableView.allowsSelection = false
         self.tableView.backgroundColor = customLightGray
+    }
+    
+    func reloadUserData() {
+        self.dataManager?.userDataFor(id: self.idString(), { (profile) in
+            print(profile)
+            
+            if self.currentProfile == nil {
+                self.profileHeaderView.userProfile = profile
+            } else {
+                self.profileHeaderView.profile = profile
+            }
+            
+            self.profileHeaderView.setNeedsLayout()
+            self.profileHeaderView.layoutIfNeeded()
+            
+        })
+    }
+    
+    func reloadData() {
+        let loadingScreen = LoadingScreen(frame: self.view.bounds)
+        self.view.addSubview(loadingScreen)
+        
+        debugPrint("currentprofile")
+        debugPrint(self.currentProfile?.id)
+        
+        debugPrint("userprofile")
+        debugPrint(self.userProfile.id)
+        
+        self.dataManager?.uploadsWith(self.idString(), { (uploads) in
+            self.donations = uploads
+            //Could be implemented instead of current implementation
+            //            let supportedProjects = self.donations?.map({$0.projects})
+            self.profileHeaderView.numberOfSupportedProjects = (self.donations?.count)!
+            
+            self.tableView.reloadData()
+        })
+        
+        self.reloadUserData()
+        
+        self.dataManager?.followerForUserWith(id: self.idString(), { (relationProfiles) in
+            print(relationProfiles)
+            loadingScreen.removeFromSuperview()
+            let followerIds = relationProfiles.map({$0.userId})
+            
+            if followerIds.contains(Int(self.userProfile.id)) {
+                self.profileHeaderView.hideSubscribeButton()
+            }
+            
+        })
+    }
+    
+    func idString() -> String {
+        let id = self.profileToUse.id as Int!
+        return "\(id!)"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -132,7 +139,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.navigationController?.isNavigationBarHidden = true
         self.profileHeaderView.setNeedsLayout()
         self.profileHeaderView.layoutIfNeeded()
+        
+        self.reloadData()
     }
+    
+    // MARK: - Upload user profile image
+    
+    func uploadUser(image: UIImage) {
+        let loadingScreen = LoadingScreen(frame: self.view.bounds)
+        self.view.addSubview(loadingScreen)
+        
+        self.dataManager?.uploadUser(image: image, username: self.userProfile.name, { (success, errorString) in
+            loadingScreen.removeFromSuperview()
+        })
+    }
+    
+    // MARK: - Header animation
     
     var animating = false
     
@@ -195,6 +217,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     // MARK: - Table view data source
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

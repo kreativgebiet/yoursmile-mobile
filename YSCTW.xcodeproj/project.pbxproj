@@ -158,6 +158,8 @@
 		A1EF7FA21E1BD652003C92E4 /* UserFollowerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FA11E1BD652003C92E4 /* UserFollowerOperation.swift */; };
 		A1EF7FA41E1BEA81003C92E4 /* UserFollowingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FA31E1BEA81003C92E4 /* UserFollowingOperation.swift */; };
 		A1EF7FA71E1E4C2F003C92E4 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FA61E1E4C2F003C92E4 /* ResetPasswordViewController.swift */; };
+		A1EF7FA91E1E57E5003C92E4 /* UploadUserImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FA81E1E57E5003C92E4 /* UploadUserImageOperation.swift */; };
+		A1EF7FAB1E1F9D18003C92E4 /* DelayOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FAA1E1F9D18003C92E4 /* DelayOperation.swift */; };
 		A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8E81DD3648400AFAB4F /* DataManager.swift */; };
 		A1F8D8EB1DD367D100AFAB4F /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */; };
 		A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */; };
@@ -358,6 +360,8 @@
 		A1EF7FA31E1BEA81003C92E4 /* UserFollowingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowingOperation.swift; sourceTree = "<group>"; };
 		A1EF7FA51E1D11B0003C92E4 /* YSCTW 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YSCTW 2.xcdatamodel"; sourceTree = "<group>"; };
 		A1EF7FA61E1E4C2F003C92E4 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		A1EF7FA81E1E57E5003C92E4 /* UploadUserImageOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadUserImageOperation.swift; sourceTree = "<group>"; };
+		A1EF7FAA1E1F9D18003C92E4 /* DelayOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayOperation.swift; sourceTree = "<group>"; };
 		A1F8D8E81DD3648400AFAB4F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A1F8D8EA1DD367D100AFAB4F /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
@@ -686,6 +690,8 @@
 				A1EF7F9F1E1BD2AC003C92E4 /* FollowUserOperation.swift */,
 				A1EF7FA11E1BD652003C92E4 /* UserFollowerOperation.swift */,
 				A1EF7FA31E1BEA81003C92E4 /* UserFollowingOperation.swift */,
+				A1EF7FA81E1E57E5003C92E4 /* UploadUserImageOperation.swift */,
+				A1EF7FAA1E1F9D18003C92E4 /* DelayOperation.swift */,
 			);
 			name = ServiceLayer;
 			sourceTree = "<group>";
@@ -986,6 +992,7 @@
 				A1CF0C981DD2170A002C4562 /* DonationDetailTableViewController.swift in Sources */,
 				A11028FD1DD5E22900633343 /* AppPreferencesViewController.swift in Sources */,
 				A153909D1DD0CEFF00B7ADA0 /* RegistrationViewController.swift in Sources */,
+				A1EF7FA91E1E57E5003C92E4 /* UploadUserImageOperation.swift in Sources */,
 				A1DB37931E0AA303003EAFCF /* PostPaymentSourceOperation.swift in Sources */,
 				A11028ED1DD4DA2C00633343 /* DonationViewController.swift in Sources */,
 				A11028FF1DD5E23500633343 /* AccountPreferencesViewController.swift in Sources */,
@@ -1025,6 +1032,7 @@
 				A1EF7FA41E1BEA81003C92E4 /* UserFollowingOperation.swift in Sources */,
 				A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */,
 				A114283F1E08274F0033844A /* UIApplicationExtension.swift in Sources */,
+				A1EF7FAB1E1F9D18003C92E4 /* DelayOperation.swift in Sources */,
 				A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */,
 				A1DB378B1E0A9CF5003EAFCF /* PostCommentOperation.swift in Sources */,
 				A154FDF31DDF66DB00D88306 /* CancelableProgressView.swift in Sources */,

@@ -12,6 +12,9 @@ class NetworkOperation: Operation {
     
     private var _finished: Bool = false
     
+    let date = Date()
+    let formatter = DateFormatter()
+    
     override var isFinished: Bool {
         get {
             return _finished
@@ -22,13 +25,15 @@ class NetworkOperation: Operation {
                 _finished = newValue
                 didChangeValue(forKey: "isFinished")
                 
-                debugPrint(String(describing: self) + " finished")
+                debugPrint(String(describing: self) + " finished at " + formatter.string(from: Date()))
             }
         }
     }
     
     override func start() {
-        debugPrint(String(describing: self) + " started")
+        formatter.dateFormat = "mm.SSS"
+        
+        debugPrint(String(describing: self) + " started at " + formatter.string(from: Date()))
     }
 
 }

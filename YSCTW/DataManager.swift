@@ -19,30 +19,39 @@ class DataManager: NSObject {
         self.queue.maxConcurrentOperationCount = 1
     }
     
-    func addOperationToQueue(operation: Operation) {
+    func addOperation(_ operation: NetworkOperation) {
+        let delayOperation = DelayOperation()
+        self.queue.addOperation(delayOperation)
         self.queue.addOperation(operation)
+    }
+    
+    func uploadUser(image: UIImage, username: String, _ callback: @escaping ((_ success: Bool, _ error: String) -> () )) {
+        let operation = UploadUserImageOperation(image, username, {(success, error) in
+            callback(success, error)
+        })
+        self.addOperation(operation)
     }
     
     func userDataFor(id: String, _ callback: @escaping ((_ user: Profile?) -> () )) {
         let operation = UserDataOperation(id, {profile in
             callback(profile)
         })
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func followUserWith(id: String, _ callback: @escaping ((_ success: Bool, _ error: String) -> () )) {
         let operation = FollowUserOperation(id, callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func followerForUserWith(id: String, _ callback: @escaping ((_ profileRelations: [ProfileRelation]) -> () )) {
         let operation = UserFollowerOperation(id, callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func followingUsersForUserWith(id: String, _ callback: @escaping ((_ profileRelations: [ProfileRelation]) -> () )) {
         let operation = UserFollowingOperation(id, callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func projects(_ callback: @escaping ((_ projects: [Project]) -> () )) {
@@ -53,7 +62,7 @@ class DataManager: NSObject {
                 self.projects = projects
                 callback(self.projects)
             })
-            self.queue.addOperation(operation)
+            self.addOperation(operation)
             
         } else {
             callback(self.projects)
@@ -66,37 +75,37 @@ class DataManager: NSObject {
             let sortedUploads = uploads.sorted(by: { $0.date > $1.date })
             callback(sortedUploads)
         })
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func commentsWith(_ uploadId: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
         let operation = CommentDownloadOperation(uploadId, callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func postCommentWith(_ uploadId: String, _ text: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
         let operation = PostCommentOperation(uploadId, text, callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func deleteUser(callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         let operation = DeleteUserOperation(callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func updateUser(email: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         let operation = UpdateUserOperation(email, callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func resetPassword(password: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         let operation = ResetPasswordOperation(password, callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func postPaymentSource(tokenId: String, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         let operation = PostPaymentSourceOperation(tokenId, callback)
-        self.queue.addOperation(operation)
+        self.addOperation(operation)
     }
     
     func uploadSelfies () {
@@ -104,7 +113,7 @@ class DataManager: NSObject {
         
         for upload in uploadModels {
             let operation = UploadSelfiesOperation(upload)
-            self.queue.addOperation(operation)
+            self.addOperation(operation)
         }
     }
     
