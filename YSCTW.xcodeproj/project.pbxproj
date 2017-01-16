@@ -817,6 +817,7 @@
 					A12A45481DCF8C76002977DF = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = ZJULPV3Z62;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -827,12 +828,14 @@
 					A12A455C1DCF8C77002977DF = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = J5ES4BJ242;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A12A45481DCF8C76002977DF;
 					};
 					A12A45671DCF8C77002977DF = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = J5ES4BJ242;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A12A45481DCF8C76002977DF;
 					};

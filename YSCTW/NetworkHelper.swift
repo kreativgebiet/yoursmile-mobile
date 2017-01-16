@@ -56,7 +56,7 @@ class NetworkHelper: NSObject {
         let client = response.allHeaderFields["Client"] as? String
         
         debugPrint("save token")
-        debugPrint(token)
+        debugPrint(token ?? String.self)
         
         if token != nil && expiryDate != nil && uid != nil && client != nil {
             let headerDict = [
