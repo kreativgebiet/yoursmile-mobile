@@ -92,6 +92,8 @@
 		A19A31B51DFEC13B0054BA3E /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */; };
 		A1B2B9CC1DDF7B3600C27A26 /* PhotoCropEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */; };
 		A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */; };
+		A1BEDAB21E36404A0002EABA /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BEDAB11E36404A0002EABA /* PickerView.swift */; };
+		A1BEDAB41E3640550002EABA /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BEDAB31E3640550002EABA /* PickerView.xib */; };
 		A1CF0C981DD2170A002C4562 /* DonationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */; };
 		A1CF0C9A1DD22994002C4562 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0C991DD22994002C4562 /* CommentTableViewCell.swift */; };
 		A1CF0C9C1DD22DBE002C4562 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0C9B1DD22DBE002C4562 /* CommentTableViewCell.xib */; };
@@ -286,6 +288,8 @@
 		A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
 		A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropNavigationController.swift; sourceTree = "<group>"; };
+		A1BEDAB11E36404A0002EABA /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		A1BEDAB31E3640550002EABA /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
 		A1CF0C971DD2170A002C4562 /* DonationDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationDetailTableViewController.swift; sourceTree = "<group>"; };
 		A1CF0C991DD22994002C4562 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		A1CF0C9B1DD22DBE002C4562 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -615,6 +619,8 @@
 				A154FDF41DDF66E300D88306 /* CancelableProgressView.xib */,
 				A161B5571DEDA06300356514 /* CardPaymentView.swift */,
 				A161B5591DEDA06C00356514 /* CardPaymentView.xib */,
+				A1BEDAB11E36404A0002EABA /* PickerView.swift */,
+				A1BEDAB31E3640550002EABA /* PickerView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -872,6 +878,7 @@
 				A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */,
 				A110290F1DD9EDB100633343 /* ProjectView.xib in Resources */,
 				A164071E1DDF181800BA1853 /* Gotham-ExtraLight.otf in Resources */,
+				A1BEDAB41E3640550002EABA /* PickerView.xib in Resources */,
 				A11029021DD9C36D00633343 /* Localizable.strings in Resources */,
 				A16407071DDE723A00BA1853 /* PreferencesTableViewCell.xib in Resources */,
 				A11028F51DD5136400633343 /* AddedProjectButtonView.xib in Resources */,
@@ -1026,6 +1033,7 @@
 				A1DB377E1E0A95B4003EAFCF /* ProjectsDownloadOperation.swift in Sources */,
 				A12A45811DD081FF002977DF /* LoginViewController.swift in Sources */,
 				A13546721DDDEC7900931139 /* PaymentSelectionView.swift in Sources */,
+				A1BEDAB21E36404A0002EABA /* PickerView.swift in Sources */,
 				A153909B1DD0CD9200B7ADA0 /* RoundedButton.swift in Sources */,
 				A1DB37851E0A99AF003EAFCF /* UploadsDownloadOperation.swift in Sources */,
 				A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */,

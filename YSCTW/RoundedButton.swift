@@ -12,9 +12,17 @@ class RoundedButton: UIButton {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.layout()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.layout()
+    }
+    
+    func layout() {
         self.backgroundColor = orange
         self.setTitleColor(.white, for: .normal)
-        
         self.layer.cornerRadius = 5
     }
 

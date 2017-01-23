@@ -40,6 +40,7 @@
 "ENVIRONMENT" = "Umwelt";
 "FOOD" = "Nahrung";
 "HEALTH" = "Gesundheit";
+"SELECT" = "Auswählen";
 
 //General
 "EMAIL" = "E-Mail Adresse";

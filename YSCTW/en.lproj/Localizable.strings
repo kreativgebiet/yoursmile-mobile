@@ -40,6 +40,7 @@
 "ENVIRONMENT" = "Environment";
 "FOOD" = "Food";
 "HEALTH" = "Health";
+"SELECT" = "Select";
 
 //General
 "EMAIL" = "E-Mail";
