@@ -48,7 +48,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.switchCameraButton.contentVerticalAlignment = .center
         self.switchCameraButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         
-        self.topBarView.backgroundColor = navigationBarGray
+        self.topBarView.backgroundColor = orange
         
         for device in devices! {
             if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {

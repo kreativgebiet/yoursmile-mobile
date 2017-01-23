@@ -15,7 +15,7 @@ class ImagePickerViewController: UIImagePickerController {
 
         self.sourceType = .photoLibrary
         self.navigationBar.isTranslucent = false
-        self.navigationBar.barTintColor = navigationBarGray
+        self.navigationBar.barTintColor = orange
         self.navigationBar.tintColor = .white
         let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 18)!, NSForegroundColorAttributeName: UIColor.white]
         self.navigationBar.titleTextAttributes = attributes
