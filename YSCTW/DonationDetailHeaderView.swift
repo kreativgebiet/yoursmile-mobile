@@ -65,7 +65,7 @@ class DonationDetailHeaderView: UIView {
         self.selfieImageView.af_setImage(withURL: imageURL)
         
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 3
+        paragraphStyle.lineSpacing = 4
         
         let attrString = NSMutableAttributedString(string: (self.donation?.description)!)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))

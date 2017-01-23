@@ -105,7 +105,7 @@ class DonationDetailTableViewController: UITableViewController {
         cell.nameLabel.text = comment?.profile.name
         
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 3
+        paragraphStyle.lineSpacing = 4
         
         let attrString = NSMutableAttributedString(string: (comment?.text)!)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))

@@ -146,6 +146,8 @@ class TabBarViewController: UIViewController, BarViewDelegate {
                     self.projectsViewController?.supportCallback = { selectedProject in
                         self.navigationController?.performSegue(withIdentifier: "cameraSegue", sender: selectedProject)
                     }
+                    self.projectsViewController?.view.setNeedsLayout()
+                    self.projectsViewController?.view.layoutIfNeeded()
                     
                     let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
                     self.view.addSubview(loadingScreen)

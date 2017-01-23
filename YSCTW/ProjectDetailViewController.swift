@@ -24,7 +24,7 @@ class ProjectDetailViewController: UIViewController {
         super.viewDidLoad()
         
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 3
+        paragraphStyle.lineSpacing = 4
         
         let attrString = NSMutableAttributedString(string: (project?.projectDescription)!)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))

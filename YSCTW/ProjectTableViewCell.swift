@@ -53,7 +53,7 @@ class ProjectTableViewCell: UITableViewCell {
         self.projectImageView.af_setImage(withURL: imageUrl)
         
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 3
+        paragraphStyle.lineSpacing = 4
         
         let attrString = NSMutableAttributedString(string: (project?.projectDescription)!)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
