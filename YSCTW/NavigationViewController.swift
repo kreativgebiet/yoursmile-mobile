@@ -63,6 +63,20 @@ class NavigationViewController: UINavigationController {
             let donation = sender as! Upload
             destination.dataManager = self.dataManager
             destination.currentProfile = donation.profile
+        } else if segue.identifier == "projectSegue" {
+            
+            let rootViewController = self.viewControllers[0] as!TabBarViewController
+            //lazy implementation
+            rootViewController.logoNavigationBarView.isHidden = true
+            
+            let destination = segue.destination as! ProjectDetailViewController
+            let project = sender as! Project
+            
+            destination.supportCallback = {
+                self.performSegue(withIdentifier: "cameraSegue", sender: project)
+            }
+            
+            destination.project = project
         }
         
     }

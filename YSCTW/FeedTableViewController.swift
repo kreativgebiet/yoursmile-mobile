@@ -13,12 +13,14 @@ class FeedTableViewController: UITableViewController {
     public var selectedDonation: Upload?
     public var uploads: [Upload]?
     public var refreshCallback: (() -> Void)!
+    public var projectCallback: ((_ project: Project) -> Void)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 467
         self.tableView.allowsSelection = false
         self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
+        self.tableView.separatorColor = customGray
         
         self.refreshControl?.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
     }
@@ -74,6 +76,10 @@ class FeedTableViewController: UITableViewController {
         
         cell.profileCallback = { (donation: Upload) in
             self.navigationController?.performSegue(withIdentifier: "profileSegue", sender: donation)
+        }
+        
+        cell.projectCallback = { (project: Project) in
+            self.projectCallback(project)
         }
 
         return cell

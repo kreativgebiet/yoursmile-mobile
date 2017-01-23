@@ -27,6 +27,7 @@ class FeedTableViewCell: UITableViewCell {
     
     public var detailCallback: ((_ donation: Upload) -> Void)?
     public var profileCallback: ((_ donation: Upload) -> Void)?
+    public var projectCallback: ((_ project: Project) -> Void)?
     public var donation: Upload!
     
     override func awakeFromNib() {
@@ -41,6 +42,12 @@ class FeedTableViewCell: UITableViewCell {
         
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(handleTopViewTapped))
         self.topDetailView.addGestureRecognizer(topViewTap)
+        
+        self.transparentProjectView.callback = { (project: Project) in
+            if self.projectCallback != nil {
+                self.projectCallback!(project)
+            }
+        }
     }
     
     override func layoutSubviews() {

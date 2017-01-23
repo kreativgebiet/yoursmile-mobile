@@ -11,6 +11,7 @@ import UIKit
 class TransparentProjectView: UIView {
     
     var projects = [Project]()
+    var callback: ((_ project: Project) -> Void)?
     
     @IBOutlet weak var projectsScrollView: UIScrollView!
     @IBOutlet weak var transparentView: UIView!
@@ -52,6 +53,12 @@ class TransparentProjectView: UIView {
             
             self.projectsScrollView.addSubview(projectView)
             x += projectView.frame.size.width
+            
+            projectView.callback = { project in
+                if self.callback != nil {
+                    self.callback!(project)
+                }
+            }
         }
         
         self.projectsScrollView.contentSize = CGSize(width: x, height: height)

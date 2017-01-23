@@ -89,6 +89,26 @@ class FeedViewController: UIViewController {
             })
             
         }
+        
+        self.feedTableViewController.projectCallback = { project in
+            
+            let loadingScreen = LoadingScreen(frame: (self.navigationController?.view.bounds)!)
+            self.view.addSubview(loadingScreen)
+            
+            self.dataManager?.projects({ (projects) in
+                loadingScreen.removeFromSuperview()
+                
+                let filteredProjects = projects.filter({$0.id == project.id})
+                
+                if filteredProjects.count == 1 {
+                    let loadedProject = filteredProjects.last
+                    self.navigationController?.performSegue(withIdentifier: "projectSegue", sender: loadedProject)
+                    
+                }
+                
+            })
+            
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -73,6 +73,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
         self.tableView.allowsSelection = false
         self.tableView.backgroundColor = customLightGray
+        self.tableView.separatorColor = customGray
     }
     
     func reloadUserData() {

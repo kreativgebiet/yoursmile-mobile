@@ -11,6 +11,7 @@ import UIKit
 class ProjectView: UIView {
     
     var project: Project?
+    var callback: ((_ project: Project) -> Void)?
 
     @IBOutlet var view: UIView!
     @IBOutlet weak var projectLogoImageView: RoundImageView!
@@ -29,6 +30,9 @@ class ProjectView: UIView {
         
         self.backgroundColor = .clear
         self.view.backgroundColor = .clear
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +55,12 @@ class ProjectView: UIView {
             self.projectLogoImageView.af_setImage(withURL: logoURL)
         }
         
+    }
+    
+    func handleTap() {
+        if (self.callback != nil) {
+            self.callback!(self.project!)
+        }
     }
     
     private func loadViewFromNib() -> UIView {

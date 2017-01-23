@@ -185,7 +185,7 @@ class ProjectsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 self.togglePicker()
             }
             
-        } else if segue.identifier == "projectDetailSegue" {
+        } else if segue.identifier == "projectDetailSegue" || segue.identifier == "projectSegue" {
             
             let destination = segue.destination as! ProjectDetailViewController
             
