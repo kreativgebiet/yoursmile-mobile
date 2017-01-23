@@ -15,9 +15,9 @@ class NavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        self.navigationBar.barTintColor = navigationBarGray
+        self.navigationBar.barTintColor = orange
         self.navigationBar.isTranslucent = false
-        self.navigationBar.backgroundColor = navigationBarGray
+        self.navigationBar.backgroundColor = orange
 
         let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 18)!, NSForegroundColorAttributeName: UIColor.white]
         self.navigationBar.titleTextAttributes = attributes

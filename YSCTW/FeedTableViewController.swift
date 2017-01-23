@@ -51,6 +51,19 @@ class FeedTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as! FeedTableViewCell
         
+        //Remove separator Insets
+        if cell.responds(to: #selector(setter: UITableViewCell.separatorInset)) {
+            cell.separatorInset = UIEdgeInsets.zero
+        }
+        
+        if cell.responds(to: #selector(setter: UIView.preservesSuperviewLayoutMargins)) {
+            cell.preservesSuperviewLayoutMargins = false
+        }
+        
+        if cell.responds(to: #selector(setter: UIView.layoutMargins)) {
+            cell.layoutMargins = UIEdgeInsets.zero
+        }
+        
         let donation = (self.uploads?[indexPath.row])! as Upload
 
         cell.donation = donation
