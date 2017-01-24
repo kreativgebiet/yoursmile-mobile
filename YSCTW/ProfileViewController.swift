@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var initialProfileViewHeightConstraint: CGFloat!
     var donations: [Upload]?
     var profileToUse: Profile!
+    var profileHeaderBarView: ProfileHeaderBarView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.profileHeaderView.profile = self.currentProfile
         self.profileHeaderView.userProfile = self.userProfile
         self.profileHeaderView.layoutIfNeeded()
+        
+        self.profileHeaderBarView = ProfileHeaderBarView(frame: CGRect(x: 0, y: -60, width: self.view.frame.width, height: 60))
+        self.profileHeaderBarView.profile = self.currentProfile
+        self.profileHeaderBarView.userProfile = self.userProfile
+        self.profileHeaderBarView.backgroundColor = customGray2
+        
+        self.profileHeaderBarView.backButtonCallback = {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
         
         self.profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
         
@@ -68,6 +78,16 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.setContentOffset(CGPoint.zero, animated: false)
+        self.tableView.contentInset = UIEdgeInsets.zero
+        
+        self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+    }
+    
     func applyTableViewStyle() {
         self.tableView.rowHeight = 467
         self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
@@ -77,9 +97,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func reloadUserData() {
-        self.dataManager?.userDataFor(id: self.idString(), { (profile) in
-            print(profile)
-            
+        self.dataManager?.userDataFor(id: self.idString(), { (profile) in            
             if self.currentProfile == nil {
                 self.profileHeaderView.userProfile = profile
             } else {
@@ -95,12 +113,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func reloadData() {
         let loadingScreen = LoadingScreen(frame: self.view.bounds)
         self.view.addSubview(loadingScreen)
-        
-        debugPrint("currentprofile")
-        debugPrint(self.currentProfile?.id)
-        
-        debugPrint("userprofile")
-        debugPrint(self.userProfile.id)
         
         self.dataManager?.uploadsWith(self.idString(), { (uploads) in
             self.donations = uploads
@@ -160,6 +172,19 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Header animation
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.profileViewHeightConstraint.constant > self.initialProfileViewHeightConstraint {
+            self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+            }, completion: { (completed) in
+                
+            })
+        }
+    }
+    
     var animating = false
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -168,59 +193,63 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             return
         }
         
-        //Animation is happening here
-        if scrollView.contentOffset.y > 0 {
+        if scrollView.contentOffset.y > 0 && self.profileViewHeightConstraint.constant > 0 {
+            let newConstant: CGFloat = self.profileViewHeightConstraint.constant - scrollView.contentOffset.y
             
-            let newConstant: CGFloat = 64
+            self.profileViewHeightConstraint.constant = newConstant
             
-            if newConstant != self.profileViewHeightConstraint.constant {
-                self.profileViewHeightConstraint.constant = newConstant
-                
-                scrollView.isScrollEnabled = false
-                
-                UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
-                    self.animating = true
-                    self.view.setNeedsLayout()
-                    self.view.layoutIfNeeded()
-                    
-                    self.profileHeaderView.topImageView.alpha = 1
-                    
-                    let profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
-                    self.profileHeaderView.profileLabel.text = profileToUse.name
-                    
-                }, completion: { (completed) in
-                    self.animating = false
-                    scrollView.setContentOffset(CGPoint(x: 0, y: 1), animated: true)
-                    scrollView.isScrollEnabled = true
-                })
-
-            }
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
             
-        } else {
+            self.tableView.setContentOffset(CGPoint.zero, animated: false)
+        } else if scrollView.contentOffset.y < 0  {
             
-            let newConstant: CGFloat = self.initialProfileViewHeightConstraint
             
-            if newConstant != self.profileViewHeightConstraint.constant {
-                self.profileViewHeightConstraint.constant = newConstant
-                
-                UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
-                    self.animating = true
-                    self.view.setNeedsLayout()
-                    self.view.layoutIfNeeded()
-                    
-                    self.profileHeaderView.topImageView.alpha = 0
-                    self.profileHeaderView.profileLabel.text = "PROFILE".localized
-                }, completion: { (completed) in
-                    self.animating = false
-                })
-            }
+            let newConstant: CGFloat = self.profileViewHeightConstraint.constant - scrollView.contentOffset.y
             
-
+            self.profileViewHeightConstraint.constant = newConstant
+            
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            
+            self.tableView.setContentOffset(CGPoint.zero, animated: false)
         }
         
+        let profileHeaderHeight = self.profileHeaderBarView.frame.height
+        
+        if self.profileViewHeightConstraint.constant < profileHeaderHeight + 10 && self.profileHeaderBarView.superview == nil {
+            
+            self.view.addSubview(self.profileHeaderBarView)
+            
+            self.profileViewHeightConstraint.constant = profileHeaderHeight
+            
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            
+            UIView.animate(withDuration: 0.2, animations: { 
+                var frame = self.profileHeaderBarView.frame
+                frame.origin.y = 0
+                
+                self.profileHeaderBarView.frame = frame
+            })
+            
+        } else if self.profileViewHeightConstraint.constant > profileHeaderHeight + 10  && self.profileHeaderBarView.superview != nil {
+            UIView.animate(withDuration: 0.2, animations: { 
+                var frame = self.profileHeaderBarView.frame
+                frame.origin.y = -frame.height
+                
+                self.profileHeaderBarView.frame = frame
+            }, completion: { (completed) in
+                self.profileHeaderBarView.removeFromSuperview()
+            })
+        }
     }
 
     // MARK: - Table view data source
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
