@@ -38,7 +38,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         self.pageControl.pageIndicatorTintColor = customDarkerGray
         self.pageControl.currentPageIndicatorTintColor = orange
         
-        self.pageWidth = self.scrollView.frame.width        
+        self.pageWidth = self.scrollView.frame.width
         
         var frame = CGRect(x: 0, y: 0, width: self.pageWidth, height: self.scrollView.frame.height)
         view1 = OnboardPageView(frame: frame)
@@ -78,6 +78,22 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         self.skipButton.setTitle("PROCEED".localized, for: .normal)
         self.skipButton.setTitle("PROCEED".localized, for: .selected)
         self.skipButton.titleLabel?.font = UIFont(name: "Gotham-Book", size: 18)
+        
+        self.backgroundImageView.isUserInteractionEnabled = true
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swiped(_:)))
+        swipeGesture.direction = .left
+        self.backgroundImageView.addGestureRecognizer(swipeGesture)
+    }
+    
+    func swiped(_ gesture: UISwipeGestureRecognizer) {
+        if gesture.direction == .left {
+            if self.pageControl.currentPage < 3 {
+                let xOffset = CGFloat(self.pageControl.currentPage + 1) * self.pageWidth
+                self.scrollView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
+                self.updatePage()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

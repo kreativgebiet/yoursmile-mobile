@@ -146,6 +146,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.setContentOffset(CGPoint.zero, animated: false)
+        self.tableView.contentInset = UIEdgeInsets.zero
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
@@ -206,18 +212,25 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
             
-            self.tableView.setContentOffset(CGPoint.zero, animated: false)
+            //self.tableView.setContentOffset(CGPoint.zero, animated: false)
         } else if scrollView.contentOffset.y < 0  {
-            
-            
-            let newConstant: CGFloat = self.profileViewHeightConstraint.constant - scrollView.contentOffset.y
+            let newConstant: CGFloat = min(self.profileViewHeightConstraint.constant - scrollView.contentOffset.y, self.initialProfileViewHeightConstraint + 50)
             
             self.profileViewHeightConstraint.constant = newConstant
             
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
             
-            self.tableView.setContentOffset(CGPoint.zero, animated: false)
+            self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
+            
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+            }, completion: { (completed) in
+
+            })
+            
+            //self.tableView.setContentOffset(CGPoint.zero, animated: false)
         }
         
         let profileHeaderHeight = self.profileHeaderBarView.frame.height
