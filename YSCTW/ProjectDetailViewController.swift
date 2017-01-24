@@ -47,6 +47,15 @@ class ProjectDetailViewController: UIViewController {
             
             self.transparentProjectView.insertSubview(blurEffectView, at: 0)
         }
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swiped(_:)))
+        self.view.addGestureRecognizer(swipeGesture)
+    }
+    
+    func swiped(_ gesture: UISwipeGestureRecognizer) {
+        if gesture.direction == .right {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -76,6 +76,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.applyTableViewStyle()
         self.reloadData()
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swiped(_:)))
+        self.view.addGestureRecognizer(swipeGesture)
+    }
+    
+    func swiped(_ gesture: UISwipeGestureRecognizer) {
+        if gesture.direction == .right {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

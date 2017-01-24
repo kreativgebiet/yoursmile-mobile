@@ -62,6 +62,14 @@ class DonationDetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swiped(_:)))
+        self.view.addGestureRecognizer(swipeGesture)
+    }
+    
+    func swiped(_ gesture: UISwipeGestureRecognizer) {
+        if gesture.direction == .right {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
     
     deinit {
