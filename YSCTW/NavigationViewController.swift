@@ -42,6 +42,11 @@ class NavigationViewController: UINavigationController {
         
         if segue.identifier == "donationDetailSegue" {
             let destinationVC = segue.destination as! DonationDetailViewController
+            
+            let rootViewController = self.viewControllers[0] as!TabBarViewController
+            //lazy implementation
+            rootViewController.logoNavigationBarView.isHidden = false
+
             let donation = sender as! Upload
             destinationVC.dataManager = self.dataManager
             destinationVC.donation = donation

@@ -87,16 +87,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.setContentOffset(CGPoint.zero, animated: false)
-        self.tableView.contentInset = UIEdgeInsets.zero
-        
-        self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
-    }
-    
     func applyTableViewStyle() {
         self.tableView.rowHeight = 467
         self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
@@ -162,8 +152,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.profileHeaderView.setNeedsLayout()
         self.profileHeaderView.layoutIfNeeded()
         
+        self.tableView.setContentOffset(CGPoint.zero, animated: false)
+        self.tableView.contentInset = UIEdgeInsets.zero
+        
+        self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
+        
+        self.profileHeaderBarView.frame = CGRect(x: 0, y: -60, width: self.view.frame.width, height: 60)
         
         self.reloadData()
     }
