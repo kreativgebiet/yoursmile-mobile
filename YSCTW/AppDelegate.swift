@@ -21,6 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YOUR_CLIENT_ID_FOR_PRODUCTION",
                                                                 PayPalEnvironmentSandbox: "YOUR_CLIENT_ID_FOR_SANDBOX"])
         
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        var initialViewController: UIViewController!
+        
+        if UserDefaults.standard.value(forKey: "didOnboarding") as? Bool == true {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "LVC")
+        } else {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "OVC")
+        }
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

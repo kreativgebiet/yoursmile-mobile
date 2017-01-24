@@ -82,6 +82,9 @@
 		A16407251DDF181800BA1853 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407151DDF181800BA1853 /* Gotham-Book.otf */; };
 		A16407261DDF181800BA1853 /* Gotham-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407161DDF181800BA1853 /* Gotham-BlackItalic.otf */; };
 		A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407171DDF181800BA1853 /* Gotham-Black.otf */; };
+		A18A2DAE1E377F9E004D1F67 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18A2DAD1E377F9E004D1F67 /* OnboardingViewController.swift */; };
+		A18A2DB01E37A9E6004D1F67 /* OnboardPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */; };
+		A18A2DB21E37A9F3004D1F67 /* OnboardPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */; };
 		A19677761DEC3CD500C1CBBC /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19677751DEC3CD500C1CBBC /* Down.framework */; };
 		A19677771DEC40F000C1CBBC /* acknowledgments.md in Resources */ = {isa = PBXBuildFile; fileRef = A196776D1DEC33F000C1CBBC /* acknowledgments.md */; };
 		A19677791DEC47B300C1CBBC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19677781DEC47B300C1CBBC /* DateExtension.swift */; };
@@ -280,6 +283,9 @@
 		A16407151DDF181800BA1853 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Book.otf"; path = "Resources/Gotham-Book.otf"; sourceTree = "<group>"; };
 		A16407161DDF181800BA1853 /* Gotham-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-BlackItalic.otf"; path = "Resources/Gotham-BlackItalic.otf"; sourceTree = "<group>"; };
 		A16407171DDF181800BA1853 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Black.otf"; path = "Resources/Gotham-Black.otf"; sourceTree = "<group>"; };
+		A18A2DAD1E377F9E004D1F67 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageView.swift; sourceTree = "<group>"; };
+		A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardPageView.xib; sourceTree = "<group>"; };
 		A196776D1DEC33F000C1CBBC /* acknowledgments.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = acknowledgments.md; sourceTree = "<group>"; };
 		A19677751DEC3CD500C1CBBC /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		A19677781DEC47B300C1CBBC /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -577,6 +583,7 @@
 				A1D6F4CD1DE469F400A0A8F9 /* DeleteAccountViewController.swift */,
 				A19677821DEC929400C1CBBC /* StripePaymentViewController.swift */,
 				A1EF7FA61E1E4C2F003C92E4 /* ResetPasswordViewController.swift */,
+				A18A2DAD1E377F9E004D1F67 /* OnboardingViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -627,6 +634,8 @@
 				A1BEDAB31E3640550002EABA /* PickerView.xib */,
 				A1BEDAB51E37579B0002EABA /* ProfileHeaderBarView.swift */,
 				A1BEDAB71E3757A80002EABA /* ProfileHeaderBarView.xib */,
+				A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */,
+				A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -910,6 +919,7 @@
 				A16407241DDF181800BA1853 /* Gotham-LightItalic.otf in Resources */,
 				A1CF0CAB1DD25DB8002C4562 /* TableViewFooterView.xib in Resources */,
 				A16407261DDF181800BA1853 /* Gotham-BlackItalic.otf in Resources */,
+				A18A2DB21E37A9F3004D1F67 /* OnboardPageView.xib in Resources */,
 				A1CF0CA01DD234AF002C4562 /* CommentView.xib in Resources */,
 				A164071D1DDF181800BA1853 /* Gotham-ExtraLightItalic.otf in Resources */,
 				A1F8D8F71DD38D1400AFAB4F /* ProgressView.xib in Resources */,
@@ -985,6 +995,7 @@
 				A1EF7F9E1E1BBCBD003C92E4 /* UserDataOperation.swift in Sources */,
 				A1DB37911E0AA204003EAFCF /* ResetPasswordOperation.swift in Sources */,
 				A1DB37791E098D75003EAFCF /* ProfileModel+CoreDataClass.swift in Sources */,
+				A18A2DB01E37A9E6004D1F67 /* OnboardPageView.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
 				A1D6F5021DE5E43B00A0A8F9 /* FloatExtension.swift in Sources */,
@@ -1011,6 +1022,7 @@
 				A153909D1DD0CEFF00B7ADA0 /* RegistrationViewController.swift in Sources */,
 				A1EF7FA91E1E57E5003C92E4 /* UploadUserImageOperation.swift in Sources */,
 				A1DB37931E0AA303003EAFCF /* PostPaymentSourceOperation.swift in Sources */,
+				A18A2DAE1E377F9E004D1F67 /* OnboardingViewController.swift in Sources */,
 				A11028ED1DD4DA2C00633343 /* DonationViewController.swift in Sources */,
 				A11028FF1DD5E23500633343 /* AccountPreferencesViewController.swift in Sources */,
 				A1DB37761E098368003EAFCF /* ErrorManager.swift in Sources */,

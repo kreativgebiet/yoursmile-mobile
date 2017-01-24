@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gotham-Medium.otf">
+            <string>Gotham-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardPageView" customModule="YSCTW" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomLabel" destination="sqa-JJ-UfV" id="JjU-XR-rcU"/>
+                <outlet property="topLabel" destination="BPk-WI-39K" id="s3N-hc-V26"/>
+                <outlet property="view" destination="iN0-l3-epB" id="QQm-5k-2ca"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPk-WI-39K">
+                    <rect key="frame" x="15" y="16" width="290" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="0mZ-rB-JxL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqa-JJ-UfV">
+                    <rect key="frame" x="15" y="42" width="290" height="82"/>
+                    <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BPk-WI-39K" secondAttribute="trailing" constant="15" id="3bt-cv-x2r"/>
+                <constraint firstItem="sqa-JJ-UfV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="4Lz-Ws-nqa"/>
+                <constraint firstItem="BPk-WI-39K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="GCD-Xs-nce"/>
+                <constraint firstItem="sqa-JJ-UfV" firstAttribute="top" secondItem="BPk-WI-39K" secondAttribute="bottom" constant="5" id="Y5Y-kK-gYQ"/>
+                <constraint firstItem="BPk-WI-39K" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="bpZ-ff-ShO"/>
+                <constraint firstAttribute="trailing" secondItem="sqa-JJ-UfV" secondAttribute="trailing" constant="15" id="iZI-3a-si6"/>
+                <constraint firstAttribute="bottom" secondItem="sqa-JJ-UfV" secondAttribute="bottom" constant="16" id="k7L-F8-rrP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
