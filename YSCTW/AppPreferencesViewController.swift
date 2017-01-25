@@ -166,7 +166,7 @@ class AppPreferencesViewController: UIViewController, UITableViewDataSource, UIT
                 let viewController = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "TextViewController") as!  TextViewController
                 
                 do {
-                    let text = "safasfsadfsadfsfdsad"
+                    let text = ""
                     let data = text.data(using: .utf8)
                     
                     let attrString = try NSAttributedString(data: data!, options: [:], documentAttributes: nil)

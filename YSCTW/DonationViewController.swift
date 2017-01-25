@@ -36,10 +36,29 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
         self.paymentSelectionView.callback = { paymentType in
             let navigationView = self.navigationController?.view
             let overlay = DonationFeeOverlayView.init(frame: (navigationView?.bounds)!, numberOfProjects: self.supportedProjects.count, paymentType: paymentType)
+            
+            let view = UIView(frame: (navigationView?.bounds)!)
+            view.backgroundColor = navigationBarGray.withAlphaComponent(0.6)
+            view.alpha = 0
+            navigationView?.addSubview(view)
+            
+            var frame = overlay.frame
+            frame.origin.y = -frame.height
+            overlay.frame = frame
+            
             navigationView?.addSubview(overlay)
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                var frame = overlay.frame
+                frame.origin.y = 0
+                overlay.frame = frame
+                
+                view.alpha = 1
+            })
 
             overlay.callback = {
                 overlay.removeFromSuperview()
+                view.removeFromSuperview()
             }
         }
         

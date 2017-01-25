@@ -29,7 +29,7 @@ class DonationFeeOverlayView: UIView {
         
         addSubview(view)
         
-        view.backgroundColor = navigationBarGray.withAlphaComponent(0.6)
+        view.backgroundColor = .clear
         self.infoView.backgroundColor = .white
         self.infoView.layer.cornerRadius = 10
         

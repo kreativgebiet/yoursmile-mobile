@@ -89,7 +89,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         self.placeholderLabel.font = UIFont(name: "Gotham-Book", size: 14)
         self.placeholderLabel.sizeToFit()
         self.descriptionTextField.addSubview(placeholderLabel)
-        self.placeholderLabel.frame.origin = CGPoint(x: 5, y: (self.descriptionTextField.font?.pointSize)! / 2)
+        self.placeholderLabel.frame.origin = CGPoint(x: 10, y: (self.descriptionTextField.font?.pointSize)! / 2 + 5)
         self.placeholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
         self.placeholderLabel.isHidden = !self.descriptionTextField.text.isEmpty
 
@@ -232,8 +232,9 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         
         self.view.endEditing(true)
         self.view.addSubview(loadingScreen)
+        let token = FBSDKAccessToken.current()
         
-        if FBSDKAccessToken.current().hasGranted("publish_actions") {
+        if token != nil && token?.hasGranted("publish_actions") == true {
             let content = self.createFBSharePhotoContent()
             FBSDKShareAPI.share(with: content, delegate: self)
         } else {

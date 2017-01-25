@@ -154,6 +154,8 @@ class ProfileHeaderView: UIView {
     }
 
     func handleImageTapped() {
-        self.cameraCallback!()
+        if self.profile == nil {
+            self.cameraCallback!()
+        }
     }
 }
