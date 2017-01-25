@@ -109,6 +109,12 @@ class NetworkHelper: NSObject {
     
     class func standardResponseHandling(response: Alamofire.DataResponse<Any>,callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
         
+        if response.response == nil {
+            HelperFunctions.presentAlertViewfor(error: "NO_INTERNET".localized)
+            callback(false,"NO_INTERNET".localized)
+            return
+        }
+        
         let json = NetworkHelper.parseResponseToJSON(data: response.data!)
         NetworkHelper.saveTokenFromResponse(response: response.response!)
 

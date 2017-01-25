@@ -89,6 +89,11 @@ class ProfileHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        if self.profile == nil && self.userProfile == nil {
+            // Prevent crash if no internet available
+            return
+        }
+        
         self.profileLabel.text = "PROFILE".localized
         
         self.profileImageView.layer.cornerRadius = self.profileImageViewWidthConstraint.constant/2

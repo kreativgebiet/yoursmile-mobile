@@ -150,6 +150,7 @@
 "INFORMATION" = "Information";
 "PASSWORD_CHANGED" = "Password has been changed";
 "EMAIL_CHANGED" = "E-Mail has been changed";
+"NO_INTERNET" = "Sorry, it seems there is no connection to the internet!";
 
 //Onboarding
 

@@ -150,6 +150,7 @@
 "INFORMATION" = "Information";
 "PASSWORD_CHANGED" = "Passwort wurde erfolgreich geändert";
 "EMAIL_CHANGED" = "E-Mail wurde erfolgreich geändert";
+"NO_INTERNET" = "Anscheinend besteht keine Verbindung zum Internet!";
 
 //Onboarding
 
