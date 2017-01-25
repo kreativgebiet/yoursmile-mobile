@@ -51,9 +51,9 @@ class BarViewController: UIViewController {
             sender.isSelected = true
             self.selectedButton?.isSelected = false
             self.selectedButton = sender
-            
-            self.delegate?.didSelectButtonOf(type: Type.feed)
         }
+        
+        self.delegate?.didSelectButtonOf(type: Type.feed)
     }
 
     @IBAction func handleDonationProjectsButtonTapped(_ sender: UIButton) {

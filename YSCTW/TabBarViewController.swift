@@ -227,6 +227,16 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     func didSelectButtonOf(type: Type) {
         
         if type == self.currentType {
+            
+            switch type {
+            case .feed:
+                self.feedViewController?.feedTableViewController.tableView.setContentOffset(CGPoint.zero, animated: true)
+                break
+                
+            default:
+                break
+            }
+            
             return
         }
         

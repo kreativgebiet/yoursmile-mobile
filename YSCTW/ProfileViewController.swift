@@ -200,11 +200,24 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if scrollView.contentSize.height == 0 || animating {
+        let contentHeight = scrollView.contentSize.height
+        let heightForContent = self.view.frame.height - self.profileViewHeightConstraint.constant
+        let profileHeaderHeight = self.profileHeaderBarView.frame.height
+
+        if contentHeight == 0 || animating{
             return
+        } else if contentHeight < heightForContent {
+            if self.profileHeaderBarView.superview == nil {
+                self.animateProfileHeaderBarView(show: true, completion: { (completed) in
+                    self.profileViewHeightConstraint.constant = profileHeaderHeight
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                })
+                return
+            }
         }
         
-        if scrollView.contentOffset.y > 0 && self.profileViewHeightConstraint.constant > 0 {
+        if scrollView.contentOffset.y > 0 && self.profileViewHeightConstraint.constant > 0 && self.profileViewHeightConstraint.constant != 60 {
             let newConstant: CGFloat = self.profileViewHeightConstraint.constant - scrollView.contentOffset.y
             
             self.profileViewHeightConstraint.constant = newConstant
@@ -227,38 +240,53 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
-
+                
             })
-            
-            //self.tableView.setContentOffset(CGPoint.zero, animated: false)
         }
         
-        let profileHeaderHeight = self.profileHeaderBarView.frame.height
-        
         if self.profileViewHeightConstraint.constant < profileHeaderHeight + 10 && self.profileHeaderBarView.superview == nil {
+            self.animateProfileHeaderBarView(show: true)
+        } else if self.profileViewHeightConstraint.constant > profileHeaderHeight + 10  && self.profileHeaderBarView.superview != nil {
+            self.animateProfileHeaderBarView(show: false)
+        }
+    }
+    
+    func animateProfileHeaderBarView(show: Bool, completion: ((Bool) -> Swift.Void)? = nil) {
+        animating = true
+        
+        if show {
+            let profileHeaderHeight = self.profileHeaderBarView.frame.height
             
             self.view.addSubview(self.profileHeaderBarView)
             
             self.profileViewHeightConstraint.constant = profileHeaderHeight
-            
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
             
-            UIView.animate(withDuration: 0.2, animations: { 
+            UIView.animate(withDuration: 0.2, animations: {
+                
                 var frame = self.profileHeaderBarView.frame
                 frame.origin.y = 0
                 
                 self.profileHeaderBarView.frame = frame
+            }, completion: { (completed) in
+                self.animating = false
+                if completion != nil {
+                    completion!(completed)
+                }
             })
-            
-        } else if self.profileViewHeightConstraint.constant > profileHeaderHeight + 10  && self.profileHeaderBarView.superview != nil {
-            UIView.animate(withDuration: 0.2, animations: { 
+        } else {
+            UIView.animate(withDuration: 0.2, animations: {
                 var frame = self.profileHeaderBarView.frame
                 frame.origin.y = -frame.height
                 
                 self.profileHeaderBarView.frame = frame
             }, completion: { (completed) in
                 self.profileHeaderBarView.removeFromSuperview()
+                self.animating = false
+                if completion != nil {
+                    completion!(completed)
+                }
             })
         }
     }
@@ -268,7 +296,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

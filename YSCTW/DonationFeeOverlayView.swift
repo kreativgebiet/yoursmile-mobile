@@ -41,7 +41,17 @@ class DonationFeeOverlayView: UIView {
         
         let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(numberOfProjects), paymentType: paymentType)
         
-        self.paymentDescriptionLabel.text = "FEE_TEXT".localized.replacingOccurrences(of: "%@", with: String(fee))
+        let text = "FEE_TEXT".localized.replacingOccurrences(of: "%@", with: String(fee))
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        paragraphStyle.alignment = .center
+        
+        let attrString = NSMutableAttributedString(string: text)
+        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        
+        self.paymentDescriptionLabel.attributedText = attrString
+        
         self.paymentDescriptionLabel.textColor = green
     }
 

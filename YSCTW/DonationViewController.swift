@@ -51,8 +51,8 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
         button.setTitle("PROCEED".localized, for: .normal)
         button.setTitle("PROCEED".localized, for: .selected)
         button.contentHorizontalAlignment = .right
-        button.setTitleColor(orange, for: .normal)
-        button.setTitleColor(orange, for: .selected)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.white, for: .selected)
         button.titleLabel?.font = UIFont(name: "Gotham-Book", size: 18)
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(proceedTapped), for: .touchUpInside)
