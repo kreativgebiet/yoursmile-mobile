@@ -184,7 +184,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Header animation
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if self.profileViewHeightConstraint.constant > self.initialProfileViewHeightConstraint {
+        let profileViewHeight = self.profileViewHeightConstraint.constant
+        
+        if profileViewHeight > self.initialProfileViewHeightConstraint/2 {
             self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
             
             UIView.animate(withDuration: 0.2, animations: {
@@ -193,6 +195,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }, completion: { (completed) in
                 
             })
+        } else if self.profileHeaderBarView.superview == nil {
+            self.animateProfileHeaderBarView(show: true)
         }
     }
     
@@ -201,12 +205,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let contentHeight = scrollView.contentSize.height
-        let heightForContent = self.view.frame.height - self.profileViewHeightConstraint.constant
         let profileHeaderHeight = self.profileHeaderBarView.frame.height
 
         if contentHeight == 0 || animating{
             return
-        } else if contentHeight < heightForContent {
+        } else if self.tableView.numberOfRows(inSection: 0) <= 2 && self.profileViewHeightConstraint.constant < 30 {
             if self.profileHeaderBarView.superview == nil {
                 self.animateProfileHeaderBarView(show: true, completion: { (completed) in
                     self.profileViewHeightConstraint.constant = profileHeaderHeight
@@ -244,9 +247,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             })
         }
         
-        if self.profileViewHeightConstraint.constant < profileHeaderHeight + 10 && self.profileHeaderBarView.superview == nil {
+        if self.profileViewHeightConstraint.constant < 30 && self.profileHeaderBarView.superview == nil {
             self.animateProfileHeaderBarView(show: true)
-        } else if self.profileViewHeightConstraint.constant > profileHeaderHeight + 10  && self.profileHeaderBarView.superview != nil {
+        } else if self.profileViewHeightConstraint.constant > profileHeaderHeight + 120  && self.profileHeaderBarView.superview != nil {
             self.animateProfileHeaderBarView(show: false)
         }
     }
