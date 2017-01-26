@@ -39,7 +39,15 @@ class DonationSuccessOverlay: UIView {
         self.gratitudeLabel.text = "THANK_YOU".localized
         self.gratitudeLabel.textColor = navigationBarGray
         
-        self.gratitudeTextLabel.text = "THANK_YOU_TEXT".localized
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        paragraphStyle.alignment = .center
+        
+        let attrString = NSMutableAttributedString(string: "THANK_YOU_TEXT".localized)
+        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+
+        self.gratitudeTextLabel.attributedText = attrString
+
         self.gratitudeTextLabel.textColor = green
     }
     

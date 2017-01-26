@@ -82,7 +82,11 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         self.facebookButton.imageView?.contentMode = .scaleAspectFit
         
         self.descriptionTextField.delegate = self
+        self.descriptionTextField.textContainerInset = UIEdgeInsetsMake(10, 7, 0, 0)
         self.descriptionTextField.text = ""
+        
+        self.descriptionTextField.setNeedsLayout()
+        self.descriptionTextField.layoutIfNeeded()
         
         self.placeholderLabel = UILabel()
         self.placeholderLabel.text = "YOUR_COMMENT".localized
@@ -129,21 +133,24 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     func proceedTapped() {
         
         let callback: ((_ uploadModel: UploadModel?, _ success: Bool, _ error: String) -> ()) = { (uploadModel, success, error) in
-
-            let description = (self.descriptionTextField.text.characters.count > 0 ? self.descriptionTextField.text : "")
-            uploadModel?.image = UIImageJPEGRepresentation(self.selfieImage, 0.5)! as Data?
-            uploadModel?.descriptionText = description
             
-            let projectIds = self.projects.map({ Int($0.id)! })
-            uploadModel?.projectIds = projectIds
-            
-            do {
-                try uploadModel?.managedObjectContext?.save()
-            } catch {
-                fatalError("Failure to save context: \(error)")
+            if success {
+                let description = (self.descriptionTextField.text.characters.count > 0 ? self.descriptionTextField.text : "")
+                uploadModel?.image = UIImageJPEGRepresentation(self.selfieImage, 0.5)! as Data?
+                uploadModel?.descriptionText = description
+                
+                let projectIds = self.projects.map({ Int($0.id)! })
+                uploadModel?.projectIds = projectIds
+                
+                do {
+                    try uploadModel?.managedObjectContext?.save()
+                } catch {
+                    fatalError("Failure to save context: \(error)")
+                }
+                
+                self.handleDonationSuccess()
             }
             
-            self.handleDonationSuccess()
         }
         
         if self.payment == .payPal {

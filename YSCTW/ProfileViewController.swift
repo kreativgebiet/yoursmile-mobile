@@ -228,7 +228,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
             
-            //self.tableView.setContentOffset(CGPoint.zero, animated: false)
+            self.tableView.setContentOffset(CGPoint.zero, animated: false)
         } else if scrollView.contentOffset.y < 0  {
             let newConstant: CGFloat = min(self.profileViewHeightConstraint.constant - scrollView.contentOffset.y, self.initialProfileViewHeightConstraint + 50)
             
