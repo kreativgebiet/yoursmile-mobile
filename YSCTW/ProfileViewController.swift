@@ -263,10 +263,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.view.addSubview(self.profileHeaderBarView)
             
             self.profileViewHeightConstraint.constant = profileHeaderHeight
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
             
             UIView.animate(withDuration: 0.2, animations: {
+                
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
                 
                 var frame = self.profileHeaderBarView.frame
                 frame.origin.y = 0
