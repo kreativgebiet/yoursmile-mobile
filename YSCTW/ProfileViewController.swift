@@ -62,6 +62,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 if success {
                     self.profileHeaderView.hideSubscribeButton()
                     self.reloadUserData()
+                    self.profileViewHeightConstraint.constant = 285
+                    self.initialProfileViewHeightConstraint = 285
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
                 }
             })
         }
@@ -131,6 +135,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
             if followerIds.contains(Int(self.userProfile.id)) {
                 self.profileHeaderView.hideSubscribeButton()
+                self.profileViewHeightConstraint.constant = 285
+                self.initialProfileViewHeightConstraint = 285
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
             }
             
         })
@@ -183,24 +191,33 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Header animation
     
+    var animating = false
+    var dragging = false
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        dragging = true
+    }
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let profileViewHeight = self.profileViewHeightConstraint.constant
+        dragging = false
         
-        if profileViewHeight > self.initialProfileViewHeightConstraint/2 {
+        let profileViewHeight = self.profileViewHeightConstraint.constant
+
+        print("didenddraggin dec: " + (decelerate ? "true" : "false"))
+
+        if profileViewHeight > self.initialProfileViewHeightConstraint {
             self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
-            
+            print("initial: " + String(describing: self.initialProfileViewHeightConstraint))
+
             UIView.animate(withDuration: 0.2, animations: {
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
-                
+                print("profileViewHeightConstraint: " + String(describing: self.profileViewHeightConstraint.constant))
             })
-        } else if self.profileHeaderBarView.superview == nil {
-            self.animateProfileHeaderBarView(show: true)
         }
+        
     }
-    
-    var animating = false
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -220,36 +237,53 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        if scrollView.contentOffset.y > 0 && self.profileViewHeightConstraint.constant > 0 && self.profileViewHeightConstraint.constant != 60 {
-            let newConstant: CGFloat = self.profileViewHeightConstraint.constant - scrollView.contentOffset.y
-            
-            self.profileViewHeightConstraint.constant = newConstant
-            
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
-            
-            self.tableView.setContentOffset(CGPoint.zero, animated: false)
-        } else if scrollView.contentOffset.y < 0  {
-            let newConstant: CGFloat = min(self.profileViewHeightConstraint.constant - scrollView.contentOffset.y, self.initialProfileViewHeightConstraint + 50)
-            
-            self.profileViewHeightConstraint.constant = newConstant
-            
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
-            
-            self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
-            
-            UIView.animate(withDuration: 0.2, animations: { 
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-            }, completion: { (completed) in
-                
-            })
+        let velocity = fabs(scrollView.panGestureRecognizer.velocity(in: self.view).y)
+        let velocityLimit = 200.0 as CGFloat
+        
+        if velocity > 0 {
+            print(velocity)
         }
         
-        if self.profileViewHeightConstraint.constant < 30 && self.profileHeaderBarView.superview == nil {
+        if scrollView.contentOffset.y > 0 && self.profileViewHeightConstraint.constant > profileHeaderHeight && self.profileViewHeightConstraint.constant != 60 {
+            var newConstant: CGFloat = self.profileViewHeightConstraint.constant - scrollView.contentOffset.y
+            
+            newConstant = (velocity > velocityLimit ? newConstant - velocity/8 : newConstant)
+            self.profileViewHeightConstraint.constant = newConstant
+            
+            if velocity > velocityLimit {
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    
+                })
+            } else {
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+            }
+            
+            self.tableView.setContentOffset(CGPoint.zero, animated: false)
+        } else if scrollView.contentOffset.y < 0 && (dragging || self.profileViewHeightConstraint.constant < self.initialProfileViewHeightConstraint) {
+            let newConstant: CGFloat = min(self.profileViewHeightConstraint.constant - scrollView.contentOffset.y, self.initialProfileViewHeightConstraint + 50)
+            
+            if velocity > velocityLimit+900 && self.profileViewHeightConstraint.constant < self.initialProfileViewHeightConstraint {
+                self.profileViewHeightConstraint.constant = newConstant + velocity/20
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    
+                })
+            } else {
+                self.profileViewHeightConstraint.constant = newConstant
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+        if self.profileViewHeightConstraint.constant <= profileHeaderHeight && self.profileHeaderBarView.superview == nil {
             self.animateProfileHeaderBarView(show: true)
-        } else if self.profileViewHeightConstraint.constant > profileHeaderHeight + 120  && self.profileHeaderBarView.superview != nil {
+        } else if self.profileViewHeightConstraint.constant > profileHeaderHeight && self.profileHeaderBarView.superview != nil {
             self.animateProfileHeaderBarView(show: false)
         }
     }
@@ -258,16 +292,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         animating = true
         
         if show {
-            let profileHeaderHeight = self.profileHeaderBarView.frame.height
-            
             self.view.addSubview(self.profileHeaderBarView)
-            
+            let profileHeaderHeight = self.profileHeaderBarView.frame.height
+
             self.profileViewHeightConstraint.constant = profileHeaderHeight
             
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            
             UIView.animate(withDuration: 0.2, animations: {
-                
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
                 
                 var frame = self.profileHeaderBarView.frame
                 frame.origin.y = 0
@@ -280,6 +313,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
             })
         } else {
+            
             UIView.animate(withDuration: 0.2, animations: {
                 var frame = self.profileHeaderBarView.frame
                 frame.origin.y = -frame.height
