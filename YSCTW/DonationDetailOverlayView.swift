@@ -18,6 +18,10 @@ class DonationDetailOverlayView: UIView {
     @IBOutlet weak var instagramButton: CornerButton!
     @IBOutlet weak var facebookButton: CornerButton!
     
+    var facebookCallback: (() -> ())!
+    var reportCallback: (() -> ())!
+    var instagramCallback: (() -> ())!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -59,7 +63,19 @@ class DonationDetailOverlayView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @IBAction func handleReportButton(_ sender: Any) {
+        self.reportCallback()
+    }
+    
+    @IBAction func handleFacebookButton(_ sender: Any) {
+        self.facebookCallback()
+    }
 
+    @IBAction func handleInstagramButton(_ sender: Any) {
+        self.instagramCallback()
+    }
+    
     @IBAction func handleCancelButtonTapped(_ sender: AnyObject) {
         self.removeFromSuperview()
     }

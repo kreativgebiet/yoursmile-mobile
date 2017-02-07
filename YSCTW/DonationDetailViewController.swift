@@ -8,13 +8,15 @@
 
 import UIKit
 
-class DonationDetailViewController: UIViewController {
+class DonationDetailViewController: UIViewController, FBSDKSharingDelegate, UIDocumentInteractionControllerDelegate {
     
     @IBOutlet weak var commentView: CommentView!
     @IBOutlet weak var commentViewBottomSpaceConstraint: NSLayoutConstraint!
     
     public var donation: Upload?
     public var dataManager: DataManager?
+    
+    var loadingScreen: LoadingScreen!
     
     var donationDetailTableViewController: DonationDetailTableViewController!
 
@@ -82,6 +84,21 @@ class DonationDetailViewController: UIViewController {
         self.view.endEditing(true)
         let navigationView = self.navigationController?.view
         let overlay = DonationDetailOverlayView(frame: (navigationView?.bounds)!)
+        
+        overlay.facebookCallback = {
+            overlay.removeFromSuperview()
+            self.shareOnFacebook()
+        }
+        
+        overlay.instagramCallback = {
+            overlay.removeFromSuperview()
+            self.shareOnInstagram()
+        }
+        
+        overlay.reportCallback = {
+            
+        }
+        
         navigationView?.addSubview(overlay)
     }
 
@@ -106,6 +123,102 @@ class DonationDetailViewController: UIViewController {
         )
     }
     
+    // MARK: - Instagram Share
+    
+    var docController: UIDocumentInteractionController!
+    
+    func shareOnInstagram() {
+        let instagramURL = NSURL(string: "instagram://app")!
+        if UIApplication.shared.canOpenURL(instagramURL as URL) {
+            
+            let image = self.donationDetailTableViewController.donationHeaderView.selfieImageView.image
+            let filePath = (NSTemporaryDirectory() as NSString).appendingPathComponent("InstagramImage.igo")
+            let imageData = UIImageJPEGRepresentation((image?.resizeImageTo(maxWidth: 600, maxHeight: 600))!, 1.0)
+            
+            do {
+                try imageData?.write(to: URL(fileURLWithPath: filePath), options: .atomic)
+                let imageURL = NSURL.fileURL(withPath: filePath)
+                docController  = UIDocumentInteractionController(url: imageURL)
+                docController.delegate = self
+                docController.uti = "com.instagram.exclusivegram"
+                docController.presentOpenInMenu(from: CGRect.zero, in: self.view, animated: true)
+            } catch {
+                print(error)
+            }
+            
+        } else {
+            HelperFunctions.presentAlertViewfor(error: "INSTAGRAM_ERROR".localized)
+        }
+
+    }
+    
+    // MARK: - UIDocumentInteractionController delegates
+    
+    func documentInteractionController(_ controller: UIDocumentInteractionController, willBeginSendingToApplication application: String?) {
+        
+    }
+    
+    func documentInteractionController(_ controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
+        
+    }
+    
+    // MARK: - FB Share
+    
+    func shareOnFacebook() {
+        
+        self.loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+
+        self.view.endEditing(true)
+        self.view.addSubview(loadingScreen)
+        let token = FBSDKAccessToken.current()
+
+        if token != nil && token?.hasGranted("publish_actions") == true {
+            let content = self.createFBSharePhotoContent()
+            FBSDKShareAPI.share(with: content, delegate: self)
+        } else {
+            let loginmanager = FBSDKLoginManager()
+
+            loginmanager.logIn(withPublishPermissions: ["publish_actions"], from: self, handler: { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
+
+                if ((error) != nil) {
+                    HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!)
+                } else {
+                    let content = self.createFBSharePhotoContent()
+                    FBSDKShareAPI.share(with: content, delegate: self)
+                }
+    
+            })
+    
+        }
+    }
+    
+    func createFBSharePhotoContent() -> FBSDKSharePhotoContent {
+        let sharePhoto = FBSDKSharePhoto.init()
+        sharePhoto.image = self.donationDetailTableViewController.donationHeaderView.selfieImageView.image
+        sharePhoto.isUserGenerated = true
+        sharePhoto.caption = self.donation?.description
+        
+        let content = FBSDKSharePhotoContent.init()
+        content.photos = [sharePhoto]
+        
+        return content
+    }
+
+    // MARK: - FBSDK Share Delegates
+
+    func sharerDidCancel(_ sharer: FBSDKSharing!) {
+        self.loadingScreen.removeFromSuperview()
+    }
+
+    func sharer(_ sharer: FBSDKSharing!, didFailWithError error: Error!) {
+        self.loadingScreen.removeFromSuperview()
+        HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!)
+    }
+
+    func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
+        self.loadingScreen.removeFromSuperview()
+    }
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

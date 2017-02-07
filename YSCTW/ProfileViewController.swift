@@ -238,7 +238,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         let velocity = fabs(scrollView.panGestureRecognizer.velocity(in: self.view).y)
-        let velocityLimit = 200.0 as CGFloat
+        let velocityLimit = 2000.0 as CGFloat
         
         if velocity > 0 {
             print(velocity)
@@ -247,7 +247,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         if scrollView.contentOffset.y > 0 && self.profileViewHeightConstraint.constant > profileHeaderHeight && self.profileViewHeightConstraint.constant != 60 {
             var newConstant: CGFloat = self.profileViewHeightConstraint.constant - scrollView.contentOffset.y
             
-            newConstant = (velocity > velocityLimit ? newConstant - velocity/8 : newConstant)
+            newConstant = (velocity > velocityLimit ? newConstant - velocity/50 : newConstant)
             self.profileViewHeightConstraint.constant = newConstant
             
             if velocity > velocityLimit {
