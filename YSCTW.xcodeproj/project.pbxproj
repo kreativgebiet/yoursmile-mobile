@@ -176,6 +176,7 @@
 		A1F8D8F51DD38D0D00AFAB4F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8F41DD38D0D00AFAB4F /* ProgressView.swift */; };
 		A1F8D8F71DD38D1400AFAB4F /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F8D8F61DD38D1400AFAB4F /* ProgressView.xib */; };
 		A1F8D8F91DD3AA2400AFAB4F /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */; };
+		A1FD4E1E1E56E79A0088CECC /* ReportUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FD4E1D1E56E79A0088CECC /* ReportUploadOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +386,7 @@
 		A1F8D8F41DD38D0D00AFAB4F /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		A1F8D8F61DD38D1400AFAB4F /* ProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
 		A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		A1FD4E1D1E56E79A0088CECC /* ReportUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUploadOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -713,6 +715,7 @@
 				A1EF7FA31E1BEA81003C92E4 /* UserFollowingOperation.swift */,
 				A1EF7FA81E1E57E5003C92E4 /* UploadUserImageOperation.swift */,
 				A1EF7FAA1E1F9D18003C92E4 /* DelayOperation.swift */,
+				A1FD4E1D1E56E79A0088CECC /* ReportUploadOperation.swift */,
 			);
 			name = ServiceLayer;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				A1F8D8EF1DD36DCD00AFAB4F /* ProjectFilterViewController.swift in Sources */,
 				A15390A71DD0F5E300B7ADA0 /* FeedViewController.swift in Sources */,
 				A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */,
+				A1FD4E1E1E56E79A0088CECC /* ReportUploadOperation.swift in Sources */,
 				A1F8D8EB1DD367D100AFAB4F /* FeedTableViewController.swift in Sources */,
 				A1DB377A1E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift in Sources */,
 				A11029131DDA1F3400633343 /* LogoNavigationBarView.swift in Sources */,

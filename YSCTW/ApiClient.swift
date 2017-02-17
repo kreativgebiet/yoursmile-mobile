@@ -123,6 +123,25 @@ class APIClient: NSObject {
         
     }
     
+    // MARK: Report Upload
+    
+    class func reportUploadsWith(id: Int?, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
+        debugPrint("report Upload")
+        NetworkHelper.verifyToken { (token) in
+            
+            let requestURL = baseURL + "uploads/" + "\(id!)" + "/report"
+            
+            Alamofire.request(requestURL, method: .post, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.standardResponseHandling(response: response, callback: { (success, errorMessage) in
+                        callback(success, errorMessage)
+                    })
+            }
+            
+        }
+        
+    }
+    
     // MARK: Upload Selfies
     
     class func uploadSelfie(model: UploadModel, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {

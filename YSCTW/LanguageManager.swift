@@ -54,7 +54,7 @@ class LanguageManager: NSObject {
     
     func setLocale(_ langCode:String){
         
-        UserDefaults.standard.set([langCode], forKey: "AppleLanguages")//replaces Locale.preferredLanguages
+        UserDefaults.standard.set([langCode], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
         self.lprojBasePath =  getSelectedLocale()
     }

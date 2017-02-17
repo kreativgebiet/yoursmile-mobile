@@ -121,7 +121,7 @@ class DataManager: NSObject {
         return self.coreDataController.profile()
     }
     
-    func login(email: String, password: String,_ callback: @escaping ((_ success: Bool) -> () )) {
+    func login(email: String, password: String, _ callback: @escaping ((_ success: Bool) -> () )) {
         
         let callback = { (success: Bool, errorMessage: String, profile: Profile?) in
         
@@ -136,6 +136,11 @@ class DataManager: NSObject {
         }
         
         APIClient.login(email: email, password: password, callback: callback)
+    }
+    
+    func reportUpload(_ uploadId: Int, _ callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
+        let operation = ReportUploadOperation(uploadId, callback)
+        self.addOperation(operation)
     }
 
 }

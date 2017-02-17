@@ -97,6 +97,18 @@ class DonationDetailViewController: UIViewController, FBSDKSharingDelegate, UIDo
         
         overlay.reportCallback = {
             
+            let loadingScreen = LoadingScreen(frame: (self.navigationController?.view.bounds)!)
+            self.navigationController?.view.addSubview(loadingScreen)
+            
+            self.dataManager?.reportUpload(Int((self.donation?.id)!)!, { (success, errorMessage) in
+                
+                loadingScreen.removeFromSuperview()
+                
+                if success {
+                    HelperFunctions.presentAlertViewfor(information: "UPLOAD_REPORTED".localized, presenter: (self.navigationController)!)
+                }
+                
+            })
         }
         
         navigationView?.addSubview(overlay)
