@@ -114,8 +114,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func reloadData() {
-        let loadingScreen = LoadingScreen(frame: self.view.bounds)
-        self.view.addSubview(loadingScreen)
+        let loadingScreen = LoadingScreen(frame: (self.navigationController?.view)!.bounds)
+        self.navigationController?.view.addSubview(loadingScreen)
         
         self.dataManager?.uploadsWith(self.idString(), { (uploads) in
             self.donations = uploads

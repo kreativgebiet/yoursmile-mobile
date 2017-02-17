@@ -103,6 +103,7 @@ class DonationDetailViewController: UIViewController, FBSDKSharingDelegate, UIDo
             self.dataManager?.reportUpload(Int((self.donation?.id)!)!, { (success, errorMessage) in
                 
                 loadingScreen.removeFromSuperview()
+                overlay.removeFromSuperview()
                 
                 if success {
                     HelperFunctions.presentAlertViewfor(information: "UPLOAD_REPORTED".localized, presenter: (self.navigationController)!)
