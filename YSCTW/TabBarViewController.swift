@@ -31,6 +31,10 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(openFeed), name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(preferencesTapped), name: NSNotification.Name(rawValue: preferencesNotificationIdentifier), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(logout), name: NSNotification.Name(rawValue: logoutNotificationIdentifier), object: nil)
+        
         self.title = ""
         
         let button = UIButton()
@@ -65,10 +69,6 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         self.feedViewController?.dataManager = self.dataManager
         
         self.addViewControllerAsChildViewController(viewController: self.feedViewController!)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(openFeed), name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(preferencesTapped), name: NSNotification.Name(rawValue: preferencesNotificationIdentifier), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(logout), name: NSNotification.Name(rawValue: logoutNotificationIdentifier), object: nil)
     }
     
     deinit {
