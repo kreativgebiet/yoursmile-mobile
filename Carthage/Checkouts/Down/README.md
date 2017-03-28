@@ -3,6 +3,9 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/iwasrobbed/Down/blob/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/v/Down.svg?maxAge=2592000)]()
 [![Swift](https://img.shields.io/badge/language-Swift-blue.svg)](https://swift.org)
+[![macOS](https://img.shields.io/badge/OS-macOS-orange.svg)](https://developer.apple.com/macos/)
+[![iOS](https://img.shields.io/badge/OS-iOS-orange.svg)](https://developer.apple.com/ios/)
+[![tvOS](https://img.shields.io/badge/OS-tvOS-orange.svg)](https://developer.apple.com/tvos/)
 [![Coverage Status](https://coveralls.io/repos/github/iwasrobbed/Down/badge.svg?branch=master)](https://coveralls.io/github/iwasrobbed/Down?branch=master)
 
 Blazing fast Markdown rendering in Swift, built upon [cmark](https://github.com/jgm/cmark).
@@ -15,6 +18,12 @@ Quickly install using [CocoaPods](https://cocoapods.org):
 
 ```ruby
 pod 'Down'
+```
+
+Or [Carthage](https://github.com/Carthage/Carthage):
+
+```
+github "iwasrobbed/Down"
 ```
 
 Or manually install:
@@ -46,8 +55,14 @@ Or manually install:
 The `DownView` class offers a very simple way to parse a UTF-8 encoded string with Markdown and convert it to a web view that can be added to any view:
 
 ```swift
-let downView = try? DownView(frame: self.view.bounds, markdownString: "**Oh Hai**")
+let downView = try? DownView(frame: self.view.bounds, markdownString: "**Oh Hai**") {
+    // Optional callback for loading finished
+}
 // Now add to view or constrain w/ Autolayout
+// Or you could optionally update the contents at some point:
+try? downView?.update(markdownString:  "## [Google](https://google.com)") {
+    // Optional callback for loading finished
+}
 ```
 
 Meta example of rendering this README:

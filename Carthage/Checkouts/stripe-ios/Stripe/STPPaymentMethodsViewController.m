@@ -7,32 +7,34 @@
 //
 
 #import "STPPaymentMethodsViewController.h"
+
 #import "STPAPIClient.h"
-#import "STPToken.h"
+#import "STPAddCardViewController+Private.h"
 #import "STPCard.h"
-#import "UIViewController+Stripe_ParentViewController.h"
-#import "STPAddCardViewController.h"
+#import "STPColorUtils.h"
+#import "STPCoreViewController+Private.h"
+#import "STPDispatchFunctions.h"
+#import "STPLocalizationUtils.h"
+#import "STPPaymentActivityIndicatorView.h"
+#import "STPPaymentConfiguration+Private.h"
+#import "STPPaymentContext+Private.h"
 #import "STPPaymentContext.h"
 #import "STPPaymentMethodTuple.h"
-#import "STPPaymentActivityIndicatorView.h"
-#import "STPPaymentMethodsViewController+Private.h"
-#import "STPPaymentContext+Private.h"
-#import "UIBarButtonItem+Stripe.h"
-#import "UIViewController+Stripe_Promises.h"
-#import "STPPaymentConfiguration+Private.h"
 #import "STPPaymentMethodsInternalViewController.h"
-#import "UIViewController+Stripe_NavigationItemProxy.h"
+#import "STPPaymentMethodsViewController+Private.h"
 #import "STPTheme.h"
-#import "STPColorUtils.h"
+#import "STPToken.h"
 #import "STPWeakStrongMacros.h"
-#import "STPLocalizationUtils.h"
-#import "STPDispatchFunctions.h"
+#import "UIBarButtonItem+Stripe.h"
 #import "UINavigationController+Stripe_Completion.h"
+#import "UIViewController+Stripe_NavigationItemProxy.h"
+#import "UIViewController+Stripe_ParentViewController.h"
+#import "UIViewController+Stripe_Promises.h"
 
 @interface STPPaymentMethodsViewController()<STPPaymentMethodsInternalViewControllerDelegate, STPAddCardViewControllerDelegate>
 
 @property(nonatomic)STPPaymentConfiguration *configuration;
-@property(nonatomic)STPTheme *theme;
+@property(nonatomic)STPAddress *shippingAddress;
 @property(nonatomic)id<STPBackendAPIAdapter> apiAdapter;
 @property(nonatomic)STPAPIClient *apiClient;
 @property(nonatomic)STPPromise<STPPaymentMethodTuple *> *loadingPromise;
@@ -40,8 +42,6 @@
 @property(nonatomic)id<STPPaymentMethod> selectedPaymentMethod;
 @property(nonatomic, weak)STPPaymentActivityIndicatorView *activityIndicator;
 @property(nonatomic, weak)UIViewController *internalViewController;
-@property(nonatomic)UIBarButtonItem *backItem;
-@property(nonatomic)UIBarButtonItem *cancelItem;
 @property(nonatomic)BOOL loading;
 
 @end
@@ -53,6 +53,7 @@
                             apiAdapter:paymentContext.apiAdapter
                         loadingPromise:paymentContext.currentValuePromise
                                  theme:paymentContext.theme
+                       shippingAddress:paymentContext.shippingAddress
                               delegate:paymentContext];
 }
 
@@ -60,6 +61,17 @@
                                 theme:(STPTheme *)theme
                            apiAdapter:(id<STPBackendAPIAdapter>)apiAdapter
                              delegate:(id<STPPaymentMethodsViewControllerDelegate>)delegate {
+    STPPromise<STPPaymentMethodTuple *> *promise = [self retrieveCustomerWithConfiguration:configuration apiAdapter:apiAdapter];
+    return [self initWithConfiguration:configuration
+                            apiAdapter:apiAdapter
+                        loadingPromise:promise
+                                 theme:theme
+                       shippingAddress:nil
+                              delegate:delegate];
+}
+
+- (STPPromise<STPPaymentMethodTuple *>*)retrieveCustomerWithConfiguration:(STPPaymentConfiguration *)configuration
+                                                               apiAdapter:(id<STPBackendAPIAdapter>)apiAdapter {
     STPPromise<STPPaymentMethodTuple *> *promise = [STPPromise new];
     [apiAdapter retrieveCustomer:^(STPCustomer * _Nullable customer, NSError * _Nullable error) {
         stpDispatchToMainThreadIfNecessary(^{
@@ -68,7 +80,7 @@
             } else {
                 STPCard *selectedCard;
                 NSMutableArray<STPCard *> *cards = [NSMutableArray array];
-                for (id<STPSource> source in customer.sources) {
+                for (id<STPSourceProtocol> source in customer.sources) {
                     if ([source isKindOfClass:[STPCard class]]) {
                         STPCard *card = (STPCard *)source;
                         [cards addObject:card];
@@ -84,16 +96,12 @@
             }
         });
     }];
-    return [self initWithConfiguration:configuration
-                            apiAdapter:apiAdapter
-                        loadingPromise:promise
-                                 theme:theme
-                              delegate:delegate];
+    return promise;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
+- (void)createAndSetupViews {
+    [super createAndSetupViews];
+
     STPPaymentActivityIndicatorView *activityIndicator = [STPPaymentActivityIndicatorView new];
     activityIndicator.animating = YES;
     [self.view addSubview:activityIndicator];
@@ -108,13 +116,16 @@
         UIViewController *internal;
         if (tuple.paymentMethods.count > 0) {
             internal = [[STPPaymentMethodsInternalViewController alloc] initWithConfiguration:self.configuration
-                                                                                        theme:self.theme prefilledInformation:self.prefilledInformation
+                                                                                        theme:self.theme
+                                                                         prefilledInformation:self.prefilledInformation
+                                                                              shippingAddress:self.shippingAddress
                                                                            paymentMethodTuple:tuple
                                                                                      delegate:self];
         } else {
             STPAddCardViewController *addCardViewController = [[STPAddCardViewController alloc] initWithConfiguration:self.configuration theme:self.theme];
             addCardViewController.delegate = self;
             addCardViewController.prefilledInformation = self.prefilledInformation;
+            addCardViewController.shippingAddress = self.shippingAddress;
             internal = addCardViewController;
             
         }
@@ -132,17 +143,9 @@
             self.activityIndicator.animating = NO;
         }];
         [self.navigationItem setRightBarButtonItem:internal.stp_navigationItemProxy.rightBarButtonItem animated:YES];
+        self.internalViewController = internal;
     }];
     self.loading = YES;
-    [self updateAppearance];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-    if (![self stp_isAtRootOfNavigationController]) {
-        self.navigationItem.leftBarButtonItem = self.backItem;
-    }
 }
 
 - (void)viewDidLayoutSubviews {
@@ -154,24 +157,12 @@
 }
 
 - (void)updateAppearance {
-    STPTheme *navBarTheme = self.navigationController.navigationBar.stp_theme ?: self.theme;
-    [self.navigationItem.leftBarButtonItem stp_setTheme:navBarTheme];
-    [self.backItem stp_setTheme:navBarTheme];
-    [self.cancelItem stp_setTheme:navBarTheme];
+    [super updateAppearance];
 
     self.activityIndicator.tintColor = self.theme.accentColor;
-    self.view.backgroundColor = self.theme.primaryBackgroundColor;
-    [self setNeedsStatusBarAppearanceUpdate];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    STPTheme *navBarTheme = self.navigationController.navigationBar.stp_theme ?: self.theme;
-    return ([STPColorUtils colorIsBright:navBarTheme.secondaryBackgroundColor]
-            ? UIStatusBarStyleDefault
-            : UIStatusBarStyleLightContent);
-}
-
-- (void)cancel:(__unused id)sender {
+- (void)handleBackOrCancelTapped:(__unused id)sender {
     [self.delegate paymentMethodsViewControllerDidFinish:self];
 }
 
@@ -189,7 +180,17 @@
 }
 
 - (void)internalViewControllerDidCreateToken:(STPToken *)token completion:(STPErrorBlock)completion {
-    [self.apiAdapter attachSourceToCustomer:token completion:^(NSError * _Nullable error) {
+    [self.apiAdapter attachSourceToCustomer:token completion:^(NSError *error) {
+        STPPromise<STPPaymentMethodTuple *> *promise = [self retrieveCustomerWithConfiguration:self.configuration apiAdapter:self.apiAdapter];
+        [promise onSuccess:^(STPPaymentMethodTuple *tuple) {
+            stpDispatchToMainThreadIfNecessary(^{
+                if ([self.internalViewController isKindOfClass:[STPPaymentMethodsInternalViewController class]]) {
+                    STPPaymentMethodsInternalViewController *paymentMethodsVC = (STPPaymentMethodsInternalViewController *)self.internalViewController;
+                    [paymentMethodsVC updateWithPaymentMethodTuple:tuple];
+                }
+            });
+        }];
+
         stpDispatchToMainThreadIfNecessary(^{
             completion(error);
             if (!error) {
@@ -233,23 +234,18 @@
                            apiAdapter:(id<STPBackendAPIAdapter>)apiAdapter
                        loadingPromise:(STPPromise<STPPaymentMethodTuple *> *)loadingPromise
                                 theme:(STPTheme *)theme
+                      shippingAddress:(STPAddress *)shippingAddress
                              delegate:(id<STPPaymentMethodsViewControllerDelegate>)delegate {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super initWithTheme:theme];
     if (self) {
         _configuration = configuration;
-        _theme = theme;
+        _shippingAddress = shippingAddress;
         _apiClient = [[STPAPIClient alloc] initWithPublishableKey:configuration.publishableKey];
         _apiAdapter = apiAdapter;
         _loadingPromise = loadingPromise;
         _delegate = delegate;
 
         self.navigationItem.title = STPLocalizedString(@"Loading…", @"Title for screen when data is still loading from the network.");
-        _cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
-        _backItem = [UIBarButtonItem stp_backButtonItemWithTitle:STPLocalizedString(@"Back", @"Text for back button")
-                                                               style:UIBarButtonItemStylePlain
-                                                              target:self
-                                                              action:@selector(cancel:)];
-        self.navigationItem.leftBarButtonItem = self.cancelItem;
 
         WEAK(self);
         [loadingPromise onSuccess:^(STPPaymentMethodTuple *tuple) {

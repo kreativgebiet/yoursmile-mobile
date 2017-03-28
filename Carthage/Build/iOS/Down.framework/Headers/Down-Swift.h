@@ -135,23 +135,40 @@ SWIFT_CLASS("_TtC4Down8DownView")
 
   \param openLinksInBrowser Whether or not to open links using an external browser
 
+  \param didLoadSuccessfully Optional callback for when the web content has loaded successfully
+
 
   returns:
   An instance of Self
 */
-- (nullable instancetype)initWithFrame:(CGRect)frame markdownString:(NSString * _Nonnull)markdownString openLinksInBrowser:(BOOL)openLinksInBrowser error:(NSError * _Nullable * _Nullable)error OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithFrame:(CGRect)frame markdownString:(NSString * _Nonnull)markdownString openLinksInBrowser:(BOOL)openLinksInBrowser error:(NSError * _Nullable * _Nullable)error didLoadSuccessfully:(void (^ _Nullable)(void))didLoadSuccessfully OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+/**
+  Renders the given CommonMark Markdown string into HTML and updates the DownView while keeping the style intact
+  \param markdownString A string containing CommonMark Markdown
+
+  \param didLoadSuccessfully Optional callback for when the web content has loaded successfully
+
+
+  throws:
+  \code
+  DownErrors
+  \endcode depending on the scenario
+*/
+- (BOOL)updateWithMarkdownString:(NSString * _Nonnull)markdownString error:(NSError * _Nullable * _Nullable)error didLoadSuccessfully:(void (^ _Nullable)(void))didLoadSuccessfully;
 - (nonnull instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration * _Nonnull)configuration SWIFT_UNAVAILABLE;
-@end
-
-@class WKNavigationAction;
-
-@interface DownView (SWIFT_EXTENSION(Down)) <WKNavigationDelegate>
-- (void)webView:(WKWebView * _Nonnull)webView decidePolicyForNavigationAction:(WKNavigationAction * _Nonnull)navigationAction decisionHandler:(void (^ _Nonnull)(WKNavigationActionPolicy))decisionHandler;
 @end
 
 
 @interface DownView (SWIFT_EXTENSION(Down))
+@end
+
+@class WKNavigationAction;
+@class WKNavigation;
+
+@interface DownView (SWIFT_EXTENSION(Down)) <WKNavigationDelegate>
+- (void)webView:(WKWebView * _Nonnull)webView decidePolicyForNavigationAction:(WKNavigationAction * _Nonnull)navigationAction decisionHandler:(void (^ _Nonnull)(WKNavigationActionPolicy))decisionHandler;
+- (void)webView:(WKWebView * _Nonnull)webView didFinishNavigation:(WKNavigation * _Null_unspecified)navigation;
 @end
 
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Stripe
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //Enter your credentials
+        OneSignal.initWithLaunchOptions(launchOptions, appId: "5eb5a37e-b458-11e3-ac11-000c2940e62c")
         
         //Enter your credentials
         STPPaymentConfiguration.shared().publishableKey = "pk_test_HoCc151BfYh437wFFtMoRVUy"
