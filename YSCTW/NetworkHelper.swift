@@ -83,7 +83,6 @@ class NetworkHelper: NSObject {
             let expiryDate = Date(timeIntervalSince1970: timeStamp!)
             
             debugPrint("verify token")
-            debugPrint(dictionary["access-token"])
             
             if Date() < expiryDate {
                callback(dictionary)
