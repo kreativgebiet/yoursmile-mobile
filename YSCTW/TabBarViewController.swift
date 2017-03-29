@@ -25,7 +25,7 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     var preferencesBarButtonItem: UIBarButtonItem!
     var barViewController: BarViewController!
     
-    let logoNavigationBarView = LogoNavigationBarView(frame: CGRect(x: 0, y: 0, width: 102, height: 28))
+    let logoNavigationBarView = LogoNavigationBarView(frame: CGRect(x: 0, y: 0, width: 113, height: 32))
     let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 170, height: 28))
 
     override func viewDidLoad() {
