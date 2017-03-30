@@ -25,6 +25,8 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var projectsDonationInfoLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var sliderView: DonationSlider!
+    @IBOutlet weak var sliderLabel: UILabel!
     
     var placeholderLabel: UILabel!
     var loadingScreen: LoadingScreen!
@@ -41,6 +43,12 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         self.containerView.layer.borderWidth = 1
         self.containerView.layer.cornerRadius = 5
         self.containerView.clipsToBounds = true
+        
+        self.sliderView.minimumTrackTintColor = orange
+        self.sliderView.minimumValue = 1.0
+        self.sliderView.maximumValue = 10.0
+        
+        self.sliderLabel.textColor = navigationBarGray
         
         let button = UIButton()
         button.frame = CGRect(x: 0, y:  0, width: 100, height: 31)
@@ -59,6 +67,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         self.navigationItem.rightBarButtonItem = barButton
         
         self.projectsDonationInfoLabel.textColor = navigationBarGray
+        self.sliderLabel.textColor = navigationBarGray
         self.publishLabel.textColor = navigationBarGray
         self.feeLabel.textColor = spacerGray
         
@@ -101,6 +110,9 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         self.view.addGestureRecognizer(tapGesture)
+        
+        //disable back swipe
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func closeKeyboard() {
@@ -122,12 +134,76 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         self.selfieImageView.image = self.selfieImage
         self.selfieImageView.contentMode = .scaleAspectFill
         
-        var text = "DONATION_INFO".localized.replacingOccurrences(of: "%@", with: String(self.projects.count))
-        text = text.replacingOccurrences(of: "%1", with: (self.projects.count > 1 ? "PROJECTS_WORD".localized : "PROJECT_WORD".localized))
-        self.projectsDonationInfoLabel.text = text
+        self.updateDonationGoalPercentage()
+        self.updateDonationInfoAndFee()
+    }
+    
+    @IBAction func sliderValueChanged(_ sender: Any) {
         
-        let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(self.projects.count), paymentType: self.payment)
+        self.sliderView.setValue(self.sliderView.value.rounded(), animated: true)
+        
+        self.updateDonationGoalPercentage()
+        self.updateDonationInfoAndFee()
+    }
+    
+    func updateDonationGoalPercentage() {
+        
+        //Calculate Value changed
+        var totalProgress = CGFloat(0)
+        let increment = sliderView.value
+        
+        for project in self.projects {
+            let newProgress = CGFloat(project.progress) + CGFloat(increment)
+            totalProgress += newProgress
+        }
+        
+        let percentageProgress = Float(100.0 - totalProgress/CGFloat(self.projects.count)).roundTo(places: 1)
+        
+        if percentageProgress >= 0 {
+        
+            let percentageValue = String(describing: percentageProgress) + " %"
+            let string = percentageValue + " " + "LEFT_UNTIL_DONATION_GOAL".localized
+            let attrString = NSMutableAttributedString(string: string)
+            attrString.addAttribute(NSForegroundColorAttributeName, value: orange, range:NSMakeRange(0, percentageValue.characters.count))
+            
+            self.sliderLabel.attributedText = attrString
+            
+        } else {
+            
+            let percentageValue = String(describing: -percentageProgress) + " %"
+            let string = percentageValue + " " + "UPON_DONATION_GOAL".localized
+            let attrString = NSMutableAttributedString(string: string)
+            attrString.addAttribute(NSForegroundColorAttributeName, value: orange, range:NSMakeRange(0, percentageValue.characters.count))
+            
+            self.sliderLabel.attributedText = attrString
+        }
+        
+    }
+    
+    func updateDonationInfoAndFee() {
+        
+        var text = "DONATION_INFO".localized
+        text = text.replacingOccurrences(of: "%@1", with: String(self.projects.count))
+        text = text.replacingOccurrences(of: "%@2", with: (self.projects.count > 1 ? "PROJECTS_WORD".localized : "PROJECT_WORD".localized))
+        
+        let donationValue = String(Int(self.donationValue()))+"€"
+        text = text.replacingOccurrences(of: "%@", with: donationValue)
+        
+        //+1 on length due to the additional €
+        let range = NSMakeRange(text.indexOf(target: donationValue)!, donationValue.length+1)
+        
+        let attrString = NSMutableAttributedString(string: text)
+        attrString.addAttribute(NSForegroundColorAttributeName, value: orange, range:range)
+        self.projectsDonationInfoLabel.attributedText = attrString
+        
+        let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.donationValue(), paymentType: self.payment)
         self.feeLabel.text = "FEE_INFO".localized.replacingOccurrences(of: "%@", with: String(fee))
+    }
+    
+    // MARK: - Share Button Action
+    
+    func donationValue() -> Float {
+        return Float(self.projects.count*Int(sliderView.value))
     }
     
     func proceedTapped() {
@@ -155,19 +231,19 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         
         if self.payment == .payPal {
             
-            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(self.projects.count), paymentType: self.payment)
+            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.donationValue(), paymentType: self.payment)
             
             let paymentViewController = PayPalViewController()
             paymentViewController.callback = callback
             
             self.present(paymentViewController, animated: false, completion: nil)
-            paymentViewController.showPayPalPaymentFor(amount: Float(self.projects.count),fee: fee, projects: self.projects)
+            paymentViewController.showPayPalPaymentFor(amount: self.donationValue(),fee: fee, projects: self.projects)
             
         } else if self.payment == .creditCard {
             
-            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(self.projects.count), paymentType: self.payment)
+            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.donationValue(), paymentType: self.payment)
             
-            let total = Int(fee*100) + self.projects.count * 100
+            let total = Int(fee*100) + Int(self.donationValue() * 100)
             
             let paymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StripePaymentViewController") as!  StripePaymentViewController
             
@@ -235,7 +311,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     }
     
     @IBAction func handleFacebookShare(_ sender: AnyObject) {
-        
+                
         loadingScreen = LoadingScreen.init(frame: self.view.bounds)
         
         self.view.endEditing(true)

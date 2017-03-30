@@ -204,6 +204,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
     func loadSupportedProjects() {
         
         self.addProjectButton.textLabel.text = self.supportedProjects.count == 0 ? "SELECT_PROJECT".localized : "SELECT_ANOTHER_PROJECT".localized
+        self.addProjectButton.textLabel.adjustsFontSizeToFitWidth = true
         
         for projectView in self.projectViews {
             projectView.removeFromSuperview()

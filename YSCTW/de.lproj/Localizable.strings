@@ -54,6 +54,8 @@
 "PROFILE" = "Profil";
 "OPTIONS" = "Mehr Optionen";
 "DONATE" = "Spenden";
+"LEFT_UNTIL_DONATION_GOAL" = "bleiben bis zum Spendenziel";
+"UPON_DONATION_GOAL" = "über dem Spendenziel";
 
 //Profile
 "PROJECTS_SUPPORTED" = "Projekte unterstützt";
@@ -94,7 +96,7 @@
 "DESCRIPTION" = "Beschreibung";
 "YOUR_COMMENT" = "Dein Bildkommentar";
 "PUBLISH" = "Veröffentlichen auf";
-"DONATION_INFO" = "Du hast %@ %1 ausgewählt, du spendest insgesamt %@€ zzgl. Gebühren*";
+"DONATION_INFO" = "Du hast %@1 %@2 ausgewählt, du spendest insgesamt %@ zzgl. Gebühren*";
 "FEE_INFO" = "*zzgl. %@€ Transaktionsgebühren";
 "PROJECT_WORD" = "Projekt";
 "PROJECTS_WORD" = "Projekte";

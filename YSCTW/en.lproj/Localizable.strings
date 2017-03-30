@@ -54,6 +54,8 @@
 "PROFILE" = "Profile";
 "OPTIONS" = "More options";
 "DONATE" = "Donation";
+"LEFT_UNTIL_DONATION_GOAL" = "left until donation goal";
+"UPON_DONATION_GOAL" = "over the donation goal";
 
 //Profile
 "PROJECTS_SUPPORTED" = "Projects supported";
@@ -94,7 +96,7 @@
 "DESCRIPTION" = "Description";
 "YOUR_COMMENT" = "Your comment";
 "PUBLISH" = "Post on";
-"DONATION_INFO" = "You have selected %@ %1 and will donate %@€ plus fees*";
+"DONATION_INFO" = "You have selected %@1 %@2 and will donate %@ plus fees*";
 "FEE_INFO" = "*plus %@€ fees";
 "PROJECT_WORD" = "project";
 "PROJECTS_WORD" = "projects";

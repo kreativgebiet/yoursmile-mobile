@@ -47,15 +47,20 @@ extension UIImage {
         
         //Text and Logo are drawn to the left lower corner of the initial image
         
-        let margin = UIEdgeInsetsMake(0, 15, 10, 0)
-        
         let textWidth = self.size.width * 0.22
-        let textHeight = self.size.height * 0.06
+        var textHeight = self.size.height * 0.06
+        
+        let padding = self.size.height * 0.03
+        
+        let margin = UIEdgeInsetsMake(0, padding, padding, 0)
         
         let testLabel = UILabel(frame: CGRect(x: 0, y: 0, width: textWidth, height: textHeight))
         testLabel.font = UIFont(name: "Gotham-Medium", size: 10)!
         testLabel.text = hastTag
         testLabel.adjustFontSizeToFitRect(rect: testLabel.frame)
+        testLabel.sizeToFit()
+        
+        textHeight = testLabel.frame.height
         
         let textImage = self.textToImage(drawText: hastTag as NSString, withFont: testLabel.font, atPoint: CGPoint(x: margin.left, y: self.size.height - margin.bottom - textHeight))
         
@@ -68,7 +73,7 @@ extension UIImage {
         let overlayLogoRect = CGRect(x: margin.left, y: self.size.height - overlayLogoHeight - margin.bottom - textHeight, width: overlayLogoWidth, height: overlayLogoHeight)
         
         let overlayImage = textImage.drawImage(byDrawingImage: overlayLogo, inRect: overlayLogoRect)
-
+        
         return overlayImage!
     }
     
@@ -95,11 +100,13 @@ extension UIImage {
     }
     
     func drawImage(byDrawingImage image: UIImage, inRect rect: CGRect) -> UIImage! {
+        
         UIGraphicsBeginImageContext(size)
         draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         image.draw(in: rect)
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
         return result
     }
 
