@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+//
+let hastTag = "#SmileAndChange"
+let websiteURL = "www.smileandchange.com"
+let instagramURL = "https://www.instagram.com/Smile&Change"
+
 let baseURL = "http://yoursmile-staging.herokuapp.com/"
 
 let feedNotificationIdentifier: String = "FeedNotificationIdentifier"

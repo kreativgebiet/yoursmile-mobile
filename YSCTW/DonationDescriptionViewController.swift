@@ -214,7 +214,8 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         if UIApplication.shared.canOpenURL(instagramURL as URL) {
             
             let filePath = (NSTemporaryDirectory() as NSString).appendingPathComponent("InstagramImage.igo")
-            let imageData = UIImageJPEGRepresentation(self.selfieImage.resizeImageTo(maxWidth: 600, maxHeight: 600), 1.0)
+            let overlayImage = self.selfieImage.addOverlay()
+            let imageData = UIImageJPEGRepresentation(overlayImage.resizeImageTo(maxWidth: 600, maxHeight: 600), 1.0)
             
             do {
                 try imageData?.write(to: URL(fileURLWithPath: filePath), options: .atomic)
@@ -264,9 +265,9 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     func createFBSharePhotoContent() -> FBSDKSharePhotoContent {
         let sharePhoto = FBSDKSharePhoto.init()
-        sharePhoto.image = self.selfieImage
+        sharePhoto.image = self.selfieImage.addOverlay()
         sharePhoto.isUserGenerated = true
-        sharePhoto.caption = self.descriptionTextField.text
+        sharePhoto.caption = self.descriptionTextField.text + " " + hastTag + " " + instagramURL + " " + websiteURL
         
         let content = FBSDKSharePhotoContent.init()
         content.photos = [sharePhoto]

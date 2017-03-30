@@ -144,7 +144,7 @@ class DonationDetailViewController: UIViewController, FBSDKSharingDelegate, UIDo
         let instagramURL = NSURL(string: "instagram://app")!
         if UIApplication.shared.canOpenURL(instagramURL as URL) {
             
-            let image = self.donationDetailTableViewController.donationHeaderView.selfieImageView.image
+            let image = self.donationDetailTableViewController.donationHeaderView.selfieImageView.image?.addOverlay()
             let filePath = (NSTemporaryDirectory() as NSString).appendingPathComponent("InstagramImage.igo")
             let imageData = UIImageJPEGRepresentation((image?.resizeImageTo(maxWidth: 600, maxHeight: 600))!, 1.0)
             
@@ -207,9 +207,14 @@ class DonationDetailViewController: UIViewController, FBSDKSharingDelegate, UIDo
     
     func createFBSharePhotoContent() -> FBSDKSharePhotoContent {
         let sharePhoto = FBSDKSharePhoto.init()
-        sharePhoto.image = self.donationDetailTableViewController.donationHeaderView.selfieImageView.image
+        
+        let overlayImage = self.donationDetailTableViewController.donationHeaderView.selfieImageView.image?.addOverlay()
+                
+        sharePhoto.image = overlayImage
         sharePhoto.isUserGenerated = true
-        sharePhoto.caption = self.donation?.description
+        var caption = (self.donation?.description)! + " " + hastTag
+        caption = caption + " " + instagramURL + " " + websiteURL
+        sharePhoto.caption = caption
         
         let content = FBSDKSharePhotoContent.init()
         content.photos = [sharePhoto]

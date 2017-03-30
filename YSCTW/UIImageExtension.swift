@@ -42,5 +42,65 @@ extension UIImage {
         
         return newImage!
     }
+    
+    func addOverlay() -> UIImage {
+        
+        //Text and Logo are drawn to the left lower corner of the initial image
+        
+        let margin = UIEdgeInsetsMake(0, 15, 10, 0)
+        
+        let textWidth = self.size.width * 0.22
+        let textHeight = self.size.height * 0.06
+        
+        let testLabel = UILabel(frame: CGRect(x: 0, y: 0, width: textWidth, height: textHeight))
+        testLabel.font = UIFont(name: "Gotham-Medium", size: 10)!
+        testLabel.text = hastTag
+        testLabel.adjustFontSizeToFitRect(rect: testLabel.frame)
+        
+        let textImage = self.textToImage(drawText: hastTag as NSString, withFont: testLabel.font, atPoint: CGPoint(x: margin.left, y: self.size.height - margin.bottom - textHeight))
+        
+        let overlayLogo = #imageLiteral(resourceName: "logo-white-big")
+        let overlayLogoSize = overlayLogo.size
+        
+        let overlayLogoWidth = self.size.height * 0.25
+        let overlayLogoHeight = overlayLogoSize.height/overlayLogoSize.width * overlayLogoWidth
+        
+        let overlayLogoRect = CGRect(x: margin.left, y: self.size.height - overlayLogoHeight - margin.bottom - textHeight, width: overlayLogoWidth, height: overlayLogoHeight)
+        
+        let overlayImage = textImage.drawImage(byDrawingImage: overlayLogo, inRect: overlayLogoRect)
+
+        return overlayImage!
+    }
+    
+    func textToImage(drawText text: NSString, withFont font: UIFont, atPoint point: CGPoint) -> UIImage {
+        
+        let textColor = UIColor.white
+        
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(self.size, false, scale)
+        
+        let textFontAttributes = [
+            NSFontAttributeName: font,
+            NSForegroundColorAttributeName: textColor
+            ] as [String : Any]
+        self.draw(in: CGRect(origin: CGPoint.zero, size: self.size))
+        
+        let rect = CGRect(origin: point, size: self.size)
+        text.draw(in: rect, withAttributes: textFontAttributes)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
+    func drawImage(byDrawingImage image: UIImage, inRect rect: CGRect) -> UIImage! {
+        UIGraphicsBeginImageContext(size)
+        draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        image.draw(in: rect)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
 
 }

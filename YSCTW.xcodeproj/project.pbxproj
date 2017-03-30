@@ -50,6 +50,7 @@
 		A13546821DDE166900931139 /* DonationFeeOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13546811DDE166900931139 /* DonationFeeOverlayView.xib */; };
 		A151579E1E8A6B7700C0498D /* PhotoCropEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */; };
 		A15157A01E8A6FB100C0498D /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A151579F1E8A6FB100C0498D /* OneSignal.framework */; };
+		A15157A21E8D07DA00C0498D /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15157A11E8D07DA00C0498D /* UILabelExtension.swift */; };
 		A15390991DD0C8A700B7ADA0 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390981DD0C8A700B7ADA0 /* DividerView.swift */; };
 		A153909B1DD0CD9200B7ADA0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153909A1DD0CD9200B7ADA0 /* RoundedButton.swift */; };
 		A153909D1DD0CEFF00B7ADA0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153909C1DD0CEFF00B7ADA0 /* RegistrationViewController.swift */; };
@@ -252,6 +253,7 @@
 		A135467F1DDE165F00931139 /* DonationFeeOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationFeeOverlayView.swift; sourceTree = "<group>"; };
 		A13546811DDE166900931139 /* DonationFeeOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationFeeOverlayView.xib; sourceTree = "<group>"; };
 		A151579F1E8A6FB100C0498D /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = Carthage/Build/iOS/OneSignal.framework; sourceTree = "<group>"; };
+		A15157A11E8D07DA00C0498D /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		A15390981DD0C8A700B7ADA0 /* DividerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		A153909A1DD0CD9200B7ADA0 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A153909C1DD0CEFF00B7ADA0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -748,6 +750,7 @@
 				A19677781DEC47B300C1CBBC /* DateExtension.swift */,
 				A196777C1DEC6E8900C1CBBC /* UIImageExtension.swift */,
 				A114283E1E08274F0033844A /* UIApplicationExtension.swift */,
+				A15157A11E8D07DA00C0498D /* UILabelExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1009,6 +1012,7 @@
 				A1EF7F9E1E1BBCBD003C92E4 /* UserDataOperation.swift in Sources */,
 				A1DB37911E0AA204003EAFCF /* ResetPasswordOperation.swift in Sources */,
 				A1DB37791E098D75003EAFCF /* ProfileModel+CoreDataClass.swift in Sources */,
+				A15157A21E8D07DA00C0498D /* UILabelExtension.swift in Sources */,
 				A18A2DB01E37A9E6004D1F67 /* OnboardPageView.swift in Sources */,
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,

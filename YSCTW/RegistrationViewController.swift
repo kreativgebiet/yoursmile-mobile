@@ -192,14 +192,12 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
         
         self.logoTopSpaceConstraint.constant = moveUp ? topSpace : self.defaultLogoTopSpaceConstraintConstant!
-        let alpha = moveUp ? 0 : 1 as CGFloat
         self.nameTextFieldTopSpaceConstraint.constant = moveUp ? nameTextFieldTopSpace : self.defaultnameTextFieldTopSpaceConstraintConstant!
         
         let options = UIViewAnimationOptions(rawValue: curve << 16)
         UIView.animate(withDuration: duration, delay: 0, options: options,
                                    animations: {
                                     self.view.layoutIfNeeded()
-                                    self.logoTitleLabel.alpha = alpha
             },
                                    completion: nil
         )

@@ -73,13 +73,13 @@
                                 <rect key="frame" x="41" y="335" width="293" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ODER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqX-Yj-JoU">
-                                        <rect key="frame" x="130" y="3" width="34" height="14"/>
+                                        <rect key="frame" x="129" y="4" width="36.5" height="12"/>
                                         <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSB-bm-SXx" userLabel="rightLine">
-                                        <rect key="frame" x="173" y="10" width="120" height="1"/>
+                                        <rect key="frame" x="174.5" y="10" width="118.5" height="1"/>
                                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="kLB-at-tT5"/>
@@ -87,7 +87,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJT-CW-Tuf" userLabel="leftLine">
-                                        <rect key="frame" x="0.0" y="10" width="120" height="1"/>
+                                        <rect key="frame" x="0.0" y="10" width="119" height="1"/>
                                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="7K0-57-aBW"/>
@@ -483,7 +483,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mache ein Foto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d6-UO-PBg">
-                                        <rect key="frame" x="125" y="20" width="126" height="20"/>
+                                        <rect key="frame" x="119.5" y="20" width="137.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -607,7 +607,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpi-hW-loS" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="707.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="702"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-jD-1a5">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="422"/>
@@ -628,27 +628,27 @@
                                                 <blurEffect style="light"/>
                                             </visualEffectView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du kannst jetz 1€ pro Projekt spenden. Wähle ein oder mehrere Projekte aus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeN-7J-NuL">
-                                                <rect key="frame" x="10" y="432" width="355" height="37.5"/>
+                                                <rect key="frame" x="10" y="432" width="355" height="32"/>
                                                 <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pac-OJ-5xZ" userLabel="Selected Projects ContainerView">
-                                                <rect key="frame" x="10" y="479.5" width="355" height="100"/>
+                                                <rect key="frame" x="10" y="474" width="355" height="100"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="yAq-W9-nsf"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-p9-UA5" customClass="AddProjectButton" customModule="YSCTW" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="587.5" width="355" height="50"/>
+                                                <rect key="frame" x="10" y="582" width="355" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="2V8-Xf-8TH"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tia-LB-Vrb" userLabel="PaymentSelectionView" customClass="PaymentSelectionView" customModule="YSCTW" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="647.5" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="642" width="375" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="a05-Of-ylF"/>
@@ -758,33 +758,33 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du hast 3 Projekte ausgewählt du spendest insgesamt 3 € zzgl. Gebühren" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjn-IU-qXq">
-                                <rect key="frame" x="16" y="70" width="343" height="37.5"/>
+                                <rect key="frame" x="16" y="70" width="343" height="32"/>
                                 <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veröffentlichen auf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTX-6M-TNH">
-                                <rect key="frame" x="121" y="233.5" width="133" height="19"/>
+                                <rect key="frame" x="112" y="228" width="151" height="16"/>
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cu2-zi-8wU" userLabel="spacerLeft">
-                                <rect key="frame" x="16" y="242.5" width="97" height="2"/>
+                                <rect key="frame" x="16" y="235.5" width="88" height="2"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="l4m-7x-Fpi"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvD-oW-haA" userLabel="spacerRight">
-                                <rect key="frame" x="262" y="242.5" width="105" height="2"/>
+                                <rect key="frame" x="271" y="235.5" width="96" height="2"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="LSe-m3-gT1"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJM-KE-GvH" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
-                                <rect key="frame" x="16" y="263.5" width="163.5" height="50"/>
+                                <rect key="frame" x="16" y="255" width="163.5" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aR3-ZC-X2R"/>
                                 </constraints>
@@ -795,7 +795,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-qJ-egp" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
-                                <rect key="frame" x="195.5" y="263.5" width="163.5" height="50"/>
+                                <rect key="frame" x="195.5" y="255" width="163.5" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="veh-bj-iHw"/>
                                 </constraints>
@@ -807,13 +807,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*zzgl. 30 Cent Gebühren" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-1q-hcS">
-                                <rect key="frame" x="16" y="352.5" width="343" height="12"/>
+                                <rect key="frame" x="16" y="344" width="343" height="10"/>
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIK-jm-VYC" userLabel="ContainerView">
-                                <rect key="frame" x="16" y="133.5" width="343" height="85"/>
+                                <rect key="frame" x="16" y="128" width="343" height="85"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-7H-C4y">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
@@ -951,7 +951,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdX-8i-eCe" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="836.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="813"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Project-Image" translatesAutoresizingMaskIntoConstraints="NO" id="Q5b-Dp-z5S">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -968,7 +968,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAm-NR-Cy7">
-                                                <rect key="frame" x="15" y="258" width="345" height="437.5"/>
+                                                <rect key="frame" x="15" y="258" width="345" height="414"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
@@ -981,7 +981,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EN-MJ-ltf" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="703.5" width="345" height="50"/>
+                                                <rect key="frame" x="15" y="680" width="345" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Y2s-Gw-kch"/>
                                                 </constraints>
@@ -1147,7 +1147,7 @@
         <scene sceneID="fGP-e2-Wlx">
             <objects>
                 <navigationController id="S3D-hc-yly" customClass="NavigationViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cla-Jb-ARD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cla-Jb-ARD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1517,7 +1517,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angesehen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHj-0w-jTz">
-                                        <rect key="frame" x="44" y="18" width="103" height="18"/>
+                                        <rect key="frame" x="44" y="18" width="103" height="15"/>
                                         <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1559,7 +1559,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Land" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdJ-zq-NoK">
-                                        <rect key="frame" x="46" y="18" width="101" height="18"/>
+                                        <rect key="frame" x="46" y="18" width="101" height="15"/>
                                         <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1822,7 +1822,7 @@
         <image name="world-icon" width="18" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XbG-WZ-FBm"/>
         <segue reference="udc-dm-c8U"/>
+        <segue reference="5Ux-pY-fAz"/>
     </inferredMetricsTieBreakers>
 </document>

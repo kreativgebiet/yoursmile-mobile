@@ -14,7 +14,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: LeftViewImageTextField!
     @IBOutlet weak var passwordTextField: LeftViewImageTextField!
-    @IBOutlet weak var logoTitleLabel: UILabel!
     @IBOutlet weak var facebookButtonTopSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoTopSpaceConstraint: NSLayoutConstraint!
     
@@ -287,14 +286,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         self.facebookButtonTopSpaceConstraint.constant = moveUp ? facebookTopSpace : self.defaultFacebookButtonTopSpaceConstraintConstant!
-        let alpha = moveUp ? 0 : 1 as CGFloat
         self.logoTopSpaceConstraint.constant = moveUp ? topSpace : self.defaultlogoTopSpaceConstraintConstant!
         
         let options = UIViewAnimationOptions(rawValue: curve << 16)
         UIView.animate(withDuration: duration, delay: 0, options: options,
                        animations: {
                         self.view.layoutIfNeeded()
-                        self.logoTitleLabel.alpha = alpha
             },
                        completion: nil
         )
