@@ -14,6 +14,7 @@ class FeedTableViewController: UITableViewController {
     public var uploads: [Upload]?
     public var refreshCallback: (() -> Void)!
     public var projectCallback: ((_ project: Project) -> Void)!
+    public var likeCallback: ((_ donation: Upload) -> Void)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +81,10 @@ class FeedTableViewController: UITableViewController {
         
         cell.projectCallback = { (project: Project) in
             self.projectCallback(project)
+        }
+        
+        cell.likeCallback = { (donation: Upload) in
+            self.likeCallback(donation)
         }
 
         return cell

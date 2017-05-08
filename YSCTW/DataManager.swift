@@ -78,6 +78,11 @@ class DataManager: NSObject {
         self.addOperation(operation)
     }
     
+    func likeUploadWith(_ id: String?, _ callback: @escaping ((_ success: Bool, _ error: String) -> () )) {
+        let operation = LikeUploadOperation(id, callback)
+        self.addOperation(operation)
+    }
+    
     func commentsWith(_ uploadId: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
         let operation = CommentDownloadOperation(uploadId, callback)
         self.addOperation(operation)

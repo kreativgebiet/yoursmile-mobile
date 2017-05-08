@@ -20,13 +20,14 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var bottomDetailView: UIView!
     
     @IBOutlet weak var topDetailView: UIView!
-    // MARK: - IBOutlets for Style
-    @IBOutlet weak var donationLabelView: UILabel!
-
     @IBOutlet weak var transparentProjectView: TransparentProjectView!
+    
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var likesImageView: UIImageView!
     
     public var detailCallback: ((_ donation: Upload) -> Void)?
     public var profileCallback: ((_ donation: Upload) -> Void)?
+    public var likeCallback: ((_ donation: Upload) -> Void)?
     public var projectCallback: ((_ project: Project) -> Void)?
     public var donation: Upload!
     
@@ -35,13 +36,20 @@ class FeedTableViewCell: UITableViewCell {
         self.donorLogoImageView.backgroundColor = .white
         self.donorTimeLabel.textColor = timeGray
         
+        self.likesImageView.image = #imageLiteral(resourceName: "like")
+        
         self.donorLogoImageView.isUserInteractionEnabled = true
+        self.selfieImageView.isUserInteractionEnabled = true
         
         let detailTap = UITapGestureRecognizer(target: self, action: #selector(handleDetailViewTapped))
         self.bottomDetailView.addGestureRecognizer(detailTap)
         
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(handleTopViewTapped))
         self.topDetailView.addGestureRecognizer(topViewTap)
+        
+        let selfieImageTap = UITapGestureRecognizer(target: self, action: #selector(handleLikeViewTapped))
+        selfieImageTap.numberOfTapsRequired = 2
+        self.selfieImageView.addGestureRecognizer(selfieImageTap)
         
         self.transparentProjectView.callback = { (project: Project) in
             if self.projectCallback != nil {
@@ -52,8 +60,6 @@ class FeedTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        self.donationLabelView.text = "SHOW_IMAGE_DETAIL".localized
         
         self.donorLogoImageView.layer.cornerRadius = self.donorLogoImageView.frame.size.width/2
         self.donorLogoImageView.clipsToBounds = true
@@ -87,6 +93,27 @@ class FeedTableViewCell: UITableViewCell {
     
     func handleTopViewTapped() {
         self.profileCallback!(self.donation!)
+    }
+    
+    func handleLikeViewTapped() {
+        
+        // WARNING: todo
+        
+        let likeImageView = UIImageView.init(image: #imageLiteral(resourceName: "like-logo"))
+        self.selfieImageView.addSubview(likeImageView)
+        likeImageView.center = CGPoint(x: self.selfieImageView.center.x, y: self.selfieImageView.center.y - self.transparentProjectView.frame.height)
+        
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.2, options: .allowUserInteraction, animations: {
+            likeImageView.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
+        }) { (completed) in
+            likeImageView.alpha = 0
+            likeImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            likeImageView.removeFromSuperview()
+            self.likesImageView.image = #imageLiteral(resourceName: "like-activ")
+            self.likesLabel.textColor = orange
+        }
+        
+        self.likeCallback!(self.donation!)
     }
 
 }

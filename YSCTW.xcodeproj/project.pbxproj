@@ -30,6 +30,7 @@
 		A114283F1E08274F0033844A /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114283E1E08274F0033844A /* UIApplicationExtension.swift */; };
 		A11428411E0935900033844A /* countrylist_iso_3166.json in Resources */ = {isa = PBXBuildFile; fileRef = A11428401E0935900033844A /* countrylist_iso_3166.json */; };
 		A11428441E0935DD0033844A /* CountrListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11428431E0935DD0033844A /* CountrListManager.swift */; };
+		A11702C91EC100E600B326C8 /* LikeUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11702C81EC100E600B326C8 /* LikeUploadOperation.swift */; };
 		A12A454D1DCF8C76002977DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A454C1DCF8C76002977DF /* AppDelegate.swift */; };
 		A12A45521DCF8C76002977DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12A45501DCF8C76002977DF /* Main.storyboard */; };
 		A12A45541DCF8C76002977DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A12A45531DCF8C76002977DF /* Assets.xcassets */; };
@@ -229,6 +230,7 @@
 		A114283E1E08274F0033844A /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		A11428401E0935900033844A /* countrylist_iso_3166.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = countrylist_iso_3166.json; path = Resources/countrylist_iso_3166.json; sourceTree = "<group>"; };
 		A11428431E0935DD0033844A /* CountrListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrListManager.swift; sourceTree = "<group>"; };
+		A11702C81EC100E600B326C8 /* LikeUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeUploadOperation.swift; sourceTree = "<group>"; };
 		A12A45491DCF8C76002977DF /* YSCTW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSCTW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12A454C1DCF8C76002977DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12A45511DCF8C76002977DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 				A1EF7FA81E1E57E5003C92E4 /* UploadUserImageOperation.swift */,
 				A1EF7FAA1E1F9D18003C92E4 /* DelayOperation.swift */,
 				A1FD4E1D1E56E79A0088CECC /* ReportUploadOperation.swift */,
+				A11702C81EC100E600B326C8 /* LikeUploadOperation.swift */,
 			);
 			name = ServiceLayer;
 			sourceTree = "<group>";
@@ -845,14 +848,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = MZ;
 				TargetAttributes = {
 					A12A45481DCF8C76002977DF = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = ZJULPV3Z62;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1094,6 +1097,7 @@
 				A1CF0CB11DD26CD3002C4562 /* CornerButton.swift in Sources */,
 				A15390AD1DD0F62E00B7ADA0 /* ProfileViewController.swift in Sources */,
 				A1F8D8F11DD37ADA00AFAB4F /* TransparentProjectView.swift in Sources */,
+				A11702C91EC100E600B326C8 /* LikeUploadOperation.swift in Sources */,
 				A1CF0C9A1DD22994002C4562 /* CommentTableViewCell.swift in Sources */,
 				A1DB378F1E0AA047003EAFCF /* UpdateUserOperation.swift in Sources */,
 				A15390A91DD0F5FD00B7ADA0 /* ProjectsViewController.swift in Sources */,
@@ -1189,6 +1193,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1239,6 +1244,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1268,7 +1274,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = YSCTW/YSCTW.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = ZJULPV3Z62;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1288,6 +1294,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MaxCoding.YSCTW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cd6a70de-916a-45a1-baba-da037f394847";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.MaxCoding.YSCTW";
 				SWIFT_OBJC_BRIDGING_HEADER = "YSCTW/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1298,7 +1306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = YSCTW/YSCTW.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = ZJULPV3Z62;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1318,6 +1326,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MaxCoding.YSCTW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cd6a70de-916a-45a1-baba-da037f394847";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.MaxCoding.YSCTW";
 				SWIFT_OBJC_BRIDGING_HEADER = "YSCTW/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

@@ -229,6 +229,24 @@ class APIClient: NSObject {
         }
     }
     
+    // MARK: Likes handling
+    
+    class func likeUploadWith(id: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
+        debugPrint("like upload post")
+        
+        NetworkHelper.verifyToken { (token) in
+            
+            let requestURL = baseURL + "uploads/" + id + "/like"
+            
+            Alamofire.request(requestURL, method: .post, headers: token)
+                .responseJSON { response in
+                    NetworkHelper.standardResponseHandling(response: response, callback: { (success, errorString) in
+                        callback(success, errorString)
+                    })
+            }
+        }
+    }
+    
     // MARK: Comment handling
     
     class func commentsWith(_ uploadId: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {

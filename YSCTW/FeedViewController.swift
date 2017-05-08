@@ -109,6 +109,12 @@ class FeedViewController: UIViewController {
             })
             
         }
+        
+        feedTableViewController.likeCallback = { project in
+            self.dataManager?.likeUploadWith(project.id, { (success, errorMessage) in
+                
+            })
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
