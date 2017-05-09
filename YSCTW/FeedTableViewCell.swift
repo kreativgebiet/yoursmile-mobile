@@ -24,6 +24,7 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var likesImageView: UIImageView!
+    @IBOutlet weak var likesTapView: UIView!
     
     public var detailCallback: ((_ donation: Upload) -> Void)?
     public var profileCallback: ((_ donation: Upload) -> Void)?
@@ -35,8 +36,6 @@ class FeedTableViewCell: UITableViewCell {
         super.awakeFromNib()        
         self.donorLogoImageView.backgroundColor = .white
         self.donorTimeLabel.textColor = timeGray
-        
-        self.likesImageView.image = #imageLiteral(resourceName: "like")
         
         self.donorLogoImageView.isUserInteractionEnabled = true
         self.selfieImageView.isUserInteractionEnabled = true
@@ -50,6 +49,10 @@ class FeedTableViewCell: UITableViewCell {
         let selfieImageTap = UITapGestureRecognizer(target: self, action: #selector(handleLikeViewTapped))
         selfieImageTap.numberOfTapsRequired = 2
         self.selfieImageView.addGestureRecognizer(selfieImageTap)
+        
+        let dislikeTap = UITapGestureRecognizer(target: self, action: #selector(handleDislikeTap))
+        self.likesTapView.addGestureRecognizer(dislikeTap)
+        self.likesImageView.isUserInteractionEnabled = true
         
         self.transparentProjectView.callback = { (project: Project) in
             if self.projectCallback != nil {
@@ -83,6 +86,10 @@ class FeedTableViewCell: UITableViewCell {
         
         self.donorTimeLabel.text = donation.date.offset(from: Date())
         self.numberCommentsLabel.text = donation.numberOfComments
+        
+        self.likesLabel.text = donation.numberOfLikes
+        self.likesLabel.textColor = (self.donation.userLiked! ? orange : timeGray)
+        self.likesImageView.image = (self.donation.userLiked! ? #imageLiteral(resourceName: "like-activ") : #imageLiteral(resourceName: "like"))
     }
     
     //:Mark tap handler
@@ -97,8 +104,6 @@ class FeedTableViewCell: UITableViewCell {
     
     func handleLikeViewTapped() {
         
-        // WARNING: todo
-        
         let likeImageView = UIImageView.init(image: #imageLiteral(resourceName: "like-logo"))
         self.selfieImageView.addSubview(likeImageView)
         likeImageView.center = CGPoint(x: self.selfieImageView.center.x, y: self.selfieImageView.center.y - self.transparentProjectView.frame.height)
@@ -109,10 +114,33 @@ class FeedTableViewCell: UITableViewCell {
             likeImageView.alpha = 0
             likeImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
             likeImageView.removeFromSuperview()
-            self.likesImageView.image = #imageLiteral(resourceName: "like-activ")
-            self.likesLabel.textColor = orange
+            
+            if !(self.donation.userLiked!) {
+                let numberOfLikes = Int(self.donation.numberOfLikes!)!
+                self.handleLike(numberOfLikes+1)
+            }
+            
         }
         
+    }
+    
+    func handleDislikeTap() {
+        
+        if self.donation.userLiked! {
+            let numberOfLikes = Int(self.donation.numberOfLikes!)!
+            self.handleLike(numberOfLikes-1)
+        }
+        
+    }
+    
+    func handleLike(_ numberOfLikes: Int) {
+        let isLiked = !(self.donation.userLiked!)
+        
+        self.likesImageView.image = (isLiked ? #imageLiteral(resourceName: "like-activ") : #imageLiteral(resourceName: "like"))
+        self.likesLabel.text = String(numberOfLikes)
+        self.donation.numberOfLikes = String(numberOfLikes)
+        
+        self.donation.userLiked = isLiked
         self.likeCallback!(self.donation!)
     }
 

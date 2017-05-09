@@ -80,6 +80,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29T-xf-86m" userLabel="DetailView">
                     <rect key="frame" x="0.0" y="417" width="375" height="50"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osv-Xp-PWf">
+                            <rect key="frame" x="0.0" y="0.0" width="87" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dS-y7-0ti" userLabel="SpacerView">
                             <rect key="frame" x="86" y="5" width="1" height="40"/>
                             <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
@@ -134,10 +138,14 @@
                         <constraint firstAttribute="bottom" secondItem="5dS-y7-0ti" secondAttribute="bottom" constant="5" id="1Kt-yS-hzs"/>
                         <constraint firstItem="mm7-ui-Q1k" firstAttribute="top" secondItem="29T-xf-86m" secondAttribute="top" constant="16" id="5ln-Mt-voL"/>
                         <constraint firstAttribute="trailing" secondItem="Peu-eL-6aY" secondAttribute="trailing" constant="8" id="6w6-Tk-hzR"/>
+                        <constraint firstAttribute="bottom" secondItem="Osv-Xp-PWf" secondAttribute="bottom" id="Gz2-DF-JkY"/>
                         <constraint firstItem="lOv-SR-lcu" firstAttribute="centerY" secondItem="29T-xf-86m" secondAttribute="centerY" id="IEB-JT-jaO"/>
                         <constraint firstItem="lOv-SR-lcu" firstAttribute="leading" secondItem="oE3-jR-Rof" secondAttribute="trailing" constant="10" id="NUB-t1-UbF"/>
+                        <constraint firstItem="Osv-Xp-PWf" firstAttribute="leading" secondItem="29T-xf-86m" secondAttribute="leading" id="gEA-tg-mz8"/>
                         <constraint firstItem="oE3-jR-Rof" firstAttribute="leading" secondItem="29T-xf-86m" secondAttribute="leading" constant="20" id="hDs-2W-Ht7"/>
+                        <constraint firstItem="lOv-SR-lcu" firstAttribute="leading" secondItem="Osv-Xp-PWf" secondAttribute="trailing" constant="-37" id="hkk-7D-GbX"/>
                         <constraint firstItem="mm7-ui-Q1k" firstAttribute="leading" secondItem="esb-2S-FLC" secondAttribute="trailing" constant="10" id="ix4-mC-oLk"/>
+                        <constraint firstItem="Osv-Xp-PWf" firstAttribute="top" secondItem="29T-xf-86m" secondAttribute="top" id="nib-0n-Xxm"/>
                         <constraint firstItem="5dS-y7-0ti" firstAttribute="leading" secondItem="29T-xf-86m" secondAttribute="leading" constant="86" id="o1o-nR-Sef"/>
                         <constraint firstItem="esb-2S-FLC" firstAttribute="centerY" secondItem="29T-xf-86m" secondAttribute="centerY" id="ovs-hq-64d"/>
                         <constraint firstItem="esb-2S-FLC" firstAttribute="leading" secondItem="5dS-y7-0ti" secondAttribute="trailing" constant="17" id="pvk-Tp-zm3"/>
@@ -171,6 +179,7 @@
                 <outlet property="donorTimeLabel" destination="Ujh-u7-YQi" id="GTH-QN-aIM"/>
                 <outlet property="likesImageView" destination="oE3-jR-Rof" id="tIe-s2-wW2"/>
                 <outlet property="likesLabel" destination="lOv-SR-lcu" id="gbt-vq-mA5"/>
+                <outlet property="likesTapView" destination="Osv-Xp-PWf" id="40a-fU-y1J"/>
                 <outlet property="numberCommentsLabel" destination="mm7-ui-Q1k" id="8Gq-P6-NQM"/>
                 <outlet property="selfieImageView" destination="iLN-cs-Uo8" id="POY-3v-bNt"/>
                 <outlet property="topDetailView" destination="ljd-kJ-xcq" id="dQH-vZ-geQ"/>

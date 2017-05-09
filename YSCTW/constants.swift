@@ -161,6 +161,10 @@ struct Upload {
     var profile: Profile?
     
     var numberOfComments: String?
+    var numberOfLikes: String?
+    
+    var userLiked: Bool?
+    
     var comments: [Comment]?
     
     init(supportedProjects: [Project], imageURL: String, id: String, created_at: String, description: String, profile: Profile) {

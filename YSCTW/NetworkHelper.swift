@@ -366,7 +366,9 @@ class NetworkHelper: NSObject {
         let imageURL = data["image"] as! String
         let id = data["id"] as! Int
         let commentCount = data["comment_count"] as! Int
+        let likeCount = data["likes_count"] as! Int
         let createdAt = data["created_at"] as! String
+        let userLiked = data["user_liked"] as! Bool
         
         let projectsData = data["projects"] as! [AnyObject]
         let author  = data["author"] as! [String : AnyObject]
@@ -377,6 +379,8 @@ class NetworkHelper: NSObject {
         var upload = Upload(supportedProjects: projects, imageURL: imageURL, id: String(id), created_at: createdAt, description: description, profile: profile)
         
         upload.numberOfComments = String(commentCount)
+        upload.numberOfLikes = String(likeCount)
+        upload.userLiked = userLiked;
         
         return upload
     }
