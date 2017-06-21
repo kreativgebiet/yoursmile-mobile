@@ -119,8 +119,17 @@ class ProfileHeaderView: UIView {
         
         self.profileNameLabel.text = profileToUse.name
         
-        self.subscriberLabel.text = "\(profileToUse.followerCount!)" + " " + "SUBSCRIBER".localized
-        self.subscribedLabel.text = "\(profileToUse.followingCount!)" + " " + "SUBSCRIBED".localized
+        let attr1 = [NSFontAttributeName: UIFont(name: "Gotham-Bold", size: 14),
+                     NSForegroundColorAttributeName: UIColor.white]
+        let attr2 = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 14),
+                     NSForegroundColorAttributeName: UIColor.white]
+        
+        let subscriberAttributedString = attributedTexts(text1: "\(profileToUse.followerCount!) ", attribs1: attr1, text2: "SUBSCRIBER".localized, attribs2: attr2)
+        
+        self.subscriberLabel.attributedText = subscriberAttributedString
+        
+        let subscribedAttributedString = attributedTexts(text1: "\(profileToUse.followingCount!) ", attribs1: attr1, text2: "SUBSCRIBED".localized, attribs2: attr2)
+        self.subscribedLabel.attributedText = subscribedAttributedString
         
         let subscriberTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleSubscriberTapped))
         self.subscriberLabel.addGestureRecognizer(subscriberTapGesture)

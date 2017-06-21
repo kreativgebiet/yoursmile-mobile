@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var profileToUse: Profile!
     var profileHeaderBarView: ProfileHeaderBarView!
     
+    let minimumProfileHeaderHeight = 215.0 as CGFloat
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +47,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.profileToUse = ((self.currentProfile != nil) ? self.currentProfile : self.userProfile)!
         
         if self.currentProfile == nil {
-            self.profileViewHeightConstraint.constant = 285
+            self.profileViewHeightConstraint.constant = minimumProfileHeaderHeight
         }
         
         self.initialProfileViewHeightConstraint = self.profileViewHeightConstraint.constant
@@ -62,8 +64,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 if success {
                     self.profileHeaderView.hideSubscribeButton()
                     self.reloadUserData()
-                    self.profileViewHeightConstraint.constant = 285
-                    self.initialProfileViewHeightConstraint = 285
+                    self.profileViewHeightConstraint.constant = self.minimumProfileHeaderHeight
+                    self.initialProfileViewHeightConstraint = self.minimumProfileHeaderHeight
                     self.view.setNeedsLayout()
                     self.view.layoutIfNeeded()
                 }
@@ -143,8 +145,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
             if followerIds.contains(Int(self.userProfile.id)) {
                 self.profileHeaderView.hideSubscribeButton()
-                self.profileViewHeightConstraint.constant = 285
-                self.initialProfileViewHeightConstraint = 285
+                self.profileViewHeightConstraint.constant = self.minimumProfileHeaderHeight
+                self.initialProfileViewHeightConstraint = self.minimumProfileHeaderHeight
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
             }

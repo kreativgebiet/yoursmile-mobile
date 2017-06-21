@@ -147,6 +147,7 @@
 		A1D6F5021DE5E43B00A0A8F9 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */; };
 		A1D6F5061DE5E98E00A0A8F9 /* PayPalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */; };
 		A1D86BE71EFAB2EC00D69F37 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BE61EFAB2EC00D69F37 /* DictionaryExtension.swift */; };
+		A1D86BE91EFAC41100D69F37 /* StringHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BE81EFAC41100D69F37 /* StringHelperFunctions.swift */; };
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
 		A1DB37741E094D1F003EAFCF /* SectorListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37731E094D1F003EAFCF /* SectorListManager.swift */; };
@@ -363,6 +364,7 @@
 		A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayPalViewController.swift; sourceTree = "<group>"; };
 		A1D86BE61EFAB2EC00D69F37 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		A1D86BE81EFAC41100D69F37 /* StringHelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelperFunctions.swift; sourceTree = "<group>"; };
 		A1DB37731E094D1F003EAFCF /* SectorListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectorListManager.swift; sourceTree = "<group>"; };
 		A1DB37751E098368003EAFCF /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		A1DB37771E098D75003EAFCF /* ProfileModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProfileModel+CoreDataClass.swift"; path = "../ProfileModel+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -753,6 +755,7 @@
 		A1D6F5031DE5E96600A0A8F9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A1D86BE81EFAC41100D69F37 /* StringHelperFunctions.swift */,
 				A11029071DD9C55E00633343 /* StringExtension.swift */,
 				A1D6F5011DE5E43B00A0A8F9 /* FloatExtension.swift */,
 				A19677781DEC47B300C1CBBC /* DateExtension.swift */,
@@ -1086,6 +1089,7 @@
 				A1DB37851E0A99AF003EAFCF /* UploadsDownloadOperation.swift in Sources */,
 				A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */,
 				A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */,
+				A1D86BE91EFAC41100D69F37 /* StringHelperFunctions.swift in Sources */,
 				A15157A41E8D1FAF00C0498D /* DonationSlider.swift in Sources */,
 				A1D6F4C81DE3725500A0A8F9 /* LanguageSelectionViewController.swift in Sources */,
 				A15390991DD0C8A700B7ADA0 /* DividerView.swift in Sources */,
