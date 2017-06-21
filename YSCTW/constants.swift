@@ -78,6 +78,7 @@ struct Profile {
     var uid: String?
     var followingCount: Int?
     var followerCount: Int?
+    var supportedProjects : [Int]?
     
     init(id: Int, name: String, email: String, nickname: String, avatarURL: String, avatarThumbUrl: String?) {
         self.id = id

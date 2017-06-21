@@ -78,6 +78,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.navigationController?.performSegue(withIdentifier: "cameraSegue", sender: self)
         }
         
+        self.profileHeaderView.followerCallback = {
+            
+        }
+        
+        self.profileHeaderView.followingCallback = {
+            
+        }
+        
         self.applyTableViewStyle()
         self.reloadData()
         

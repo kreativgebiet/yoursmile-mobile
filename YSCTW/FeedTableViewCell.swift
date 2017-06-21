@@ -25,6 +25,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var likesImageView: UIImageView!
     @IBOutlet weak var likesTapView: UIView!
+    @IBOutlet weak var profileTapView: UIView!
     
     public var detailCallback: ((_ donation: Upload) -> Void)?
     public var profileCallback: ((_ donation: Upload) -> Void)?
@@ -36,12 +37,13 @@ class FeedTableViewCell: UITableViewCell {
         super.awakeFromNib()        
         self.donorLogoImageView.backgroundColor = .white
         self.donorTimeLabel.textColor = timeGray
+        self.profileTapView.backgroundColor = .clear
         
         self.donorLogoImageView.isUserInteractionEnabled = true
         self.selfieImageView.isUserInteractionEnabled = true
         
         let detailTap = UITapGestureRecognizer(target: self, action: #selector(handleDetailViewTapped))
-        self.bottomDetailView.addGestureRecognizer(detailTap)
+        self.profileTapView.addGestureRecognizer(detailTap)
         
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(handleTopViewTapped))
         self.topDetailView.addGestureRecognizer(topViewTap)
@@ -50,8 +52,8 @@ class FeedTableViewCell: UITableViewCell {
         selfieImageTap.numberOfTapsRequired = 2
         self.selfieImageView.addGestureRecognizer(selfieImageTap)
         
-        let dislikeTap = UITapGestureRecognizer(target: self, action: #selector(handleDislikeTap))
-        self.likesTapView.addGestureRecognizer(dislikeTap)
+        let likeViewTap = UITapGestureRecognizer(target: self, action: #selector(handleLikeViewTapped))
+        self.likesTapView.addGestureRecognizer(likeViewTap)
         self.likesImageView.isUserInteractionEnabled = true
         
         self.transparentProjectView.callback = { (project: Project) in

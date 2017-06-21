@@ -362,16 +362,23 @@ class NetworkHelper: NSObject {
     
     class func parseUploadFrom(data: [String : AnyObject]) -> Upload {
         
-        let description = data["description"] as! String
-        let imageURL = data["image"] as! String
-        let id = data["id"] as! Int
-        let commentCount = data["comment_count"] as! Int
-        let likeCount = data["likes_count"] as! Int
-        let createdAt = data["created_at"] as! String
-        let userLiked = data["user_liked"] as! Bool
+        var cleandData = data.nullsRemoved
         
-        let projectsData = data["projects"] as! [AnyObject]
-        let author  = data["author"] as! [String : AnyObject]
+        var description = ""
+        
+        if let descr = cleandData["description"] as? String {
+            description = descr
+        }
+        
+        let imageURL = cleandData["image"] as! String
+        let id = cleandData["id"] as! Int
+        let commentCount = cleandData["comment_count"] as! Int
+        let likeCount = cleandData["likes_count"] as! Int
+        let createdAt = cleandData["created_at"] as! String
+        let userLiked = cleandData["user_liked"] as! Bool
+        
+        let projectsData = cleandData["projects"] as! [AnyObject]
+        let author  = cleandData["author"] as! [String : AnyObject]
         
         let profile = NetworkHelper.parseProfileFrom(data: author)
         let projects = NetworkHelper.parseProjectsFrom(data: projectsData)
@@ -476,6 +483,10 @@ class NetworkHelper: NSObject {
         
         profile.followerCount = followerCount
         profile.followingCount = followingCount
+        
+        if let supportedProjects = data["supported_projects"] as? [Int] {
+            profile.supportedProjects = supportedProjects
+        }
         
         return profile
     }

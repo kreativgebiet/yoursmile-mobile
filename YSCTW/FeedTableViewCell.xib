@@ -80,6 +80,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29T-xf-86m" userLabel="DetailView">
                     <rect key="frame" x="0.0" y="417" width="375" height="50"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2a2-Na-Pm3" userLabel="Profile Tap View">
+                            <rect key="frame" x="87" y="0.0" width="288" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osv-Xp-PWf">
                             <rect key="frame" x="0.0" y="0.0" width="87" height="50"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -141,6 +145,7 @@
                         <constraint firstAttribute="bottom" secondItem="Osv-Xp-PWf" secondAttribute="bottom" id="Gz2-DF-JkY"/>
                         <constraint firstItem="lOv-SR-lcu" firstAttribute="centerY" secondItem="29T-xf-86m" secondAttribute="centerY" id="IEB-JT-jaO"/>
                         <constraint firstItem="lOv-SR-lcu" firstAttribute="leading" secondItem="oE3-jR-Rof" secondAttribute="trailing" constant="10" id="NUB-t1-UbF"/>
+                        <constraint firstItem="2a2-Na-Pm3" firstAttribute="leading" secondItem="5dS-y7-0ti" secondAttribute="trailing" id="eNn-7Q-zwl"/>
                         <constraint firstItem="Osv-Xp-PWf" firstAttribute="leading" secondItem="29T-xf-86m" secondAttribute="leading" id="gEA-tg-mz8"/>
                         <constraint firstItem="oE3-jR-Rof" firstAttribute="leading" secondItem="29T-xf-86m" secondAttribute="leading" constant="20" id="hDs-2W-Ht7"/>
                         <constraint firstItem="lOv-SR-lcu" firstAttribute="leading" secondItem="Osv-Xp-PWf" secondAttribute="trailing" constant="-37" id="hkk-7D-GbX"/>
@@ -150,8 +155,11 @@
                         <constraint firstItem="esb-2S-FLC" firstAttribute="centerY" secondItem="29T-xf-86m" secondAttribute="centerY" id="ovs-hq-64d"/>
                         <constraint firstItem="esb-2S-FLC" firstAttribute="leading" secondItem="5dS-y7-0ti" secondAttribute="trailing" constant="17" id="pvk-Tp-zm3"/>
                         <constraint firstItem="Peu-eL-6aY" firstAttribute="centerY" secondItem="29T-xf-86m" secondAttribute="centerY" id="qg5-fd-tLo"/>
+                        <constraint firstAttribute="bottom" secondItem="2a2-Na-Pm3" secondAttribute="bottom" id="tC0-KV-4qf"/>
                         <constraint firstItem="5dS-y7-0ti" firstAttribute="top" secondItem="29T-xf-86m" secondAttribute="top" constant="5" id="vud-V1-e18"/>
                         <constraint firstItem="oE3-jR-Rof" firstAttribute="centerY" secondItem="29T-xf-86m" secondAttribute="centerY" id="wLf-Qy-f8R"/>
+                        <constraint firstAttribute="trailing" secondItem="2a2-Na-Pm3" secondAttribute="trailing" id="xTB-Fk-mO5"/>
+                        <constraint firstItem="2a2-Na-Pm3" firstAttribute="top" secondItem="29T-xf-86m" secondAttribute="top" id="zZr-eC-nh3"/>
                     </constraints>
                 </view>
             </subviews>
@@ -181,6 +189,7 @@
                 <outlet property="likesLabel" destination="lOv-SR-lcu" id="gbt-vq-mA5"/>
                 <outlet property="likesTapView" destination="Osv-Xp-PWf" id="40a-fU-y1J"/>
                 <outlet property="numberCommentsLabel" destination="mm7-ui-Q1k" id="8Gq-P6-NQM"/>
+                <outlet property="profileTapView" destination="2a2-Na-Pm3" id="xDF-bo-ylV"/>
                 <outlet property="selfieImageView" destination="iLN-cs-Uo8" id="POY-3v-bNt"/>
                 <outlet property="topDetailView" destination="ljd-kJ-xcq" id="dQH-vZ-geQ"/>
                 <outlet property="transparentProjectView" destination="SrN-cM-SQJ" id="ER0-Py-bTJ"/>

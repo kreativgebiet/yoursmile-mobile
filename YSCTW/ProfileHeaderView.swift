@@ -35,6 +35,9 @@ class ProfileHeaderView: UIView {
     public var subscribeCallback: (() -> Void)?
     public var cameraCallback: (() -> Void)?
     
+    public var followerCallback: (() -> Void)?
+    public var followingCallback: (() -> Void)?
+    
     public var numberOfSupportedProjects: Int {
         
         get {
@@ -119,6 +122,12 @@ class ProfileHeaderView: UIView {
         self.subscriberLabel.text = "\(profileToUse.followerCount!)" + " " + "SUBSCRIBER".localized
         self.subscribedLabel.text = "\(profileToUse.followingCount!)" + " " + "SUBSCRIBED".localized
         
+        let subscriberTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleSubscriberTapped))
+        self.subscriberLabel.addGestureRecognizer(subscriberTapGesture)
+        
+        let subscribedTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleSubscribedTapped))
+        self.subscribedLabel.addGestureRecognizer(subscribedTapGesture)
+        
         if profileToUse.avatarUrl.characters.count > 0 {
             let imageURL = URL(string: profileToUse.avatarUrl)!
             
@@ -157,5 +166,13 @@ class ProfileHeaderView: UIView {
         if self.profile == nil {
             self.cameraCallback!()
         }
+    }
+    
+    func handleSubscriberTapped() {
+        self.followerCallback!()
+    }
+    
+    func handleSubscribedTapped() {
+        self.followingCallback!()
     }
 }

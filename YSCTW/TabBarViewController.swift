@@ -69,6 +69,15 @@ class TabBarViewController: UIViewController, BarViewDelegate {
         self.feedViewController?.dataManager = self.dataManager
         
         self.addViewControllerAsChildViewController(viewController: self.feedViewController!)
+        
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+        leftSwipeGesture.direction = .left
+            
+        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+        rightSwipeGesture.direction = .right
+        
+        self.view.addGestureRecognizer(rightSwipeGesture)
+        self.view.addGestureRecognizer(leftSwipeGesture)
     }
     
     deinit {
@@ -78,6 +87,53 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     func openFeed() {
         self.didSelectButtonOf(type: .feed)
         self.barViewController.selectButtonOf(type: .feed)
+    }
+    
+    func handleSwipeGesture(_ gesture : UISwipeGestureRecognizer) {
+        switch gesture.direction {
+        case UISwipeGestureRecognizerDirection.left:
+            
+            if self.currentType != .preferences {
+                
+                var nextType: Type = .donation;
+                
+                if self.currentType == .feed {
+                    nextType = .donation
+                } else if self.currentType == .donation {
+                    nextType = .camera
+                } else if self.currentType == .camera {
+                    nextType = .profile
+                } else if self.currentType == .profile {
+                    nextType = .preferences
+                }
+                
+                didSelectButtonOf(type: nextType)
+                self.barViewController.selectButtonOf(type: nextType)
+            }
+            
+        case UISwipeGestureRecognizerDirection.right:
+            
+            if self.currentType != .feed {
+                
+                var nextType: Type = .donation;
+                
+                if self.currentType == .preferences {
+                    nextType = .profile
+                } else if self.currentType == .profile {
+                    nextType = .camera
+                } else if self.currentType == .camera {
+                    nextType = .donation
+                } else if self.currentType == .donation {
+                    nextType = .feed
+                }
+                
+                didSelectButtonOf(type: nextType)
+                self.barViewController.selectButtonOf(type: nextType)
+            }
+            
+        default:
+            break
+        }
     }
     
     func preferencesTapped() {
@@ -97,6 +153,8 @@ class TabBarViewController: UIViewController, BarViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.logoNavigationBarView.frame = CGRect(x: (self.navigationController?.navigationBar.center)!.x - 56.5, y: 0, width: 113, height: 32)
+        
         self.configureNavigationBarFor(type: self.currentType)
     }
     

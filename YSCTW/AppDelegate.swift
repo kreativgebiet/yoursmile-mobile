@@ -31,9 +31,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var initialViewController: UIViewController!
         
         if UserDefaults.standard.value(forKey: "didOnboarding") as? Bool == true {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "LVC")
+            if let loggedIn = UserDefaults.standard.value(forKey: "loggedIn") as? Bool {
+                if loggedIn == true {
+                    initialViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                } else {
+                    initialViewController = storyboard.instantiateViewController(withIdentifier: "LVC")
+                }
+            }
+            
+            
         } else {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "OVC")
+           initialViewController = storyboard.instantiateViewController(withIdentifier: "OVC")
         }
         
         self.window?.rootViewController = initialViewController
