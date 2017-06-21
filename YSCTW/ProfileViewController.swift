@@ -260,6 +260,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             newConstant = (velocity > velocityLimit ? newConstant - velocity/50 : newConstant)
             self.profileViewHeightConstraint.constant = newConstant
             
+            self.profileHeaderView.subscriptionView.alpha = newConstant/self.initialProfileViewHeightConstraint
+            
             if velocity > velocityLimit {
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                     self.view.setNeedsLayout()
@@ -275,6 +277,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.tableView.setContentOffset(CGPoint.zero, animated: false)
         } else if scrollView.contentOffset.y < 0 && (dragging || self.profileViewHeightConstraint.constant < self.initialProfileViewHeightConstraint) {
             let newConstant: CGFloat = min(self.profileViewHeightConstraint.constant - scrollView.contentOffset.y, self.initialProfileViewHeightConstraint + 50)
+            
+            self.profileHeaderView.subscriptionView.alpha = newConstant/self.initialProfileViewHeightConstraint
             
             if velocity > velocityLimit+900 && self.profileViewHeightConstraint.constant < self.initialProfileViewHeightConstraint {
                 self.profileViewHeightConstraint.constant = newConstant + velocity/20
@@ -341,8 +345,17 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     // MARK: - Table view data source
     
+    let tableHeaderViewHeight = 55.0 as CGFloat
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return tableHeaderViewHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: tableHeaderViewHeight))
+        headerView.backgroundColor = .red
+        
+        return headerView
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
