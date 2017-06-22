@@ -8,14 +8,13 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource {
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     public var dataManager: DataManager?
     public var currentProfile: Profile?
     public var userProfile = DataManager().userProfile()
     
     @IBOutlet weak var profileHeaderView: ProfileHeaderView!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
@@ -30,9 +29,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         
         self.profileHeaderView.profile = self.currentProfile
         self.profileHeaderView.userProfile = self.userProfile
@@ -91,7 +87,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
         }
         
-        self.applyTableViewStyle()
+        self.applyCollectionViewStyle()
         self.reloadData()
         
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swiped(_:)))
@@ -104,12 +100,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func applyTableViewStyle() {
-        self.tableView.rowHeight = 467
-        self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCell")
-        self.tableView.allowsSelection = false
-        self.tableView.backgroundColor = customLightGray
-        self.tableView.separatorColor = customGray
+    func applyCollectionViewStyle() {
         
         let listFlowLayout = UploadsListFlowLayout.init()
         listFlowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.width, height: 55)
@@ -123,9 +114,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.collectionView.register(UINib(nibName: "ProfileHeaderCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionViewHeader")
         
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
         self.collectionView.reloadData()
-        
-        self.tableView.isHidden = true
     }
     
     func reloadUserData() {
@@ -152,7 +142,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             //            let supportedProjects = self.donations?.map({$0.projects})
             self.profileHeaderView.numberOfSupportedProjects = (self.donations?.count)!
             
-            self.tableView.reloadData()
             self.collectionView.reloadData()
         })
         
@@ -186,8 +175,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.tableView.setContentOffset(CGPoint.zero, animated: false)
-        self.tableView.contentInset = UIEdgeInsets.zero
+        self.collectionView.setContentOffset(CGPoint.zero, animated: false)
+        self.collectionView.contentInset = UIEdgeInsets.zero
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -196,8 +185,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.profileHeaderView.setNeedsLayout()
         self.profileHeaderView.layoutIfNeeded()
         
-        self.tableView.setContentOffset(CGPoint.zero, animated: false)
-        self.tableView.contentInset = UIEdgeInsets.zero
+        self.collectionView.setContentOffset(CGPoint.zero, animated: false)
+        self.collectionView.contentInset = UIEdgeInsets.zero
         
         self.profileViewHeightConstraint.constant = self.initialProfileViewHeightConstraint
         self.view.setNeedsLayout()
@@ -256,7 +245,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
         if contentHeight == 0 || animating{
             return
-        } else if self.tableView.numberOfRows(inSection: 0) <= 2 && self.profileViewHeightConstraint.constant < 30 {
+        } else if self.profileViewHeightConstraint.constant < 30 {
             if self.profileHeaderBarView.superview == nil {
                 self.animateProfileHeaderBarView(show: true, completion: { (completed) in
                     self.profileViewHeightConstraint.constant = profileHeaderHeight
@@ -294,7 +283,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.view.layoutIfNeeded()
             }
             
-            self.tableView.setContentOffset(CGPoint.zero, animated: false)
+            self.collectionView.setContentOffset(CGPoint.zero, animated: false)
         } else if scrollView.contentOffset.y < 0 && (dragging || self.profileViewHeightConstraint.constant < self.initialProfileViewHeightConstraint) {
             let newConstant: CGFloat = min(self.profileViewHeightConstraint.constant - scrollView.contentOffset.y, self.initialProfileViewHeightConstraint + 50)
             
@@ -430,8 +419,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 let listFlowLayout = UploadsListFlowLayout.init()
                 listFlowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.width, height: 55)
                 
-//                self.collectionView.register(UINib(nibName: "FeedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
-                
                 self.collectionView.collectionViewLayout.invalidateLayout()
                 self.collectionView.setCollectionViewLayout(listFlowLayout, animated: true)
                 self.collectionView.reloadData()
@@ -446,8 +433,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 let gridFlowLayout = UploadsGridFlowLayout.init()
                 gridFlowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.width, height: 55)
                 
-//                self.collectionView.register(UINib(nibName: "FeedSimpleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SimpleCollectionViewCell")
-                
                 self.collectionView.collectionViewLayout.invalidateLayout()
                 self.collectionView.setCollectionViewLayout(gridFlowLayout, animated: true)
                 self.collectionView.reloadData()
@@ -459,68 +444,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width:collectionView.frame.size.width, height:55.0)
-    }
-    
-
-    // MARK: - Table view data source
-    
-    let tableHeaderViewHeight = 55.0 as CGFloat
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return tableHeaderViewHeight
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: tableHeaderViewHeight))
-        headerView.backgroundColor = .red
-        
-        return headerView
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        var numberOfRows = 0
-        
-        if let projects = self.donations?.count {
-            numberOfRows = projects
-        }
-        
-        return numberOfRows
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as! FeedTableViewCell
-        
-        //Remove separator Insets
-        if cell.responds(to: #selector(setter: UITableViewCell.separatorInset)) {
-            cell.separatorInset = UIEdgeInsets.zero
-        }
-        
-        if cell.responds(to: #selector(setter: UIView.preservesSuperviewLayoutMargins)) {
-            cell.preservesSuperviewLayoutMargins = false
-        }
-        
-        if cell.responds(to: #selector(setter: UIView.layoutMargins)) {
-            cell.layoutMargins = UIEdgeInsets.zero
-        }
-        
-        let donation = (self.donations?[indexPath.row])! as Upload
-        
-        cell.donation = donation
-        
-        cell.detailCallback = { (donation: Upload) in
-            self.navigationController?.performSegue(withIdentifier: "donationDetailSegue", sender: donation)
-        }
-        
-        cell.profileCallback = { (donation: Upload) in
-            self.navigationController?.performSegue(withIdentifier: "profileSegue", sender: donation)
-        }
-        
-        return cell
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

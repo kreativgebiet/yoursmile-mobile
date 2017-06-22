@@ -457,10 +457,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Keq-Rf-hEF">
-                                <rect key="frame" x="0.0" y="274" width="320" height="206"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xS-Va-5hz" customClass="ProfileHeaderView" customModule="YSCTW" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -474,11 +470,7 @@
                             <constraint firstItem="Kat-Kp-u16" firstAttribute="top" secondItem="fdA-nd-RyY" secondAttribute="bottom" id="128-tX-5KI"/>
                             <constraint firstItem="6xS-Va-5hz" firstAttribute="top" secondItem="pkr-rS-xZW" secondAttribute="top" id="2dZ-4i-HYz"/>
                             <constraint firstItem="6xS-Va-5hz" firstAttribute="leading" secondItem="pkr-rS-xZW" secondAttribute="leading" id="8Kt-3Y-4a3"/>
-                            <constraint firstItem="Kat-Kp-u16" firstAttribute="top" secondItem="Keq-Rf-hEF" secondAttribute="bottom" id="Ezk-u3-nR1"/>
                             <constraint firstAttribute="trailing" secondItem="6xS-Va-5hz" secondAttribute="trailing" id="Ipp-jf-MuG"/>
-                            <constraint firstItem="Keq-Rf-hEF" firstAttribute="top" secondItem="6xS-Va-5hz" secondAttribute="bottom" id="M7y-NT-Qgo"/>
-                            <constraint firstAttribute="trailing" secondItem="Keq-Rf-hEF" secondAttribute="trailing" id="VR4-Ex-EOL"/>
-                            <constraint firstItem="Keq-Rf-hEF" firstAttribute="leading" secondItem="pkr-rS-xZW" secondAttribute="leading" id="aVo-En-3CA"/>
                             <constraint firstItem="fdA-nd-RyY" firstAttribute="leading" secondItem="pkr-rS-xZW" secondAttribute="leading" id="kw5-8S-icM"/>
                             <constraint firstAttribute="trailing" secondItem="fdA-nd-RyY" secondAttribute="trailing" id="m4t-Pb-jFb"/>
                             <constraint firstItem="fdA-nd-RyY" firstAttribute="top" secondItem="6xS-Va-5hz" secondAttribute="bottom" id="sWX-ul-ViF"/>
@@ -489,7 +481,6 @@
                         <outlet property="collectionView" destination="fdA-nd-RyY" id="RFf-vS-s1O"/>
                         <outlet property="profileHeaderView" destination="6xS-Va-5hz" id="atZ-0f-zRw"/>
                         <outlet property="profileViewHeightConstraint" destination="DTF-FQ-lNd" id="MGi-YE-m98"/>
-                        <outlet property="tableView" destination="Keq-Rf-hEF" id="zlY-vm-cZS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CzP-oa-tVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
