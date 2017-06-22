@@ -62,7 +62,7 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="y4Z-ta-t2j"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iLN-cs-Uo8" userLabel="SelfieImageView">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iLN-cs-Uo8" userLabel="SelfieImageView">
                     <rect key="frame" x="0.0" y="42" width="375" height="375"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="375" id="Tui-3u-LgP"/>

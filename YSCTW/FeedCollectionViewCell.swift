@@ -1,19 +1,19 @@
 //
-//  FeedTableViewCell.swift
+//  FeedCollectionViewCell.swift
 //  YSCTW
 //
-//  Created by Max Zimmermann on 08.11.16.
-//  Copyright © 2016 MZ. All rights reserved.
+//  Created by Max Zimmermann on 21.06.17.
+//  Copyright © 2017 MZ. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class FeedTableViewCell: UITableViewCell {
+class FeedCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets for data
     @IBOutlet weak var donorLogoImageView: UIImageView!
     @IBOutlet weak var donorNameLabel: UILabel!
-
+    
     @IBOutlet weak var selfieImageView: UIImageView!
     @IBOutlet weak var numberCommentsLabel: UILabel!
     @IBOutlet weak var donorTimeLabel: UILabel!
@@ -34,7 +34,7 @@ class FeedTableViewCell: UITableViewCell {
     public var donation: Upload!
     
     override func awakeFromNib() {
-        super.awakeFromNib()        
+        super.awakeFromNib()
         self.donorLogoImageView.backgroundColor = .white
         self.donorTimeLabel.textColor = timeGray
         self.profileTapView.backgroundColor = .clear
@@ -146,5 +146,5 @@ class FeedTableViewCell: UITableViewCell {
         self.donation.userLiked = isLiked
         self.likeCallback!(self.donation!)
     }
-
+    
 }

@@ -148,6 +148,14 @@
 		A1D6F5061DE5E98E00A0A8F9 /* PayPalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */; };
 		A1D86BE71EFAB2EC00D69F37 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BE61EFAB2EC00D69F37 /* DictionaryExtension.swift */; };
 		A1D86BE91EFAC41100D69F37 /* StringHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BE81EFAC41100D69F37 /* StringHelperFunctions.swift */; };
+		A1D86BEB1EFACD5600D69F37 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BEA1EFACD5600D69F37 /* FeedCollectionViewCell.swift */; };
+		A1D86BED1EFACD6600D69F37 /* FeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D86BEC1EFACD6600D69F37 /* FeedCollectionViewCell.xib */; };
+		A1D86BEF1EFADC3B00D69F37 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BEE1EFADC3B00D69F37 /* ProfileHeaderCollectionReusableView.swift */; };
+		A1D86BF11EFADC4800D69F37 /* ProfileHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D86BF01EFADC4800D69F37 /* ProfileHeaderCollectionReusableView.xib */; };
+		A1D86BF31EFC315E00D69F37 /* UploadsGridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BF21EFC315D00D69F37 /* UploadsGridFlowLayout.swift */; };
+		A1D86BF61EFC31FE00D69F37 /* UploadsListFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BF51EFC31FE00D69F37 /* UploadsListFlowLayout.swift */; };
+		A1D86BF91EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BF71EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift */; };
+		A1D86BFA1EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D86BF81EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib */; };
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
 		A1DB37741E094D1F003EAFCF /* SectorListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37731E094D1F003EAFCF /* SectorListManager.swift */; };
@@ -365,6 +373,14 @@
 		A1D6F5051DE5E98E00A0A8F9 /* PayPalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayPalViewController.swift; sourceTree = "<group>"; };
 		A1D86BE61EFAB2EC00D69F37 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		A1D86BE81EFAC41100D69F37 /* StringHelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelperFunctions.swift; sourceTree = "<group>"; };
+		A1D86BEA1EFACD5600D69F37 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1D86BEC1EFACD6600D69F37 /* FeedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCollectionViewCell.xib; sourceTree = "<group>"; };
+		A1D86BEE1EFADC3B00D69F37 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		A1D86BF01EFADC4800D69F37 /* ProfileHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		A1D86BF21EFC315D00D69F37 /* UploadsGridFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadsGridFlowLayout.swift; sourceTree = "<group>"; };
+		A1D86BF51EFC31FE00D69F37 /* UploadsListFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadsListFlowLayout.swift; sourceTree = "<group>"; };
+		A1D86BF71EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedSimpleCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1D86BF81EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedSimpleCollectionViewCell.xib; sourceTree = "<group>"; };
 		A1DB37731E094D1F003EAFCF /* SectorListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectorListManager.swift; sourceTree = "<group>"; };
 		A1DB37751E098368003EAFCF /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		A1DB37771E098D75003EAFCF /* ProfileModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProfileModel+CoreDataClass.swift"; path = "../ProfileModel+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -549,6 +565,7 @@
 				A153909F1DD0E37D00B7ADA0 /* Views */,
 				A1ED19A51DD1F75500538B78 /* TableViewCells */,
 				A1DB37751E098368003EAFCF /* ErrorManager.swift */,
+				A1D86BF41EFC316600D69F37 /* Collection View Flow Layouts */,
 			);
 			path = YSCTW;
 			sourceTree = "<group>";
@@ -653,6 +670,8 @@
 				A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */,
 				A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */,
 				A15157A31E8D1FAF00C0498D /* DonationSlider.swift */,
+				A1D86BEE1EFADC3B00D69F37 /* ProfileHeaderCollectionReusableView.swift */,
+				A1D86BF01EFADC4800D69F37 /* ProfileHeaderCollectionReusableView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -775,6 +794,15 @@
 			name = TestData;
 			sourceTree = "<group>";
 		};
+		A1D86BF41EFC316600D69F37 /* Collection View Flow Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				A1D86BF21EFC315D00D69F37 /* UploadsGridFlowLayout.swift */,
+				A1D86BF51EFC31FE00D69F37 /* UploadsListFlowLayout.swift */,
+			);
+			name = "Collection View Flow Layouts";
+			sourceTree = "<group>";
+		};
 		A1ED19A51DD1F75500538B78 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +814,10 @@
 				A1CF0CB71DD341CB002C4562 /* ProjectTableViewCell.xib */,
 				A16407041DDE723A00BA1853 /* PreferencesTableViewCell.swift */,
 				A16407051DDE723A00BA1853 /* PreferencesTableViewCell.xib */,
+				A1D86BEA1EFACD5600D69F37 /* FeedCollectionViewCell.swift */,
+				A1D86BEC1EFACD6600D69F37 /* FeedCollectionViewCell.xib */,
+				A1D86BF71EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift */,
+				A1D86BF81EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -922,6 +954,7 @@
 				A110290F1DD9EDB100633343 /* ProjectView.xib in Resources */,
 				A164071E1DDF181800BA1853 /* Gotham-ExtraLight.otf in Resources */,
 				A1BEDAB41E3640550002EABA /* PickerView.xib in Resources */,
+				A1D86BFA1EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib in Resources */,
 				A11029021DD9C36D00633343 /* Localizable.strings in Resources */,
 				A16407071DDE723A00BA1853 /* PreferencesTableViewCell.xib in Resources */,
 				A11028F51DD5136400633343 /* AddedProjectButtonView.xib in Resources */,
@@ -938,6 +971,7 @@
 				A1F8D8F31DD37AE400AFAB4F /* TransparentProjectView.xib in Resources */,
 				A11028F91DD5308700633343 /* ProfileHeaderView.xib in Resources */,
 				A1CF0CA21DD23875002C4562 /* DonationDetailHeaderView.xib in Resources */,
+				A1D86BED1EFACD6600D69F37 /* FeedCollectionViewCell.xib in Resources */,
 				A1CF0CAF1DD26AB9002C4562 /* DonationDetailOverlayView.xib in Resources */,
 				A13546821DDE166900931139 /* DonationFeeOverlayView.xib in Resources */,
 				A164071F1DDF181800BA1853 /* Gotham-UltraItalic.otf in Resources */,
@@ -951,6 +985,7 @@
 				A1CF0CA01DD234AF002C4562 /* CommentView.xib in Resources */,
 				A164071D1DDF181800BA1853 /* Gotham-ExtraLightItalic.otf in Resources */,
 				A1F8D8F71DD38D1400AFAB4F /* ProgressView.xib in Resources */,
+				A1D86BF11EFADC4800D69F37 /* ProfileHeaderCollectionReusableView.xib in Resources */,
 				A16407181DDF181800BA1853 /* Gotham-BookItalic.otf in Resources */,
 				A16407191DDF181800BA1853 /* Gotham-Medium.otf in Resources */,
 				A1CF0C9C1DD22DBE002C4562 /* CommentTableViewCell.xib in Resources */,
@@ -1029,6 +1064,7 @@
 				A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */,
 				A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */,
 				A1D6F5021DE5E43B00A0A8F9 /* FloatExtension.swift in Sources */,
+				A1D86BF31EFC315E00D69F37 /* UploadsGridFlowLayout.swift in Sources */,
 				A1D6F4D51DE4854100A0A8F9 /* NetworkHelper.swift in Sources */,
 				A1D6F4CC1DE4674300A0A8F9 /* EmailChangeViewController.swift in Sources */,
 				A1D6F5061DE5E98E00A0A8F9 /* PayPalViewController.swift in Sources */,
@@ -1060,11 +1096,14 @@
 				A1F8D8F91DD3AA2400AFAB4F /* HelperFunctions.swift in Sources */,
 				A1D6F4D71DE4889200A0A8F9 /* LoadingScreen.swift in Sources */,
 				A12A457B1DCF9383002977DF /* constants.swift in Sources */,
+				A1D86BF91EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift in Sources */,
 				A1DB378D1E0A9DF5003EAFCF /* DeleteUserOperation.swift in Sources */,
 				A110290D1DD9EDA300633343 /* ProjectView.swift in Sources */,
+				A1D86BEF1EFADC3B00D69F37 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				A15390AF1DD0F64100B7ADA0 /* PreferencesViewController.swift in Sources */,
 				A196777D1DEC6E8900C1CBBC /* UIImageExtension.swift in Sources */,
 				A1CF0CA91DD25DAA002C4562 /* TableViewFooterView.swift in Sources */,
+				A1D86BEB1EFACD5600D69F37 /* FeedCollectionViewCell.swift in Sources */,
 				A1BEDAB61E37579B0002EABA /* ProfileHeaderBarView.swift in Sources */,
 				A114283C1E03EB940033844A /* UploadModel+CoreDataProperties.swift in Sources */,
 				A1DB37871E0A99CE003EAFCF /* NetworkOperation.swift in Sources */,
@@ -1100,6 +1139,7 @@
 				A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */,
 				A1DB378B1E0A9CF5003EAFCF /* PostCommentOperation.swift in Sources */,
 				A154FDF31DDF66DB00D88306 /* CancelableProgressView.swift in Sources */,
+				A1D86BF61EFC31FE00D69F37 /* UploadsListFlowLayout.swift in Sources */,
 				A11028F71DD5307700633343 /* ProfileHeaderView.swift in Sources */,
 				A1CF0CB11DD26CD3002C4562 /* CornerButton.swift in Sources */,
 				A15390AD1DD0F62E00B7ADA0 /* ProfileViewController.swift in Sources */,

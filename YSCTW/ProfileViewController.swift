@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource {
     
     public var dataManager: DataManager?
     public var currentProfile: Profile?
@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var profileHeaderView: ProfileHeaderView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
     var initialProfileViewHeightConstraint: CGFloat!
@@ -24,6 +25,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var profileHeaderBarView: ProfileHeaderBarView!
     
     let minimumProfileHeaderHeight = 215.0 as CGFloat
+    
+    var isListViewFlowLayoutSelected = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +110,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.allowsSelection = false
         self.tableView.backgroundColor = customLightGray
         self.tableView.separatorColor = customGray
+        
+        let listFlowLayout = UploadsListFlowLayout.init()
+        listFlowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.width, height: 55)
+        
+        self.collectionView.collectionViewLayout.invalidateLayout()
+        self.collectionView.setCollectionViewLayout(listFlowLayout, animated: true)
+        
+        self.collectionView.register(UINib(nibName: "FeedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
+        self.collectionView.register(UINib(nibName: "FeedSimpleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SimpleCollectionViewCell")
+        
+        self.collectionView.register(UINib(nibName: "ProfileHeaderCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionViewHeader")
+        
+        self.collectionView.dataSource = self
+        self.collectionView.reloadData()
+        
+        self.tableView.isHidden = true
     }
     
     func reloadUserData() {
@@ -134,6 +153,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.profileHeaderView.numberOfSupportedProjects = (self.donations?.count)!
             
             self.tableView.reloadData()
+            self.collectionView.reloadData()
         })
         
         self.reloadUserData()
@@ -342,6 +362,105 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             })
         }
     }
+    
+    
+    // MARK: - Collection view data source
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        var numberOfItems = 0
+        
+        if let projects = self.donations?.count {
+            numberOfItems = projects
+        }
+        
+        return numberOfItems
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if self.isListViewFlowLayoutSelected {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! FeedCollectionViewCell
+            
+            let donation = (self.donations?[indexPath.row])! as Upload
+            
+            cell.donation = donation
+            
+            cell.detailCallback = { (donation: Upload) in
+                self.navigationController?.performSegue(withIdentifier: "donationDetailSegue", sender: donation)
+            }
+            
+            cell.profileCallback = { (donation: Upload) in
+                self.navigationController?.performSegue(withIdentifier: "profileSegue", sender: donation)
+            }
+            
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
+            
+            return cell;
+            
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SimpleCollectionViewCell", for: indexPath) as! FeedSimpleCollectionViewCell
+            
+            let donation = (self.donations?[indexPath.row])! as Upload
+            cell.backgroundImageView.image = nil
+            cell.backgroundImageView.clipsToBounds = true
+            let imageURL = URL(string: donation.imageURL)!
+            cell.backgroundImageView.af_setImage(withURL: imageURL)
+            
+            cell.callback = {
+                self.navigationController?.performSegue(withIdentifier: "donationDetailSegue", sender: donation)
+            }
+            
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
+            
+            return cell;
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionViewHeader", for: indexPath) as! ProfileHeaderCollectionReusableView
+        
+        headerView.listSelectedCallback = {
+            self.isListViewFlowLayoutSelected = true
+            
+            UIView.animate(withDuration: 0.2) { () -> Void in
+                let listFlowLayout = UploadsListFlowLayout.init()
+                listFlowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.width, height: 55)
+                
+//                self.collectionView.register(UINib(nibName: "FeedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
+                
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                self.collectionView.setCollectionViewLayout(listFlowLayout, animated: true)
+                self.collectionView.reloadData()
+            }
+            
+        }
+        
+        headerView.gridSelectedCallback = {
+            self.isListViewFlowLayoutSelected = false
+            
+            UIView.animate(withDuration: 0.2) { () -> Void in
+                let gridFlowLayout = UploadsGridFlowLayout.init()
+                gridFlowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.width, height: 55)
+                
+//                self.collectionView.register(UINib(nibName: "FeedSimpleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SimpleCollectionViewCell")
+                
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                self.collectionView.setCollectionViewLayout(gridFlowLayout, animated: true)
+                self.collectionView.reloadData()
+            }
+        }
+        
+        return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width:collectionView.frame.size.width, height:55.0)
+    }
+    
 
     // MARK: - Table view data source
     
