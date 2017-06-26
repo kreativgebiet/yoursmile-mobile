@@ -52,9 +52,9 @@ class FeedTableViewCell: UITableViewCell {
         selfieImageTap.numberOfTapsRequired = 2
         self.selfieImageView.addGestureRecognizer(selfieImageTap)
         
-        let likeViewTap = UITapGestureRecognizer(target: self, action: #selector(handleLikeViewTapped))
+        let likeViewTap = UITapGestureRecognizer(target: self, action: #selector(handleDislikeTap))
         self.likesTapView.addGestureRecognizer(likeViewTap)
-        self.likesImageView.isUserInteractionEnabled = true
+        self.likesImageView.isUserInteractionEnabled = false
         
         self.transparentProjectView.callback = { (project: Project) in
             if self.projectCallback != nil {
@@ -132,6 +132,8 @@ class FeedTableViewCell: UITableViewCell {
         if self.donation.userLiked! {
             let numberOfLikes = Int(self.donation.numberOfLikes!)!
             self.handleLike(numberOfLikes-1)
+        } else {
+            handleLikeViewTapped()
         }
         
     }
