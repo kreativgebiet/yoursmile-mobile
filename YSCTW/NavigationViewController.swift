@@ -65,9 +65,16 @@ class NavigationViewController: UINavigationController {
             
         } else if segue.identifier == "profileSegue" {
             let destination = segue.destination as! ProfileViewController
-            let donation = sender as! Upload
+            
             destination.dataManager = self.dataManager
-            destination.currentProfile = donation.profile
+            
+            if let donation = sender as? Upload {
+                destination.currentProfile = donation.profile
+            } else if let profile = sender as? Profile {
+                destination.currentProfile = profile
+            }
+            
+            
         } else if segue.identifier == "projectSegue" {
             
             let rootViewController = self.viewControllers[0] as!TabBarViewController

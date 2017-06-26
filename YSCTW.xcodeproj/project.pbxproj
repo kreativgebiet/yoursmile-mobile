@@ -156,6 +156,12 @@
 		A1D86BF61EFC31FE00D69F37 /* UploadsListFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BF51EFC31FE00D69F37 /* UploadsListFlowLayout.swift */; };
 		A1D86BF91EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BF71EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift */; };
 		A1D86BFA1EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D86BF81EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib */; };
+		A1D86BFD1EFC56A500D69F37 /* FollowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BFB1EFC56A500D69F37 /* FollowerViewController.swift */; };
+		A1D86BFE1EFC56A600D69F37 /* FollowerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D86BFC1EFC56A500D69F37 /* FollowerViewController.xib */; };
+		A1D86C011EFD002C00D69F37 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86BFF1EFD002C00D69F37 /* ImageTableViewCell.swift */; };
+		A1D86C021EFD002C00D69F37 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D86C001EFD002C00D69F37 /* ImageTableViewCell.xib */; };
+		A1D86C051F00F7F000D69F37 /* SupportedProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D86C031F00F7EF00D69F37 /* SupportedProjectsViewController.swift */; };
+		A1D86C061F00F7F000D69F37 /* SupportedProjectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D86C041F00F7EF00D69F37 /* SupportedProjectsViewController.xib */; };
 		A1DAEFD01DDC92380010146C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029171DDB232000633343 /* SwiftyJSON.framework */; };
 		A1DAEFD11DDC923C0010146C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11029151DDB231E00633343 /* Alamofire.framework */; };
 		A1DB37741E094D1F003EAFCF /* SectorListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DB37731E094D1F003EAFCF /* SectorListManager.swift */; };
@@ -381,6 +387,12 @@
 		A1D86BF51EFC31FE00D69F37 /* UploadsListFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadsListFlowLayout.swift; sourceTree = "<group>"; };
 		A1D86BF71EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedSimpleCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1D86BF81EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedSimpleCollectionViewCell.xib; sourceTree = "<group>"; };
+		A1D86BFB1EFC56A500D69F37 /* FollowerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerViewController.swift; sourceTree = "<group>"; };
+		A1D86BFC1EFC56A500D69F37 /* FollowerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowerViewController.xib; sourceTree = "<group>"; };
+		A1D86BFF1EFD002C00D69F37 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		A1D86C001EFD002C00D69F37 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		A1D86C031F00F7EF00D69F37 /* SupportedProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedProjectsViewController.swift; sourceTree = "<group>"; };
+		A1D86C041F00F7EF00D69F37 /* SupportedProjectsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupportedProjectsViewController.xib; sourceTree = "<group>"; };
 		A1DB37731E094D1F003EAFCF /* SectorListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectorListManager.swift; sourceTree = "<group>"; };
 		A1DB37751E098368003EAFCF /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		A1DB37771E098D75003EAFCF /* ProfileModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProfileModel+CoreDataClass.swift"; path = "../ProfileModel+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -617,6 +629,10 @@
 				A19677821DEC929400C1CBBC /* StripePaymentViewController.swift */,
 				A1EF7FA61E1E4C2F003C92E4 /* ResetPasswordViewController.swift */,
 				A18A2DAD1E377F9E004D1F67 /* OnboardingViewController.swift */,
+				A1D86BFB1EFC56A500D69F37 /* FollowerViewController.swift */,
+				A1D86BFC1EFC56A500D69F37 /* FollowerViewController.xib */,
+				A1D86C031F00F7EF00D69F37 /* SupportedProjectsViewController.swift */,
+				A1D86C041F00F7EF00D69F37 /* SupportedProjectsViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -818,6 +834,8 @@
 				A1D86BEC1EFACD6600D69F37 /* FeedCollectionViewCell.xib */,
 				A1D86BF71EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift */,
 				A1D86BF81EFC472A00D69F37 /* FeedSimpleCollectionViewCell.xib */,
+				A1D86BFF1EFD002C00D69F37 /* ImageTableViewCell.swift */,
+				A1D86C001EFD002C00D69F37 /* ImageTableViewCell.xib */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -990,6 +1008,8 @@
 				A16407191DDF181800BA1853 /* Gotham-Medium.otf in Resources */,
 				A1CF0C9C1DD22DBE002C4562 /* CommentTableViewCell.xib in Resources */,
 				A135467A1DDE086000931139 /* DonationDescriptionLogoView.xib in Resources */,
+				A1D86C061F00F7F000D69F37 /* SupportedProjectsViewController.xib in Resources */,
+				A1D86BFE1EFC56A600D69F37 /* FollowerViewController.xib in Resources */,
 				A16407221DDF181800BA1853 /* Gotham-Thin.otf in Resources */,
 				A11028FB1DD5C01C00633343 /* FeedTableViewCell.xib in Resources */,
 				A16407201DDF181800BA1853 /* Gotham-Ultra.otf in Resources */,
@@ -998,6 +1018,7 @@
 				A164071B1DDF181800BA1853 /* Gotham-BoldItalic.otf in Resources */,
 				A11028F11DD50EA200633343 /* AddProjectButton.xib in Resources */,
 				A161B55A1DEDA06C00356514 /* CardPaymentView.xib in Resources */,
+				A1D86C021EFD002C00D69F37 /* ImageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,6 +1113,7 @@
 				A18A2DAE1E377F9E004D1F67 /* OnboardingViewController.swift in Sources */,
 				A11028ED1DD4DA2C00633343 /* DonationViewController.swift in Sources */,
 				A11028FF1DD5E23500633343 /* AccountPreferencesViewController.swift in Sources */,
+				A1D86BFD1EFC56A500D69F37 /* FollowerViewController.swift in Sources */,
 				A1DB37761E098368003EAFCF /* ErrorManager.swift in Sources */,
 				A1F8D8F91DD3AA2400AFAB4F /* HelperFunctions.swift in Sources */,
 				A1D6F4D71DE4889200A0A8F9 /* LoadingScreen.swift in Sources */,
@@ -1121,6 +1143,7 @@
 				A1D6F4CE1DE469F400A0A8F9 /* DeleteAccountViewController.swift in Sources */,
 				A135467C1DDE0FFF00931139 /* DonationSuccessOverlay.swift in Sources */,
 				A1DB377E1E0A95B4003EAFCF /* ProjectsDownloadOperation.swift in Sources */,
+				A1D86C051F00F7F000D69F37 /* SupportedProjectsViewController.swift in Sources */,
 				A12A45811DD081FF002977DF /* LoginViewController.swift in Sources */,
 				A13546721DDDEC7900931139 /* PaymentSelectionView.swift in Sources */,
 				A1BEDAB21E36404A0002EABA /* PickerView.swift in Sources */,
@@ -1128,6 +1151,7 @@
 				A1DB37851E0A99AF003EAFCF /* UploadsDownloadOperation.swift in Sources */,
 				A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */,
 				A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */,
+				A1D86C011EFD002C00D69F37 /* ImageTableViewCell.swift in Sources */,
 				A1D86BE91EFAC41100D69F37 /* StringHelperFunctions.swift in Sources */,
 				A15157A41E8D1FAF00C0498D /* DonationSlider.swift in Sources */,
 				A1D6F4C81DE3725500A0A8F9 /* LanguageSelectionViewController.swift in Sources */,

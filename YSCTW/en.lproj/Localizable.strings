@@ -63,6 +63,8 @@
 "SUBSCRIBER" = "FOLLOWER";
 "SUBSCRIBE" = "Subscribe";
 
+"FOLLOWERS" = "Followers";
+
 //Errors
 "NAME_ERROR" = "Please enter your name";
 "MAIL_ERROR" = "Please enter a valid E-mail address";
@@ -100,6 +102,7 @@
 "FEE_INFO" = "*plus %@€ fees";
 "PROJECT_WORD" = "project";
 "PROJECTS_WORD" = "projects";
+"SUPPORTED_PROJECTS" = "Supported Projects";
 
 //Overlay
 "THANK_YOU" = "Thank you";

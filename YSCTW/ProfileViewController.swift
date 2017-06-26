@@ -16,12 +16,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet weak var profileHeaderView: ProfileHeaderView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var profileViewHeightConstraint: NSLayoutConstraint!
+    
     var initialProfileViewHeightConstraint: CGFloat!
     var donations: [Upload]?
     var profileToUse: Profile!
     var profileHeaderBarView: ProfileHeaderBarView!
+    var follower: [ProfileRelation]?
+    var followerIds: [Int]?
     
     let minimumProfileHeaderHeight = 215.0 as CGFloat
     
@@ -80,11 +82,17 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         self.profileHeaderView.followerCallback = {
+            let vc = FollowerViewController(nibName: "FollowerViewController", bundle: nil)
+            vc.dataManager = self.dataManager
+            self.navigationController?.pushViewController(vc, animated: true)
             
+            vc.followerIds = self.followerIds!
         }
         
         self.profileHeaderView.followingCallback = {
-            
+            let vc = SupportedProjectsViewController(nibName: "SupportedProjectsViewController", bundle: nil)
+            vc.dataManager = self.dataManager
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         self.applyCollectionViewStyle()
@@ -148,11 +156,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.reloadUserData()
         
         self.dataManager?.followerForUserWith(id: self.idString(), { (relationProfiles) in
-            print(relationProfiles)
-            loadingScreen.removeFromSuperview()
-            let followerIds = relationProfiles.map({$0.userId})
             
-            if followerIds.contains(Int(self.userProfile.id)) {
+            self.follower = relationProfiles
+            
+            loadingScreen.removeFromSuperview()
+            self.followerIds = relationProfiles.map({$0.userId})
+            
+            if (self.followerIds?.contains(Int(self.userProfile.id)))! {
                 self.profileHeaderView.hideSubscribeButton()
                 self.profileViewHeightConstraint.constant = self.minimumProfileHeaderHeight
                 self.initialProfileViewHeightConstraint = self.minimumProfileHeaderHeight
@@ -386,7 +396,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.layoutIfNeeded()
             
             return cell;
-            
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SimpleCollectionViewCell", for: indexPath) as! FeedSimpleCollectionViewCell
             

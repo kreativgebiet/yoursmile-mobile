@@ -63,6 +63,8 @@
 "SUBSCRIBER" = "FOLLOWER";
 "SUBSCRIBE" = "Abonnieren";
 
+"FOLLOWERS" = "Followers";
+
 //Errors
 "NAME_ERROR" = "Bitte deinen Namen angeben";
 "MAIL_ERROR" = "Bitte eine gültige E-Mail Adresse angeben";
@@ -100,6 +102,7 @@
 "FEE_INFO" = "*zzgl. %@€ Transaktionsgebühren";
 "PROJECT_WORD" = "Projekt";
 "PROJECTS_WORD" = "Projekte";
+"SUPPORTED_PROJECTS" = "Unterstützte Projekte";
 
 //Overlay
 "THANK_YOU" = "Vielen Dank";

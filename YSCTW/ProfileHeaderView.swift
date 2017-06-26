@@ -131,6 +131,9 @@ class ProfileHeaderView: UIView {
         let subscribedAttributedString = attributedTexts(text1: "\(profileToUse.followingCount!) ", attribs1: attr1, text2: "SUBSCRIBED".localized, attribs2: attr2)
         self.subscribedLabel.attributedText = subscribedAttributedString
         
+        self.subscribedLabel.isUserInteractionEnabled = true
+        self.subscriberLabel.isUserInteractionEnabled = true
+        
         let subscriberTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleSubscriberTapped))
         self.subscriberLabel.addGestureRecognizer(subscriberTapGesture)
         
