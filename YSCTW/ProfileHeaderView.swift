@@ -38,6 +38,8 @@ class ProfileHeaderView: UIView {
     public var followerCallback: (() -> Void)?
     public var followingCallback: (() -> Void)?
     
+    public var supportedProjects: (() -> Void)?
+    
     public var numberOfSupportedProjects: Int {
         
         get {
@@ -67,6 +69,10 @@ class ProfileHeaderView: UIView {
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleImageTapped))
         self.profileImageView.addGestureRecognizer(tapGesture)
         self.profileImageView.isUserInteractionEnabled = true
+        
+        let supportedProjectsGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleSupportedProjectsTapped))
+        self.projectNumberLabel.addGestureRecognizer(supportedProjectsGesture)
+        self.projectNumberLabel.isUserInteractionEnabled = true
         
         self.backgroundImageView.alpha = 0.2
         
@@ -178,6 +184,10 @@ class ProfileHeaderView: UIView {
         if self.profile == nil {
             self.cameraCallback!()
         }
+    }
+    
+    func handleSupportedProjectsTapped() {
+        self.supportedProjects!()
     }
     
     func handleSubscriberTapped() {

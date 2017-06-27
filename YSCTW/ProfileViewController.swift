@@ -90,6 +90,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         self.profileHeaderView.followingCallback = {
+            let vc = FollowerViewController(nibName: "FollowerViewController", bundle: nil)
+            vc.dataManager = self.dataManager
+            self.navigationController?.pushViewController(vc, animated: true)
+//TODO:
+            vc.followerIds = self.followerIds!
+        }
+        
+        self.profileHeaderView.supportedProjects = {
             let vc = SupportedProjectsViewController(nibName: "SupportedProjectsViewController", bundle: nil)
             vc.dataManager = self.dataManager
             self.navigationController?.pushViewController(vc, animated: true)

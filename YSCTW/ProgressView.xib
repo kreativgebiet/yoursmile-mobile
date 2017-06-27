@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,12 +26,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewN-cy-6HY">
+                    <rect key="frame" x="0.0" y="50" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="qoS-o6-WYJ"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ziel zu 80% erreicht." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noL-Me-Mlj">
+                    <rect key="frame" x="10" y="18.5" width="167.5" height="14.5"/>
                     <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PGW-8H-fiR">
+                    <rect key="frame" x="197.5" y="20.5" width="157.5" height="11"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="lJe-KW-kXF"/>
                     </constraints>
@@ -38,10 +50,13 @@
             <constraints>
                 <constraint firstItem="noL-Me-Mlj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="DTy-Mi-GKl"/>
                 <constraint firstItem="PGW-8H-fiR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="10" id="Ysh-oH-2XY"/>
+                <constraint firstAttribute="trailing" secondItem="ewN-cy-6HY" secondAttribute="trailing" id="Yz6-Pt-IVR"/>
+                <constraint firstAttribute="bottom" secondItem="ewN-cy-6HY" secondAttribute="bottom" id="ZBY-Wi-moI"/>
                 <constraint firstItem="noL-Me-Mlj" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-10" id="g4i-TH-mKv"/>
                 <constraint firstAttribute="trailing" secondItem="PGW-8H-fiR" secondAttribute="trailing" constant="20" id="jE0-sT-wUt"/>
                 <constraint firstItem="noL-Me-Mlj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="lHQ-4R-DIp"/>
                 <constraint firstItem="PGW-8H-fiR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pZU-vx-tWY"/>
+                <constraint firstItem="ewN-cy-6HY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="q4f-kq-i96"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="33.5" y="127.5"/>

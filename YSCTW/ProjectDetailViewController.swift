@@ -20,16 +20,35 @@ class ProjectDetailViewController: UIViewController {
     
     @IBOutlet weak var progressView: ProgressView!
     
+    @IBOutlet weak var categoryInfoView: ProjectInfoView!
+    @IBOutlet weak var countryInfoView: ProjectInfoView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.categoryInfoView.textLabel.text = self.project.sector
+        self.countryInfoView.textLabel.text = self.project.country
+        
+        self.categoryInfoView.iconImageView.image = #imageLiteral(resourceName: "filter-icon")
+        self.countryInfoView.iconImageView.image = #imageLiteral(resourceName: "world-icon")
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         
-        let attrString = NSMutableAttributedString(string: (project?.projectDescription)!)
+        let mediumFont = [NSFontAttributeName: UIFont(name: "Gotham-Medium", size: 14.0)!]
+        let bookFont = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 14.0)!]
+        
+        let titleAttrString = NSMutableAttributedString(string: (project?.projectName)! + "\n\n", attributes: mediumFont)
+        titleAttrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, titleAttrString.length))
+        
+        let attrString = NSMutableAttributedString(string: (project?.projectDescription)!, attributes: bookFont)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         
-        self.projectDescriptionLabel.attributedText = attrString
+        let combination = NSMutableAttributedString()
+        combination.append(titleAttrString)
+        combination.append(attrString)
+        
+        self.projectDescriptionLabel.attributedText = combination
         let imageUrl = URL(string: project.imageURL)!
         self.projectImageView.af_setImage(withURL: imageUrl)
         
