@@ -160,14 +160,21 @@ class APIClient: NSObject {
             let descriptionText = uploadModel.descriptionText!
             let projectIds = uploadModel.projectIds
             
+            let json = "{1:50,2:60}"
+            
+            
             Alamofire.upload(multipartFormData: { multipartFormData in
                 
                 multipartFormData.append(imageData!, withName: "upload[image]", fileName: "test", mimeType: "image/jpeg")
                 multipartFormData.append(descriptionText.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")
                 
-                for projectId in projectIds {
-                    multipartFormData.append("\(projectId) : \(1)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][]")
-                }
+//                for projectId in projectIds {
+//                    multipartFormData.append("\(projectId) : \(50)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects]{}")
+//                    
+//                }
+//                multipartFormData.append(jsonData, withName: "upload[supported_projects]")
+                multipartFormData.append("\(50)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][1]")
+                multipartFormData.append("\(60)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][2]")
                 
                 }, to: requestURL, method: .post, headers: token,
                    encodingCompletion: { encodingResult in
