@@ -30,12 +30,6 @@
 
 #import "AppDelegate.h"
 
-#import <OneSignal/OneSignal.h>
-
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
 
 
@@ -43,12 +37,38 @@
     
     [OneSignal setLogLevel:ONE_S_LL_VERBOSE visualLevel:ONE_S_LL_WARN];
     
+    OneSignal.inFocusDisplayType = OSNotificationDisplayTypeInAppAlert;
+    
+    id openNotificationHandler = ^(OSNotificationOpenedResult *result) {
+        NSLog(@"OSNotificationOpenedResult: %@", result);
+    };
+    
+    
+    [OneSignal setSubscription:true];
+    
     [OneSignal initWithLaunchOptions:launchOptions
                                appId:@"b2f7f966-d8cc-11e4-bed1-df8f05be55ba"
-            handleNotificationAction:^(OSNotificationOpenedResult *result) {}
-                            settings:@{kOSSettingsKeyAutoPrompt: @false}];
+            handleNotificationAction:openNotificationHandler
+                            settings:@{kOSSettingsKeyAutoPrompt: @false,
+                                       kOSSettingsKeyInAppLaunchURL: @false}];
+    
+    [OneSignal promptLocation];
+    [OneSignal sendTag:@"someKey1122" value:@"03222017"];
+    
+    [OneSignal addPermissionObserver:self];
+    [OneSignal addSubscriptionObserver:self];
     
     return YES;
+}
+
+- (void) onOSSubscriptionChanged:(OSSubscriptionStateChanges*)stateChanges {
+    NSLog(@"onOSSubscriptionChanged: %@", stateChanges);
+    NSLog(@"HERE");
+}
+
+- (void) onOSPermissionChanged:(OSPermissionStateChanges*)stateChanges {
+    NSLog(@"onOSPermissionChanged: %@", stateChanges);
+    NSLog(@"HERE");
 }
 
 

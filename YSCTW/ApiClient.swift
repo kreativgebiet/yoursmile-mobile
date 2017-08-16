@@ -166,7 +166,7 @@ class APIClient: NSObject {
                 multipartFormData.append(descriptionText.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")
                 
                 for projectId in projectIds {
-                    multipartFormData.append("\(projectId)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[project_ids][]")
+                    multipartFormData.append("\(projectId) : \(1)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][]")
                 }
                 
                 }, to: requestURL, method: .post, headers: token,

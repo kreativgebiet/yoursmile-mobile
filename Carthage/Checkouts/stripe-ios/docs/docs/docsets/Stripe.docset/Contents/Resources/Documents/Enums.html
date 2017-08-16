@@ -100,6 +100,9 @@
                 <a class="nav-group-task-link" href="Classes/STPCustomer.html">STPCustomer</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/STPCustomerContext.html">STPCustomerContext</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/STPCustomerDeserializer.html">STPCustomerDeserializer</a>
               </li>
               <li class="nav-group-task">
@@ -122,6 +125,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/STPPaymentResult.html">STPPaymentResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/STPRedirectContext.html">STPRedirectContext</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/STPShippingAddressViewController.html">STPShippingAddressViewController</a>
@@ -194,6 +200,9 @@
                 <a class="nav-group-task-link" href="Enums/STPPaymentStatus.html">STPPaymentStatus</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums.html#/c:@E@STPRedirectContextState">STPRedirectContextState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/STPShippingStatus.html">STPShippingStatus</a>
               </li>
               <li class="nav-group-task">
@@ -229,6 +238,9 @@
                 <a class="nav-group-task-link" href="Protocols/STPBackendAPIAdapter.html">STPBackendAPIAdapter</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/STPEphemeralKeyProvider.html">STPEphemeralKeyProvider</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/STPFormEncodable.html">STPFormEncodable</a>
               </li>
               <li class="nav-group-task">
@@ -255,16 +267,28 @@
             <a class="nav-group-name-link" href="Type Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBackendAPIAdapter.h@T@STPCustomerCompletionBlock">STPCustomerCompletionBlock</a>
+                <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBlocks.h@T@STPCustomerCompletionBlock">STPCustomerCompletionBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBlocks.h@T@STPErrorBlock">STPErrorBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBlocks.h@T@STPFileCompletionBlock">STPFileCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBlocks.h@T@STPJSONResponseCompletionBlock">STPJSONResponseCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Type Definitions.html#/c:STPRedirectContext.h@T@STPRedirectContextCompletionBlock">STPRedirectContextCompletionBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBlocks.h@T@STPShippingMethodsCompletionBlock">STPShippingMethodsCompletionBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBlocks.h@T@STPSourceCompletionBlock">STPSourceCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBlocks.h@T@STPSourceProtocolCompletionBlock">STPSourceProtocolCompletionBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Type Definitions.html#/c:STPBlocks.h@T@STPTokenCompletionBlock">STPTokenCompletionBlock</a>
@@ -304,7 +328,6 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>What set of billing address information you need to collect from your user.</p>
-
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     If the user is from a country that does not use zip/postal codes,
@@ -368,7 +391,7 @@ the user may not be asked for one regardless of this setting.
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPBlocks.h#L17-L27">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPBlocks.h#L21-L31">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -404,7 +427,7 @@ the user may not be asked for one regardless of this setting.
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPBlocks.h#L32-L41">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPBlocks.h#L36-L45">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -440,7 +463,7 @@ the user may not be asked for one regardless of this setting.
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPBlocks.h#L46-L59">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPBlocks.h#L50-L63">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -542,6 +565,15 @@ the user may not be asked for one regardless of this setting.
                       <div class="abstract">
                         <p>These fields indicate whether a card field represents a valid value, invalid value, or incomplete value.</p>
 
+<ul>
+<li><p>STPCardValidationStateValid: The field&rsquo;s contents are valid. For example, a valid, 16-digit card number.
+Note that valid values may not be complete. For example: a US Zip code can be 5 or 9 digits. A 5-digit code
+is Valid, but more text could be entered to transition to incomplete again. American Express CVC codes
+can be 3 or 4 digits and both will be treated as Valid.</p></li>
+<li><p>STPCardValidationStateInvalid: The field&rsquo;s contents are invalid. For example, an expiration date of <q>13/42</q>.</p></li>
+<li><p>STPCardValidationStateIncomplete: The field&rsquo;s contents are not yet valid, but could be by typing additional characters. For example, a CVC of <q>1</q>.</p></li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -557,7 +589,7 @@ the user may not be asked for one regardless of this setting.
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCardValidationState.h#L14-L18">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCardValidationState.h#L23-L27">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -590,9 +622,60 @@ the user may not be asked for one regardless of this setting.
                           <pre class="highlight"><code><span class="k">enum</span> <span class="n">STPPaymentMethodType</span> <span class="o">:</span> <span class="n">NSUInteger</span> <span class="p">{}</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">struct</span> <span class="kt">STPPaymentMethodType</span> <span class="p">:</span> <span class="kt">OptionSet</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPPaymentMethod.h#L14-L29">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@STPRedirectContextState"></a>
+                    <a name="//apple_ref/objc/Enum/STPRedirectContextState" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@STPRedirectContextState">STPRedirectContextState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Possible states for the redirect context to be in</p>
+
+<ul>
+<li>STPRedirectContextStateNotStarted: Initialized, but redirect not started</li>
+<li>STPRedirectContextStateInProgress: Redirect is in progress</li>
+<li>STPRedirectContextStateCancelled: Redirect has been cancelled programmatically before completing</li>
+<li>STPRedirectContextStateCompleted: Redirect has completed.</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">STPRedirectContextState</span> <span class="o">:</span> <span class="n">NSUInteger</span> <span class="p">{}</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">enum</span> <span class="kt">STPRedirectContextState</span> <span class="p">:</span> <span class="kt">UInt</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPRedirectContext.h#L22-L27">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -736,7 +819,7 @@ the user may not be asked for one regardless of this setting.
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPSource.h#L68-L78">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPSource.h#L68-L79">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -827,8 +910,8 @@ the user may not be asked for one regardless of this setting.
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2017-03-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2017 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2017-07-27)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

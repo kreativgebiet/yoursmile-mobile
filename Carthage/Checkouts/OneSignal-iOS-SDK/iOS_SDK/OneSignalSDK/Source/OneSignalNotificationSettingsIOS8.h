@@ -30,8 +30,7 @@
 
 #import "OneSignalNotificationSettings.h"
 
-#define NOTIFICATION_TYPE_ALL 7
-
+// Used for iOS 9 & 8
 @interface OneSignalNotificationSettingsIOS8 : NSObject <OneSignalNotificationSettings>
 
 @end

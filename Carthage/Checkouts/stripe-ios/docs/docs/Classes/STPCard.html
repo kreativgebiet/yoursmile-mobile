@@ -101,6 +101,9 @@
                 <a class="nav-group-task-link" href="../Classes/STPCustomer.html">STPCustomer</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPCustomerContext.html">STPCustomerContext</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPCustomerDeserializer.html">STPCustomerDeserializer</a>
               </li>
               <li class="nav-group-task">
@@ -123,6 +126,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPPaymentResult.html">STPPaymentResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/STPRedirectContext.html">STPRedirectContext</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/STPShippingAddressViewController.html">STPShippingAddressViewController</a>
@@ -195,6 +201,9 @@
                 <a class="nav-group-task-link" href="../Enums/STPPaymentStatus.html">STPPaymentStatus</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums.html#/c:@E@STPRedirectContextState">STPRedirectContextState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/STPShippingStatus.html">STPShippingStatus</a>
               </li>
               <li class="nav-group-task">
@@ -230,6 +239,9 @@
                 <a class="nav-group-task-link" href="../Protocols/STPBackendAPIAdapter.html">STPBackendAPIAdapter</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/STPEphemeralKeyProvider.html">STPEphemeralKeyProvider</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/STPFormEncodable.html">STPFormEncodable</a>
               </li>
               <li class="nav-group-task">
@@ -256,16 +268,28 @@
             <a class="nav-group-name-link" href="../Type Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBackendAPIAdapter.h@T@STPCustomerCompletionBlock">STPCustomerCompletionBlock</a>
+                <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBlocks.h@T@STPCustomerCompletionBlock">STPCustomerCompletionBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBlocks.h@T@STPErrorBlock">STPErrorBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBlocks.h@T@STPFileCompletionBlock">STPFileCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBlocks.h@T@STPJSONResponseCompletionBlock">STPJSONResponseCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPRedirectContext.h@T@STPRedirectContextCompletionBlock">STPRedirectContextCompletionBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBlocks.h@T@STPShippingMethodsCompletionBlock">STPShippingMethodsCompletionBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBlocks.h@T@STPSourceCompletionBlock">STPSourceCompletionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBlocks.h@T@STPSourceProtocolCompletionBlock">STPSourceProtocolCompletionBlock</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Type Definitions.html#/c:STPBlocks.h@T@STPTokenCompletionBlock">STPTokenCompletionBlock</a>
@@ -289,7 +313,12 @@
 
                 </div>
               </div>
-            <p>Representation of a user&rsquo;s credit card details that have been tokenized with the Stripe API. - see: <a href="https://stripe.com/docs/api#cards">https://stripe.com/docs/api#cards</a></p>
+            <p>Representation of a user&rsquo;s credit card details that have been tokenized with the Stripe API</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <a href="https://stripe.com/docs/api#cards">https://stripe.com/docs/api#cards</a>
+
+</div>
 
           </div>
         </section>
@@ -345,7 +374,6 @@
                               <td>
                                 <div>
                                   <p>The Stripe ID of the card, e.g. <code>card_185iQx4JYtv6MPZKfcuXwkOx</code></p>
-
                                 </div>
                               </td>
                             </tr>
@@ -358,7 +386,6 @@
                               <td>
                                 <div>
                                   <p>The brand of the card (e.g. <q>Visa</q>. To obtain this enum value from a string, use <code>[STPCardBrand brandFromString:string]</code>;</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -371,7 +398,6 @@
                               <td>
                                 <div>
                                   <p>The last 4 digits of the card, e.g. 4242</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -384,7 +410,6 @@
                               <td>
                                 <div>
                                   <p>The card&rsquo;s expiration month, 1-indexed (i.e. 1 = January)</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -397,7 +422,6 @@
                               <td>
                                 <div>
                                   <p>The card&rsquo;s expiration year</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -410,7 +434,6 @@
                               <td>
                                 <div>
                                   <p>The card&rsquo;s funding type (credit, debit, or prepaid). To obtain this enum value from a string, use <code>[STPCardBrand fundingFromString:string]</code>.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -420,10 +443,9 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>an STPCard instance populated with the provided values.</p>
-
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L46-L51">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L48-L53">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -470,7 +492,6 @@
                               <td>
                                 <div>
                                   <p>a string representing the card&rsquo;s brand as returned from the Stripe API</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -480,10 +501,9 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>an enum value mapped to that string. If the string is unrecognized, returns STPCardBrandUnknown.</p>
-
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L60">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L62">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -530,7 +550,6 @@
                               <td>
                                 <div>
                                   <p>the brand you want to convert to a string</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -540,10 +559,9 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>A string representing the brand, suitable for displaying to a user.</p>
-
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L69">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L71">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -590,7 +608,6 @@
                               <td>
                                 <div>
                                   <p>a string representing the card&rsquo;s funding type as returned from the Stripe API</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -600,10 +617,9 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>an enum value mapped to that string. If the string is unrecognized, returns <code>STPCardFundingTypeOther</code>.</p>
-
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L78">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L80">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -633,7 +649,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L83">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L85">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -668,7 +684,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L88">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L90">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -703,7 +719,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L93">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L95">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -738,7 +754,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L98">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L100">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -773,7 +789,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L103">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L105">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -808,7 +824,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L108">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L110">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -836,9 +852,14 @@
                           <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/STPAddress.html">STPAddress</a></span> <span class="o">*</span><span class="n">address</span><span class="p">;</span></code></pre>
 
                         </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">address</span><span class="p">:</span> <span class="kt"><a href="../Classes/STPAddress.html">STPAddress</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L113">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L115">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -873,7 +894,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L118">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L120">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -908,7 +929,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L128">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L130">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -943,7 +964,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L133">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L135">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -978,7 +999,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L138">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L140">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1013,7 +1034,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L143">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L145">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1048,7 +1069,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L148">Show on GitHub</a>
+                        <a href="https://github.com/stripe/stripe-ios/tree/master/Stripe/PublicHeaders/STPCard.h#L150">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1061,8 +1082,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2017-03-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2017 <a class="link" href="https://stripe.com" target="_blank" rel="external">Stripe</a>. All rights reserved. (Last updated: 2017-07-27)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

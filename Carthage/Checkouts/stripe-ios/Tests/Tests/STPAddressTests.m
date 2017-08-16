@@ -8,7 +8,10 @@
 
 #import <XCTest/XCTest.h>
 #import <AddressBook/AddressBook.h>
+#import <PassKit/PassKit.h>
+#import <Contacts/Contacts.h>
 #import "STPAddress.h"
+#import "STPFixtures.h"
 
 @interface STPAddressTests : XCTestCase
 
@@ -16,7 +19,134 @@
 
 @implementation STPAddressTests
 
-- (void)testInit {
+- (void)testInitWithPKContact_complete {
+    PKContact *contact = [PKContact new];
+    {
+        NSPersonNameComponents *name = [NSPersonNameComponents new];
+        name.givenName = @"John";
+        name.familyName = @"Doe";
+        contact.name = name;
+
+        contact.emailAddress = @"foo@example.com";
+        contact.phoneNumber = [CNPhoneNumber phoneNumberWithStringValue:@"888-555-1212"];
+
+        CNMutablePostalAddress *address = [CNMutablePostalAddress new];
+        address.street = @"55 John St";
+        address.city = @"New York";
+        address.state = @"NY";
+        address.postalCode = @"10002";
+        address.ISOCountryCode = @"US";
+        address.country = @"United States";
+        contact.postalAddress = address.copy;
+    }
+
+    STPAddress *address = [[STPAddress alloc] initWithPKContact:contact];
+    XCTAssertEqualObjects(@"John Doe", address.name);
+    XCTAssertEqualObjects(@"8885551212", address.phone);
+    XCTAssertEqualObjects(@"foo@example.com", address.email);
+    XCTAssertEqualObjects(@"55 John St", address.line1);
+    XCTAssertEqualObjects(@"New York", address.city);
+    XCTAssertEqualObjects(@"NY", address.state);
+    XCTAssertEqualObjects(@"10002", address.postalCode);
+    XCTAssertEqualObjects(@"US", address.country);
+}
+
+- (void)testInitWithPKContact_partial {
+    PKContact *contact = [PKContact new];
+    {
+        NSPersonNameComponents *name = [NSPersonNameComponents new];
+        name.givenName = @"John";
+        contact.name = name;
+
+        CNMutablePostalAddress *address = [CNMutablePostalAddress new];
+        address.state = @"VA";
+        contact.postalAddress = address.copy;
+    }
+
+    STPAddress *address = [[STPAddress alloc] initWithPKContact:contact];
+    XCTAssertEqualObjects(@"John", address.name);
+    XCTAssertNil(address.phone);
+    XCTAssertNil(address.email);
+    XCTAssertNil(address.line1);
+    XCTAssertNil(address.city);
+    XCTAssertEqualObjects(@"VA", address.state);
+    XCTAssertNil(address.postalCode);
+    XCTAssertNil(address.country);
+}
+
+- (void)testInitWithCNContact_complete {
+    CNMutableContact *contact = [CNMutableContact new];
+    {
+        contact.givenName = @"John";
+        contact.familyName = @"Doe";
+
+        contact.emailAddresses = @[
+                                   [CNLabeledValue labeledValueWithLabel:CNLabelHome
+                                                                   value:@"foo@example.com"],
+                                   [CNLabeledValue labeledValueWithLabel:CNLabelWork
+                                                                   value:@"bar@example.com"],
+
+
+                                   ];
+
+        contact.phoneNumbers = @[
+                                 [CNLabeledValue labeledValueWithLabel:CNLabelHome
+                                                                 value:[CNPhoneNumber phoneNumberWithStringValue:@"888-555-1212"]],
+                                 [CNLabeledValue labeledValueWithLabel:CNLabelWork
+                                                                 value:[CNPhoneNumber phoneNumberWithStringValue:@"555-555-5555"]],
+
+
+                                 ];
+
+        CNMutablePostalAddress *address = [CNMutablePostalAddress new];
+        address.street = @"55 John St";
+        address.city = @"New York";
+        address.state = @"NY";
+        address.postalCode = @"10002";
+        address.ISOCountryCode = @"US";
+        address.country = @"United States";
+        contact.postalAddresses = @[
+                                    [CNLabeledValue labeledValueWithLabel:CNLabelHome
+                                                                    value:address],
+                                    ];
+    }
+
+    STPAddress *address = [[STPAddress alloc] initWithCNContact:contact];
+    XCTAssertEqualObjects(@"John Doe", address.name);
+    XCTAssertEqualObjects(@"8885551212", address.phone);
+    XCTAssertEqualObjects(@"foo@example.com", address.email);
+    XCTAssertEqualObjects(@"55 John St", address.line1);
+    XCTAssertEqualObjects(@"New York", address.city);
+    XCTAssertEqualObjects(@"NY", address.state);
+    XCTAssertEqualObjects(@"10002", address.postalCode);
+    XCTAssertEqualObjects(@"US", address.country);
+}
+
+- (void)testInitWithCNContact_partial {
+    CNMutableContact *contact = [CNMutableContact new];
+    {
+        contact.givenName = @"John";
+
+        CNMutablePostalAddress *address = [CNMutablePostalAddress new];
+        address.state = @"VA";
+        contact.postalAddresses = @[
+                                    [CNLabeledValue labeledValueWithLabel:CNLabelHome
+                                                                    value:address],
+                                    ];
+    }
+
+    STPAddress *address = [[STPAddress alloc] initWithCNContact:contact];
+    XCTAssertEqualObjects(@"John", address.name);
+    XCTAssertNil(address.phone);
+    XCTAssertNil(address.email);
+    XCTAssertNil(address.line1);
+    XCTAssertNil(address.city);
+    XCTAssertEqualObjects(@"VA", address.state);
+    XCTAssertNil(address.postalCode);
+    XCTAssertNil(address.country);
+}
+
+- (void)testInitWithABRecord_complete {
     ABRecordRef record = ABPersonCreate();
     ABRecordSetValue(record, kABPersonFirstNameProperty, CFSTR("John"), nil);
     ABRecordSetValue(record, kABPersonLastNameProperty, CFSTR("Doe"), nil);
@@ -50,7 +180,7 @@
     XCTAssertEqualObjects(@"US", address.country);
 }
 
-- (void)testInit_partial {
+- (void)testInitWithABRecord_partial {
     ABRecordRef record = ABPersonCreate();
     ABRecordSetValue(record, kABPersonFirstNameProperty, CFSTR("John"), nil);
     ABMutableMultiValueRef addressRef = ABMultiValueCreateMutable(kABMultiDictionaryPropertyType);
@@ -205,6 +335,7 @@
 - (void)testContainsRequiredFieldsZip {
     STPAddress *address = [STPAddress new];
 
+    // nil country is treated as generic postal requirement
     XCTAssertFalse([address containsRequiredFields:STPBillingAddressFieldsZip]);
     address.country = @"IE"; //should pass for country which doesn't require zip/postal
     XCTAssertTrue([address containsRequiredFields:STPBillingAddressFieldsZip]);
@@ -300,6 +431,28 @@
     address.state = @"NY";
     address.postalCode = @"12345";
     XCTAssertTrue([address containsRequiredShippingAddressFields:PKAddressFieldAll]);
+}
+
+- (void)testShippingInfoForCharge {
+    STPAddress *address = [STPFixtures address];
+    PKShippingMethod *method = [[PKShippingMethod alloc] init];
+    method.label = @"UPS Ground";
+    NSDictionary *info = [STPAddress shippingInfoForChargeWithAddress:address
+                                                       shippingMethod:method];
+    NSDictionary *expected = @{
+                               @"address": @{
+                                       @"city": address.city,
+                                       @"country": address.country,
+                                       @"line1": address.line1,
+                                       @"line2": address.line2,
+                                       @"postal_code": address.postalCode,
+                                       @"state": address.state
+                                       },
+                               @"name": address.name,
+                               @"phone": address.phone,
+                               @"carrier": method.label,
+                               };
+    XCTAssertEqualObjects(expected, info);
 }
 
 @end
