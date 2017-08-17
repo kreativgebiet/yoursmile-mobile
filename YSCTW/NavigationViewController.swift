@@ -10,7 +10,7 @@ import UIKit
 
 class NavigationViewController: UINavigationController {
     
-    let dataManager = DataManager()
+    var dataManager = DataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class NavigationViewController: UINavigationController {
         self.navigationController?.navigationBar.barStyle = .black
         
         self.navigationBar.tintColor = .white
-        let rootViewController = self.viewControllers[0] as!TabBarViewController
+        let rootViewController = self.viewControllers[0] as! ProjectCategoryViewController
         rootViewController.dataManager = self.dataManager
     }
     
