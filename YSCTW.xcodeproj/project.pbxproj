@@ -100,6 +100,7 @@
 		A196777F1DEC85AD00C1CBBC /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A196777E1DEC85AD00C1CBBC /* Stripe.framework */; };
 		A19677831DEC929400C1CBBC /* StripePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19677821DEC929400C1CBBC /* StripePaymentViewController.swift */; };
 		A19A31B51DFEC13B0054BA3E /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */; };
+		A19E585E1F46186900118713 /* SelfieSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */; };
 		A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */; };
 		A1BEDAB21E36404A0002EABA /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BEDAB11E36404A0002EABA /* PickerView.swift */; };
 		A1BEDAB41E3640550002EABA /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BEDAB31E3640550002EABA /* PickerView.xib */; };
@@ -325,6 +326,7 @@
 		A196777E1DEC85AD00C1CBBC /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		A19677821DEC929400C1CBBC /* StripePaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripePaymentViewController.swift; sourceTree = "<group>"; };
 		A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieSelectionViewController.swift; sourceTree = "<group>"; };
 		A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
 		A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropNavigationController.swift; sourceTree = "<group>"; };
 		A1BEDAB11E36404A0002EABA /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 				A1D86C031F00F7EF00D69F37 /* SupportedProjectsViewController.swift */,
 				A1D86C041F00F7EF00D69F37 /* SupportedProjectsViewController.xib */,
 				A17B8E5A1F44C3F400C48BC6 /* ProjectCategoryViewController.swift */,
+				A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1135,6 +1138,7 @@
 				A1D86BF91EFC472A00D69F37 /* FeedSimpleCollectionViewCell.swift in Sources */,
 				A1DB378D1E0A9DF5003EAFCF /* DeleteUserOperation.swift in Sources */,
 				A110290D1DD9EDA300633343 /* ProjectView.swift in Sources */,
+				A19E585E1F46186900118713 /* SelfieSelectionViewController.swift in Sources */,
 				A1D86BEF1EFADC3B00D69F37 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				A15390AF1DD0F64100B7ADA0 /* PreferencesViewController.swift in Sources */,
 				A196777D1DEC6E8900C1CBBC /* UIImageExtension.swift in Sources */,

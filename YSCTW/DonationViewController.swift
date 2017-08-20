@@ -9,26 +9,23 @@
 import UIKit
 import PhotoCropEditor
 
-class DonationViewController: UIViewController, AddedProjectButtonDelegate, CropViewControllerDelegate {
+class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     
-    @IBOutlet weak var adjustImageView: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addProjectButton: AddProjectButton!
-    @IBOutlet weak var upperBlurView: UIVisualEffectView!
-    @IBOutlet weak var lowerBlurView: UIVisualEffectView!
+    @IBOutlet weak var projectContainerHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var projectsContainerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var selfieImageView: UIImageView!
     @IBOutlet weak var paymentSelectionView: PaymentSelectionView!
     @IBOutlet weak var selectedProjectsContainerView: UIView!
-    @IBOutlet weak var selfieImageViewHeightConstraint: NSLayoutConstraint!
     
-    public var selfieImage: UIImage?
     public var dataManager: DataManager?
     public var selectedProject: Project?
     
     var projects = [Project]()
     var supportedProjects = [Project]()
+    
+    var selfieContext: SelfieContext?
+    
+    var navController: NavigationViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,68 +78,30 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
         barButton.tintColor = .white
         self.navigationItem.rightBarButtonItem = barButton
         
-        self.descriptionLabel.text = "DONATION_DESCRIPTION".localized
+        guard let navC = self.navigationController as? NavigationViewController else {
+            return
+        }
+        
+        navController = navC
+        
+        self.dataManager = navController.dataManager
+        self.supportedProjects = navController.supportedProjects        
         
         if let project = self.selectedProject {
             self.supportedProjects.append(project)
+            navController.supportedProjects.append(project)
         }
         
         self.addProjectButton.callback = {
             self.addProjectButtonTapped()
         }
-
-        self.applyImageToImageView()
         
         self.selectedProjectsContainerView.backgroundColor = .clear
         
         self.selectedProjectsContainerView.setNeedsLayout()
         self.selectedProjectsContainerView.layoutIfNeeded()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(adjustTapped))
-        
-        self.adjustImageView.isUserInteractionEnabled = true
-        self.adjustImageView.addGestureRecognizer(tapGesture)
-        
         self.loadSupportedProjects()
-    }
-    
-    func applyImageToImageView() {
-        self.selfieImageView.image = self.selfieImage
-        let aspect = (self.selfieImage?.size.height)! / (self.selfieImage?.size.width)!
-        
-        self.selfieImageViewHeightConstraint.constant = aspect * self.view.frame.width
-    }
-    
-    // MARK: Button Handling
-    
-    func adjustTapped() {
-        
-        let controller = CropViewController()
-        
-        controller.delegate = self
-        controller.image = self.selfieImage
-        
-        let navController = ImageCropNavigationController(rootViewController: controller)
-        
-        self.present(navController, animated: true, completion: nil)
-    }
-    
-    func cropViewController(_ controller: CropViewController, didFinishCroppingImage image: UIImage) {
-        controller.dismiss(animated: true, completion: nil)
-        
-        self.selfieImage = image
-        self.applyImageToImageView()
-    }
-    
-    public func cropViewController(_ controller: CropViewController, didFinishCroppingImage image: UIImage, transform: CGAffineTransform, cropRect: CGRect) {
-        controller.dismiss(animated: true, completion: nil)
-        
-        self.selfieImage = image
-        self.applyImageToImageView()
-    }
-    
-    public func cropViewControllerDidCancel(_ controller: CropViewController) {
-        controller.dismiss(animated: true, completion: nil)
     }
     
     func proceedTapped() {
@@ -162,7 +121,14 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
             HelperFunctions.presentAlertViewfor(error: error)
             
         } else {
-            self.performSegue(withIdentifier: "donationDescriptionSegue", sender: self)
+            
+            
+            if selfieContext == SelfieContext.noSelfie {
+                self.performSegue(withIdentifier: "donationDescriptionSegue", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "cameraSegue", sender: self)
+            }
+            
         }
         
     }
@@ -173,6 +139,8 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
         
         viewController.supportCallback = { selectedSupportProject in
             self.supportedProjects.append(selectedSupportProject)
+            self.navController.supportedProjects.append(selectedSupportProject)
+
             self.loadSupportedProjects()
             
             _ = self.navigationController?.popToViewController(self, animated: true)
@@ -237,7 +205,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
             self.projectViews.append(projectView)
         }
         
-        self.projectsContainerHeightConstraint.constant = y
+        self.projectContainerHeightConstraint.constant = y
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
         
@@ -261,13 +229,13 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate, Crop
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "donationDescriptionSegue" {
-            let destination = segue.destination as! DonationDescriptionViewController
-            destination.selfieImage = self.selfieImage
-            destination.projects = self.supportedProjects
-            destination.payment = self.paymentSelectionView.selectedPayment
-            destination.dataManager = self.dataManager
+        //Segue to DonationDescriptionViewController and CameraViewController
+        guard let navController = self.navigationController as? NavigationViewController else {
+            return
         }
+        
+        navController.supportedProjects = self.supportedProjects
+        navController.selectedPayment = self.paymentSelectionView.selectedPayment
     }
 
 }

@@ -10,7 +10,10 @@ import UIKit
 
 class NavigationViewController: UINavigationController {
     
-    var dataManager = DataManager()
+    public var dataManager = DataManager()
+    public var selectedPayment = Payment.none
+    public var supportedProjects: [Project] = []
+    public var selfieContext = SelfieContext.none
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +92,12 @@ class NavigationViewController: UINavigationController {
             }
             
             destination.project = project
+        } else if segue.identifier == "donationSegue" {
+            let destination = segue.destination as! DonationViewController
+            let selfieSelectionViewController = sender as! SelfieSelectionViewController
+            
+//            destination.selfieContext = selfieSelectionViewController.selfieContext
+//            destination.supportedProjects.append(selfieSelectionViewController.project)
         }
         
     }

@@ -62,7 +62,14 @@ class ProjectCategoryViewController: UIViewController {
             viewController.projects = projects
             
             viewController.supportCallback = { selectedSupportProject in
-                _ = self.navigationController?.popToViewController(self, animated: true)
+                
+                guard let navController = self.navigationController as? NavigationViewController else {
+                    return
+                }
+                
+                navController.supportedProjects.append(selectedSupportProject)
+                
+                navController.performSegue(withIdentifier: "selfieSelectionSegue", sender: selectedSupportProject)
             }
             
             viewController.title = "PROJECTS".localized
@@ -72,6 +79,10 @@ class ProjectCategoryViewController: UIViewController {
                         
             self.navigationController?.pushViewController(viewController, animated: true)
         })
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
 

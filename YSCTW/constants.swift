@@ -39,6 +39,13 @@ let navigationBarGray = UIColor.init(white: 68.0/256.0, alpha: 1)
 let customMiddleGray = UIColor.init(white: 135.0/256.0, alpha: 1)
 
 let gray156 = UIColor.init(white: 156.0/256.0, alpha: 1)
+let gray221 = UIColor.init(white: 221.0/256.0, alpha: 1)
+
+enum SelfieContext {
+    case noSelfie
+    case withSelfie
+    case none
+}
 
 enum Payment {
     case none

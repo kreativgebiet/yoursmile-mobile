@@ -32,6 +32,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let navController = self.navigationController as? NavigationViewController else {
+            return
+        }
+        
         self.navBarLabel.text = "TAKE_PICTURE".localized
                 
         let devices = AVCaptureDevice.devices()
@@ -263,7 +267,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         if self.customCallback != nil {
             self.customCallback!(self.image!)
         } else {
-            self.performSegue(withIdentifier: "donationSegue", sender: self.selectedProject)
+            self.performSegue(withIdentifier: "cameraDonationDescriptionSegue", sender: self.selectedProject)
         }
         
     }
@@ -271,15 +275,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "donationSegue" {
-            let destinationVC = segue.destination as! DonationViewController
+        if segue.identifier == "cameraDonationDescriptionSegue" {
+            let destinationVC = segue.destination as! DonationDescriptionViewController
             destinationVC.selfieImage = self.image
-            destinationVC.dataManager = self.dataManager
-            
-            if let project = sender as? Project {
-                destinationVC.selectedProject = project
-            }
-            
         }
         
     }
