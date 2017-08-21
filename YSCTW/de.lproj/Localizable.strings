@@ -105,6 +105,7 @@
 "SUPPORTED_PROJECTS" = "Unterstützte Projekte";
 "DONATION_SUM" = "Gesamter Spendenbeitrag";
 "THANK_YOU" = "VIELEN DANK!";
+"DONATION_SUM_TEXT" = "Du hast %@€ gespendet";
 
 //Overlay
 "THANK_YOU" = "Vielen Dank";

@@ -33,8 +33,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
         
         self.navBarLabel.text = "TAKE_PICTURE".localized
-        
-        self.title = "DONATE".localized
                 
         let devices = AVCaptureDevice.devices()
         

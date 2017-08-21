@@ -42,7 +42,6 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             selectedProjectDonations[project.id] = 1
         }
         
-        showSum()
         
         donationSumDescriptionLabel.text = "DONATION_SUM".localized
                 
@@ -117,6 +116,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         self.selectedProjectsContainerView.setNeedsLayout()
         self.selectedProjectsContainerView.layoutIfNeeded()
         
+        showSum()
         self.loadSupportedProjects()
     }
     
@@ -272,8 +272,9 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     }
     
     func showSum() {
-        let sum = selectedProjectDonations.flatMap({Double($1)}).reduce(0, +)
+        let sum = selectedProjectDonations.flatMap({Float($1)}).reduce(0, +)
         donationSumLabel.text = "\(Int(sum))€"
+        navController.sum = sum
     }
     
     

@@ -12,6 +12,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     public var selfieImage: UIImage?
     
+    @IBOutlet weak var donationSumLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var selfieImageView: UIImageView!
@@ -32,7 +33,6 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         
         self.title = "DESCRIPTION".localized
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        
         self.view.backgroundColor = customLightGray
         
         self.containerView.layer.borderColor = customDarkerGray.cgColor
@@ -103,6 +103,14 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         } else {
             self.selfieImageView.image = #imageLiteral(resourceName: "handshake-icon")
         }
+        
+        guard let navController = self.navigationController as? NavigationViewController else {
+            return
+        }
+        
+        
+        self.donationSumLabel.text = "DONATION_SUM_TEXT".localized.replacingOccurrences(of: "%@", with: "\(Int(navController.sum))")
+        self.donationSumLabel.textColor = blue
         
         //disable back swipe
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
