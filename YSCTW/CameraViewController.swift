@@ -32,10 +32,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let navController = self.navigationController as? NavigationViewController else {
-            return
-        }
-        
         self.navBarLabel.text = "TAKE_PICTURE".localized
         
         self.title = "DONATE".localized

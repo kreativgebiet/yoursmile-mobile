@@ -10,8 +10,9 @@ import UIKit
 
 class DonationDescriptionViewController: UIViewController, UITextViewDelegate, FBSDKSharingDelegate, UIDocumentInteractionControllerDelegate {
     
-    public var selfieImage: UIImage!
+    public var selfieImage: UIImage?
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var selfieImageView: UIImageView!
     @IBOutlet weak var publishLabel: UILabel!
@@ -25,9 +26,9 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let navController = self.navigationController as? NavigationViewController else {
-            return
-        }
+        self.navigationController?.isNavigationBarHidden = true
+        
+        self.titleLabel.text = "THANK_YOU".localized
         
         self.title = "DESCRIPTION".localized
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
@@ -96,6 +97,12 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         self.view.addGestureRecognizer(tapGesture)
+        
+        if let image = self.selfieImage {
+            self.selfieImageView.image = image
+        } else {
+            self.selfieImageView.image = #imageLiteral(resourceName: "handshake-icon")
+        }
         
         //disable back swipe
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -234,11 +241,16 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     @IBAction func handleInstagramShare(_ sender: AnyObject) {
         
+        guard let image = self.selfieImage else {
+            return
+        }
+        
         let instagramURL = NSURL(string: "instagram://app")!
         if UIApplication.shared.canOpenURL(instagramURL as URL) {
             
+            
             let filePath = (NSTemporaryDirectory() as NSString).appendingPathComponent("InstagramImage.igo")
-            let overlayImage = self.selfieImage.addOverlay()
+            let overlayImage = image.addOverlay()
             let imageData = UIImageJPEGRepresentation(overlayImage.resizeImageTo(maxWidth: 600, maxHeight: 600), 1.0)
             
             do {
@@ -289,7 +301,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     
     func createFBSharePhotoContent() -> FBSDKSharePhotoContent {
         let sharePhoto = FBSDKSharePhoto.init()
-        sharePhoto.image = self.selfieImage.addOverlay()
+        sharePhoto.image = self.selfieImage?.addOverlay()
         sharePhoto.isUserGenerated = true
         sharePhoto.caption = self.descriptionTextField.text + " " + hastTag + " " + instagramURL + " " + websiteURL
         
