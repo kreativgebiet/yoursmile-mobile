@@ -26,6 +26,9 @@ class ProjectCategoryViewController: UIViewController {
         button2.setTitle(buttonTitle[1], for: .normal)
         button3.setTitle(buttonTitle[2], for: .normal)
         button4.setTitle(buttonTitle[3], for: .normal)
+        
+        topLabel.font = UIFont(name: "Zufo-Regular", size: 38)
+        topLabel.textColor = blue
     }
     
     override func viewWillAppear(_ animated: Bool) {

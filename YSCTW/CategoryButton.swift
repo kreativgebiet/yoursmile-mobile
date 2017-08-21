@@ -21,11 +21,12 @@ class CategoryButton: UIButton {
     }
     
     func layout() {
+        self.titleLabel?.font = UIFont(name: "Gotham-Medium", size: 18)
         self.backgroundColor = .white
-        self.setTitleColor(blue, for: .normal)
-        self.layer.cornerRadius = 5
-        self.layer.borderColor = gray156.cgColor
-        self.layer.borderWidth = 1
+        self.setTitleColor(gray156, for: .normal)
+        self.layer.cornerRadius = 4
+        self.layer.borderColor = gray221.cgColor
+        self.layer.borderWidth = 0.5
     }
 
 }

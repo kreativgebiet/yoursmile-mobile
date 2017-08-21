@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,25 +13,30 @@
         <array key="Gotham-Book.otf">
             <string>Gotham-Book</string>
         </array>
+        <array key="Gotham-Medium.otf">
+            <string>Gotham-Medium</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProjectCell" rowHeight="358" id="KGk-i7-Jjw" customClass="ProjectTableViewCell" customModule="YSCTW" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="358"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="329"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="357.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="328.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-AO-oKJ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-AO-oKJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="200" id="I8V-4e-kcB"/>
+                            <constraint firstAttribute="height" constant="120" id="I8V-4e-kcB"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2B-Vt-wXj" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
+                        <rect key="frame" x="15" y="261.5" width="135" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="bGu-GJ-mMs"/>
+                            <constraint firstAttribute="height" constant="44" id="bGu-GJ-mMs"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
                         <state key="normal" title="Details anzeigen"/>
@@ -37,8 +45,9 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bab-il-eZn">
+                        <rect key="frame" x="15" y="163" width="290" height="90"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="83" id="Cel-nF-1cA"/>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="Cel-nF-1cA"/>
                         </constraints>
                         <attributedString key="attributedText">
                             <fragment>
@@ -51,16 +60,10 @@
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRj-ke-Oxs" userLabel="Transparent Project View" customClass="TransparentProjectView" customModule="YSCTW" customModuleProvider="target">
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="42" id="1Nc-Vm-m7O"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="ehT-Ug-v21"/>
-                        </constraints>
-                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPS-wa-O4E" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
+                        <rect key="frame" x="170" y="261.5" width="135" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="5tc-2e-Jj5"/>
+                            <constraint firstAttribute="height" constant="44" id="5tc-2e-Jj5"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
                         <state key="normal" title="Unterstützen"/>
@@ -68,36 +71,51 @@
                             <action selector="handleSupportButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Daj-NB-KN9"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0gs-C0-onb">
+                        <rect key="frame" x="15" y="128" width="27" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="27" id="1xr-OM-TOY"/>
+                            <constraint firstAttribute="height" constant="27" id="dba-Af-19J"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVd-3y-tTu">
+                        <rect key="frame" x="50" y="131" width="255" height="21"/>
+                        <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="15"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Bab-il-eZn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4oT-tK-UAu"/>
-                    <constraint firstItem="Bab-il-eZn" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="7im-R1-khl"/>
-                    <constraint firstItem="QPS-wa-O4E" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="F47-i8-Qfw"/>
-                    <constraint firstItem="Bab-il-eZn" firstAttribute="top" secondItem="VTm-AO-oKJ" secondAttribute="bottom" constant="8" id="IaM-9z-Jfl"/>
-                    <constraint firstItem="QPS-wa-O4E" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="JUS-WI-GRo"/>
-                    <constraint firstItem="uRj-ke-Oxs" firstAttribute="top" secondItem="VTm-AO-oKJ" secondAttribute="bottom" constant="-42" id="MfO-jC-qel"/>
-                    <constraint firstItem="QPS-wa-O4E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="centerXWithinMargins" constant="5" id="N7C-R3-qEF"/>
-                    <constraint firstItem="x2B-Vt-wXj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="O99-Ud-2xt"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="QPS-wa-O4E" secondAttribute="bottom" constant="15" id="0Ug-4d-Gz5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="x2B-Vt-wXj" secondAttribute="bottom" constant="15" id="4NW-XR-gII"/>
+                    <constraint firstItem="Bab-il-eZn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="4oT-tK-UAu"/>
+                    <constraint firstItem="Bab-il-eZn" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-7" id="7im-R1-khl"/>
+                    <constraint firstItem="AVd-3y-tTu" firstAttribute="leading" secondItem="0gs-C0-onb" secondAttribute="trailing" constant="8" id="Asf-w4-rcR"/>
+                    <constraint firstItem="AVd-3y-tTu" firstAttribute="top" secondItem="VTm-AO-oKJ" secondAttribute="bottom" constant="11" id="C5d-o5-RBi"/>
+                    <constraint firstItem="0gs-C0-onb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="EUx-c6-bgx"/>
+                    <constraint firstItem="QPS-wa-O4E" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-7" id="F47-i8-Qfw"/>
+                    <constraint firstItem="QPS-wa-O4E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="centerXWithinMargins" constant="10" id="N7C-R3-qEF"/>
+                    <constraint firstItem="x2B-Vt-wXj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="O99-Ud-2xt"/>
                     <constraint firstItem="VTm-AO-oKJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OgE-z1-A6r"/>
-                    <constraint firstItem="uRj-ke-Oxs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="PJo-DN-9of"/>
-                    <constraint firstAttribute="trailing" secondItem="uRj-ke-Oxs" secondAttribute="trailing" id="Tm0-OR-tgg"/>
-                    <constraint firstAttribute="trailing" secondItem="uRj-ke-Oxs" secondAttribute="trailing" id="UAq-a8-wb7"/>
-                    <constraint firstItem="uRj-ke-Oxs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Vph-vi-FY2"/>
-                    <constraint firstItem="x2B-Vt-wXj" firstAttribute="top" secondItem="Bab-il-eZn" secondAttribute="bottom" constant="8" id="dBP-ba-SfM"/>
-                    <constraint firstItem="x2B-Vt-wXj" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="lUc-HV-cvN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="AVd-3y-tTu" secondAttribute="trailing" constant="7" id="RyK-3E-SFF"/>
+                    <constraint firstItem="AVd-3y-tTu" firstAttribute="centerY" secondItem="0gs-C0-onb" secondAttribute="centerY" id="d4h-7U-JPF"/>
+                    <constraint firstItem="0gs-C0-onb" firstAttribute="top" secondItem="VTm-AO-oKJ" secondAttribute="bottom" constant="8" id="eyO-Je-Sby"/>
+                    <constraint firstItem="Bab-il-eZn" firstAttribute="top" secondItem="0gs-C0-onb" secondAttribute="bottom" constant="8" id="g2J-Em-zHq"/>
+                    <constraint firstItem="QPS-wa-O4E" firstAttribute="top" secondItem="Bab-il-eZn" secondAttribute="bottom" constant="8" id="k5t-DL-Axf"/>
                     <constraint firstAttribute="trailing" secondItem="VTm-AO-oKJ" secondAttribute="trailing" id="mrl-D7-aR6"/>
                     <constraint firstItem="VTm-AO-oKJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n3N-Mg-EPJ"/>
-                    <constraint firstItem="x2B-Vt-wXj" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="centerXWithinMargins" constant="-5" id="sH1-Ae-Jg8"/>
-                    <constraint firstItem="QPS-wa-O4E" firstAttribute="top" secondItem="Bab-il-eZn" secondAttribute="bottom" constant="8" id="sus-Gh-r6o"/>
+                    <constraint firstItem="x2B-Vt-wXj" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="centerXWithinMargins" constant="-10" id="sH1-Ae-Jg8"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="descriptionLabel" destination="Bab-il-eZn" id="orU-8i-IVH"/>
                 <outlet property="detailButton" destination="x2B-Vt-wXj" id="055-R4-uJM"/>
-                <outlet property="projectImageView" destination="VTm-AO-oKJ" id="nqC-QH-W8B"/>
+                <outlet property="projectImageView" destination="VTm-AO-oKJ" id="NNm-Qp-UHJ"/>
+                <outlet property="projectLabel" destination="AVd-3y-tTu" id="l5d-dD-QGi"/>
+                <outlet property="projectLogoImageView" destination="0gs-C0-onb" id="5F6-dJ-vKV"/>
                 <outlet property="supportButton" destination="QPS-wa-O4E" id="w3X-0e-x8H"/>
-                <outlet property="transparentProjectView" destination="uRj-ke-Oxs" id="rs7-Tg-yVV"/>
             </connections>
+            <point key="canvasLocation" x="34" y="54.5"/>
         </tableViewCell>
     </objects>
 </document>

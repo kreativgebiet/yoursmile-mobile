@@ -78,6 +78,9 @@
 		<string>Gotham-ThinItalic.otf</string>
 		<string>Gotham-Ultra.otf</string>
 		<string>Gotham-UltraItalic.otf</string>
+		<string>Zufo-Bold.otf</string>
+		<string>Zufo-Light.otf</string>
+		<string>Zufo-Regular.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

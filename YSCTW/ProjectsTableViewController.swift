@@ -21,9 +21,10 @@ class ProjectsTableViewController: UITableViewController {
     }
 
     func applyTableViewStyle() {
-        self.tableView.estimatedRowHeight = 60
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 320
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
+        self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
         self.tableView.backgroundColor = .white
         self.tableView.tableFooterView = UIView()
@@ -32,6 +33,7 @@ class ProjectsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "PROJECTS".localized
+        self.navigationItem.backBarButtonItem?.title = " "
         self.reload()
     }
     

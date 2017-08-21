@@ -122,6 +122,9 @@
 		A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CB41DD34187002C4562 /* ProjectsTableViewController.swift */; };
 		A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CB61DD341CB002C4562 /* ProjectTableViewCell.swift */; };
 		A1CF0CB91DD341CB002C4562 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0CB71DD341CB002C4562 /* ProjectTableViewCell.xib */; };
+		A1D5E7A41F4A31C1001DCE57 /* Zufo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1D5E7A31F4A31C1001DCE57 /* Zufo-Bold.otf */; };
+		A1D5E7A71F4A31D0001DCE57 /* Zufo-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1D5E7A51F4A31D0001DCE57 /* Zufo-Light.otf */; };
+		A1D5E7A81F4A31D0001DCE57 /* Zufo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1D5E7A61F4A31D0001DCE57 /* Zufo-Regular.otf */; };
 		A1D6F4BF1DE32DD600A0A8F9 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D6F4BE1DE32DD600A0A8F9 /* Locksmith.framework */; };
 		A1D6F4C21DE34DF100A0A8F9 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D6F4C11DE34DF100A0A8F9 /* Preferences.storyboard */; };
 		A1D6F4C41DE34E9700A0A8F9 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6F4C31DE34E9700A0A8F9 /* TextViewController.swift */; };
@@ -349,6 +352,9 @@
 		A1CF0CB41DD34187002C4562 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		A1CF0CB61DD341CB002C4562 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		A1CF0CB71DD341CB002C4562 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
+		A1D5E7A31F4A31C1001DCE57 /* Zufo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Zufo-Bold.otf"; path = "Resources/Zufo-Bold.otf"; sourceTree = "<group>"; };
+		A1D5E7A51F4A31D0001DCE57 /* Zufo-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Zufo-Light.otf"; path = "Resources/Zufo-Light.otf"; sourceTree = "<group>"; };
+		A1D5E7A61F4A31D0001DCE57 /* Zufo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Zufo-Regular.otf"; path = "Resources/Zufo-Regular.otf"; sourceTree = "<group>"; };
 		A1D6F4BE1DE32DD600A0A8F9 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		A1D6F4C01DE3346400A0A8F9 /* YSCTW.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YSCTW.entitlements; sourceTree = "<group>"; };
 		A1D6F4C11DE34DF100A0A8F9 /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
@@ -731,6 +737,9 @@
 		A16407281DDF181E00BA1853 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				A1D5E7A51F4A31D0001DCE57 /* Zufo-Light.otf */,
+				A1D5E7A61F4A31D0001DCE57 /* Zufo-Regular.otf */,
+				A1D5E7A31F4A31C1001DCE57 /* Zufo-Bold.otf */,
 				A16407081DDF181800BA1853 /* Gotham-BookItalic.otf */,
 				A16407091DDF181800BA1853 /* Gotham-Medium.otf */,
 				A164070A1DDF181800BA1853 /* Gotham-Light.otf */,
@@ -981,6 +990,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D5E7A41F4A31C1001DCE57 /* Zufo-Bold.otf in Resources */,
 				A19677771DEC40F000C1CBBC /* acknowledgments.md in Resources */,
 				A16407251DDF181800BA1853 /* Gotham-Book.otf in Resources */,
 				A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */,
@@ -1010,6 +1020,7 @@
 				A164071F1DDF181800BA1853 /* Gotham-UltraItalic.otf in Resources */,
 				A13546741DDDEC8700931139 /* PaymentSelectionView.xib in Resources */,
 				A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */,
+				A1D5E7A71F4A31D0001DCE57 /* Zufo-Light.otf in Resources */,
 				A12A45521DCF8C76002977DF /* Main.storyboard in Resources */,
 				A16407241DDF181800BA1853 /* Gotham-LightItalic.otf in Resources */,
 				A1CF0CAB1DD25DB8002C4562 /* TableViewFooterView.xib in Resources */,
@@ -1021,6 +1032,7 @@
 				A1D86BF11EFADC4800D69F37 /* ProfileHeaderCollectionReusableView.xib in Resources */,
 				A1D86C0A1F01074000D69F37 /* ProjectInfoView.xib in Resources */,
 				A16407181DDF181800BA1853 /* Gotham-BookItalic.otf in Resources */,
+				A1D5E7A81F4A31D0001DCE57 /* Zufo-Regular.otf in Resources */,
 				A16407191DDF181800BA1853 /* Gotham-Medium.otf in Resources */,
 				A1CF0C9C1DD22DBE002C4562 /* CommentTableViewCell.xib in Resources */,
 				A135467A1DDE086000931139 /* DonationDescriptionLogoView.xib in Resources */,
