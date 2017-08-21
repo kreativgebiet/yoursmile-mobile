@@ -11,16 +11,24 @@ import PhotoCropEditor
 
 class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var donationSumLabel: UILabel!
+    @IBOutlet weak var donationSumDescriptionLabel: UILabel!
+    
     @IBOutlet weak var addProjectButton: AddProjectButton!
     @IBOutlet weak var projectContainerHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var paymentSelectionView: PaymentSelectionView!
     @IBOutlet weak var selectedProjectsContainerView: UIView!
     
+    @IBOutlet weak var addProjectButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     public var dataManager: DataManager?
     public var selectedProject: Project?
+    //Dictionary of kind [Project.id : float]
+    public var selectedProjectDonations: [String : Float] = [:]
     
-    var projects = [Project]()
     var supportedProjects = [Project]()
     
     var selfieContext: SelfieContext?
@@ -29,6 +37,14 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for project in supportedProjects {
+            selectedProjectDonations[project.id] = 1
+        }
+        
+        showSum()
+        
+        donationSumDescriptionLabel.text = "DONATION_SUM".localized
                 
         self.paymentSelectionView.callback = { paymentType in
             let navigationView = self.navigationController?.view
@@ -60,22 +76,22 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         }
         
         self.title = "DONATE".localized
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
         let button = UIButton()
         button.frame = CGRect(x: 0, y:  0, width: 100, height: 31)
         button.setTitle("PROCEED".localized, for: .normal)
         button.setTitle("PROCEED".localized, for: .selected)
         button.contentHorizontalAlignment = .right
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.white, for: .selected)
+        button.setTitleColor(blue, for: .normal)
+        button.setTitleColor(blue, for: .selected)
         button.titleLabel?.font = UIFont(name: "Gotham-Book", size: 18)
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(proceedTapped), for: .touchUpInside)
         
         let barButton = UIBarButtonItem()
         barButton.customView = button
-        barButton.tintColor = .white
+        barButton.tintColor = blue
+        
         self.navigationItem.rightBarButtonItem = barButton
         
         guard let navC = self.navigationController as? NavigationViewController else {
@@ -102,6 +118,22 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         self.selectedProjectsContainerView.layoutIfNeeded()
         
         self.loadSupportedProjects()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        supportedProjects = navController.supportedProjects
+        
+        for project in supportedProjects {
+            
+            if !selectedProjectDonations.keys.contains(project.id) {
+                selectedProjectDonations[project.id] = 1
+            }
+            
+        }
+        self.loadSupportedProjects()
+        showSum()
     }
     
     func proceedTapped() {
@@ -135,32 +167,34 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     
     func addProjectButtonTapped() {
         
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProjectsViewController") as! ProjectsViewController
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProjectCategoryViewController") as! ProjectCategoryViewController
+        viewController.dataManager = self.navController.dataManager
+        viewController.popToViewController = self
         
-        viewController.supportCallback = { selectedSupportProject in
-            self.supportedProjects.append(selectedSupportProject)
-            self.navController.supportedProjects.append(selectedSupportProject)
-
-            self.loadSupportedProjects()
-            
-            _ = self.navigationController?.popToViewController(self, animated: true)
-        }
-        
-        viewController.title = "PROJECTS".localized
-        
-        viewController.view.setNeedsLayout()
-        viewController.view.layoutIfNeeded()
-        
-        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
-        self.view.addSubview(loadingScreen)
-        
-        self.dataManager?.projects({ (projects) in
-            loadingScreen.removeFromSuperview()
-            self.projects = projects
-            
-            viewController.projects = (self.projects.filter({!self.supportedProjects.contains($0)}))
-            viewController.reload()
-        })
+//        viewController.supportCallback = { selectedSupportProject in
+//            self.supportedProjects.append(selectedSupportProject)
+//            self.navController.supportedProjects.append(selectedSupportProject)
+//
+//            self.loadSupportedProjects()
+//            
+//            _ = self.navigationController?.popToViewController(self, animated: true)
+//        }
+//        
+//        viewController.title = "PROJECTS".localized
+//        
+//        viewController.view.setNeedsLayout()
+//        viewController.view.layoutIfNeeded()
+//        
+//        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
+//        self.view.addSubview(loadingScreen)
+//        
+//        self.dataManager?.projects({ (projects) in
+////            loadingScreen.removeFromSuperview()
+////            self.projects = projects
+////            
+////            viewController.projects = (self.projects.filter({!self.supportedProjects.contains($0)}))
+////            viewController.reload()
+//        })
         
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -205,7 +239,14 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             self.projectViews.append(projectView)
         }
         
+        self.addProjectButtonTopConstraint.constant = y + 10
+        
+        y += self.addProjectButton.frame.height + 20
+        
         self.projectContainerHeightConstraint.constant = y
+        self.contentViewHeight.constant = y
+        self.scrollView.contentSize = CGSize(width: scrollView.frame.width, height: y)
+        
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
         
@@ -222,6 +263,17 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         }
         
         self.loadSupportedProjects()
+    }
+    
+    func sliderValueChanged(_ project: Project, _ value: Float) {
+        print(project.projectName + " \(value)")
+        selectedProjectDonations[project.id] = value
+        showSum()
+    }
+    
+    func showSum() {
+        let sum = selectedProjectDonations.flatMap({Double($1)}).reduce(0, +)
+        donationSumLabel.text = "\(Int(sum))€"
     }
     
     

@@ -23,6 +23,8 @@ class SelfieSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "DONATE".localized
+        
         withoutPhotoContainer.layer.cornerRadius = 4
         photoContainer.layer.cornerRadius = 4
         

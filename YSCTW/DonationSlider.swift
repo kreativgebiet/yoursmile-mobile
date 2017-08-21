@@ -19,6 +19,8 @@ class DonationSlider : UISlider {
     override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
         var thumbRect = super.thumbRect(forBounds: bounds, trackRect: rect, value:  value)
         
+        thumbRect.origin.y += 2
+        
         if value == self.minimumValue {
             thumbRect.origin.x -= 2
         } else if value == self.maximumValue {
@@ -28,9 +30,13 @@ class DonationSlider : UISlider {
         return thumbRect
     }
     
-    //while we are here, why not change the image here as well? (bonus material)
     override func awakeFromNib() {
         self.setThumbImage(#imageLiteral(resourceName: "donation-slider-thumb"), for: .normal)
+        
+        self.minimumTrackTintColor = blue
+        self.maximumTrackTintColor = gray224
+        
+        self.tintColor = blue
         super.awakeFromNib()
     }
 }

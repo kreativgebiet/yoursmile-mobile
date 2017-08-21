@@ -41,6 +41,8 @@ let customMiddleGray = UIColor.init(white: 135.0/256.0, alpha: 1)
 let gray150 = UIColor.init(white: 150.0/256.0, alpha: 1)
 let gray156 = UIColor.init(white: 156.0/256.0, alpha: 1)
 let gray221 = UIColor.init(white: 221.0/256.0, alpha: 1)
+let gray223 = UIColor.init(white: 223.0/256.0, alpha: 1)
+let gray224 = UIColor.init(white: 224.0/256.0, alpha: 1)
 
 enum SelfieContext {
     case noSelfie

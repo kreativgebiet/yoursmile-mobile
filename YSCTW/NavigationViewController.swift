@@ -21,6 +21,11 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
         self.navigationBar.barTintColor = .white
         self.navigationBar.isTranslucent = false
         self.navigationBar.backgroundColor = .white
+        
+//        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationBar.shadowImage = UIImage()
+//        self.navigationBar.isTranslucent = true        
+//        self.navigationBar.backgroundColor = .clear
 
         let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Zufo-Regular", size: 28)!, NSForegroundColorAttributeName: blue]
         self.navigationBar.titleTextAttributes = attributes

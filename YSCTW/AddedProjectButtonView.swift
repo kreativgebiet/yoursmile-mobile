@@ -10,14 +10,18 @@ import UIKit
 
 protocol AddedProjectButtonDelegate {
     func delete(_ project: Project)
+    func sliderValueChanged(_ project: Project, _ value: Float)
 }
 
 class AddedProjectButtonView: UIView {
     public var delegate: AddedProjectButtonDelegate!
     public var project: Project!
     
+    @IBOutlet weak var slider: DonationSlider!
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
+    
+    let sliderLabel = UILabel()
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -27,7 +31,8 @@ class AddedProjectButtonView: UIView {
         self.layer.borderWidth = 1
         
         self.logoImageView.layer.cornerRadius = self.logoImageView.frame.size.height/2
-        self.logoImageView.layer.borderColor = customDarkerGray.cgColor
+        self.logoImageView.clipsToBounds = true
+        self.logoImageView.layer.borderColor = gray223.cgColor
         self.logoImageView.layer.borderWidth = 1
         
         self.logoImageView.backgroundColor = .white
@@ -39,6 +44,29 @@ class AddedProjectButtonView: UIView {
             self.projectNameLabel.text = name
         }
         
+        sliderLabel.font = UIFont(name: "Gotham-Bold", size: 16)
+        sliderLabel.textColor = orange
+        
+        slider.minimumValue = 1
+        slider.maximumValue = 100
+        slider.setValue(0, animated: false)
+        
+        slider.addTarget(self, action: #selector(sliderValueChanged(sender:)), for: .valueChanged)
+        
+        self.addSubview(sliderLabel)
+        
+        sliderValueChanged(sender: slider)
+    }
+    
+    func sliderValueChanged(sender: UISlider) {
+        sender.setValue(round(sender.value), animated: false)
+        let value = sender.value
+        
+        sliderLabel.text = "\(Int(value))€"
+        sliderLabel.sizeToFit()
+        
+        sliderLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.frame.maxY + sliderLabel.frame.height/2-10)
+        self.delegate.sliderValueChanged(self.project, slider.value)
     }
 
     @IBAction func handleDeleteButtonTapped(_ sender: AnyObject) {

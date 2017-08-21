@@ -101,6 +101,7 @@
 		A19677831DEC929400C1CBBC /* StripePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19677821DEC929400C1CBBC /* StripePaymentViewController.swift */; };
 		A19A31B51DFEC13B0054BA3E /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */; };
 		A19E585E1F46186900118713 /* SelfieSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */; };
+		A1B232E21F4B6DDE006A9A42 /* SliderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B232E11F4B6DDE006A9A42 /* SliderExtension.swift */; };
 		A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */; };
 		A1BEDAB21E36404A0002EABA /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BEDAB11E36404A0002EABA /* PickerView.swift */; };
 		A1BEDAB41E3640550002EABA /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BEDAB31E3640550002EABA /* PickerView.xib */; };
@@ -330,6 +331,7 @@
 		A19677821DEC929400C1CBBC /* StripePaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripePaymentViewController.swift; sourceTree = "<group>"; };
 		A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieSelectionViewController.swift; sourceTree = "<group>"; };
+		A1B232E11F4B6DDE006A9A42 /* SliderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderExtension.swift; sourceTree = "<group>"; };
 		A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
 		A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropNavigationController.swift; sourceTree = "<group>"; };
 		A1BEDAB11E36404A0002EABA /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
@@ -822,6 +824,7 @@
 				A114283E1E08274F0033844A /* UIApplicationExtension.swift */,
 				A15157A11E8D07DA00C0498D /* UILabelExtension.swift */,
 				A1D86BE61EFAB2EC00D69F37 /* DictionaryExtension.swift */,
+				A1B232E11F4B6DDE006A9A42 /* SliderExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1179,6 +1182,7 @@
 				A1BEDAB21E36404A0002EABA /* PickerView.swift in Sources */,
 				A153909B1DD0CD9200B7ADA0 /* RoundedButton.swift in Sources */,
 				A1DB37851E0A99AF003EAFCF /* UploadsDownloadOperation.swift in Sources */,
+				A1B232E21F4B6DDE006A9A42 /* SliderExtension.swift in Sources */,
 				A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */,
 				A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */,
 				A17B8E5D1F44C43200C48BC6 /* CategoryButton.swift in Sources */,

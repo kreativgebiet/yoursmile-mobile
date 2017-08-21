@@ -103,6 +103,7 @@
 "PROJECT_WORD" = "Projekt";
 "PROJECTS_WORD" = "Projekte";
 "SUPPORTED_PROJECTS" = "Unterstützte Projekte";
+"DONATION_SUM" = "Gesamter Spendenbeitrag";
 
 //Overlay
 "THANK_YOU" = "Vielen Dank";

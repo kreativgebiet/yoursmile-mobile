@@ -11,6 +11,7 @@ import UIKit
 class ProjectCategoryViewController: UIViewController {
     
     var dataManager: DataManager? = nil
+    var popToViewController: UIViewController? = nil
     
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var button1: CategoryButton!
@@ -72,7 +73,11 @@ class ProjectCategoryViewController: UIViewController {
                 
                 navController.supportedProjects.append(selectedSupportProject)
                 
-                navController.performSegue(withIdentifier: "selfieSelectionSegue", sender: selectedSupportProject)
+                if let viewController = self.popToViewController {
+                    navController.popToViewController(viewController, animated: true)
+                } else {
+                    navController.performSegue(withIdentifier: "selfieSelectionSegue",     sender: selectedSupportProject)
+                }
             }
             
             viewController.title = "PROJECTS".localized
