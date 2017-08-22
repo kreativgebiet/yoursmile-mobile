@@ -21,6 +21,7 @@
 "REGISTER_BUTTON" = "Registrieren!";
 "OR" = "ODER";
 "PASSWORD_RESET_SUCCESS" = "Dein Passwort wurde erfolgreich zurückgesetzt. Bitte prüfe deine e-mails!";
+"PROJECT_DETAILS" = "PROJEKT DETAILS";
 
 //Registration
 "REGISTER" = "Anmelden";
@@ -62,6 +63,9 @@
 "DONATE" = "Spenden";
 "LEFT_UNTIL_DONATION_GOAL" = "bleiben bis zum Spendenziel";
 "UPON_DONATION_GOAL" = "über dem Spendenziel";
+"SELECT_PROJECT" = "WÄHLEN SIE EIN PROJEKT";
+"TAKE_SELFIE" = "Selfie machen";
+"WITHOUT_SELFIE" = "Weiter ohne Photo";
 
 //Profile
 "PROJECTS_SUPPORTED" = "Projekte unterstützt";

@@ -20,18 +20,34 @@ class ProjectsViewController: UIViewController {
     
     var leftSelectedIndex = 0
     var rightSelectedIndex = 0
-
-    public func reload() {
-        self.projectsTableViewController.projects = self.projects
-        self.projectsTableViewController.reload()
-        
-        self.projectsToShow = self.projects
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "SELECT_PROJECT".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.backgroundColor = .white
         self.reload()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = .clear
+    }
+    
+    public func reload() {
+        self.projectsTableViewController.projects = self.projects
+        self.projectsTableViewController.reload()
+        
+        self.projectsToShow = self.projects
     }
     
     // MARK: - Navigation

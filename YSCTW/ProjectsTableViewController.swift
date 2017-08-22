@@ -28,6 +28,7 @@ class ProjectsTableViewController: UITableViewController {
         self.tableView.allowsSelection = false
         self.tableView.backgroundColor = .white
         self.tableView.tableFooterView = UIView()
+        self.tableView.tableHeaderView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

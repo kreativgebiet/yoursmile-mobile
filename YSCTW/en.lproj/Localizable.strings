@@ -62,6 +62,10 @@
 "DONATE" = "Donation";
 "LEFT_UNTIL_DONATION_GOAL" = "left until donation goal";
 "UPON_DONATION_GOAL" = "over the donation goal";
+"SELECT_PROJECT" = "SELECT A PROJECT";
+"PROJECT_DETAILS" = "PROJECT DETAILS";
+"TAKE_SELFIE" = "Take Selfie";
+"WITHOUT_SELFIE" = "Continue without Photo";
 
 //Profile
 "PROJECTS_SUPPORTED" = "Projects supported";

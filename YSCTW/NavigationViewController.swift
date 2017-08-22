@@ -23,16 +23,16 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
         self.navigationBar.isTranslucent = false
         self.navigationBar.backgroundColor = .white
         
-//        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationBar.shadowImage = UIImage()
-//        self.navigationBar.isTranslucent = true        
-//        self.navigationBar.backgroundColor = .clear
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.isTranslucent = true        
+        self.navigationBar.backgroundColor = .clear
 
         let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Zufo-Regular", size: 28)!, NSForegroundColorAttributeName: blue]
         self.navigationBar.titleTextAttributes = attributes
         
-        self.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back-icon").withAlignmentRectInsets(UIEdgeInsetsMake(12, 0, 0, 0))
-        self.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back-icon")
+        self.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back-icon").withAlignmentRectInsets(UIEdgeInsetsMake(0, 0, -3.5, 0))
+        self.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back-icon").withAlignmentRectInsets(UIEdgeInsetsMake(0, 0, -3.5, 0))
         
         self.navigationController?.navigationBar.barStyle = .black
         
@@ -121,7 +121,7 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     
 }

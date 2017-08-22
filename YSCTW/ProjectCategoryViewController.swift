@@ -23,6 +23,9 @@ class ProjectCategoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "DONATE".localized
+        
         button1.setTitle(buttonTitle[0], for: .normal)
         button2.setTitle(buttonTitle[1], for: .normal)
         button3.setTitle(buttonTitle[2], for: .normal)
@@ -34,7 +37,12 @@ class ProjectCategoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+        
+        if popToViewController != nil {
+            self.navigationController?.navigationBar.isHidden = false
+        } else {
+            self.navigationController?.navigationBar.isHidden = true
+        }
     }
     
     @IBAction func handleButton1Tap(_ sender: Any) {

@@ -25,6 +25,9 @@ class SelfieSelectionViewController: UIViewController {
         
         self.title = "DONATE".localized
         
+        withoutPhotoLabel.text = "WITHOUT_SELFIE".localized
+        withPhotoLabel.text = "TAKE_SELFIE".localized
+        
         withoutPhotoContainer.layer.cornerRadius = 4
         photoContainer.layer.cornerRadius = 4
         
