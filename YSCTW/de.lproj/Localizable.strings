@@ -5,6 +5,12 @@
   Created by Max Zimmermann on 14.11.16.
   Copyright © 2016 MZ. All rights reserved.
 */
+//Category Selection
+"EDUCATION" = "Bildung";
+"HEALTH" = "Gesundheit";
+"NUTRITION" = "Ernährung";
+"EMERGENCY" = "Notfall";
+
 //Login
 "LOGIN" = "Anmelden";
 "RESET_PASSWORD" = "Passwort zurücksetzen";

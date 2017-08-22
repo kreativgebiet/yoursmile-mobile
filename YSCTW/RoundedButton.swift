@@ -21,7 +21,7 @@ class RoundedButton: UIButton {
     }
     
     func layout() {
-        self.backgroundColor = orange
+        self.backgroundColor = blue
         self.setTitleColor(.white, for: .normal)
         self.layer.cornerRadius = 5
     }

@@ -71,7 +71,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         
         let tintColor = orange
         
-        self.skipButton.backgroundColor = tintColor
+        self.skipButton.backgroundColor = blue
         self.skipButton.setTitleColor(.white, for: .normal)
         self.skipButton.setTitleColor(.white, for: .selected)
         

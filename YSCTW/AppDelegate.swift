@@ -37,8 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 } else {
                     initialViewController = storyboard.instantiateViewController(withIdentifier: "LVC")
                 }
+            } else {
+                initialViewController = storyboard.instantiateViewController(withIdentifier: "LVC")
             }
-            
             
         } else {
            initialViewController = storyboard.instantiateViewController(withIdentifier: "OVC")

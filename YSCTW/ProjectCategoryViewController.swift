@@ -19,7 +19,7 @@ class ProjectCategoryViewController: UIViewController {
     @IBOutlet weak var button3: CategoryButton!
     @IBOutlet weak var button4: CategoryButton!
     
-    let buttonTitle = ["category 1", "category 1", "category 1", "category 1"]
+    let buttonTitle = ["EDUCATION".localized, "HEALTH".localized, "NUTRITION".localized, "EMERGENCY".localized]
 
     override func viewDidLoad() {
         super.viewDidLoad()
