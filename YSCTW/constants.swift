@@ -56,6 +56,15 @@ enum Payment {
     case creditCard
 }
 
+enum Sector {
+    case education
+    case nutrition
+    case health
+    case emergency
+    case all
+    case error
+}
+
 //Data structure
 
 struct ProfileRelation {

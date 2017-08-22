@@ -188,7 +188,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 if self.customCallback != nil {
                     self.customCallback!(self.image!)
                 } else {
-                    self.performSegue(withIdentifier: "donationSegue", sender: self.selectedProject)
+                    self.performSegue(withIdentifier: "cameraDonationDescriptionSegue", sender: self.selectedProject)
                 }
                 
             }

@@ -31,6 +31,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loginButton.backgroundColor = blue
+        
         let screenSize: CGRect = UIScreen.main.bounds
         
         if screenSize.height <= 568  {
@@ -70,6 +72,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
         
         if let loggedIn = UserDefaults.standard.value(forKey: "loggedIn") as? Bool {
             if loggedIn == true {

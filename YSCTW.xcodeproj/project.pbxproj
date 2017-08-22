@@ -89,6 +89,7 @@
 		A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407171DDF181800BA1853 /* Gotham-Black.otf */; };
 		A17B8E5B1F44C3F400C48BC6 /* ProjectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B8E5A1F44C3F400C48BC6 /* ProjectCategoryViewController.swift */; };
 		A17B8E5D1F44C43200C48BC6 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B8E5C1F44C43200C48BC6 /* CategoryButton.swift */; };
+		A1863C2C1F4CDA3300E1C807 /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1863C2B1F4CDA3300E1C807 /* LoginNavigationViewController.swift */; };
 		A18A2DAE1E377F9E004D1F67 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18A2DAD1E377F9E004D1F67 /* OnboardingViewController.swift */; };
 		A18A2DB01E37A9E6004D1F67 /* OnboardPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */; };
 		A18A2DB21E37A9F3004D1F67 /* OnboardPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */; };
@@ -319,6 +320,7 @@
 		A16407171DDF181800BA1853 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Black.otf"; path = "Resources/Gotham-Black.otf"; sourceTree = "<group>"; };
 		A17B8E5A1F44C3F400C48BC6 /* ProjectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCategoryViewController.swift; sourceTree = "<group>"; };
 		A17B8E5C1F44C43200C48BC6 /* CategoryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		A1863C2B1F4CDA3300E1C807 /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		A18A2DAD1E377F9E004D1F67 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageView.swift; sourceTree = "<group>"; };
 		A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardPageView.xib; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 				A1D86C041F00F7EF00D69F37 /* SupportedProjectsViewController.xib */,
 				A17B8E5A1F44C3F400C48BC6 /* ProjectCategoryViewController.swift */,
 				A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */,
+				A1863C2B1F4CDA3300E1C807 /* LoginNavigationViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1160,6 +1163,7 @@
 				A1CF0CA91DD25DAA002C4562 /* TableViewFooterView.swift in Sources */,
 				A1D86BEB1EFACD5600D69F37 /* FeedCollectionViewCell.swift in Sources */,
 				A1BEDAB61E37579B0002EABA /* ProfileHeaderBarView.swift in Sources */,
+				A1863C2C1F4CDA3300E1C807 /* LoginNavigationViewController.swift in Sources */,
 				A114283C1E03EB940033844A /* UploadModel+CoreDataProperties.swift in Sources */,
 				A1DB37871E0A99CE003EAFCF /* NetworkOperation.swift in Sources */,
 				A15390B31DD1D86A00B7ADA0 /* BarViewController.swift in Sources */,
@@ -1402,7 +1406,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MaxCoding.YSCTW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd6a70de-916a-45a1-baba-da037f394847";
+				PROVISIONING_PROFILE = "ce0d1d18-3361-4d8b-8012-d889280fdb9b";
 				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.MaxCoding.YSCTW";
 				SWIFT_OBJC_BRIDGING_HEADER = "YSCTW/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

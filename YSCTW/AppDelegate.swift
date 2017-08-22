@@ -35,10 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if loggedIn == true {
                     initialViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
                 } else {
-                    initialViewController = storyboard.instantiateViewController(withIdentifier: "LVC")
+                    initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
                 }
             } else {
-                initialViewController = storyboard.instantiateViewController(withIdentifier: "LVC")
+                initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
             }
             
         } else {

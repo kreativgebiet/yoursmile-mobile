@@ -18,10 +18,6 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        self.navigationBar.barTintColor = .white
-        self.navigationBar.isTranslucent = false
-        self.navigationBar.backgroundColor = .white
         
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
@@ -50,11 +46,6 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        UIFont.familyNames.forEach({ familyName in
-            let fontNames = UIFont.fontNames(forFamilyName: familyName)
-            print(familyName, fontNames)
-        })
         
         if segue.identifier == "donationDetailSegue" {
             let destinationVC = segue.destination as! DonationDetailViewController

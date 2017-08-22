@@ -17,6 +17,10 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isNavigationBarHidden = false
+        
+        self.resetPasswordButton.backgroundColor = blue
+        
         self.resetPasswordButton.setTitle("RESET_PASSWORD".localized, for: .normal)
         self.resetPasswordButton.setTitle("RESET_PASSWORD".localized, for: .selected)
         
@@ -48,9 +52,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func handleGotoLoginButtonTapped(_ sender: AnyObject) {
-        self.dismiss(animated: true) {
-            
-        }
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func handleResetPasswordButtonTapped(_ sender: AnyObject) {

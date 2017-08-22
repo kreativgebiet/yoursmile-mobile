@@ -20,6 +20,8 @@ class PasswordChangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        saveButton.backgroundColor = blue
+        
         self.view.backgroundColor = customLightGray
         self.newPasswordLabel.textColor = customMiddleGray
         

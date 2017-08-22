@@ -28,6 +28,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.navigationController?.isNavigationBarHidden = false
+        
+        registerButton.backgroundColor = blue
         
         let screenSize: CGRect = UIScreen.main.bounds
         
@@ -118,9 +122,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func handleLoginButtonTapped(_ sender: AnyObject) {        
-        self.dismiss(animated: true) {
-            
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func handleRegisterButtonTapped(_ sender: AnyObject) {

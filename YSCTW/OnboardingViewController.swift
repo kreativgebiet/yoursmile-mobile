@@ -26,6 +26,8 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        skipButton.backgroundColor = blue
+        
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .white
         
