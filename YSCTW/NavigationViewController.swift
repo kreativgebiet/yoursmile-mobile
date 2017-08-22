@@ -14,6 +14,7 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
     public var selectedPayment = Payment.none
     public var supportedProjects: [Project] = []
     public var selfieContext = SelfieContext.none
+    public var selfie: UIImage? = nil
     public var sum: Float = 0
 
     override func viewDidLoad() {

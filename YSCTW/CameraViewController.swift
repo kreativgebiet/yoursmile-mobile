@@ -188,11 +188,15 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 if self.customCallback != nil {
                     self.customCallback!(self.image!)
                 } else {
-                    self.performSegue(withIdentifier: "cameraDonationDescriptionSegue", sender: self.selectedProject)
+                    self.performSegue(withIdentifier: "cameraDonationSegue", sender: self.selectedProject)
                 }
                 
             }
         }
+    }
+    
+    @IBAction func handleBackButtonTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func cameraFlipButtonTapped(_ sender: AnyObject) {
@@ -263,7 +267,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         if self.customCallback != nil {
             self.customCallback!(self.image!)
         } else {
-            self.performSegue(withIdentifier: "cameraDonationDescriptionSegue", sender: self.selectedProject)
+            self.performSegue(withIdentifier: "cameraDonationSegue", sender: self.selectedProject)
         }
         
     }
@@ -271,9 +275,12 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "cameraDonationDescriptionSegue" {
-            let destinationVC = segue.destination as! DonationDescriptionViewController
-            destinationVC.selfieImage = self.image
+        if segue.identifier == "cameraDonationSegue" {
+            
+            if let navC = self.navigationController as? NavigationViewController {
+                navC.selfie = self.image
+            }
+            
         }
         
     }

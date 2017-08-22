@@ -62,7 +62,13 @@ class SelfieSelectionViewController: UIViewController {
         
         navController.selfieContext = selfieContext
         
-        self.performSegue(withIdentifier: "donationSegue", sender: self)
+        if selfieContext == .noSelfie {
+            self.performSegue(withIdentifier: "donationSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "cameraSegue", sender: self)
+        }
+        
+        
     }
     
 }

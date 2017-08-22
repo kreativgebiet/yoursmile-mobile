@@ -98,15 +98,19 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
+        guard let navController = self.navigationController as? NavigationViewController else {
+            return
+        }
+        
+        self.selfieImage = navController.selfie
+        
         if let image = self.selfieImage {
             self.selfieImageView.image = image
         } else {
             self.selfieImageView.image = #imageLiteral(resourceName: "handshake-icon")
         }
         
-        guard let navController = self.navigationController as? NavigationViewController else {
-            return
-        }
+        
         
         
         self.donationSumLabel.text = "DONATION_SUM_TEXT".localized.replacingOccurrences(of: "%@", with: "\(Int(navController.sum))")

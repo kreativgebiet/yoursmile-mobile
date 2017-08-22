@@ -153,14 +153,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             HelperFunctions.presentAlertViewfor(error: error)
             
         } else {
-            
-            
-            if selfieContext == SelfieContext.noSelfie {
-                self.performSegue(withIdentifier: "donationDescriptionSegue", sender: self)
-            } else {
-                self.performSegue(withIdentifier: "cameraSegue", sender: self)
-            }
-            
+            self.performSegue(withIdentifier: "donationDescriptionSegue", sender: self)
         }
         
     }
