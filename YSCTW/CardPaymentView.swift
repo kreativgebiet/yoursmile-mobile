@@ -70,6 +70,15 @@ class CardPaymentView: UIView, STPPaymentCardTextFieldDelegate {
         }
         
         self.paymentField.frame = self.paymentCardTextFieldContainer.bounds
+        var paymentFrame = self.paymentField.frame
+        paymentFrame.size.width = self.frame.width
+        self.paymentField.frame = paymentFrame
+        
+        self.paymentCardTextFieldContainer.setNeedsLayout()
+        self.paymentCardTextFieldContainer.layoutIfNeeded()
+        
+        self.paymentField.setNeedsLayout()
+        self.paymentField.layoutIfNeeded()
     }
     
     @IBAction func payButtonPressed(_ sender: AnyObject) {

@@ -427,6 +427,7 @@
 		A1DB37901E0AA204003EAFCF /* ResetPasswordOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordOperation.swift; sourceTree = "<group>"; };
 		A1DB37921E0AA303003EAFCF /* PostPaymentSourceOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPaymentSourceOperation.swift; sourceTree = "<group>"; };
 		A1DB37941E0AA4A6003EAFCF /* UploadSelfieOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSelfieOperation.swift; sourceTree = "<group>"; };
+		A1DC71001F4DF156003DFE35 /* YSCTW 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YSCTW 3.xcdatamodel"; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataOperation.swift; sourceTree = "<group>"; };
@@ -1548,10 +1549,11 @@
 		A11428341E03E8930033844A /* YSCTW.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A1DC71001F4DF156003DFE35 /* YSCTW 3.xcdatamodel */,
 				A1EF7FA51E1D11B0003C92E4 /* YSCTW 2.xcdatamodel */,
 				A11428351E03E8930033844A /* YSCTW.xcdatamodel */,
 			);
-			currentVersion = A1EF7FA51E1D11B0003C92E4 /* YSCTW 2.xcdatamodel */;
+			currentVersion = A1DC71001F4DF156003DFE35 /* YSCTW 3.xcdatamodel */;
 			path = YSCTW.xcdatamodeld;
 			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;

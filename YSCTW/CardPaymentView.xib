@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -36,8 +39,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szd-YT-nNq" userLabel="Price Label View">
+                    <rect key="frame" x="0.0" y="40" width="375" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preis:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Blw-io-yXt">
+                            <rect key="frame" x="15" y="21" width="345" height="15"/>
                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -53,8 +58,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mb7-Sa-Qj0" userLabel="Name Label View">
+                    <rect key="frame" x="0.0" y="80" width="375" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Karteninhaber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbT-wv-A55">
+                            <rect key="frame" x="15" y="21" width="345" height="15"/>
                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -69,8 +76,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNw-PP-Eoq" userLabel="Name TextField View">
+                    <rect key="frame" x="0.0" y="120" width="375" height="44"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Karteninhaber" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OPA-aN-LGR">
+                            <rect key="frame" x="15" y="0.0" width="345" height="44"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
@@ -86,8 +95,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQS-qJ-XH7" userLabel="Card Number Label">
+                    <rect key="frame" x="0.0" y="164" width="375" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kartennummer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7J-EL-Wv4">
+                            <rect key="frame" x="15" y="21" width="345" height="15"/>
                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -103,12 +114,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iC-xR-IRb" userLabel="PaymentCardTextFieldContainer">
+                    <rect key="frame" x="0.0" y="203" width="375" height="55"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="vze-n4-pGS"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgR-NJ-YQM" customClass="RoundedButton" customModule="YSCTW" customModuleProvider="target">
+                    <rect key="frame" x="15" y="308" width="345" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="eF6-WU-IOc"/>
                     </constraints>
@@ -121,7 +134,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="szd-YT-nNq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PrH-Dw-6rE"/>
+                <constraint firstItem="szd-YT-nNq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="KMi-Lu-8br"/>
                 <constraint firstAttribute="trailing" secondItem="szd-YT-nNq" secondAttribute="trailing" id="QXm-KR-UOt"/>
                 <constraint firstAttribute="trailing" secondItem="4iC-xR-IRb" secondAttribute="trailing" id="Xia-Ng-o2q"/>
                 <constraint firstItem="4iC-xR-IRb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XuV-Gl-U8m"/>
@@ -133,7 +146,7 @@
                 <constraint firstItem="szd-YT-nNq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lQr-iM-OaJ"/>
                 <constraint firstAttribute="trailing" secondItem="pNw-PP-Eoq" secondAttribute="trailing" id="m2Y-1i-TCZ"/>
                 <constraint firstItem="IQS-qJ-XH7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pSO-sA-iEC"/>
-                <constraint firstItem="Mb7-Sa-Qj0" firstAttribute="top" secondItem="szd-YT-nNq" secondAttribute="bottom" constant="40" id="qYW-Un-esR"/>
+                <constraint firstItem="Mb7-Sa-Qj0" firstAttribute="top" secondItem="szd-YT-nNq" secondAttribute="bottom" id="qYW-Un-esR"/>
                 <constraint firstItem="4iC-xR-IRb" firstAttribute="top" secondItem="IQS-qJ-XH7" secondAttribute="bottom" constant="-1" id="rr1-29-M2m"/>
                 <constraint firstAttribute="trailing" secondItem="CgR-NJ-YQM" secondAttribute="trailing" constant="15" id="s7A-MK-Qif"/>
                 <constraint firstItem="Mb7-Sa-Qj0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v1L-It-cl0"/>

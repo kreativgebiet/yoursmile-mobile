@@ -44,6 +44,13 @@ class SelfieSelectionViewController: UIViewController {
         withoutPhotoContainer.addGestureRecognizer(noSelfieTap)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = .clear
+    }
+    
     func handleSelfieTap(tapgesture: UITapGestureRecognizer) {
         selfieContext = .withSelfie
         performSegue()

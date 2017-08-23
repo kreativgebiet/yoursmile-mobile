@@ -156,24 +156,22 @@ class APIClient: NSObject {
             let manager = CoreDataController()
             let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
             
-            let imageData = uploadModel.image
-            let descriptionText = uploadModel.descriptionText!
             let projectIds = uploadModel.projectIds
-            
-            let json = "{1:50,2:60}"
-            
+            let projectAmounts = uploadModel.projectAmounts
             
             Alamofire.upload(multipartFormData: { multipartFormData in
                 
-                multipartFormData.append(imageData!, withName: "upload[image]", fileName: "test", mimeType: "image/jpeg")
-                multipartFormData.append(descriptionText.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[description]")
+                var i = 0
                 
-//                for projectId in projectIds {
-//                    multipartFormData.append("\(projectId) : \(50)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects]{}")
-//                    
-//                }
-//                multipartFormData.append(jsonData, withName: "upload[supported_projects]")
-                multipartFormData.append("\(50)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][1]")
+                for id in projectIds {
+                    let amount = projectAmounts[i]
+                    
+                    multipartFormData.append("\(amount*100)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][\(id)]")
+                    
+                    i += 1
+                }
+                
+                
                 multipartFormData.append("\(60)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][2]")
                 
                 }, to: requestURL, method: .post, headers: token,

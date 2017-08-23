@@ -20,12 +20,16 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
     @IBOutlet weak var instagrammButton: RoundedButton!
     @IBOutlet weak var facebookButton: RoundedButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var finishButton: RoundedButton!
     
     var placeholderLabel: UILabel!
     var loadingScreen: LoadingScreen!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.finishButton.setTitle("BACK_TO_PROJECTS".localized, for: .normal)
+        self.finishButton.setTitle("BACK_TO_PROJECTS".localized, for: .selected)
         
         self.navigationController?.isNavigationBarHidden = true
         
@@ -111,8 +115,6 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         }
         
         
-        
-        
         self.donationSumLabel.text = "DONATION_SUM_TEXT".localized.replacingOccurrences(of: "%@", with: "\(Int(navController.sum))")
         self.donationSumLabel.textColor = blue
         
@@ -173,81 +175,23 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
 //        return Float(self.projects.count*Int(sliderView.value))
     }
     
-//    func proceedTapped() {
-//        
-//        let callback: ((_ uploadModel: UploadModel?, _ success: Bool, _ error: String) -> ()) = { (uploadModel, success, error) in
-//            
-//            if success {
-//                let description = (self.descriptionTextField.text.characters.count > 0 ? self.descriptionTextField.text : "")
-//                uploadModel?.image = UIImageJPEGRepresentation(self.selfieImage, 0.5)! as Data?
-//                uploadModel?.descriptionText = description
-//                
-//                let projectIds = self.projects.map({ Int($0.id)! })
-//                uploadModel?.projectIds = projectIds
-//                
-//                do {
-//                    try uploadModel?.managedObjectContext?.save()
-//                } catch {
-//                    fatalError("Failure to save context: \(error)")
-//                }
-//                
-//                self.handleDonationSuccess()
-//            }
-//            
-//        }
-//        
-//        if self.payment == .payPal {
-//            
-//            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.donationValue(), paymentType: self.payment)
-//            
-//            let paymentViewController = PayPalViewController()
-//            paymentViewController.callback = callback
-//            
-//            self.present(paymentViewController, animated: false, completion: nil)
-//            paymentViewController.showPayPalPaymentFor(amount: self.donationValue(),fee: fee, projects: self.projects)
-//            
-//        } else if self.payment == .creditCard {
-//            
-//            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.donationValue(), paymentType: self.payment)
-//            
-//            let total = Int(fee*100) + Int(self.donationValue() * 100)
-//            
-//            let paymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StripePaymentViewController") as!  StripePaymentViewController
-//            
-//            paymentViewController.callback = callback
-//            paymentViewController.totalPrice = total
-//            paymentViewController.dataManager = self.dataManager
-//
-//            self.navigationController?.pushViewController(paymentViewController, animated: true)
-//            
-//        } else {
-//            print("ERROR")
-//        }
-//        
-//    }
-//    
-//    func uploadSelfie() {
-//        self.dataManager.uploadSelfies()
-//    }
-//    
-//    func handleDonationSuccess() {
-//        
-//        self.uploadSelfie()
-//        
-//        self.view.endEditing(true)
-//        
-//        let navigationView = self.navigationController?.view
-//        let overlay2 = DonationSuccessOverlay(frame: (navigationView?.bounds)!)
-//        navigationView?.addSubview(overlay2)
-//        
-//        overlay2.callback = {
-//            overlay2.removeFromSuperview()
-//            _ = self.navigationController?.popToRootViewController(animated: false)
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
-//        }
-//    }
-    
     // MARK: - Share Button Action
+    
+    @IBAction func handleFinishButtonPressed(_ sender: Any) {
+        
+        guard let navc = self.navigationController as? NavigationViewController else {
+            return
+        }
+        
+        navc.selectedPayment = Payment.none
+        navc.supportedProjects = []
+        navc.selfieContext = SelfieContext.none
+        navc.selfie = nil
+        navc.sum = 0
+        
+        navc.popToRootViewController(animated: true)
+        navc.isNavigationBarHidden = false
+    }
     
     var docController: UIDocumentInteractionController!
     

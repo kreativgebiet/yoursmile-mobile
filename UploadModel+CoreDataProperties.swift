@@ -23,5 +23,6 @@ extension UploadModel {
     @NSManaged public var stripeToken: String?
     @NSManaged public var backendId: String
     @NSManaged public var projectIds: [Int]
+    @NSManaged public var projectAmounts: [Int]
 
 }

@@ -66,6 +66,7 @@
 "PROJECT_DETAILS" = "PROJECT DETAILS";
 "TAKE_SELFIE" = "Take Selfie";
 "WITHOUT_SELFIE" = "Continue without Photo";
+"BACK_TO_PROJECTS" = "Back to projects";
 
 //Profile
 "PROJECTS_SUPPORTED" = "Projects supported";
@@ -101,7 +102,7 @@
 
 //Donation
 "DONATION_DESCRIPTION" = "With individual amounts you can now donate to the different projects of your choice.";
-"SELECT_PROJECT" = "Select a donation project";
+"SELECT_PROJECT" = "Select your project";
 "SELECT_ANOTHER_PROJECT" = "Select another project";
 "PAYMENT_ERROR" = "Please select a payment option.";
 "NO_PROJECT_ERROR" = "Please select one or more donation projects.";
@@ -120,7 +121,7 @@
 //Overlay
 "THANK_YOU" = "Thank you";
 "THANK_YOU_TEXT" = "You are a real hero! Your payment was succesfully transferred to the selected project.";
-"THANK_YOU_BUTTON" = "Back to my stream";
+"THANK_YOU_BUTTON" = "Proceed";
 "FEE_TITLE" = "Payment Info";
 "FEE_TEXT" = "We have to charge a fee for this payment type, because we want that the project will receive the full amount of 1€ without any subtractions. The fee is %@€ and will come on top of your amount.";
 "FEE_BUTTON" = "Okay, thats fine";

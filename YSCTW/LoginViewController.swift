@@ -39,6 +39,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.facebookButtonTopSpaceConstraint.constant = 80
         }
         
+        self.facebookLoginButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
         self.defaultFacebookButtonTopSpaceConstraintConstant = self.facebookButtonTopSpaceConstraint.constant
         self.defaultlogoTopSpaceConstraintConstant = self.logoTopSpaceConstraint.constant
         

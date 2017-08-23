@@ -278,7 +278,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         if segue.identifier == "cameraDonationSegue" {
             
             if let navC = self.navigationController as? NavigationViewController {
-                navC.selfie = self.image
+                navC.selfie = self.image!
             }
             
         }

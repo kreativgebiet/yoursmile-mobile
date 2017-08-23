@@ -30,13 +30,13 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     public var selectedProjectDonations: [String : Float] = [:]
     
     var supportedProjects = [Project]()
-    
     var selfieContext: SelfieContext?
     
     var navController: NavigationViewController!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         for project in supportedProjects {
             selectedProjectDonations[project.id] = 1
@@ -153,7 +153,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             HelperFunctions.presentAlertViewfor(error: error)
             
         } else {
-            self.performSegue(withIdentifier: "donationDescriptionSegue", sender: self)
+            proceedPayment()
         }
         
     }
@@ -164,34 +164,84 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         viewController.dataManager = self.navController.dataManager
         viewController.popToViewController = self
         
-//        viewController.supportCallback = { selectedSupportProject in
-//            self.supportedProjects.append(selectedSupportProject)
-//            self.navController.supportedProjects.append(selectedSupportProject)
-//
-//            self.loadSupportedProjects()
-//            
-//            _ = self.navigationController?.popToViewController(self, animated: true)
-//        }
-//        
-//        viewController.title = "PROJECTS".localized
-//        
-//        viewController.view.setNeedsLayout()
-//        viewController.view.layoutIfNeeded()
-//        
-//        let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
-//        self.view.addSubview(loadingScreen)
-//        
-//        self.dataManager?.projects({ (projects) in
-////            loadingScreen.removeFromSuperview()
-////            self.projects = projects
-////            
-////            viewController.projects = (self.projects.filter({!self.supportedProjects.contains($0)}))
-////            viewController.reload()
-//        })
-        
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
+    // MARK: ProjectView Creation
+    
+    func proceedPayment() {
+
+        let callback: ((_ uploadModel: UploadModel?, _ success: Bool, _ error: String) -> ()) = { (uploadModel, success, error) in
+
+            if success {
+                let projectIds = self.navController.supportedProjects.map({Int($0.id)!})
+                // TODO: order
+                let projectAmounts = self.selectedProjectDonations.flatMap({Int($1)})
+                uploadModel?.projectIds = projectIds
+                uploadModel?.projectAmounts = projectAmounts
+
+                do {
+                    try uploadModel?.managedObjectContext?.save()
+                } catch {
+                    fatalError("Failure to save context: \(error)")
+                }
+
+                self.handleDonationSuccess()
+            }
+
+        }
+
+        if self.paymentSelectionView.selectedPayment == .payPal {
+
+            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.sum(), paymentType: self.paymentSelectionView.selectedPayment)
+
+            let paymentViewController = PayPalViewController()
+            paymentViewController.callback = callback
+
+            self.navigationController?.present(paymentViewController, animated: false, completion: nil)
+            paymentViewController.showPayPalPaymentFor(amount: self.sum(),fee: fee, projects: self.navController.supportedProjects)
+
+        } else if self.paymentSelectionView.selectedPayment == .creditCard {
+
+            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.sum(), paymentType: self.paymentSelectionView.selectedPayment)
+
+            let total = Int(fee*100) + Int(self.sum() * 100)
+
+            let paymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StripePaymentViewController") as!  StripePaymentViewController
+
+            paymentViewController.callback = callback
+            paymentViewController.totalPrice = total
+            paymentViewController.dataManager = self.dataManager
+
+            self.navigationController?.pushViewController(paymentViewController, animated: true)
+
+        } else {
+            print("ERROR")
+        }
+
+    }
+
+    func uploadSelfie() {
+        self.dataManager?.uploadSelfies()
+    }
+
+    func handleDonationSuccess() {
+
+        self.uploadSelfie()
+
+        self.view.endEditing(true)
+
+        let navigationView = self.navigationController?.view
+        let overlay2 = DonationSuccessOverlay(frame: (navigationView?.bounds)!)
+        navigationView?.addSubview(overlay2)
+
+        overlay2.callback = {
+            overlay2.removeFromSuperview()
+            self.performSegue(withIdentifier: "donationDescriptionSegue", sender: self)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: feedNotificationIdentifier), object: nil)
+        }
+    }
+
     // MARK: ProjectView Creation
     
     var projectViews = [AddedProjectButtonView]()
@@ -264,10 +314,14 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         showSum()
     }
     
-    func showSum() {
+    func sum() -> Float {
         let sum = selectedProjectDonations.flatMap({Float($1)}).reduce(0, +)
-        donationSumLabel.text = "\(Int(sum))€"
-        navController.sum = sum
+        return sum
+    }
+    
+    func showSum() {
+        donationSumLabel.text = "\(Int(sum()))€"
+        navController.sum = sum()
     }
     
     
