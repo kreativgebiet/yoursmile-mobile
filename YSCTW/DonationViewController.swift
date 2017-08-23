@@ -212,6 +212,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             paymentViewController.callback = callback
             paymentViewController.totalPrice = total
             paymentViewController.dataManager = self.dataManager
+            paymentViewController.title = "PAY".localized
 
             self.navigationController?.pushViewController(paymentViewController, animated: true)
 
