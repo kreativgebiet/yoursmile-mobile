@@ -28,11 +28,16 @@ class ProjectsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = false
         self.reload()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {
