@@ -49,13 +49,17 @@ class AddedProjectButtonView: UIView {
         
         slider.minimumValue = 1
         slider.maximumValue = 100
-        slider.setValue(0, animated: false)
+        slider.setValue(slider.value, animated: false)
         
         slider.addTarget(self, action: #selector(sliderValueChanged(sender:)), for: .valueChanged)
         
-        self.addSubview(sliderLabel)
+        if sliderLabel.superview == nil {
+            self.addSubview(sliderLabel)
+        }
         
-        sliderValueChanged(sender: slider)
+        sliderLabel.text = "\(Int(slider.value))€"
+        sliderLabel.sizeToFit()
+        sliderLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.frame.maxY + sliderLabel.frame.height/2-10)
     }
     
     func sliderValueChanged(sender: UISlider) {

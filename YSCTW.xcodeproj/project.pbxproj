@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1101A681F5007CD008DF9BD /* LaunchAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1101A671F5007CD008DF9BD /* LaunchAnimationViewController.swift */; };
 		A11028ED1DD4DA2C00633343 /* DonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11028EC1DD4DA2C00633343 /* DonationViewController.swift */; };
 		A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11028EE1DD50E9600633343 /* AddProjectButton.swift */; };
 		A11028F11DD50EA200633343 /* AddProjectButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11028F01DD50EA200633343 /* AddProjectButton.xib */; };
@@ -233,6 +234,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A1101A671F5007CD008DF9BD /* LaunchAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchAnimationViewController.swift; sourceTree = "<group>"; };
 		A11028EC1DD4DA2C00633343 /* DonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
 		A11028EE1DD50E9600633343 /* AddProjectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectButton.swift; sourceTree = "<group>"; };
 		A11028F01DD50EA200633343 /* AddProjectButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProjectButton.xib; sourceTree = "<group>"; };
@@ -681,6 +683,7 @@
 				A17B8E5A1F44C3F400C48BC6 /* ProjectCategoryViewController.swift */,
 				A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */,
 				A1863C2B1F4CDA3300E1C807 /* LoginNavigationViewController.swift */,
+				A1101A671F5007CD008DF9BD /* LaunchAnimationViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1216,6 +1219,7 @@
 				A1B232E21F4B6DDE006A9A42 /* SliderExtension.swift in Sources */,
 				A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */,
 				A11028EF1DD50E9600633343 /* AddProjectButton.swift in Sources */,
+				A1101A681F5007CD008DF9BD /* LaunchAnimationViewController.swift in Sources */,
 				A17B8E5D1F44C43200C48BC6 /* CategoryButton.swift in Sources */,
 				A1D86C011EFD002C00D69F37 /* ImageTableViewCell.swift in Sources */,
 				A1D86BE91EFAC41100D69F37 /* StringHelperFunctions.swift in Sources */,

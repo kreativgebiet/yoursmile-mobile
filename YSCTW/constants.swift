@@ -23,6 +23,7 @@ let uploadProgressNotificationIdentifier: String = "UploadProgressNotificationId
 let logoutNotificationIdentifier: String = "LogoutProgressNotificationIdentifier"
 
 let blue = UIColor(red: 0, green: 184/255.0, blue: 237/255.0, alpha: 1.0) as UIColor
+let blue2 = UIColor(red: 12/255.0, green: 106.0/255.0, blue: 186.0/255.0, alpha: 1.0) as UIColor
 
 let orange = UIColor(red: 252.0/255.0, green: 168/255.0, blue: 78/255.0, alpha: 1.0) as UIColor
 let green = UIColor(red: 0/255.0, green: 151.0/255.0, blue: 137.0/255.0, alpha: 1.0) as UIColor

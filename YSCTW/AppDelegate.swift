@@ -50,7 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            initialViewController = storyboard.instantiateViewController(withIdentifier: "OVC")
         }
         
-        self.window?.rootViewController = initialViewController
+        let animationScreen = storyboard.instantiateViewController(withIdentifier: "LaunchAnimationViewController")
+        
+        self.window?.rootViewController = animationScreen
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+            self.window?.rootViewController = initialViewController
+        })
+
         self.window?.makeKeyAndVisible()
         
         

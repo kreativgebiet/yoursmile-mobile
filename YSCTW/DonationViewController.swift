@@ -199,7 +199,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             paymentViewController.callback = callback
 
             self.navigationController?.present(paymentViewController, animated: false, completion: nil)
-            paymentViewController.showPayPalPaymentFor(amount: self.sum(),fee: fee, projects: self.navController.supportedProjects)
+            paymentViewController.showPayPalPaymentFor(amount: self.sum(),fee: fee, projects: self.navController.supportedProjects, paymentDict: selectedProjectDonations)
 
         } else if self.paymentSelectionView.selectedPayment == .creditCard {
 
@@ -274,6 +274,15 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             projectView.setNeedsLayout()
             projectView.layoutIfNeeded()
             
+            if let value = selectedProjectDonations[project.id] {
+                projectView.slider.setValue(round(value), animated: false)
+                projectView.setNeedsLayout()
+                projectView.layoutIfNeeded()
+                projectView.sliderLabel.text = "\(Int(value))€"
+                projectView.sliderLabel.sizeToFit()
+                projectView.sliderLabel.center = CGPoint(x: projectView.slider.thumbCenterX, y: projectView.slider.frame.maxY + projectView.sliderLabel.frame.height/2-10)
+            }
+            
             y += frame.size.height
             
             if index < self.supportedProjects.count-1 {
@@ -302,9 +311,15 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     // MARK: - AddedProjectView delegate
     
     func delete(_ project: Project) {
+        if let index = self.navController.supportedProjects.index(of: project) {
+            self.navController.supportedProjects.remove(at: index)
+        }
+        
         if let index = self.supportedProjects.index(of: project) {
             self.supportedProjects.remove(at: index)
         }
+        
+        self.selectedProjectDonations.removeValue(forKey: project.id)
         
         self.loadSupportedProjects()
     }

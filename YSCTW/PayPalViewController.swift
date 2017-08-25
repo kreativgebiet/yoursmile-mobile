@@ -14,7 +14,7 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
     
     var payPalConfig = PayPalConfiguration()
     
-    public func showPayPalPaymentFor(amount: Float, fee: Float, projects: [Project]) -> () {
+    public func showPayPalPaymentFor(amount: Float, fee: Float, projects: [Project], paymentDict: [String : Float]) -> () {
         
         payPalConfig.acceptCreditCards = false
         payPalConfig.merchantName = "YSCTW GmbH"
@@ -26,7 +26,10 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
         var items = [PayPalItem]()
         
         for project in projects {
-            let item = PayPalItem(name: (project.projectName as NSString) as String, withQuantity: 1, withPrice: NSDecimalNumber(string: "1.00"), withCurrency: "EUR", withSku: (project.projectName as NSString) as String)
+            let price = paymentDict[project.id]
+            let priceString = "\(Int(price!))"
+            
+            let item = PayPalItem(name: (project.projectName as NSString) as String, withQuantity: 1, withPrice: NSDecimalNumber(string: priceString), withCurrency: "EUR", withSku: (project.projectName as NSString) as String)
             items.append(item)
         }
         
