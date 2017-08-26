@@ -39,6 +39,8 @@ let spacerGray = UIColor.init(white: 102.0/256.0, alpha: 1)
 let navigationBarGray = UIColor.init(white: 68.0/256.0, alpha: 1)
 let customMiddleGray = UIColor.init(white: 135.0/256.0, alpha: 1)
 
+let gray85 = UIColor.init(white: 85.0/256.0, alpha: 1)
+let gray104 = UIColor.init(white: 104.0/256.0, alpha: 1)
 let gray150 = UIColor.init(white: 150.0/256.0, alpha: 1)
 let gray156 = UIColor.init(white: 156.0/256.0, alpha: 1)
 let gray221 = UIColor.init(white: 221.0/256.0, alpha: 1)

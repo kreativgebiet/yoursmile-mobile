@@ -37,6 +37,11 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.backgroundColor = .white
         
         for project in supportedProjects {
             selectedProjectDonations[project.id] = 1
@@ -306,6 +311,8 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         for projectView in self.projectViews {
             self.selectedProjectsContainerView.addSubview(projectView)
         }
+        
+        showSum()
     }
     
     // MARK: - AddedProjectView delegate

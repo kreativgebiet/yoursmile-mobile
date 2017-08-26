@@ -24,7 +24,7 @@ class DonationSlider : UISlider {
         if value == self.minimumValue {
             thumbRect.origin.x -= 2
         } else if value == self.maximumValue {
-            thumbRect.origin.x += 2
+            thumbRect.origin.x += 6
         }
         
         return thumbRect

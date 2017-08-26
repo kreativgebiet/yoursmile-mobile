@@ -37,7 +37,6 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         
         self.title = "DESCRIPTION".localized
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        self.view.backgroundColor = customLightGray
         
         self.containerView.layer.borderColor = customDarkerGray.cgColor
         self.containerView.layer.borderWidth = 1
@@ -116,7 +115,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         
         
         self.donationSumLabel.text = "DONATION_SUM_TEXT".localized.replacingOccurrences(of: "%@", with: "\(Int(navController.sum))")
-        self.donationSumLabel.textColor = blue
+        self.donationSumLabel.textColor = gray85
         
         //disable back swipe
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
