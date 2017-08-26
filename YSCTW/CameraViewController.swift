@@ -50,13 +50,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         self.topBarView.backgroundColor = .white
         
-        for device in devices! {
-            if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
-                if((device as AnyObject).position == AVCaptureDevicePosition.front) {
-                    captureDevice = device as? AVCaptureDevice
-                }
-            }
-        }
+        captureDevice = cameraWithPosition(position: .front)
         
         if captureDevice != nil {
             view.setNeedsLayout()
@@ -102,15 +96,26 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             if let device = captureDevice {
                 do {
-                    try device.lockForConfiguration()
-                    device.focusPointOfInterest = pointInCamera
-                    device.focusMode = .autoFocus
+                    // TODO
+                    let support:Bool = device.isFocusPointOfInterestSupported
                     
-                    device.unlockForConfiguration()
-                } catch {
-                    // handle error
+                    if support {
+                        try device.lockForConfiguration()
+                        device.focusMode = AVCaptureFocusMode.continuousAutoFocus
+                        device.exposurePointOfInterest = pointInCamera
+                        device.exposureMode = AVCaptureExposureMode.continuousAutoExposure
+                        device.unlockForConfiguration()
+                    }
+                    
+
+                } catch let error {
+                    print(error)
                     return
                 }
+                
+//                device.focusPointOfInterest = pointInCamera
+//                device.focusMode = .autoFocus
+                
             }
 
         }
@@ -126,7 +131,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 // handle error
                 return
             }
-            device.focusMode = .locked
+//            device.focusMode = .locked
             device.unlockForConfiguration()
         }
     }
