@@ -52,7 +52,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         for device in devices! {
             if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
-                if((device as AnyObject).position == AVCaptureDevicePosition.back) {
+                if((device as AnyObject).position == AVCaptureDevicePosition.front) {
                     captureDevice = device as? AVCaptureDevice
                 }
             }

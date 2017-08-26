@@ -56,6 +56,7 @@ class ProjectDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isTranslucent = false
         //Localization
         self.title = "PROJECT_DETAILS".localized
         self.supportButton.setTitle("SUPPORT".localized, for: .normal)

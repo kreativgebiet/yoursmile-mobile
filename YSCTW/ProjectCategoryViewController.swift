@@ -25,7 +25,7 @@ class ProjectCategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "DONATE".localized
+        self.title = ""
         
         button1.setTitle(buttonTitle[0], for: .normal)
         button1.sector = Sector.education
@@ -58,18 +58,16 @@ class ProjectCategoryViewController: UIViewController {
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if popToViewController != nil {
             self.navigationController?.navigationBar.isHidden = false
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.title = "DONATE".localized
         } else {
             self.navigationController?.navigationBar.isHidden = true
+            self.title = ""
         }
         
         let loadingScreen = LoadingScreen.init(frame: self.view.bounds)
