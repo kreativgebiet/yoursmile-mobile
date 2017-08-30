@@ -26,13 +26,19 @@ class AddedProjectButtonView: UIView, UITextFieldDelegate {
     @IBOutlet weak var individualDonationTextfieldTopConstraint: NSLayoutConstraint!
     let sliderLabel = UILabel()
     
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.layer.cornerRadius = 5
+        self.backgroundColor = .clear
+        self.individualDonationLabel.text = "INDIVIDUAL_DONATION".localized
         
-        self.layer.borderColor = customDarkerGray.cgColor
-        self.layer.borderWidth = 1
+        self.containerView.layer.cornerRadius = 5
+        
+        self.containerView.layer.borderColor = customDarkerGray.cgColor
+        self.containerView.layer.borderWidth = 1
         
         self.logoImageView.layer.cornerRadius = self.logoImageView.frame.size.height/2
         self.logoImageView.clipsToBounds = true
@@ -70,6 +76,9 @@ class AddedProjectButtonView: UIView, UITextFieldDelegate {
         
         individualDonationTextfield.delegate = self
         individualDonationTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        individualDonationTextfield.autocorrectionType = UITextAutocorrectionType.no
+        individualDonationTextfield.keyboardType = UIKeyboardType.numbersAndPunctuation
     }
     
     func sliderValueChanged(sender: UISlider) {

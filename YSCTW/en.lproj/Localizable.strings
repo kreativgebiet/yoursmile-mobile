@@ -131,6 +131,8 @@
 "CARD_HOLDER" = "Cardholder";
 "CARD_NUMBER" = "Cardnumber";
 "PAY" = "Pay";
+"INDIVIDUAL_DONATION" = "Individual donation";
+
 
 //Preferences
 "ABOUT" = "ABOUT";

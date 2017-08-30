@@ -280,6 +280,8 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             frame.size.width = self.selectedProjectsContainerView.frame.size.width
             frame.origin.y = y
             
+            var height: CGFloat = 133
+            
             if let value = selectedProjectDonations[project.id] {
                 
                 projectView.setNeedsLayout()
@@ -292,15 +294,16 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
                 projectView.sliderLabel.sizeToFit()
                 projectView.sliderLabel.center = CGPoint(x: projectView.slider.thumbCenterX, y: projectView.slider.frame.maxY + projectView.sliderLabel.frame.height/2)
                 
+                
                 if (value >= Float(sliderMaxValue) && projectView.project.id == project.id) {
                     
                     if value > Float(sliderMaxValue) {
-                        frame.size.height = 166
+                        height = 166
                         projectView.sliderLabel.isHidden = true
                         projectView.individualDonationTextfieldTopConstraint.constant = 5
                         projectView.individualDonationTextfield.text = String(format: "%.0f", value)
                     } else {
-                        frame.size.height = 197
+                        height = 197
                         projectView.sliderLabel.isHidden = false
                         projectView.individualDonationTextfieldTopConstraint.constant = 32
                         projectView.individualDonationTextfield.text = ""
@@ -308,14 +311,15 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
                     
                 } else {
                     projectView.individualDonationTextfield.text = ""
-                    frame.size.height = 133
                 }
                 
             }
-            projectView.frame = frame
-
             
-            y += frame.size.height
+            projectView.containerViewHeightConstraint.constant = height
+            frame.size.height = height
+            projectView.frame = frame
+            
+            y += height
             
             if index < self.supportedProjects.count-1 {
                 y += 10.0
@@ -376,26 +380,29 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             frame.size.width = self.selectedProjectsContainerView.frame.size.width
             frame.origin.y = y
             
+            var height: CGFloat = 133
+            
             if (donationValue >= Float(sliderMaxValue)) {
                 
                 if donationValue > Float(sliderMaxValue) {
-                    frame.size.height = 166
+                    height = 166
                     projectView.sliderLabel.isHidden = true
                     projectView.individualDonationTextfieldTopConstraint.constant = 5
                 } else {
-                    frame.size.height = 197
+                    height = 197
                     projectView.sliderLabel.isHidden = false
                     projectView.individualDonationTextfieldTopConstraint.constant = 32
                 }
                 
             } else {
                 projectView.individualDonationTextfield.text = ""
-                frame.size.height = 133
             }
-
+            
+            projectView.containerViewHeightConstraint.constant = height
+            frame.size.height = height
             projectView.frame = frame
             
-            y += frame.size.height
+            y += height
             
             if index < self.supportedProjects.count-1 {
                 y += 10.0
@@ -409,8 +416,9 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         }
         
         self.addProjectButtonTopConstraint.constant = y + 10
-                
-        self.projectContainerHeightConstraint.constant = y
+        y += self.addProjectButton.frame.height + 20
+        
+        self.projectContainerHeightConstraint.constant = y + self.addProjectButton.frame.height
         self.contentViewHeight.constant = y
         self.scrollView.contentSize = CGSize(width: scrollView.frame.width, height: y)
         
@@ -443,11 +451,13 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         var keyboardHeight: CGFloat = 0
         
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
+            var keyboardRectangle = keyboardFrame.cgRectValue
+            keyboardRectangle = self.view .convert(keyboardRectangle, from: nil)
+            
             keyboardHeight = keyboardRectangle.height
         }
         
-//        self.scrollViewBottomConstraint.constant = keyboardHeight + 15
+        self.scrollViewBottomConstraint.constant = moveUp ? keyboardHeight-(self.view.frame.height-donationSumLabel.frame.origin.y) : 15
         
         let options = UIViewAnimationOptions(rawValue: curve << 16)
         UIView.animate(withDuration: duration, delay: 0, options: options,
