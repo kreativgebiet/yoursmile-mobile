@@ -19,7 +19,7 @@ class DonationFeeOverlayView: UIView {
     
     public var callback: (() -> Void)!
     
-    public init(frame: CGRect, numberOfProjects: Int, paymentType: Payment) {
+    public init(frame: CGRect, fee: Float, paymentType: Payment) {
         super.init(frame: frame)
         
         view = self.loadViewFromNib()
@@ -37,9 +37,7 @@ class DonationFeeOverlayView: UIView {
         self.button.setTitle("FEE_BUTTON".localized, for: .selected)
         
         self.paymentLabel.text = "FEE_TITLE".localized
-        self.paymentLabel.textColor = navigationBarGray
-        
-        let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: Float(numberOfProjects), paymentType: paymentType)
+        self.paymentLabel.textColor = gray85
         
         let text = "FEE_TEXT".localized.replacingOccurrences(of: "%@", with: String(fee))
         
@@ -49,10 +47,10 @@ class DonationFeeOverlayView: UIView {
         
         let attrString = NSMutableAttributedString(string: text)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSFontAttributeName, value: UIFont(name: "Gotham-Book", size: 15)!, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSForegroundColorAttributeName, value: gray150, range: NSMakeRange(0, attrString.length))
         
         self.paymentDescriptionLabel.attributedText = attrString
-        
-        self.paymentDescriptionLabel.textColor = green
     }
 
     @IBAction func buttonHandler(_ sender: AnyObject) {

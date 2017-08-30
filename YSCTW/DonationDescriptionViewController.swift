@@ -129,51 +129,6 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         self.placeholderLabel.isHidden = !textView.text.isEmpty
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        
-//        self.selfieImageView.image = self.selfieImage
-//        self.selfieImageView.contentMode = .scaleAspectFill
-//        
-//        self.updateDonationGoalPercentage()
-//        self.updateDonationInfoAndFee()
-//    }
-//    
-//    @IBAction func sliderValueChanged(_ sender: Any) {
-//        
-////        self.sliderView.setValue(self.sliderView.value.rounded(), animated: true)
-//        
-//        self.updateDonationGoalPercentage()
-//        self.updateDonationInfoAndFee()
-//    }
-    
-//    func updateDonationGoalPercentage() {
-//        
-//            }
-    
-//    func updateDonationInfoAndFee() {
-//        
-//        var text = "DONATION_INFO".localized
-//        text = text.replacingOccurrences(of: "%@1", with: String(self.projects.count))
-//        text = text.replacingOccurrences(of: "%@2", with: (self.projects.count > 1 ? "PROJECTS_WORD".localized : "PROJECT_WORD".localized))
-//        
-//        let donationValue = String(Int(self.donationValue()))+"€"
-//        text = text.replacingOccurrences(of: "%@", with: donationValue)
-//        
-//        //+1 on length due to the additional €
-//        let range = NSMakeRange(text.indexOf(target: donationValue)!, donationValue.length+1)
-//        
-//        let attrString = NSMutableAttributedString(string: text)
-//        attrString.addAttribute(NSForegroundColorAttributeName, value: orange, range:range)
-//    }
-    
-    // MARK: - Share Button Action
-    
-    func donationValue() -> Float {
-        return 0
-//        return Float(self.projects.count*Int(sliderView.value))
-    }
-    
     // MARK: - Share Button Action
     
     @IBAction func handleFinishButtonPressed(_ sender: Any) {
@@ -243,6 +198,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
                 
                 if ((error) != nil) {
                     HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!)
+                    self.loadingScreen.removeFromSuperview()
                 } else {
                     let content = self.createFBSharePhotoContent()
                     FBSDKShareAPI.share(with: content, delegate: self)

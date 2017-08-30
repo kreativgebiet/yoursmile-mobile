@@ -13,18 +13,22 @@ protocol AddedProjectButtonDelegate {
     func sliderValueChanged(_ project: Project, _ value: Float)
 }
 
-class AddedProjectButtonView: UIView {
+class AddedProjectButtonView: UIView, UITextFieldDelegate {
     public var delegate: AddedProjectButtonDelegate!
     public var project: Project!
     
     @IBOutlet weak var slider: DonationSlider!
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var individualDonationLabel: UILabel!
+    @IBOutlet weak var individualDonationTextfield: UITextField!
     
+    @IBOutlet weak var individualDonationTextfieldTopConstraint: NSLayoutConstraint!
     let sliderLabel = UILabel()
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         self.layer.cornerRadius = 5
         
         self.layer.borderColor = customDarkerGray.cgColor
@@ -48,7 +52,7 @@ class AddedProjectButtonView: UIView {
         sliderLabel.textColor = orange
         
         slider.minimumValue = 1
-        slider.maximumValue = 100
+        slider.maximumValue = Float(sliderMaxValue)
         slider.setValue(slider.value, animated: false)
         
         slider.addTarget(self, action: #selector(sliderValueChanged(sender:)), for: .valueChanged)
@@ -59,7 +63,13 @@ class AddedProjectButtonView: UIView {
         
         sliderLabel.text = "\(Int(slider.value))€"
         sliderLabel.sizeToFit()
-        sliderLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.frame.maxY + sliderLabel.frame.height/2-10)
+        sliderLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.frame.maxY + sliderLabel.frame.height/2)
+        
+        individualDonationLabel.isHidden = !(slider.value == Float(sliderMaxValue))
+        individualDonationTextfield.isHidden = !(slider.value == Float(sliderMaxValue))
+        
+        individualDonationTextfield.delegate = self
+        individualDonationTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     func sliderValueChanged(sender: UISlider) {
@@ -69,7 +79,7 @@ class AddedProjectButtonView: UIView {
         sliderLabel.text = "\(Int(value))€"
         sliderLabel.sizeToFit()
         
-        sliderLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.frame.maxY + sliderLabel.frame.height/2-10)
+        sliderLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.frame.maxY + sliderLabel.frame.height/2)
         self.delegate.sliderValueChanged(self.project, slider.value)
     }
 
@@ -80,4 +90,31 @@ class AddedProjectButtonView: UIView {
     class func instanceFromNib() -> AddedProjectButtonView {
         return UINib(nibName: "AddedProjectButtonView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AddedProjectButtonView
     }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        
+        guard let newValue = Float(textField.text!) else {
+            return
+        }
+        
+        if newValue > Float(sliderMaxValue) {
+            self.delegate.sliderValueChanged(self.project, Float(textField.text!)!)
+        } else {
+            self.delegate.sliderValueChanged(self.project, Float(sliderMaxValue))
+        }
+        
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    
 }

@@ -88,6 +88,7 @@
 		A16407251DDF181800BA1853 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407151DDF181800BA1853 /* Gotham-Book.otf */; };
 		A16407261DDF181800BA1853 /* Gotham-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407161DDF181800BA1853 /* Gotham-BlackItalic.otf */; };
 		A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407171DDF181800BA1853 /* Gotham-Black.otf */; };
+		A16A895D1F5731A8001247CA /* InsetTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16A895C1F5731A8001247CA /* InsetTextfield.swift */; };
 		A17B8E5B1F44C3F400C48BC6 /* ProjectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B8E5A1F44C3F400C48BC6 /* ProjectCategoryViewController.swift */; };
 		A17B8E5D1F44C43200C48BC6 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17B8E5C1F44C43200C48BC6 /* CategoryButton.swift */; };
 		A1863C2C1F4CDA3300E1C807 /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1863C2B1F4CDA3300E1C807 /* LoginNavigationViewController.swift */; };
@@ -326,6 +327,7 @@
 		A16407151DDF181800BA1853 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Book.otf"; path = "Resources/Gotham-Book.otf"; sourceTree = "<group>"; };
 		A16407161DDF181800BA1853 /* Gotham-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-BlackItalic.otf"; path = "Resources/Gotham-BlackItalic.otf"; sourceTree = "<group>"; };
 		A16407171DDF181800BA1853 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Black.otf"; path = "Resources/Gotham-Black.otf"; sourceTree = "<group>"; };
+		A16A895C1F5731A8001247CA /* InsetTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetTextfield.swift; sourceTree = "<group>"; };
 		A17B8E5A1F44C3F400C48BC6 /* ProjectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCategoryViewController.swift; sourceTree = "<group>"; };
 		A17B8E5C1F44C43200C48BC6 /* CategoryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		A1863C2B1F4CDA3300E1C807 /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
@@ -742,6 +744,7 @@
 				A1D86C071F01072F00D69F37 /* ProjectInfoView.swift */,
 				A1D86C091F01074000D69F37 /* ProjectInfoView.xib */,
 				A17B8E5C1F44C43200C48BC6 /* CategoryButton.swift */,
+				A16A895C1F5731A8001247CA /* InsetTextfield.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1180,6 +1183,7 @@
 				A11028FF1DD5E23500633343 /* AccountPreferencesViewController.swift in Sources */,
 				A1D86BFD1EFC56A500D69F37 /* FollowerViewController.swift in Sources */,
 				A1DB37761E098368003EAFCF /* ErrorManager.swift in Sources */,
+				A16A895D1F5731A8001247CA /* InsetTextfield.swift in Sources */,
 				A1F8D8F91DD3AA2400AFAB4F /* HelperFunctions.swift in Sources */,
 				A1D6F4D71DE4889200A0A8F9 /* LoadingScreen.swift in Sources */,
 				A12A457B1DCF9383002977DF /* constants.swift in Sources */,

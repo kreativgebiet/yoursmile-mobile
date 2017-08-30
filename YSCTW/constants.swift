@@ -47,6 +47,8 @@ let gray221 = UIColor.init(white: 221.0/256.0, alpha: 1)
 let gray223 = UIColor.init(white: 223.0/256.0, alpha: 1)
 let gray224 = UIColor.init(white: 224.0/256.0, alpha: 1)
 
+let sliderMaxValue = 100
+
 enum SelfieContext {
     case noSelfie
     case withSelfie

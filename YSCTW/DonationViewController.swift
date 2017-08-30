@@ -27,6 +27,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     public var dataManager: DataManager?
     public var selectedProject: Project?
     //Dictionary of kind [Project.id : float]
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     public var selectedProjectDonations: [String : Float] = [:]
     
     var supportedProjects = [Project]()
@@ -43,6 +44,9 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.backgroundColor = .white
         
+        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         for project in supportedProjects {
             selectedProjectDonations[project.id] = 1
         }
@@ -52,7 +56,8 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
                 
         self.paymentSelectionView.callback = { paymentType in
             let navigationView = self.navigationController?.view
-            let overlay = DonationFeeOverlayView.init(frame: (navigationView?.bounds)!, numberOfProjects: self.supportedProjects.count, paymentType: paymentType)
+            let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.sum(), paymentType: paymentType)
+            let overlay = DonationFeeOverlayView.init(frame: (navigationView?.bounds)!, fee: fee, paymentType: paymentType)
             
             let view = UIView(frame: (navigationView?.bounds)!)
             view.backgroundColor = navigationBarGray.withAlphaComponent(0.6)
@@ -274,19 +279,41 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             var frame = projectView.frame
             frame.size.width = self.selectedProjectsContainerView.frame.size.width
             frame.origin.y = y
-            projectView.frame = frame
-            
-            projectView.setNeedsLayout()
-            projectView.layoutIfNeeded()
             
             if let value = selectedProjectDonations[project.id] {
+                
+                projectView.setNeedsLayout()
+                projectView.layoutIfNeeded()
+                
                 projectView.slider.setValue(round(value), animated: false)
                 projectView.setNeedsLayout()
                 projectView.layoutIfNeeded()
                 projectView.sliderLabel.text = "\(Int(value))€"
                 projectView.sliderLabel.sizeToFit()
-                projectView.sliderLabel.center = CGPoint(x: projectView.slider.thumbCenterX, y: projectView.slider.frame.maxY + projectView.sliderLabel.frame.height/2-10)
+                projectView.sliderLabel.center = CGPoint(x: projectView.slider.thumbCenterX, y: projectView.slider.frame.maxY + projectView.sliderLabel.frame.height/2)
+                
+                if (value >= Float(sliderMaxValue) && projectView.project.id == project.id) {
+                    
+                    if value > Float(sliderMaxValue) {
+                        frame.size.height = 166
+                        projectView.sliderLabel.isHidden = true
+                        projectView.individualDonationTextfieldTopConstraint.constant = 5
+                        projectView.individualDonationTextfield.text = String(format: "%.0f", value)
+                    } else {
+                        frame.size.height = 197
+                        projectView.sliderLabel.isHidden = false
+                        projectView.individualDonationTextfieldTopConstraint.constant = 32
+                        projectView.individualDonationTextfield.text = ""
+                    }
+                    
+                } else {
+                    projectView.individualDonationTextfield.text = ""
+                    frame.size.height = 133
+                }
+                
             }
+            projectView.frame = frame
+
             
             y += frame.size.height
             
@@ -332,8 +359,64 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     }
     
     func sliderValueChanged(_ project: Project, _ value: Float) {
-        print(project.projectName + " \(value)")
+        
         selectedProjectDonations[project.id] = value
+        
+        var y: CGFloat = 0
+        
+        var index = 0
+        
+        for projectView in self.projectViews {
+            
+            guard let donationValue = selectedProjectDonations[projectView.project.id] else {
+                return
+            }
+            
+            var frame = projectView.frame
+            frame.size.width = self.selectedProjectsContainerView.frame.size.width
+            frame.origin.y = y
+            
+            if (donationValue >= Float(sliderMaxValue)) {
+                
+                if donationValue > Float(sliderMaxValue) {
+                    frame.size.height = 166
+                    projectView.sliderLabel.isHidden = true
+                    projectView.individualDonationTextfieldTopConstraint.constant = 5
+                } else {
+                    frame.size.height = 197
+                    projectView.sliderLabel.isHidden = false
+                    projectView.individualDonationTextfieldTopConstraint.constant = 32
+                }
+                
+            } else {
+                projectView.individualDonationTextfield.text = ""
+                frame.size.height = 133
+            }
+
+            projectView.frame = frame
+            
+            y += frame.size.height
+            
+            if index < self.supportedProjects.count-1 {
+                y += 10.0
+            }
+            
+            index += 1
+            
+            projectView.setNeedsLayout()
+            projectView.layoutIfNeeded()
+        
+        }
+        
+        self.addProjectButtonTopConstraint.constant = y + 10
+                
+        self.projectContainerHeightConstraint.constant = y
+        self.contentViewHeight.constant = y
+        self.scrollView.contentSize = CGSize(width: scrollView.frame.width, height: y)
+        
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        
         showSum()
     }
     
@@ -345,6 +428,34 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     func showSum() {
         donationSumLabel.text = "\(Int(sum()))€"
         navController.sum = sum()
+    }
+    
+    
+    // MARK: - Keyboard
+    
+    func animateWithKeyboard(notification: NSNotification) {
+        
+        let userInfo = notification.userInfo!
+        let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
+        let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! UInt
+        let moveUp = (notification.name == NSNotification.Name.UIKeyboardWillShow)
+
+        var keyboardHeight: CGFloat = 0
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            keyboardHeight = keyboardRectangle.height
+        }
+        
+//        self.scrollViewBottomConstraint.constant = keyboardHeight + 15
+        
+        let options = UIViewAnimationOptions(rawValue: curve << 16)
+        UIView.animate(withDuration: duration, delay: 0, options: options,
+                       animations: {
+                        self.view.layoutIfNeeded()
+        },
+                       completion: nil
+        )
     }
     
     

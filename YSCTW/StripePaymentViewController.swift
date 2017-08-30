@@ -28,7 +28,7 @@ class StripePaymentViewController: UIViewController {
             if success {
                 
                 let loadingScreen = LoadingScreen.init(frame: (self.navigationController?.view.bounds)!)
-                self.view.addSubview(loadingScreen)
+                self.navigationController?.view.addSubview(loadingScreen)
                 
                 // If you have your own form for getting credit card information, you can construct
                 // your own STPCardParams from number, month, year, and CVV.
