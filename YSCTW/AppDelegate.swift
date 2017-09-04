@@ -16,16 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
+        //Enter your client ID of the app from the Google APIs console
         GIDSignIn.sharedInstance().clientID = "323620439998-4p4cqackip97sqod9mua8sct5has46a4.apps.googleusercontent.com"
-//        GGLContext.sharedInstance().configureWithError(&configureError)
-//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
         //Enter your OneSignal credentials
         OneSignal.initWithLaunchOptions(launchOptions, appId: "f1531894-9c55-479b-b7c2-035beed48864")
-        
-        //Enter your credentials
+
+        //Enter your Stripe credentials
         STPPaymentConfiguration.shared().publishableKey = "pk_test_HoCc151BfYh437wFFtMoRVUy"
+
+        //Enter your Paypal credentials
         PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YOUR_CLIENT_ID_FOR_PRODUCTION",
                                                                 PayPalEnvironmentSandbox: "YOUR_CLIENT_ID_FOR_SANDBOX"])
         

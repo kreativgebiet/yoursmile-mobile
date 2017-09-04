@@ -131,7 +131,7 @@
 "CARD_HOLDER" = "Karteninhaber";
 "CARD_NUMBER" = "Kartennummer";
 "PAY" = "Bezahlen";
-"INDIVIDUAL_DONATION" = "Individueller Spendenbeitrag";
+"INDIVIDUAL_DONATION" = "Spendenbeitrag";
 
 //Preferences
 "ABOUT" = "ABOUT";

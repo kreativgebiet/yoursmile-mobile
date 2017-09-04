@@ -73,7 +73,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBk-jR-NeV">
-                            <rect key="frame" x="343" y="146" width="12" height="16"/>
+                            <rect key="frame" x="340" y="146" width="12" height="16"/>
                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="16"/>
                             <color key="textColor" red="0.99607843137254903" green="0.61960784313725492" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -93,7 +93,7 @@
                         <constraint firstItem="9lg-2Q-UBB" firstAttribute="top" secondItem="8mm-td-uUm" secondAttribute="bottom" constant="11" id="hHa-Kz-QSA"/>
                         <constraint firstItem="lba-PW-1IR" firstAttribute="leading" secondItem="wdJ-6Q-jR0" secondAttribute="trailing" constant="16" id="iUk-UK-wzt"/>
                         <constraint firstItem="mBk-jR-NeV" firstAttribute="centerY" secondItem="WoI-4o-fCr" secondAttribute="centerY" id="lue-ac-LYd"/>
-                        <constraint firstItem="mBk-jR-NeV" firstAttribute="trailing" secondItem="WoI-4o-fCr" secondAttribute="trailing" id="mT3-wM-AaU"/>
+                        <constraint firstItem="mBk-jR-NeV" firstAttribute="trailing" secondItem="WoI-4o-fCr" secondAttribute="trailing" constant="-3" id="mT3-wM-AaU"/>
                         <constraint firstItem="WbN-Px-0wH" firstAttribute="centerY" secondItem="WoI-4o-fCr" secondAttribute="centerY" id="ntR-Hq-dq2"/>
                         <constraint firstAttribute="trailing" secondItem="9lg-2Q-UBB" secondAttribute="trailing" constant="20" id="ofX-Lw-vcT"/>
                         <constraint firstItem="wdJ-6Q-jR0" firstAttribute="top" secondItem="fvm-hL-emQ" secondAttribute="top" constant="15" id="p2m-M4-VH2"/>
