@@ -23,10 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Enter your OneSignal credentials
         OneSignal.initWithLaunchOptions(launchOptions, appId: "f1531894-9c55-479b-b7c2-035beed48864")
 
-        //Enter your Stripe credentials
+        //Enter your Stripe credentials (Payment)
         STPPaymentConfiguration.shared().publishableKey = "pk_test_HoCc151BfYh437wFFtMoRVUy"
 
-        //Enter your Paypal credentials
+        //Enter your Paypal credentials (Payment)
         PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YOUR_CLIENT_ID_FOR_PRODUCTION",
                                                                 PayPalEnvironmentSandbox: "YOUR_CLIENT_ID_FOR_SANDBOX"])
         

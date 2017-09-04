@@ -214,7 +214,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         let sharePhoto = FBSDKSharePhoto.init()
         sharePhoto.image = self.selfieImage?.addOverlay()
         sharePhoto.isUserGenerated = true
-        sharePhoto.caption = self.descriptionTextField.text + " " + hastTag + " " + instagramURL + " " + websiteURL
+        sharePhoto.caption = self.descriptionTextField.text + " " + hashTag + " " + instagramURL + " " + websiteURL
         
         let content = FBSDKSharePhotoContent.init()
         content.photos = [sharePhoto]

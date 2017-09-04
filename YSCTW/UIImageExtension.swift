@@ -56,13 +56,13 @@ extension UIImage {
         
         let testLabel = UILabel(frame: CGRect(x: 0, y: 0, width: textWidth, height: textHeight))
         testLabel.font = UIFont(name: "Gotham-Medium", size: 10)!
-        testLabel.text = hastTag
+        testLabel.text = hashTag
         testLabel.adjustFontSizeToFitRect(rect: testLabel.frame)
         testLabel.sizeToFit()
         
         textHeight = testLabel.frame.height
         
-        let textImage = self.textToImage(drawText: hastTag as NSString, withFont: testLabel.font, atPoint: CGPoint(x: margin.left, y: self.size.height - margin.bottom - textHeight))
+        let textImage = self.textToImage(drawText: hashTag as NSString, withFont: testLabel.font, atPoint: CGPoint(x: margin.left, y: self.size.height - margin.bottom - textHeight))
         
         let overlayLogo = #imageLiteral(resourceName: "logo-white-big")
         let overlayLogoSize = overlayLogo.size

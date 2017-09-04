@@ -212,7 +212,7 @@ class DonationDetailViewController: UIViewController, FBSDKSharingDelegate, UIDo
                 
         sharePhoto.image = overlayImage
         sharePhoto.isUserGenerated = true
-        var caption = (self.donation?.description)! + " " + hastTag
+        var caption = (self.donation?.description)! + " " + hashTag
         caption = caption + " " + instagramURL + " " + websiteURL
         sharePhoto.caption = caption
         
