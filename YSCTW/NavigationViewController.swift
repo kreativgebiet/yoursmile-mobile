@@ -49,61 +49,14 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "donationDetailSegue" {
-            let destinationVC = segue.destination as! DonationDetailViewController
-            
-            let rootViewController = self.viewControllers[0] as!TabBarViewController
-            //lazy implementation
-            rootViewController.logoNavigationBarView.isHidden = false
-
-            let donation = sender as! Upload
-            destinationVC.dataManager = self.dataManager
-            destinationVC.donation = donation
-        } else if segue.identifier == "cameraSegue" {
+        if segue.identifier == "cameraSegue" {
             let destination = segue.destination as! CameraViewController
             destination.dataManager = self.dataManager
             
             if let selectedProject = sender as? Project {
                 destination.selectedProject = selectedProject
-            } else if let profileVC = sender as? ProfileViewController {
-                destination.customCallback = { image in
-                    profileVC.uploadUser(image: image)
-                    _ = self.popViewController(animated: true)
-                }
             }
             
-        } else if segue.identifier == "profileSegue" {
-            let destination = segue.destination as! ProfileViewController
-            
-            destination.dataManager = self.dataManager
-            
-            if let donation = sender as? Upload {
-                destination.currentProfile = donation.profile
-            } else if let profile = sender as? Profile {
-                destination.currentProfile = profile
-            }
-            
-            
-        } else if segue.identifier == "projectSegue" {
-            
-            let rootViewController = self.viewControllers[0] as!TabBarViewController
-            //lazy implementation
-            rootViewController.logoNavigationBarView.isHidden = true
-            
-            let destination = segue.destination as! ProjectDetailViewController
-            let project = sender as! Project
-            
-            destination.supportCallback = {
-                self.performSegue(withIdentifier: "cameraSegue", sender: project)
-            }
-            
-            destination.project = project
-        } else if segue.identifier == "donationSegue" {
-//            let destination = segue.destination as! DonationViewController
-//            let selfieSelectionViewController = sender as! SelfieSelectionViewController
-            
-//            destination.selfieContext = selfieSelectionViewController.selfieContext
-//            destination.supportedProjects.append(selfieSelectionViewController.project)
         }
         
     }

@@ -448,7 +448,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mache ein Foto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d6-UO-PBg">
-                                        <rect key="frame" x="113" y="11" width="151" height="34"/>
+                                        <rect key="frame" x="112.5" y="11" width="151" height="34"/>
                                         <fontDescription key="fontDescription" name="Zufo-Regular" family="Zufo" pointSize="28"/>
                                         <color key="textColor" red="0.0" green="0.73333333333333328" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -977,7 +977,7 @@
                 <navigationController storyboardIdentifier="MainViewController" id="S3D-hc-yly" customClass="NavigationViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cla-Jb-ARD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cla-Jb-ARD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1001,7 +1001,7 @@
         <scene sceneID="l8E-ln-hxu">
             <objects>
                 <navigationController storyboardIdentifier="LoginNavigationController" id="Xfy-V1-bQD" customClass="LoginNavigationViewController" customModule="YSCTW" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="15o-PM-ypf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="15o-PM-ypf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
