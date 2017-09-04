@@ -70,9 +70,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.contentSize = CGSize(width: self.pageWidth*4, height: self.scrollView.frame.height)
         
         self.backgroundImageView.image = #imageLiteral(resourceName: "Image-onboarding1")
-        
-        let tintColor = orange
-        
+                
         self.skipButton.backgroundColor = blue
         self.skipButton.setTitleColor(.white, for: .normal)
         self.skipButton.setTitleColor(.white, for: .selected)
