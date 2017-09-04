@@ -197,7 +197,6 @@
 		A1DC710A1F4DF8E1003DFE35 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DC71051F4DF8E1003DFE35 /* GoogleSymbolUtilities.framework */; };
 		A1DC710D1F4DF9F4003DFE35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1DC710C1F4DF9F4003DFE35 /* GoogleService-Info.plist */; };
 		A1ED19A41DD1F75000538B78 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */; };
-		A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */; };
 		A1EF7F9E1E1BBCBD003C92E4 /* UserDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */; };
 		A1EF7FA01E1BD2AC003C92E4 /* FollowUserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7F9F1E1BD2AC003C92E4 /* FollowUserOperation.swift */; };
 		A1EF7FA21E1BD652003C92E4 /* UserFollowerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FA11E1BD652003C92E4 /* UserFollowerOperation.swift */; };
@@ -446,7 +445,6 @@
 		A1DC710B1F4DF941003DFE35 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		A1DC710C1F4DF9F4003DFE35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1ED19A31DD1F75000538B78 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
-		A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestImages.xcassets; sourceTree = "<group>"; };
 		A1EF7F9D1E1BBCBD003C92E4 /* UserDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataOperation.swift; sourceTree = "<group>"; };
 		A1EF7F9F1E1BD2AC003C92E4 /* FollowUserOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUserOperation.swift; sourceTree = "<group>"; };
 		A1EF7FA11E1BD652003C92E4 /* UserFollowerOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFollowerOperation.swift; sourceTree = "<group>"; };
@@ -619,7 +617,6 @@
 				A11428421E09359A0033844A /* CountryList */,
 				A114283D1E03EBA30033844A /* CoreData */,
 				A196776F1DEC33FD00C1CBBC /* Credits */,
-				A1D6F5041DE5E97300A0A8F9 /* TestData */,
 				A1D6F5031DE5E96600A0A8F9 /* Extensions */,
 				A1D6F4D31DE484CD00A0A8F9 /* ServiceLayer */,
 				A153909E1DD0E37100B7ADA0 /* ViewController */,
@@ -863,14 +860,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		A1D6F5041DE5E97300A0A8F9 /* TestData */ = {
-			isa = PBXGroup;
-			children = (
-				A1ED19A61DD1F9C000538B78 /* TestImages.xcassets */,
-			);
-			name = TestData;
-			sourceTree = "<group>";
-		};
 		A1D86BF41EFC316600D69F37 /* Collection View Flow Layouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1058,7 +1047,6 @@
 				A13546821DDE166900931139 /* DonationFeeOverlayView.xib in Resources */,
 				A164071F1DDF181800BA1853 /* Gotham-UltraItalic.otf in Resources */,
 				A13546741DDDEC8700931139 /* PaymentSelectionView.xib in Resources */,
-				A1ED19A71DD1F9C000538B78 /* TestImages.xcassets in Resources */,
 				A1D5E7A71F4A31D0001DCE57 /* Zufo-Light.otf in Resources */,
 				A12A45521DCF8C76002977DF /* Main.storyboard in Resources */,
 				A16407241DDF181800BA1853 /* Gotham-LightItalic.otf in Resources */,
