@@ -185,9 +185,8 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
 
             if success {
                 let projectIds = self.navController.supportedProjects.map({Int($0.id)!})
-                // TODO: order
                 let projectAmounts = self.selectedProjectDonations.flatMap({Int($1)})
-                uploadModel?.projectIds = projectIds
+                uploadModel?.projectIds = projectIds.reversed()
                 uploadModel?.projectAmounts = projectAmounts
 
                 do {

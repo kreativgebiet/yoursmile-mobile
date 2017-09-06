@@ -214,7 +214,7 @@ class APIClient: NSObject {
                                         callback(success, "upload error")
                                     }
                                     
-                                    uploadModel.isUploaded = NSNumber(booleanLiteral: true) as Bool
+                                    uploadModel.isUploaded = true
                                     manager.save()
                                 } else {
                                     callback(success, "upload error")

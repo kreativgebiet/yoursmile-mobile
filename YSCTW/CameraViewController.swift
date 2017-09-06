@@ -33,9 +33,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
         
         self.navBarLabel.text = "TAKE_PICTURE".localized
-                
-        let devices = AVCaptureDevice.devices()
-        
+                        
         let helper = HelperFunctions()
         
         self.cameraRollButton.contentHorizontalAlignment = .fill
@@ -145,7 +143,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             let input = try AVCaptureDeviceInput(device: captureDevice)
             captureSession.addInput(input)
         } catch _ {
-            print("error: \(err?.localizedDescription)")
+            print("error: \(String(describing: err?.localizedDescription))")
         }
         
         self.preViewLayer = AVCaptureVideoPreviewLayer(session: captureSession)

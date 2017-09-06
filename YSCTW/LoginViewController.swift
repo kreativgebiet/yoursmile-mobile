@@ -195,10 +195,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
     }
     
-    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        
-    }
-    
     func sign(_ signIn: GIDSignIn!,
               present viewController: UIViewController!) {
         self.present(viewController, animated: true, completion: nil)
@@ -241,18 +237,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     // MARK: - Facebook Login
     
     @IBAction func facebookButton(_ sender: AnyObject) {
-        
-        loadingScreen = LoadingScreen.init(frame: self.view.bounds)
-        
+
         self.view.endEditing(true)
         self.view.addSubview(loadingScreen)
-        
+
         let loginmanager = FBSDKLoginManager()
         loginmanager.logIn(withReadPermissions: ["public_profile", "user_birthday", "email"], from: self) { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
             
             if ((error) != nil) {
-                self.loadingScreen.removeFromSuperview()
-                HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!)
+                
+                DispatchQueue.main.async {
+                    self.loadingScreen.removeFromSuperview()
+                    HelperFunctions.presentAlertViewfor(error: (error?.localizedDescription)!)
+                }
+
             } else if (result?.isCancelled)! {
                 self.loadingScreen.removeFromSuperview()
             } else {
@@ -264,12 +262,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                         
                         if ((error) != nil) {
                             self.loadingScreen.removeFromSuperview()
-                            print("Error: \(error)")
+                            print("Error: \(String(describing: error))")
                         } else {
                             let dict = result as! [String : String]
-                            
-                            let userName = dict["name"] as! NSString
-                            let userEmail = dict["email"] as! NSString
+
+                            guard let userName = dict["name"] as NSString?, let userEmail = dict["email"] as NSString? else {
+                                HelperFunctions.presentAlertViewfor(error: "An unknown error occured!")
+                                return
+                            }
                             
                             APIClient.registerUser(name: userName as String, email: userEmail as String, password: "facebook1234", callback: { (success: Bool, errorMessage: String) in
                                 

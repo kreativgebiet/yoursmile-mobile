@@ -76,9 +76,9 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
             
             let controller = CoreDataController()
             let uploadModel = controller.createUploadModel()
-            uploadModel.isStripePayment = NSNumber(booleanLiteral: false) as Bool
+            uploadModel.isStripePayment = NSNumber(booleanLiteral: false) as! Bool
             uploadModel.stripeToken = ""
-            uploadModel.isUploaded = NSNumber(booleanLiteral: false) as Bool
+            uploadModel.isUploaded = NSNumber(booleanLiteral: false) as! Bool
             
             controller.save()
             
