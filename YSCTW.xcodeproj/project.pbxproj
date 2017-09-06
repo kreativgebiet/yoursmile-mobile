@@ -56,8 +56,6 @@
 		A15390A91DD0F5FD00B7ADA0 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390A81DD0F5FD00B7ADA0 /* ProjectsViewController.swift */; };
 		A15390AB1DD0F61F00B7ADA0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15390AA1DD0F61F00B7ADA0 /* CameraViewController.swift */; };
 		A154FDF11DDF5BC200D88306 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */; };
-		A154FDF31DDF66DB00D88306 /* CancelableProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A154FDF21DDF66DB00D88306 /* CancelableProgressView.swift */; };
-		A154FDF51DDF66E300D88306 /* CancelableProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A154FDF41DDF66E300D88306 /* CancelableProgressView.xib */; };
 		A161B5581DEDA06300356514 /* CardPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161B5571DEDA06300356514 /* CardPaymentView.swift */; };
 		A161B55A1DEDA06C00356514 /* CardPaymentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A161B5591DEDA06C00356514 /* CardPaymentView.xib */; };
 		A16407181DDF181800BA1853 /* Gotham-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A16407081DDF181800BA1853 /* Gotham-BookItalic.otf */; };
@@ -94,16 +92,6 @@
 		A19E585E1F46186900118713 /* SelfieSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */; };
 		A1B232E21F4B6DDE006A9A42 /* SliderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B232E11F4B6DDE006A9A42 /* SliderExtension.swift */; };
 		A1B2B9D01DDF818000C27A26 /* ImageCropNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */; };
-		A1BEDAB21E36404A0002EABA /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BEDAB11E36404A0002EABA /* PickerView.swift */; };
-		A1BEDAB41E3640550002EABA /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BEDAB31E3640550002EABA /* PickerView.xib */; };
-		A1CF0C9E1DD234A7002C4562 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0C9D1DD234A7002C4562 /* CommentView.swift */; };
-		A1CF0CA01DD234AF002C4562 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0C9F1DD234AF002C4562 /* CommentView.xib */; };
-		A1CF0CA21DD23875002C4562 /* DonationDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0CA11DD23875002C4562 /* DonationDetailHeaderView.xib */; };
-		A1CF0CA41DD238C9002C4562 /* DonationDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CA31DD238C9002C4562 /* DonationDetailHeaderView.swift */; };
-		A1CF0CA91DD25DAA002C4562 /* TableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CA81DD25DAA002C4562 /* TableViewFooterView.swift */; };
-		A1CF0CAB1DD25DB8002C4562 /* TableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0CAA1DD25DB8002C4562 /* TableViewFooterView.xib */; };
-		A1CF0CAD1DD26AB1002C4562 /* DonationDetailOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CAC1DD26AB1002C4562 /* DonationDetailOverlayView.swift */; };
-		A1CF0CAF1DD26AB9002C4562 /* DonationDetailOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CF0CAE1DD26AB9002C4562 /* DonationDetailOverlayView.xib */; };
 		A1CF0CB11DD26CD3002C4562 /* CornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CB01DD26CD3002C4562 /* CornerButton.swift */; };
 		A1CF0CB51DD34187002C4562 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CB41DD34187002C4562 /* ProjectsTableViewController.swift */; };
 		A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF0CB61DD341CB002C4562 /* ProjectTableViewCell.swift */; };
@@ -166,9 +154,6 @@
 		A1EF7FAB1E1F9D18003C92E4 /* DelayOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7FAA1E1F9D18003C92E4 /* DelayOperation.swift */; };
 		A1F8D8E91DD3648400AFAB4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8E81DD3648400AFAB4F /* DataManager.swift */; };
 		A1F8D8ED1DD369FC00AFAB4F /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */; };
-		A1F8D8EF1DD36DCD00AFAB4F /* ProjectFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8EE1DD36DCD00AFAB4F /* ProjectFilterViewController.swift */; };
-		A1F8D8F11DD37ADA00AFAB4F /* TransparentProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8F01DD37ADA00AFAB4F /* TransparentProjectView.swift */; };
-		A1F8D8F31DD37AE400AFAB4F /* TransparentProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F8D8F21DD37AE400AFAB4F /* TransparentProjectView.xib */; };
 		A1F8D8F51DD38D0D00AFAB4F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8F41DD38D0D00AFAB4F /* ProgressView.swift */; };
 		A1F8D8F71DD38D1400AFAB4F /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F8D8F61DD38D1400AFAB4F /* ProgressView.xib */; };
 		A1F8D8F91DD3AA2400AFAB4F /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */; };
@@ -253,8 +238,6 @@
 		A15390A81DD0F5FD00B7ADA0 /* ProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 		A15390AA1DD0F61F00B7ADA0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
-		A154FDF21DDF66DB00D88306 /* CancelableProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelableProgressView.swift; sourceTree = "<group>"; };
-		A154FDF41DDF66E300D88306 /* CancelableProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelableProgressView.xib; sourceTree = "<group>"; };
 		A161B5571DEDA06300356514 /* CardPaymentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentView.swift; sourceTree = "<group>"; };
 		A161B5591DEDA06C00356514 /* CardPaymentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardPaymentView.xib; sourceTree = "<group>"; };
 		A16407081DDF181800BA1853 /* Gotham-BookItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-BookItalic.otf"; path = "Resources/Gotham-BookItalic.otf"; sourceTree = "<group>"; };
@@ -292,16 +275,6 @@
 		A1B232E11F4B6DDE006A9A42 /* SliderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderExtension.swift; sourceTree = "<group>"; };
 		A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
 		A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropNavigationController.swift; sourceTree = "<group>"; };
-		A1BEDAB11E36404A0002EABA /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
-		A1BEDAB31E3640550002EABA /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
-		A1CF0C9D1DD234A7002C4562 /* CommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
-		A1CF0C9F1DD234AF002C4562 /* CommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
-		A1CF0CA11DD23875002C4562 /* DonationDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationDetailHeaderView.xib; sourceTree = "<group>"; };
-		A1CF0CA31DD238C9002C4562 /* DonationDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationDetailHeaderView.swift; sourceTree = "<group>"; };
-		A1CF0CA81DD25DAA002C4562 /* TableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFooterView.swift; sourceTree = "<group>"; };
-		A1CF0CAA1DD25DB8002C4562 /* TableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewFooterView.xib; sourceTree = "<group>"; };
-		A1CF0CAC1DD26AB1002C4562 /* DonationDetailOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationDetailOverlayView.swift; sourceTree = "<group>"; };
-		A1CF0CAE1DD26AB9002C4562 /* DonationDetailOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationDetailOverlayView.xib; sourceTree = "<group>"; };
 		A1CF0CB01DD26CD3002C4562 /* CornerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerButton.swift; sourceTree = "<group>"; };
 		A1CF0CB41DD34187002C4562 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		A1CF0CB61DD341CB002C4562 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -374,9 +347,6 @@
 		A1EF7FAA1E1F9D18003C92E4 /* DelayOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayOperation.swift; sourceTree = "<group>"; };
 		A1F8D8E81DD3648400AFAB4F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
-		A1F8D8EE1DD36DCD00AFAB4F /* ProjectFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFilterViewController.swift; sourceTree = "<group>"; };
-		A1F8D8F01DD37ADA00AFAB4F /* TransparentProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentProjectView.swift; sourceTree = "<group>"; };
-		A1F8D8F21DD37AE400AFAB4F /* TransparentProjectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransparentProjectView.xib; sourceTree = "<group>"; };
 		A1F8D8F41DD38D0D00AFAB4F /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		A1F8D8F61DD38D1400AFAB4F /* ProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
 		A1F8D8F81DD3AA2400AFAB4F /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
@@ -573,7 +543,6 @@
 				A12A45801DD081FF002977DF /* LoginViewController.swift */,
 				A1CF0CB41DD34187002C4562 /* ProjectsTableViewController.swift */,
 				A1F8D8EC1DD369FC00AFAB4F /* ProjectDetailViewController.swift */,
-				A1F8D8EE1DD36DCD00AFAB4F /* ProjectFilterViewController.swift */,
 				A11028EC1DD4DA2C00633343 /* DonationViewController.swift */,
 				A13546751DDDF45300931139 /* DonationDescriptionViewController.swift */,
 				A154FDF01DDF5BC200D88306 /* ImagePickerViewController.swift */,
@@ -597,17 +566,7 @@
 				A12A457E1DD080C9002977DF /* LeftViewImageTextField.swift */,
 				A15390981DD0C8A700B7ADA0 /* DividerView.swift */,
 				A153909A1DD0CD9200B7ADA0 /* RoundedButton.swift */,
-				A1CF0C9D1DD234A7002C4562 /* CommentView.swift */,
-				A1CF0C9F1DD234AF002C4562 /* CommentView.xib */,
-				A1CF0CA31DD238C9002C4562 /* DonationDetailHeaderView.swift */,
-				A1CF0CA11DD23875002C4562 /* DonationDetailHeaderView.xib */,
-				A1CF0CA81DD25DAA002C4562 /* TableViewFooterView.swift */,
-				A1CF0CAA1DD25DB8002C4562 /* TableViewFooterView.xib */,
-				A1CF0CAC1DD26AB1002C4562 /* DonationDetailOverlayView.swift */,
-				A1CF0CAE1DD26AB9002C4562 /* DonationDetailOverlayView.xib */,
 				A1CF0CB01DD26CD3002C4562 /* CornerButton.swift */,
-				A1F8D8F01DD37ADA00AFAB4F /* TransparentProjectView.swift */,
-				A1F8D8F21DD37AE400AFAB4F /* TransparentProjectView.xib */,
 				A1F8D8F41DD38D0D00AFAB4F /* ProgressView.swift */,
 				A1F8D8F61DD38D1400AFAB4F /* ProgressView.xib */,
 				A11028EE1DD50E9600633343 /* AddProjectButton.swift */,
@@ -626,12 +585,8 @@
 				A135467D1DDE100F00931139 /* DonationSuccessOverlay.xib */,
 				A135467F1DDE165F00931139 /* DonationFeeOverlayView.swift */,
 				A13546811DDE166900931139 /* DonationFeeOverlayView.xib */,
-				A154FDF21DDF66DB00D88306 /* CancelableProgressView.swift */,
-				A154FDF41DDF66E300D88306 /* CancelableProgressView.xib */,
 				A161B5571DEDA06300356514 /* CardPaymentView.swift */,
 				A161B5591DEDA06C00356514 /* CardPaymentView.xib */,
-				A1BEDAB11E36404A0002EABA /* PickerView.swift */,
-				A1BEDAB31E3640550002EABA /* PickerView.xib */,
 				A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */,
 				A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */,
 				A15157A31E8D1FAF00C0498D /* DonationSlider.swift */,
@@ -876,7 +831,6 @@
 				A16407271DDF181800BA1853 /* Gotham-Black.otf in Resources */,
 				A110290F1DD9EDB100633343 /* ProjectView.xib in Resources */,
 				A164071E1DDF181800BA1853 /* Gotham-ExtraLight.otf in Resources */,
-				A1BEDAB41E3640550002EABA /* PickerView.xib in Resources */,
 				A11029021DD9C36D00633343 /* Localizable.strings in Resources */,
 				A11028F51DD5136400633343 /* AddedProjectButtonView.xib in Resources */,
 				A164071A1DDF181800BA1853 /* Gotham-Light.otf in Resources */,
@@ -886,21 +840,15 @@
 				A135467E1DDE100F00931139 /* DonationSuccessOverlay.xib in Resources */,
 				A12A45541DCF8C76002977DF /* Images.xcassets in Resources */,
 				A164071C1DDF181800BA1853 /* Gotham-Bold.otf in Resources */,
-				A154FDF51DDF66E300D88306 /* CancelableProgressView.xib in Resources */,
-				A1F8D8F31DD37AE400AFAB4F /* TransparentProjectView.xib in Resources */,
-				A1CF0CA21DD23875002C4562 /* DonationDetailHeaderView.xib in Resources */,
 				A1DC710D1F4DF9F4003DFE35 /* GoogleService-Info.plist in Resources */,
-				A1CF0CAF1DD26AB9002C4562 /* DonationDetailOverlayView.xib in Resources */,
 				A13546821DDE166900931139 /* DonationFeeOverlayView.xib in Resources */,
 				A164071F1DDF181800BA1853 /* Gotham-UltraItalic.otf in Resources */,
 				A13546741DDDEC8700931139 /* PaymentSelectionView.xib in Resources */,
 				A1D5E7A71F4A31D0001DCE57 /* Zufo-Light.otf in Resources */,
 				A12A45521DCF8C76002977DF /* Main.storyboard in Resources */,
 				A16407241DDF181800BA1853 /* Gotham-LightItalic.otf in Resources */,
-				A1CF0CAB1DD25DB8002C4562 /* TableViewFooterView.xib in Resources */,
 				A16407261DDF181800BA1853 /* Gotham-BlackItalic.otf in Resources */,
 				A18A2DB21E37A9F3004D1F67 /* OnboardPageView.xib in Resources */,
-				A1CF0CA01DD234AF002C4562 /* CommentView.xib in Resources */,
 				A164071D1DDF181800BA1853 /* Gotham-ExtraLightItalic.otf in Resources */,
 				A1F8D8F71DD38D1400AFAB4F /* ProgressView.xib in Resources */,
 				A16407181DDF181800BA1853 /* Gotham-BookItalic.otf in Resources */,
@@ -983,10 +931,8 @@
 				A1D6F4D51DE4854100A0A8F9 /* NetworkHelper.swift in Sources */,
 				A1D6F5061DE5E98E00A0A8F9 /* PayPalViewController.swift in Sources */,
 				A1CF0CB81DD341CB002C4562 /* ProjectTableViewCell.swift in Sources */,
-				A1CF0CA41DD238C9002C4562 /* DonationDetailHeaderView.swift in Sources */,
 				A1DB37891E0A9C14003EAFCF /* CommentDownloadOperation.swift in Sources */,
 				A12A454D1DCF8C76002977DF /* AppDelegate.swift in Sources */,
-				A1F8D8EF1DD36DCD00AFAB4F /* ProjectFilterViewController.swift in Sources */,
 				A1FD4E1E1E56E79A0088CECC /* ReportUploadOperation.swift in Sources */,
 				A17B8E5B1F44C3F400C48BC6 /* ProjectCategoryViewController.swift in Sources */,
 				A1DB377A1E098D75003EAFCF /* ProfileModel+CoreDataProperties.swift in Sources */,
@@ -1009,7 +955,6 @@
 				A110290D1DD9EDA300633343 /* ProjectView.swift in Sources */,
 				A19E585E1F46186900118713 /* SelfieSelectionViewController.swift in Sources */,
 				A196777D1DEC6E8900C1CBBC /* UIImageExtension.swift in Sources */,
-				A1CF0CA91DD25DAA002C4562 /* TableViewFooterView.swift in Sources */,
 				A1863C2C1F4CDA3300E1C807 /* LoginNavigationViewController.swift in Sources */,
 				A114283C1E03EB940033844A /* UploadModel+CoreDataProperties.swift in Sources */,
 				A1DB37871E0A99CE003EAFCF /* NetworkOperation.swift in Sources */,
@@ -1019,12 +964,10 @@
 				A1EF7FA21E1BD652003C92E4 /* UserFollowerOperation.swift in Sources */,
 				A161B5581DEDA06300356514 /* CardPaymentView.swift in Sources */,
 				A11028F31DD5135C00633343 /* AddedProjectButtonView.swift in Sources */,
-				A1CF0CAD1DD26AB1002C4562 /* DonationDetailOverlayView.swift in Sources */,
 				A135467C1DDE0FFF00931139 /* DonationSuccessOverlay.swift in Sources */,
 				A1DB377E1E0A95B4003EAFCF /* ProjectsDownloadOperation.swift in Sources */,
 				A12A45811DD081FF002977DF /* LoginViewController.swift in Sources */,
 				A13546721DDDEC7900931139 /* PaymentSelectionView.swift in Sources */,
-				A1BEDAB21E36404A0002EABA /* PickerView.swift in Sources */,
 				A153909B1DD0CD9200B7ADA0 /* RoundedButton.swift in Sources */,
 				A1DB37851E0A99AF003EAFCF /* UploadsDownloadOperation.swift in Sources */,
 				A1B232E21F4B6DDE006A9A42 /* SliderExtension.swift in Sources */,
@@ -1041,9 +984,7 @@
 				A1EF7FAB1E1F9D18003C92E4 /* DelayOperation.swift in Sources */,
 				A13546761DDDF45300931139 /* DonationDescriptionViewController.swift in Sources */,
 				A1DB378B1E0A9CF5003EAFCF /* PostCommentOperation.swift in Sources */,
-				A154FDF31DDF66DB00D88306 /* CancelableProgressView.swift in Sources */,
 				A1CF0CB11DD26CD3002C4562 /* CornerButton.swift in Sources */,
-				A1F8D8F11DD37ADA00AFAB4F /* TransparentProjectView.swift in Sources */,
 				A11702C91EC100E600B326C8 /* LikeUploadOperation.swift in Sources */,
 				A1DB378F1E0AA047003EAFCF /* UpdateUserOperation.swift in Sources */,
 				A1D86BE71EFAB2EC00D69F37 /* DictionaryExtension.swift in Sources */,
@@ -1051,7 +992,6 @@
 				A11029081DD9C55E00633343 /* StringExtension.swift in Sources */,
 				A19677791DEC47B300C1CBBC /* DateExtension.swift in Sources */,
 				A19677831DEC929400C1CBBC /* StripePaymentViewController.swift in Sources */,
-				A1CF0C9E1DD234A7002C4562 /* CommentView.swift in Sources */,
 				A12A457F1DD080C9002977DF /* LeftViewImageTextField.swift in Sources */,
 				A1F8D8F51DD38D0D00AFAB4F /* ProgressView.swift in Sources */,
 				A1D6F4D21DE484C200A0A8F9 /* APIClient.swift in Sources */,
