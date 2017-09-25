@@ -14,8 +14,8 @@
 /* Class = "UIViewController"; title = "LoginViewController"; ObjectID = "BYZ-38-t0r"; */
 "BYZ-38-t0r.title" = "LoginViewController";
 
-/* Class = "UILabel"; text = "YSCTW"; ObjectID = "GDQ-1A-2fD"; */
-"GDQ-1A-2fD.text" = "YSCTW";
+/* Class = "UILabel"; text = "Smile & Change"; ObjectID = "GDQ-1A-2fD"; */
+"GDQ-1A-2fD.text" = "Smile & Change";
 
 /* Class = "UIButton"; normalTitle = "ANMELDEN"; ObjectID = "KAd-gt-2Et"; */
 "KAd-gt-2Et.normalTitle" = "ANMELDEN";
@@ -41,8 +41,8 @@
 /* Class = "UISegmentedControl"; fWb-lg-OSu.segmentTitles[1] = "Second"; ObjectID = "fWb-lg-OSu"; */
 "fWb-lg-OSu.segmentTitles[1]" = "Second";
 
-/* Class = "UILabel"; text = "YSCTW"; ObjectID = "hCE-Qa-021"; */
-"hCE-Qa-021.text" = "YSCTW";
+/* Class = "UILabel"; text = "Smile & Change"; ObjectID = "hCE-Qa-021"; */
+"hCE-Qa-021.text" = "Smile & Change";
 
 /* Class = "UITextField"; placeholder = "Passwort"; ObjectID = "j1w-qR-uwc"; */
 "j1w-qR-uwc.placeholder" = "Passwort";
