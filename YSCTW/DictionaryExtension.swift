@@ -21,6 +21,8 @@ extension Dictionary {
     
     var nullsRemoved: [Key: Value] {
         let tup = filter { !($0.1 is NSNull) }
-        return tup.reduce([Key: Value]()) { $0.0.updatedValue($0.1.value, forKey: $0.1.key) }
+        //TODO
+        return tup
+//        return tup.reduce([Key: Value]()) { $0.0.updatedValue($0.1.value, forKey: $0.1.key) }
     }
 }

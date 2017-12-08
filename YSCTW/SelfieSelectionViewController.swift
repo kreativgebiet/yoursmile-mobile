@@ -51,12 +51,12 @@ class SelfieSelectionViewController: UIViewController {
         self.navigationController?.navigationBar.backgroundColor = .clear
     }
     
-    func handleSelfieTap(tapgesture: UITapGestureRecognizer) {
+    @objc func handleSelfieTap(tapgesture: UITapGestureRecognizer) {
         selfieContext = .withSelfie
         performSegue()
     }
     
-    func handleNoSelfieTap(tapgesture: UITapGestureRecognizer) {
+    @objc func handleNoSelfieTap(tapgesture: UITapGestureRecognizer) {
         selfieContext = .noSelfie
         performSegue()
     }

@@ -59,7 +59,7 @@ class ProjectTableViewCell: UITableViewCell {
         paragraphStyle.lineSpacing = 4
         
         let attrString = NSMutableAttributedString(string: (project?.projectDescription)!)
-        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         
         self.descriptionLabel.attributedText = attrString
         

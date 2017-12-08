@@ -21,7 +21,7 @@ class ImageCropNavigationController: UINavigationController {
         self.toolbar.barTintColor = navigationBarGray
         self.toolbar.backgroundColor = navigationBarGray
         
-        let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 18)!, NSForegroundColorAttributeName: UIColor.white]
+        let attributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): UIFont(name: "Gotham-Book", size: 18)!, NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white]
         self.navigationBar.titleTextAttributes = attributes
     }
 

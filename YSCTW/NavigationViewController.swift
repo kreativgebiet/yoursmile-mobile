@@ -26,7 +26,7 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.backgroundColor = .white
 
-        let attributes: [String: Any] = [NSFontAttributeName: UIFont(name: "Zufo-Regular", size: 28)!, NSForegroundColorAttributeName: blue]
+        let attributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): UIFont(name: "Zufo-Regular", size: 28)!, NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): blue]
         self.navigationBar.titleTextAttributes = attributes
         
         self.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back-icon").withAlignmentRectInsets(UIEdgeInsetsMake(0, 0, -3.5, 0))

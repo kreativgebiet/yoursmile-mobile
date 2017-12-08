@@ -21,7 +21,7 @@ class CountrListManager: NSObject {
         if let path = Bundle.main.path(forResource: ressoureName, ofType: type) {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-                let jsonObj = JSON(data: data)
+                let jsonObj = try JSON(data: data)
                 if jsonObj != JSON.null {
                     self.countryList = jsonObj
                 } else {

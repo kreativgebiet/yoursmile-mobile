@@ -50,14 +50,14 @@ class PaymentSelectionView: UIView {
         self.creditCardView.addGestureRecognizer(creditCardTap)
     }
     
-    func payPalTapped() {
+    @objc func payPalTapped() {
         self.selectedPayment = Payment.payPal
         self.payPalView.layer.borderColor = orange.cgColor
         self.creditCardView.layer.borderColor = customDarkerGray.cgColor
         self.callback(self.selectedPayment)
     }
     
-    func creditCardTapped() {
+    @objc func creditCardTapped() {
         self.selectedPayment = Payment.creditCard
         self.creditCardView.layer.borderColor = orange.cgColor
         self.payPalView.layer.borderColor = customDarkerGray.cgColor

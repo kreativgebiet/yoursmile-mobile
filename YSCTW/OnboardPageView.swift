@@ -35,7 +35,7 @@ class OnboardPageView: UIView {
         paragraphStyle.alignment = .center
         
         let attrString = NSMutableAttributedString(string: bottomLabelText)
-        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         
         bottomLabel.attributedText = attrString        
     }

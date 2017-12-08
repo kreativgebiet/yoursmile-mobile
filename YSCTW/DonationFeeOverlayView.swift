@@ -46,9 +46,9 @@ class DonationFeeOverlayView: UIView {
         paragraphStyle.alignment = .center
         
         let attrString = NSMutableAttributedString(string: text)
-        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
-        attrString.addAttribute(NSFontAttributeName, value: UIFont(name: "Gotham-Book", size: 15)!, range: NSMakeRange(0, attrString.length))
-        attrString.addAttribute(NSForegroundColorAttributeName, value: gray150, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Gotham-Book", size: 15)!, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: gray150, range: NSMakeRange(0, attrString.length))
         
         self.paymentDescriptionLabel.attributedText = attrString
     }

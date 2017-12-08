@@ -44,7 +44,7 @@ class DonationSuccessOverlay: UIView {
         paragraphStyle.alignment = .center
         
         let attrString = NSMutableAttributedString(string: "THANK_YOU_TEXT".localized)
-        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
 
         self.gratitudeTextLabel.attributedText = attrString
 

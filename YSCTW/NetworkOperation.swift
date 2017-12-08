@@ -24,7 +24,9 @@ class NetworkOperation: Operation {
                 willChangeValue(forKey: "isFinished")
                 _finished = newValue
                 didChangeValue(forKey: "isFinished")
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
                 debugPrint(String(describing: self) + " finished at " + formatter.string(from: Date()))
             }
         }
@@ -32,7 +34,10 @@ class NetworkOperation: Operation {
     
     override func start() {
         formatter.dateFormat = "mm.SSS"
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
+
         debugPrint(String(describing: self) + " started at " + formatter.string(from: Date()))
     }
 

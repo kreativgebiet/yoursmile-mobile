@@ -45,7 +45,6 @@
 		A135467E1DDE100F00931139 /* DonationSuccessOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = A135467D1DDE100F00931139 /* DonationSuccessOverlay.xib */; };
 		A13546801DDE165F00931139 /* DonationFeeOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A135467F1DDE165F00931139 /* DonationFeeOverlayView.swift */; };
 		A13546821DDE166900931139 /* DonationFeeOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13546811DDE166900931139 /* DonationFeeOverlayView.xib */; };
-		A151579E1E8A6B7700C0498D /* PhotoCropEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */; };
 		A15157A01E8A6FB100C0498D /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A151579F1E8A6FB100C0498D /* OneSignal.framework */; };
 		A15157A21E8D07DA00C0498D /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15157A11E8D07DA00C0498D /* UILabelExtension.swift */; };
 		A15157A41E8D1FAF00C0498D /* DonationSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15157A31E8D1FAF00C0498D /* DonationSlider.swift */; };
@@ -273,7 +272,6 @@
 		A19A31B41DFEC13B0054BA3E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		A19E585D1F46186900118713 /* SelfieSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieSelectionViewController.swift; sourceTree = "<group>"; };
 		A1B232E11F4B6DDE006A9A42 /* SliderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderExtension.swift; sourceTree = "<group>"; };
-		A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoCropEditor.framework; path = Carthage/Build/iOS/PhotoCropEditor.framework; sourceTree = "<group>"; };
 		A1B2B9CF1DDF818000C27A26 /* ImageCropNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropNavigationController.swift; sourceTree = "<group>"; };
 		A1CF0CB01DD26CD3002C4562 /* CornerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerButton.swift; sourceTree = "<group>"; };
 		A1CF0CB41DD34187002C4562 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
@@ -361,7 +359,6 @@
 				A1D6F4F21DE5CA3600A0A8F9 /* SystemConfiguration.framework in Frameworks */,
 				A1D6F4F41DE5CA3F00A0A8F9 /* SafariServices.framework in Frameworks */,
 				A15157A01E8A6FB100C0498D /* OneSignal.framework in Frameworks */,
-				A151579E1E8A6B7700C0498D /* PhotoCropEditor.framework in Frameworks */,
 				A19A31B51DFEC13B0054BA3E /* AlamofireImage.framework in Frameworks */,
 				A196777F1DEC85AD00C1CBBC /* Stripe.framework in Frameworks */,
 				A1DC710A1F4DF8E1003DFE35 /* GoogleSymbolUtilities.framework in Frameworks */,
@@ -432,7 +429,6 @@
 				A1D6F4DD1DE4AD8300A0A8F9 /* FBSDKCoreKit.framework */,
 				A1D6F4DA1DE4AC4A00A0A8F9 /* FBSDKLoginKit.framework */,
 				A1D6F4BE1DE32DD600A0A8F9 /* Locksmith.framework */,
-				A1B2B9CB1DDF7B3600C27A26 /* PhotoCropEditor.framework */,
 				A11029171DDB232000633343 /* SwiftyJSON.framework */,
 				A11029151DDB231E00633343 /* Alamofire.framework */,
 			);
@@ -890,7 +886,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PhotoCropEditor.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Down.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
@@ -1185,7 +1180,7 @@
 				PROVISIONING_PROFILE = "ce0d1d18-3361-4d8b-8012-d889280fdb9b";
 				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.MaxCoding.YSCTW";
 				SWIFT_OBJC_BRIDGING_HEADER = "YSCTW/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1218,7 +1213,7 @@
 				PROVISIONING_PROFILE = "cd6a70de-916a-45a1-baba-da037f394847";
 				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.MaxCoding.YSCTW";
 				SWIFT_OBJC_BRIDGING_HEADER = "YSCTW/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

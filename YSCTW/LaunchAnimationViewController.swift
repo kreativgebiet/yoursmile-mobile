@@ -18,22 +18,22 @@ class LaunchAnimationViewController: UIViewController {
         
         let range = attributedString.mutableString.range(of: "SMILE&\n", options:NSString.CompareOptions.caseInsensitive)
         if range.location != NSNotFound {
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: blue, range: range)
+            attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: blue, range: range)
         }
         
         let range2 = attributedString.mutableString.range(of: "CHANGE", options:NSString.CompareOptions.caseInsensitive)
         if range2.location != NSNotFound {
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: blue2, range: range2)
+            attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: blue2, range: range2)
         }
         
-        attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Zufo-Regular", size: 72)!, range: NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont(name: "Zufo-Regular", size: 72)!, range: NSMakeRange(0, attributedString.length))
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 20
         paragraphStyle.maximumLineHeight = 58.0/2.0
         paragraphStyle.alignment = NSTextAlignment.center
         
-        attributedString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-        attributedString.addAttribute(NSKernAttributeName, value: CGFloat(6), range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSAttributedStringKey.kern, value: CGFloat(6), range: NSRange(location: 0, length: attributedString.length))
 
 
         label.attributedText = attributedString

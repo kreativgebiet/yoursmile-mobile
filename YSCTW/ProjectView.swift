@@ -57,7 +57,7 @@ class ProjectView: UIView {
         
     }
     
-    func handleTap() {
+    @objc func handleTap() {
         if (self.callback != nil) {
             self.callback!(self.project!)
         }

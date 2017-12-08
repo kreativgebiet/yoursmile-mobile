@@ -29,7 +29,7 @@ extension UILabel{
         while(p <= q){
             let currentSize = (p + q) / 2
             font = font.withSize( CGFloat(currentSize) )
-            let text = NSAttributedString(string: self.text!, attributes: [NSFontAttributeName:font])
+            let text = NSAttributedString(string: self.text!, attributes: [NSAttributedStringKey.font:font])
             let textRect = text.boundingRect(with: constraintSize, options: .usesLineFragmentOrigin, context: nil)
             
             let labelSize = textRect.size

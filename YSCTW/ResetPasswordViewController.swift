@@ -37,8 +37,8 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         let mutableString = NSMutableAttributedString(
             string: text1+text2)
         
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))
         self.gotoLoginButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoLoginButton.setAttributedTitle(mutableString, for: .selected)
         self.gotoLoginButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -47,7 +47,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(tapGesture)
     }
     
-    func backgroundTap() {
+    @objc func backgroundTap() {
         self.view.endEditing(true)
     }
     

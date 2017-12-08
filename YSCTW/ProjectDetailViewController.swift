@@ -28,9 +28,9 @@ class ProjectDetailViewController: UIViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4
         
-        let bookFont = [NSFontAttributeName: UIFont(name: "Gotham-Book", size: 14.0)!, NSForegroundColorAttributeName: gray156]
+        let bookFont = [NSAttributedStringKey.font: UIFont(name: "Gotham-Book", size: 14.0)!, NSAttributedStringKey.foregroundColor: gray156]
         let attrString = NSMutableAttributedString(string: (project?.projectDescription)!, attributes: bookFont)
-        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         self.projectDescriptionLabel.attributedText = attrString
         
         let imageUrl = URL(string: project.imageURL)!
@@ -48,7 +48,7 @@ class ProjectDetailViewController: UIViewController {
         self.projectLogoImageView.af_setImage(withURL: logoURL)
     }
     
-    func swiped(_ gesture: UISwipeGestureRecognizer) {
+    @objc func swiped(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
             _ = self.navigationController?.popViewController(animated: true)
         }

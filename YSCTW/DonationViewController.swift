@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PhotoCropEditor
+//import PhotoCropEditor
 
 class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     
@@ -146,7 +146,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         showSum()
     }
     
-    func proceedTapped() {
+    @objc func proceedTapped() {
         
         var error = ""
         
@@ -440,7 +440,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     
     // MARK: - Keyboard
     
-    func animateWithKeyboard(notification: NSNotification) {
+    @objc func animateWithKeyboard(notification: NSNotification) {
         
         let userInfo = notification.userInfo!
         let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double

@@ -81,7 +81,7 @@ class AddedProjectButtonView: UIView, UITextFieldDelegate {
         individualDonationTextfield.keyboardType = UIKeyboardType.numbersAndPunctuation
     }
     
-    func sliderValueChanged(sender: UISlider) {
+    @objc func sliderValueChanged(sender: UISlider) {
         sender.setValue(round(sender.value), animated: false)
         let value = sender.value
         
@@ -100,7 +100,7 @@ class AddedProjectButtonView: UIView, UITextFieldDelegate {
         return UINib(nibName: "AddedProjectButtonView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AddedProjectButtonView
     }
     
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         
         guard let newValue = Float(textField.text!) else {
             return

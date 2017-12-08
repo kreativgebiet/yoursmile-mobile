@@ -110,8 +110,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         let mutableString = NSMutableAttributedString(
             string: text1 + text2)
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))
         
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .selected)
@@ -122,8 +122,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         let mutableString2 = NSMutableAttributedString(
             string: text3 + text4)
-        mutableString2.addAttribute(NSForegroundColorAttributeName, value: customDarkGray, range: NSMakeRange(0, text3.characters.count))
-        mutableString2.addAttribute(NSForegroundColorAttributeName, value: orange, range: NSMakeRange(text3.characters.count, text4.characters.count))
+        mutableString2.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text3.characters.count))
+        mutableString2.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text3.characters.count, text4.characters.count))
         
         self.gotoPasswordResetButton.setAttributedTitle(mutableString2, for: .normal)
         self.gotoPasswordResetButton.setAttributedTitle(mutableString2, for: .selected)
@@ -132,7 +132,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     
     // MARK: - Button handler
     
-    func backgroundTap() {
+    @objc func backgroundTap() {
         self.view.endEditing(true)
     }
 
@@ -330,7 +330,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     
     // MARK: - Keyboard animation handling
     
-    func animateWithKeyboard(notification: NSNotification) {
+    @objc func animateWithKeyboard(notification: NSNotification) {
         
         let userInfo = notification.userInfo!
         let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double

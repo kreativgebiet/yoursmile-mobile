@@ -87,10 +87,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     let screenWidth = UIScreen.main.bounds.size.width
     
-    func handleTap(sender: UIGestureRecognizer) {
+    @objc func handleTap(sender: UIGestureRecognizer) {
         if sender.state == .ended {
             let touchLocation: CGPoint = sender.location(in: self.cameraView)
-            let pointInCamera = self.preViewLayer.captureDevicePointOfInterest(for: touchLocation)
+            let pointInCamera = self.preViewLayer.captureDevicePointConverted(fromLayerPoint: touchLocation)
             
             if let device = captureDevice {
                 do {
@@ -99,9 +99,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                     
                     if support {
                         try device.lockForConfiguration()
-                        device.focusMode = AVCaptureFocusMode.continuousAutoFocus
+                        device.focusMode = AVCaptureDevice.FocusMode.continuousAutoFocus
                         device.exposurePointOfInterest = pointInCamera
-                        device.exposureMode = AVCaptureExposureMode.continuousAutoExposure
+                        device.exposureMode = AVCaptureDevice.ExposureMode.continuousAutoExposure
                         device.unlockForConfiguration()
                     }
                     
@@ -137,21 +137,26 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     func beginSession() {
         
         configureDevice()
+
+
+        guard let device = captureDevice else {
+            return
+        }
         
         let err : NSError? = nil
         do {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
+            let input = try AVCaptureDeviceInput(device: device)
             captureSession.addInput(input)
         } catch _ {
             print("error: \(String(describing: err?.localizedDescription))")
         }
         
         self.preViewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.preViewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        self.preViewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         self.preViewLayer?.frame = self.cameraView.layer.bounds
         self.cameraView.layer.addSublayer(self.preViewLayer)
-        self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto
+        self.captureSession.sessionPreset = AVCaptureSession.Preset.photo
         self.captureSession.startRunning()
         
         self.stillImageOutput = AVCaptureStillImageOutput()
@@ -180,10 +185,13 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func cameraButtonTapped(_ sender: AnyObject) {
-        if let videoConnection = self.stillImageOutput.connection(withMediaType: AVMediaTypeVideo) {
+        if let videoConnection = self.stillImageOutput.connection(with: AVMediaType.video) {
             stillImageOutput.captureStillImageAsynchronously(from: videoConnection) {
                 (imageDataSampleBuffer, error) -> Void in
-                let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
+
+                // TODO!!
+
+                let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer!)
                 self.image = UIImage(data: imageData!)
                 
                 self.title = ""
@@ -237,9 +245,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         captureSession.commitConfiguration()
     }
     
-    func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice? {
-        let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
-        for device in devices! {
+    func cameraWithPosition(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let devices = AVCaptureDevice.devices(for: AVMediaType.video)
+        for device in devices {
             let device = device as! AVCaptureDevice
             if device.position == position {
                 return device

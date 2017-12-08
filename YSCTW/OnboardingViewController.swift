@@ -86,7 +86,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         self.backgroundImageView.addGestureRecognizer(swipeGesture)
     }
     
-    func swiped(_ gesture: UISwipeGestureRecognizer) {
+    @objc func swiped(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .left {
             if self.pageControl.currentPage < 3 {
                 let xOffset = CGFloat(self.pageControl.currentPage + 1) * self.pageWidth

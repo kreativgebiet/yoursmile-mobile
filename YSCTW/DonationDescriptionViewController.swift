@@ -121,7 +121,7 @@ class DonationDescriptionViewController: UIViewController, UITextViewDelegate, F
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    func closeKeyboard() {
+    @objc func closeKeyboard() {
         self.view.endEditing(true)
     }
     
