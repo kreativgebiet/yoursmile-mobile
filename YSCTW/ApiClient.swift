@@ -39,7 +39,7 @@ class APIClient: NSObject {
             } else {
                 let errors = NetworkHelper.findErrorsIn(json! as! [String : AnyObject]) as String
                     
-                if errors.characters.count > 0 {
+                if errors.count > 0 {
                     callback(false, errors)
                 } else {
                     callback(true, "")

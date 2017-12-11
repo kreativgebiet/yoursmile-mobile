@@ -29,32 +29,6 @@ extension String {
         return self.count
     }
     
-    func indexOf(target: String) -> Int? {
-        
-        let range = (self as NSString).range(of: target)
-        
-        guard range.toRange() != nil else {
-            return nil
-        }
-        
-        return range.location
-        
-    }
-    
-    func lastIndexOf(target: String) -> Int? {
-        
-        
-        
-        let range = (self as NSString).range(of: target, options: NSString.CompareOptions.backwards)
-        
-        guard range.toRange() != nil else {
-            return nil
-        }
-        
-        return self.length - range.location - 1
-        
-    }
-    
     func contains(s: String) -> Bool {
         return (self.range(of: s) != nil) ? true : false
     }

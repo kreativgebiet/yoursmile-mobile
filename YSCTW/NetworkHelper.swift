@@ -28,7 +28,7 @@ class NetworkHelper: NSObject {
             
             if let errors = dictionary["errors"] as? [String]{
                 
-                errorMessage = (errorMessage.characters.count > 0 ? errorMessage + " " : errorMessage)
+                errorMessage = (errorMessage.count > 0 ? errorMessage + " " : errorMessage)
                 errorMessage = errorMessage +  errors.joined()
             }
         }

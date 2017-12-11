@@ -158,7 +158,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             error = error + "NO_PROJECT_ERROR".localized
         }
         
-        if error.characters.count > 0 {
+        if error.count > 0 {
             
             HelperFunctions.presentAlertViewfor(error: error)
             

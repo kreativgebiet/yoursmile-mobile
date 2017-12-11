@@ -133,7 +133,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         
         var errorMessage = ""
         
-        if name?.characters.count == 0 {
+        if name?.count == 0 {
             errorMessage = "NAME_ERROR".localized + " "
         }
         
@@ -141,11 +141,11 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             errorMessage = errorMessage + "MAIL_ERROR".localized + " "
         }
         
-        if (password?.characters.count)! < 8 {
+        if (password?.count)! < 8 {
             errorMessage = errorMessage + "PASSWORD_ERROR".localized
         }
         
-        if errorMessage.characters.count > 0 {
+        if errorMessage.count > 0 {
             HelperFunctions.presentAlertViewfor(error: errorMessage)
             return
         }
