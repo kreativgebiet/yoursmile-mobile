@@ -31,8 +31,6 @@
 		A12A45521DCF8C76002977DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12A45501DCF8C76002977DF /* Main.storyboard */; };
 		A12A45541DCF8C76002977DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A12A45531DCF8C76002977DF /* Images.xcassets */; };
 		A12A45571DCF8C76002977DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12A45551DCF8C76002977DF /* LaunchScreen.storyboard */; };
-		A12A45621DCF8C77002977DF /* YSCTWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A45611DCF8C77002977DF /* YSCTWTests.swift */; };
-		A12A456D1DCF8C77002977DF /* YSCTWUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A456C1DCF8C77002977DF /* YSCTWUITests.swift */; };
 		A12A457B1DCF9383002977DF /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A457A1DCF9383002977DF /* constants.swift */; };
 		A12A457F1DD080C9002977DF /* LeftViewImageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A457E1DD080C9002977DF /* LeftViewImageTextField.swift */; };
 		A12A45811DD081FF002977DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12A45801DD081FF002977DF /* LoginViewController.swift */; };
@@ -159,23 +157,6 @@
 		A1FD4E1E1E56E79A0088CECC /* ReportUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FD4E1D1E56E79A0088CECC /* ReportUploadOperation.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A12A455E1DCF8C77002977DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A12A45411DCF8C76002977DF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A12A45481DCF8C76002977DF;
-			remoteInfo = YSCTW;
-		};
-		A12A45691DCF8C77002977DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A12A45411DCF8C76002977DF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A12A45481DCF8C76002977DF;
-			remoteInfo = YSCTW;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		A1101A671F5007CD008DF9BD /* LaunchAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchAnimationViewController.swift; sourceTree = "<group>"; };
 		A11028EC1DD4DA2C00633343 /* DonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
@@ -209,12 +190,6 @@
 		A12A45531DCF8C76002977DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A12A45561DCF8C76002977DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A12A45581DCF8C76002977DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A12A455D1DCF8C77002977DF /* YSCTWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YSCTWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A12A45611DCF8C77002977DF /* YSCTWTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YSCTWTests.swift; sourceTree = "<group>"; };
-		A12A45631DCF8C77002977DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A12A45681DCF8C77002977DF /* YSCTWUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YSCTWUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A12A456C1DCF8C77002977DF /* YSCTWUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YSCTWUITests.swift; sourceTree = "<group>"; };
-		A12A456E1DCF8C77002977DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A12A457A1DCF9383002977DF /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		A12A457E1DD080C9002977DF /* LeftViewImageTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewImageTextField.swift; sourceTree = "<group>"; };
 		A12A45801DD081FF002977DF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -384,20 +359,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A12A455A1DCF8C77002977DF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A12A45651DCF8C77002977DF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -460,8 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				A12A454B1DCF8C76002977DF /* YSCTW */,
-				A12A45601DCF8C77002977DF /* YSCTWTests */,
-				A12A456B1DCF8C77002977DF /* YSCTWUITests */,
 				A12A454A1DCF8C76002977DF /* Products */,
 				A11029141DDB231D00633343 /* Frameworks */,
 			);
@@ -471,8 +430,6 @@
 			isa = PBXGroup;
 			children = (
 				A12A45491DCF8C76002977DF /* YSCTW.app */,
-				A12A455D1DCF8C77002977DF /* YSCTWTests.xctest */,
-				A12A45681DCF8C77002977DF /* YSCTWUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -508,24 +465,6 @@
 				A1DB37751E098368003EAFCF /* ErrorManager.swift */,
 			);
 			path = YSCTW;
-			sourceTree = "<group>";
-		};
-		A12A45601DCF8C77002977DF /* YSCTWTests */ = {
-			isa = PBXGroup;
-			children = (
-				A12A45611DCF8C77002977DF /* YSCTWTests.swift */,
-				A12A45631DCF8C77002977DF /* Info.plist */,
-			);
-			path = YSCTWTests;
-			sourceTree = "<group>";
-		};
-		A12A456B1DCF8C77002977DF /* YSCTWUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A12A456C1DCF8C77002977DF /* YSCTWUITests.swift */,
-				A12A456E1DCF8C77002977DF /* Info.plist */,
-			);
-			path = YSCTWUITests;
 			sourceTree = "<group>";
 		};
 		A153909E1DD0E37100B7ADA0 /* ViewController */ = {
@@ -715,42 +654,6 @@
 			productReference = A12A45491DCF8C76002977DF /* YSCTW.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A12A455C1DCF8C77002977DF /* YSCTWTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A12A45741DCF8C77002977DF /* Build configuration list for PBXNativeTarget "YSCTWTests" */;
-			buildPhases = (
-				A12A45591DCF8C77002977DF /* Sources */,
-				A12A455A1DCF8C77002977DF /* Frameworks */,
-				A12A455B1DCF8C77002977DF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A12A455F1DCF8C77002977DF /* PBXTargetDependency */,
-			);
-			name = YSCTWTests;
-			productName = YSCTWTests;
-			productReference = A12A455D1DCF8C77002977DF /* YSCTWTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A12A45671DCF8C77002977DF /* YSCTWUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A12A45771DCF8C77002977DF /* Build configuration list for PBXNativeTarget "YSCTWUITests" */;
-			buildPhases = (
-				A12A45641DCF8C77002977DF /* Sources */,
-				A12A45651DCF8C77002977DF /* Frameworks */,
-				A12A45661DCF8C77002977DF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A12A456A1DCF8C77002977DF /* PBXTargetDependency */,
-			);
-			name = YSCTWUITests;
-			productName = YSCTWUITests;
-			productReference = A12A45681DCF8C77002977DF /* YSCTWUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -765,7 +668,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = ZJULPV3Z62;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -777,20 +680,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					A12A455C1DCF8C77002977DF = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = J5ES4BJ242;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A12A45481DCF8C76002977DF;
-					};
-					A12A45671DCF8C77002977DF = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = J5ES4BJ242;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A12A45481DCF8C76002977DF;
 					};
 				};
 			};
@@ -809,8 +698,6 @@
 			projectRoot = "";
 			targets = (
 				A12A45481DCF8C76002977DF /* YSCTW */,
-				A12A455C1DCF8C77002977DF /* YSCTWTests */,
-				A12A45671DCF8C77002977DF /* YSCTWUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -858,20 +745,6 @@
 				A164071B1DDF181800BA1853 /* Gotham-BoldItalic.otf in Resources */,
 				A11028F11DD50EA200633343 /* AddProjectButton.xib in Resources */,
 				A161B55A1DEDA06C00356514 /* CardPaymentView.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A12A455B1DCF8C77002977DF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A12A45661DCF8C77002977DF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,36 +866,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A12A45591DCF8C77002977DF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A12A45621DCF8C77002977DF /* YSCTWTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A12A45641DCF8C77002977DF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A12A456D1DCF8C77002977DF /* YSCTWUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A12A455F1DCF8C77002977DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A12A45481DCF8C76002977DF /* YSCTW */;
-			targetProxy = A12A455E1DCF8C77002977DF /* PBXContainerItemProxy */;
-		};
-		A12A456A1DCF8C77002977DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A12A45481DCF8C76002977DF /* YSCTW */;
-			targetProxy = A12A45691DCF8C77002977DF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A11029041DD9C36D00633343 /* Localizable.strings */ = {
@@ -1064,6 +908,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1115,6 +960,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1155,9 +1001,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_ENTITLEMENTS = YSCTW/YSCTW.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = ZJULPV3Z62;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1177,8 +1025,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MaxCoding.YSCTW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ce0d1d18-3361-4d8b-8012-d889280fdb9b";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.MaxCoding.YSCTW";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YSCTW/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
@@ -1188,9 +1036,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_ENTITLEMENTS = YSCTW/YSCTW.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = ZJULPV3Z62;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1210,68 +1060,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MaxCoding.YSCTW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd6a70de-916a-45a1-baba-da037f394847";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.MaxCoding.YSCTW";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YSCTW/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		A12A45751DCF8C77002977DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = J5ES4BJ242;
-				INFOPLIST_FILE = YSCTWTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MaxCoding.YSCTWTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YSCTW.app/YSCTW";
-			};
-			name = Debug;
-		};
-		A12A45761DCF8C77002977DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = J5ES4BJ242;
-				INFOPLIST_FILE = YSCTWTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MaxCoding.YSCTWTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YSCTW.app/YSCTW";
-			};
-			name = Release;
-		};
-		A12A45781DCF8C77002977DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = J5ES4BJ242;
-				INFOPLIST_FILE = YSCTWUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MaxCoding.YSCTWUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = YSCTW;
-			};
-			name = Debug;
-		};
-		A12A45791DCF8C77002977DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = J5ES4BJ242;
-				INFOPLIST_FILE = YSCTWUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MaxCoding.YSCTWUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = YSCTW;
 			};
 			name = Release;
 		};
@@ -1292,24 +1084,6 @@
 			buildConfigurations = (
 				A12A45721DCF8C77002977DF /* Debug */,
 				A12A45731DCF8C77002977DF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A12A45741DCF8C77002977DF /* Build configuration list for PBXNativeTarget "YSCTWTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A12A45751DCF8C77002977DF /* Debug */,
-				A12A45761DCF8C77002977DF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A12A45771DCF8C77002977DF /* Build configuration list for PBXNativeTarget "YSCTWUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A12A45781DCF8C77002977DF /* Debug */,
-				A12A45791DCF8C77002977DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -110,8 +110,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         let mutableString = NSMutableAttributedString(
             string: text1 + text2)
-        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
-        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text1.count))
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text1.count, text2.count))
         
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoRegistrationButton.setAttributedTitle(mutableString, for: .selected)
@@ -122,8 +122,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         let mutableString2 = NSMutableAttributedString(
             string: text3 + text4)
-        mutableString2.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text3.characters.count))
-        mutableString2.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text3.characters.count, text4.characters.count))
+        mutableString2.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text3.count))
+        mutableString2.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text3.count, text4.count))
         
         self.gotoPasswordResetButton.setAttributedTitle(mutableString2, for: .normal)
         self.gotoPasswordResetButton.setAttributedTitle(mutableString2, for: .selected)
@@ -151,11 +151,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             errorMessage = errorMessage + "MAIL_ERROR".localized + " "
         }
         
-        if (password?.characters.count)! < 8 {
+        if (password?.count)! < 8 {
             errorMessage = errorMessage + "PASSWORD_ERROR".localized
         }
         
-        if errorMessage.characters.count > 0 {
+        if errorMessage.count > 0 {
             HelperFunctions.presentAlertViewfor(error: errorMessage)
             return
         }

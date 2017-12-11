@@ -87,8 +87,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         let mutableString = NSMutableAttributedString(
             string: text1+text2)
         
-        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text1.characters.count))
-        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text1.characters.count, text2.characters.count))
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: customDarkGray, range: NSMakeRange(0, text1.count))
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: orange, range: NSMakeRange(text1.count, text2.count))
         self.gotoLoginButton.setAttributedTitle(mutableString, for: .normal)
         self.gotoLoginButton.setAttributedTitle(mutableString, for: .selected)
         self.gotoLoginButton.titleLabel?.adjustsFontSizeToFitWidth = true

@@ -1,0 +1,9 @@
+{
+  "commitish" : "v0.4.2",
+  "iOS" : [
+    {
+      "name" : "Down",
+      "hash" : "6284fa89425a2e6cab3ac2254c5977298ba1dae1d846dc8c02a5c0d6509c1c22"
+    }
+  ]
+}

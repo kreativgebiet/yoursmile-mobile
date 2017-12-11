@@ -124,7 +124,7 @@ class NetworkHelper: NSObject {
             if json != nil {
                 let errors = NetworkHelper.findErrorsIn(json!) as String
                 
-                if errors.characters.count > 0 {
+                if errors.count > 0 {
                     print(errors)
                     callback(false, errors)
                     HelperFunctions.presentAlertViewfor(error: errors)
@@ -175,7 +175,7 @@ class NetworkHelper: NSObject {
         } else {
             let errors = NetworkHelper.findErrorsIn(json!) as String
             
-            if errors.characters.count > 0 {
+            if errors.count > 0 {
                 callback(false, errors)
             } else {
                 NetworkHelper.saveTokenFromResponse(response: response.response!)
