@@ -20,7 +20,7 @@ class ProjectCategoryViewController: UIViewController {
     @IBOutlet weak var button4: CategoryButton!
     @IBOutlet weak var button5: CategoryButton!
     
-    let buttonTitle = ["EDUCATION".localized, "HEALTH".localized, "NUTRITION".localized, "EMERGENCY".localized,"ALL".localized]
+    let buttonTitle = ["ALL".localized, "EDUCATION".localized, "HEALTH".localized, "NUTRITION".localized, "EMERGENCY".localized]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +28,15 @@ class ProjectCategoryViewController: UIViewController {
         self.title = ""
         
         button1.setTitle(buttonTitle[0], for: .normal)
-        button1.sector = Sector.education
+        button1.sector = Sector.all
         button2.setTitle(buttonTitle[1], for: .normal)
-        button2.sector = Sector.health
+        button2.sector = Sector.education
         button3.setTitle(buttonTitle[2], for: .normal)
-        button3.sector = Sector.nutrition
+        button3.sector = Sector.health
         button4.setTitle(buttonTitle[3], for: .normal)
-        button4.sector = Sector.emergency
+        button4.sector = Sector.nutrition
         button5.setTitle(buttonTitle[4], for: .normal)
-        button5.sector = Sector.all
+        button5.sector = Sector.emergency
         
         topLabel.font = UIFont(name: "Zufo-Regular", size: 38)
         topLabel.textColor = blue

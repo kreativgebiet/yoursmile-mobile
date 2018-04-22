@@ -50,7 +50,7 @@ class ProjectView: UIView {
         
         self.projectLabel.text = self.project?.projectName
         
-        if (self.project?.logoURL.characters.count)! > 0 {
+        if (self.project?.logoURL.count)! > 0 {
             let logoURL = URL(string: (self.project?.logoURL)!)!
             self.projectLogoImageView.af_setImage(withURL: logoURL)
         }

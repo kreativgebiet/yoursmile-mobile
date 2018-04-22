@@ -21,14 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = "323620439998-4p4cqackip97sqod9mua8sct5has46a4.apps.googleusercontent.com"
         
         //Enter your OneSignal credentials
-        OneSignal.initWithLaunchOptions(launchOptions, appId: "f1531894-9c55-479b-b7c2-035beed48864")
+        OneSignal.initWithLaunchOptions(launchOptions, appId: "c356a13a-8dc6-4d9e-9f22-8b302cb1e2e7")
 
         //Enter your Stripe credentials (Payment)
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_HoCc151BfYh437wFFtMoRVUy"
+        //pk_test_cX8rDspcsLdUPz5yKSDZ5QRm
+        //pk_live_7bLZF5x44IPX9tnYxDIimKJ6
+        STPPaymentConfiguration.shared().publishableKey = "pk_live_7bLZF5x44IPX9tnYxDIimKJ6"
 
         //Enter your Paypal credentials (Payment)
-        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YOUR_CLIENT_ID_FOR_PRODUCTION",
-                                                                PayPalEnvironmentSandbox: "YOUR_CLIENT_ID_FOR_SANDBOX"])
+        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YJ9T7CBLY3ZHE",
+                                                                PayPalEnvironmentSandbox: "YJ9T7CBLY3ZHE"])
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -60,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window?.makeKeyAndVisible()
         
-        
+    
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
