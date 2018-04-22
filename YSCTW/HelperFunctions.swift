@@ -57,31 +57,29 @@ class HelperFunctions: NSObject {
         // Sort the images by creation date
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
-        
-        if let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions) {
-            
-            // If the fetch result isn't empty,
-            // proceed with the image request
-            if fetchResult.count > 0 {
-                // Perform the image request
-                imgManager.requestImage(for: fetchResult.object(at: fetchResult.count - 1 - index) as PHAsset, targetSize: targetSize, contentMode: PHImageContentMode.aspectFill, options: requestOptions, resultHandler: { (image, _) in
-                    
-                    // Add the returned image to your array
-                    self.images.append(image!)
-                    
-                    // If you haven't already reached the first
-                    // index of the fetch result and if you haven't
-                    // already stored all of the images you need,
-                    // perform the fetch request again with an
-                    // incremented index
-                    if index + 1 < fetchResult.count && self.images.count < 1 {
-                        self.fetchPhotoAtIndexFromEnd(targetSize: targetSize, index + 1)
-                    } else {
-                        // Else you have completed creating your array
-                        print("Completed array: \(self.images)")
-                    }
-                })
-            }
+        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
+
+        // If the fetch result isn't empty,
+        // proceed with the image request
+        if fetchResult.count > 0 {
+            // Perform the image request
+            imgManager.requestImage(for: fetchResult.object(at: fetchResult.count - 1 - index) as PHAsset, targetSize: targetSize, contentMode: PHImageContentMode.aspectFill, options: requestOptions, resultHandler: { (image, _) in
+
+                // Add the returned image to your array
+                self.images.append(image!)
+
+                // If you haven't already reached the first
+                // index of the fetch result and if you haven't
+                // already stored all of the images you need,
+                // perform the fetch request again with an
+                // incremented index
+                if index + 1 < fetchResult.count && self.images.count < 1 {
+                    self.fetchPhotoAtIndexFromEnd(targetSize: targetSize, index + 1)
+                } else {
+                    // Else you have completed creating your array
+                    print("Completed array: \(self.images)")
+                }
+            })
         }
     }
 

@@ -89,9 +89,9 @@ class CoreDataController: NSObject {
     
     func profile() -> Profile {
         let profileModel = self.profileModel()
-        var profile = Profile(id: Int(profileModel.id!), name: profileModel.name!, email: profileModel.email!, nickname: profileModel.nickname!, avatarURL: profileModel.avatar_url!, avatarThumbUrl: profileModel.avatar_thumb_url)
-        profile.followingCount = Int(profileModel.followingCount!)
-        profile.followerCount = Int(profileModel.followerCount!)
+        var profile = Profile(id: Int(truncating: profileModel.id!), name: profileModel.name!, email: profileModel.email!, nickname: profileModel.nickname!, avatarURL: profileModel.avatar_url!, avatarThumbUrl: profileModel.avatar_thumb_url)
+        profile.followingCount = Int(truncating: profileModel.followingCount!)
+        profile.followerCount = Int(truncating: profileModel.followerCount!)
         
         return profile
     }

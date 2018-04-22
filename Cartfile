@@ -1,7 +1,7 @@
-github "Alamofire/Alamofire" ~> 4.0
+github "Alamofire/Alamofire" ~> 4.7
 github "SwiftyJSON/SwiftyJSON" >= 2.3.0
 github "matthewpalmer/Locksmith"
 github "iwasrobbed/Down"
 github "stripe/stripe-ios"
-github "Alamofire/AlamofireImage" ~> 3.1
+github "Alamofire/AlamofireImage" ~> 3.3
 github "OneSignal/OneSignal-iOS-SDK"

@@ -30,10 +30,18 @@
 
 #import "AppDelegate.h"
 
+#import <FirebaseAnalytics/FIRApp.h>
+#import <FirebaseAnalytics/FIRAnalytics.h>
+
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [FIRApp configure];
+    
+    NSLog(@"Bundle URL: %@", [[NSBundle mainBundle] bundleURL]);
+    NSLog(@"[[NSUUID alloc] initWithUUIDString:nil]: %@", [[NSUUID alloc] initWithUUIDString:nil]);
     
     [OneSignal setLogLevel:ONE_S_LL_VERBOSE visualLevel:ONE_S_LL_WARN];
     
@@ -41,22 +49,38 @@
     
     id openNotificationHandler = ^(OSNotificationOpenedResult *result) {
         NSLog(@"OSNotificationOpenedResult: %@", result);
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notifiation Opened" message:@"Notification Opened" delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+        [alert show];
     };
     
     
     [OneSignal setSubscription:true];
     
+    
+    id notificationReceiverBlock = ^(OSNotification *notification) {
+        NSLog(@"Received Notification - %@", notification.payload.notificationID);
+        
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:11];
+    };
+    
     [OneSignal initWithLaunchOptions:launchOptions
-                               appId:@"b2f7f966-d8cc-11e4-bed1-df8f05be55ba"
+                               appId:@"5dc0b8c7-335a-4c4c-9ed4-266cbf2158ac"
+          handleNotificationReceived:notificationReceiverBlock
             handleNotificationAction:openNotificationHandler
                             settings:@{kOSSettingsKeyAutoPrompt: @false,
-                                       kOSSettingsKeyInAppLaunchURL: @false}];
+                                       kOSSettingsKeyInAppLaunchURL: @true}];
     
     [OneSignal promptLocation];
     [OneSignal sendTag:@"someKey1122" value:@"03222017"];
     
+    OneSignal.inFocusDisplayType = OSNotificationDisplayTypeNotification;
+    
     [OneSignal addPermissionObserver:self];
     [OneSignal addSubscriptionObserver:self];
+    [OneSignal addEmailSubscriptionObserver:self];
+    
+    NSLog(@"UNUserNotificationCenter.delegate: %@", UNUserNotificationCenter.currentNotificationCenter.delegate);
     
     return YES;
 }
@@ -69,6 +93,11 @@
 - (void) onOSPermissionChanged:(OSPermissionStateChanges*)stateChanges {
     NSLog(@"onOSPermissionChanged: %@", stateChanges);
     NSLog(@"HERE");
+}
+
+-(void)onOSEmailSubscriptionChanged:(OSEmailSubscriptionStateChanges *)stateChanges {
+    NSLog(@"onOSEmailSubscriptionChanged: %@", stateChanges);
+    
 }
 
 
@@ -85,6 +114,15 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+//    [FIRAnalytics logEventWithName:@"os_notification_opened"
+//                        parameters:@{
+//                                     kFIRParameterSource: @"OneSignal",
+//                                     kFIRParameterMedium: @"notification",
+//                                     @"notification_id": @"b2f7f966-d8cc-11e4-bed1-df8f05be55ba",
+//                                     kFIRParameterCampaign: @"some title"
+//                                     }];
+    
 }
 
 

@@ -82,6 +82,9 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         config.shippingType = settings.shippingType
         config.additionalPaymentMethods = settings.additionalPaymentMethods
 
+        // Create card sources instead of card tokens
+        config.createCardSources = true;
+
         let customerContext = STPCustomerContext(keyProvider: MyAPIClient.sharedClient)
         let paymentContext = STPPaymentContext(customerContext: customerContext,
                                                configuration: config,
@@ -104,7 +107,7 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         self.paymentRow = CheckoutRowView(title: "Payment", detail: "Select Payment",
                                           theme: settings.theme)
         var shippingString = "Contact"
-        if config.requiredShippingAddressFields.contains(.postalAddress) {
+        if config.requiredShippingAddressFields?.contains(.postalAddress) ?? false {
             shippingString = config.shippingType == .shipping ? "Shipping" : "Delivery"
         }
         self.shippingString = shippingString
@@ -151,32 +154,36 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         self.activityIndicator.alpha = 0
         self.buyButton.addTarget(self, action: #selector(didTapBuy), for: .touchUpInside)
         self.totalRow.detail = self.numberFormatter.string(from: NSNumber(value: Float(self.paymentContext.paymentAmount)/100))!
-        self.paymentRow.onTap = { [weak self] _ in
+        self.paymentRow.onTap = { [weak self] in
             self?.paymentContext.pushPaymentMethodsViewController()
         }
-        self.shippingRow.onTap = { [weak self] _ in
+        self.shippingRow.onTap = { [weak self]  in
             self?.paymentContext.pushShippingViewController()
         }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let width = self.view.bounds.width
+        var insets = UIEdgeInsets.zero
+        if #available(iOS 11.0, *) {
+            insets = view.safeAreaInsets
+        }
+        let width = self.view.bounds.width - (insets.left + insets.right)
         self.productImage.sizeToFit()
         self.productImage.center = CGPoint(x: width/2.0,
                                            y: self.productImage.bounds.height/2.0 + rowHeight)
-        self.paymentRow.frame = CGRect(x: 0, y: self.productImage.frame.maxY + rowHeight,
+        self.paymentRow.frame = CGRect(x: insets.left, y: self.productImage.frame.maxY + rowHeight,
                                        width: width, height: rowHeight)
-        self.shippingRow.frame = CGRect(x: 0, y: self.paymentRow.frame.maxY,
+        self.shippingRow.frame = CGRect(x: insets.left, y: self.paymentRow.frame.maxY,
                                         width: width, height: rowHeight)
-        self.totalRow.frame = CGRect(x: 0, y: self.shippingRow.frame.maxY,
+        self.totalRow.frame = CGRect(x: insets.left, y: self.shippingRow.frame.maxY,
                                      width: width, height: rowHeight)
-        self.buyButton.frame = CGRect(x: 0, y: 0, width: 88, height: 44)
+        self.buyButton.frame = CGRect(x: insets.left, y: 0, width: 88, height: 44)
         self.buyButton.center = CGPoint(x: width/2.0, y: self.totalRow.frame.maxY + rowHeight*1.5)
         self.activityIndicator.center = self.buyButton.center
     }
 
-    func didTapBuy() {
+    @objc func didTapBuy() {
         self.paymentInProgress = true
         self.paymentContext.requestPayment()
     }

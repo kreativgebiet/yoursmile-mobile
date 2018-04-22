@@ -213,8 +213,11 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBAction func cameraFlipButtonTapped(_ sender: AnyObject) {
         
         captureSession.beginConfiguration()
-        
-        let currentCameraInput:AVCaptureInput = captureSession.inputs.first as! AVCaptureInput
+
+        guard let currentCameraInput = captureSession.inputs.first else {
+            return
+        }
+
         captureSession.removeInput(currentCameraInput)
         
         var newCamera:AVCaptureDevice! = nil
@@ -248,7 +251,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     func cameraWithPosition(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
         let devices = AVCaptureDevice.devices(for: AVMediaType.video)
         for device in devices {
-            let device = device as! AVCaptureDevice
+            let device = device as AVCaptureDevice
             if device.position == position {
                 return device
             }

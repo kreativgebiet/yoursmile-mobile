@@ -23,6 +23,11 @@ NSString *const STPTestJSONSourceSEPADebit = @"SEPADebitSource";
 
 @implementation STPFixtures
 
++ (STPConnectAccountParams *)accountParams {
+    return [[STPConnectAccountParams alloc] initWithTosShownAndAccepted:YES
+                                                            legalEntity:[self legalEntityParams]];
+}
+
 + (STPAddress *)address {
     STPAddress *address = [STPAddress new];
     address.name = @"Jenny Rosen";
@@ -123,6 +128,25 @@ NSString *const STPTestJSONSourceSEPADebit = @"SEPADebitSource";
 
     return [STPCustomer decodedObjectFromAPIResponse:customer];
 
+}
+
++ (STPCustomer *)customerWithCardAndApplePaySources {
+    NSMutableDictionary *card1 = [[STPTestUtils jsonNamed:STPTestJSONSourceCard] mutableCopy];
+    card1[@"id"] = @"src_apple_pay_123";
+    NSMutableDictionary *cardDict = [card1[@"card"] mutableCopy];
+    cardDict[@"tokenization_method"] = @"apple_pay";
+    card1[@"card"] = cardDict;
+
+    NSMutableDictionary *card2 = [[STPTestUtils jsonNamed:STPTestJSONSourceCard] mutableCopy];
+    card2[@"id"] = @"src_card_456";
+
+    NSMutableDictionary *customer = [[STPTestUtils jsonNamed:STPTestJSONCustomer] mutableCopy];
+    NSMutableDictionary *sources = [customer[@"sources"] mutableCopy];
+    sources[@"data"] = @[card1, card2];
+    customer[@"default_source"] = card1[@"id"];
+    customer[@"sources"] = sources;
+
+    return [STPCustomer decodedObjectFromAPIResponse:customer];
 }
 
 + (STPCustomer *)customerWithSourcesFromJSONKeys:(NSArray<NSString *> *)jsonSourceKeys
@@ -227,6 +251,61 @@ NSString *const STPTestJSONSourceSEPADebit = @"SEPADebitSource";
     [payment performSelector:@selector(setToken:) withObject:paymentToken];
 #pragma clang diagnostic pop
     return payment;
+}
+
++ (STPLegalEntityParams *)legalEntityParams {
+    STPLegalEntityParams *legalEntity = [STPLegalEntityParams new];
+
+    legalEntity.firstName = @"Jessica";
+    legalEntity.lastName = @"Jones";
+    legalEntity.maidenName = @"Smith";
+    legalEntity.address = [self address];
+
+    legalEntity.dateOfBirth = [NSDateComponents new];
+    legalEntity.dateOfBirth.year = 1980;
+    legalEntity.dateOfBirth.month = 7;
+    legalEntity.dateOfBirth.day = 4;
+
+    legalEntity.verification = [STPVerificationParams new];
+    legalEntity.verification.document = @"file_abc";
+
+    STPPersonParams *jenny = [self personParams], *jacob = [self personParams];
+    jenny.firstName = @"Jenny";
+    jacob.firstName = @"Jacob";
+    legalEntity.additionalOwners = @[jenny, jacob];
+
+    legalEntity.businessName = @"Internet Business";
+    legalEntity.businessTaxId = @"123";
+    legalEntity.businessVATId = @"456";
+    legalEntity.genderString = @"female";
+    legalEntity.personalAddress = [self address];
+    legalEntity.personalAddress.state = @"CA";
+    legalEntity.personalIdNumber = @"000000000";
+    legalEntity.phoneNumber = @"555-1234";
+    legalEntity.ssnLast4 = @"0000";
+    legalEntity.taxIdRegistrar = @"321";
+    legalEntity.entityTypeString = @"individual";
+
+    return legalEntity;
+}
+
++ (STPPersonParams *)personParams {
+    STPPersonParams *person = [STPPersonParams new];
+
+    person.firstName = @"James";
+    person.lastName = @"Smith";
+    person.maidenName = @"Jones";
+    person.address = [self address];
+
+    person.dateOfBirth = [NSDateComponents new];
+    person.dateOfBirth.year = 1980;
+    person.dateOfBirth.month = 7;
+    person.dateOfBirth.day = 4;
+
+    person.verification = [STPVerificationParams new];
+    person.verification.document = @"file_abc";
+
+    return person;
 }
 
 @end

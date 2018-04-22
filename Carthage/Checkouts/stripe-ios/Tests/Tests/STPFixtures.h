@@ -25,6 +25,12 @@ extern NSString *const STPTestJSONSourceSEPADebit;
 @interface STPFixtures : NSObject
 
 /**
+ An STPConnectAccountParams object with all of the fields filled in, and
+ ToS accepted.
+ */
++ (STPConnectAccountParams *)accountParams;
+
+/**
  An Address object with all fields filled.
  */
 + (STPAddress *)address;
@@ -84,6 +90,12 @@ extern NSString *const STPTestJSONSourceSEPADebit;
 + (STPCustomer *)customerWithCardTokenAndSourceSources;
 
 /**
+ A Customer object with a card source, and apple pay card source, and
+ default_source set to the apple pay source.
+ */
++ (STPCustomer *)customerWithCardAndApplePaySources;
+
+/**
  A customer object with a sources array that includes the listed json sources
  in the order they are listed in the array.
  
@@ -126,6 +138,11 @@ extern NSString *const STPTestJSONSourceSEPADebit;
  A customer-scoped ephemeral key that expires in 10 seconds.
  */
 + (STPEphemeralKey *)expiringEphemeralKey;
+
+/**
+ A fully specified STPLegalEntityParams
+ */
++ (STPLegalEntityParams *)legalEntityParams;
 
 @end
 
