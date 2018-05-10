@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>323620439998-4p4cqackip97sqod9mua8sct5has46a4.apps.googleusercontent.com</string>
+	<string>39907485128-v9puaisfv2l8hcmd2kb2dd9ek0028u25.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.323620439998-4p4cqackip97sqod9mua8sct5has46a4</string>
+	<string>com.googleusercontent.apps.39907485128-v9puaisfv2l8hcmd2kb2dd9ek0028u25</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.MaxCoding.YSCTW</string>
+	<string>com.smileandchange.yoursmile</string>
 	<key>PROJECT_ID</key>
-	<string>firebase-ysctw</string>
+	<string>smileandchange-203710</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>

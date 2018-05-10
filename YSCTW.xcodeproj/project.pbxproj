@@ -1036,7 +1036,7 @@
 					"-lc++",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kreativgebiet.yoursmile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smileandchange.yoursmile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1072,7 +1072,7 @@
 					"-lc++",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kreativgebiet.yoursmile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smileandchange.yoursmile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

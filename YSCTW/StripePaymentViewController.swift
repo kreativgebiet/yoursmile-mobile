@@ -33,6 +33,7 @@ class StripePaymentViewController: UIViewController {
                 // If you have your own form for getting credit card information, you can construct
                 // your own STPCardParams from number, month, year, and CVV.
                 let card = self.cardPaymentView.paymentField.cardParams
+                card.currency = "EUR"
                 
                 STPAPIClient.shared().createToken(withCard: card) { token, error in
                     

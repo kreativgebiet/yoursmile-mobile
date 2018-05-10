@@ -18,15 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         //Enter your client ID of the app from the Google APIs console
-        GIDSignIn.sharedInstance().clientID = "323620439998-4p4cqackip97sqod9mua8sct5has46a4.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "39907485128-v9puaisfv2l8hcmd2kb2dd9ek0028u25.apps.googleusercontent.com"
         
         //Enter your OneSignal credentials
         OneSignal.initWithLaunchOptions(launchOptions, appId: "c356a13a-8dc6-4d9e-9f22-8b302cb1e2e7")
 
         //Enter your Stripe credentials (Payment)
-        //pk_test_cX8rDspcsLdUPz5yKSDZ5QRm
+        //pk_test_HoCc151BfYh437wFFtMoRVUy
         //pk_live_7bLZF5x44IPX9tnYxDIimKJ6
-        STPPaymentConfiguration.shared().publishableKey = "pk_live_7bLZF5x44IPX9tnYxDIimKJ6"
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_HoCc151BfYh437wFFtMoRVUy"
 
         //Enter your Paypal credentials (Payment)
         PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YJ9T7CBLY3ZHE",

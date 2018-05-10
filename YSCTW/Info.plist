@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string></string>
+	<string>Smile&amp;Change</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.323620439998-4p4cqackip97sqod9mua8sct5has46a4</string>
+				<string>com.googleusercontent.apps.39907485128-v9puaisfv2l8hcmd2kb2dd9ek0028u25</string>
 			</array>
 		</dict>
 	</array>
