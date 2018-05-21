@@ -54,26 +54,24 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
             let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)            
             self.present(paymentViewController!, animated: false, completion: nil)
         } else {
-            print("Payment not processalbe: \(payment)")
-            
+//            print("Payment not processalbe: \(payment)")
+
         }
     }
     
     // MARK: PayPalPaymentDelegate
     
     func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
-        print("PayPal Payment Cancelled")
+//        print("PayPal Payment Cancelled")
         paymentViewController.dismiss(animated: true, completion: nil)
         self.dismiss(animated: true, completion: nil)
         self.callback(nil, false, "Canceled")
     }
     
     func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
-        print("PayPal Payment Success !")
-        paymentViewController.dismiss(animated: true, completion: { () -> Void in            
-            self.dismiss(animated: true, completion: nil)
-            print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
-            
+//        print("PayPal Payment Success !")
+        paymentViewController.dismiss(animated: true, completion: { () -> Void in
+            self.dismiss(animated: true, completion: nil)            
             let controller = CoreDataController()
             let uploadModel = controller.createUploadModel()
             uploadModel.isStripePayment = NSNumber(booleanLiteral: false) as! Bool

@@ -54,10 +54,7 @@ class NetworkHelper: NSObject {
         let expiryDate = response.allHeaderFields["Expiry"] as? String
         let uid = response.allHeaderFields["Uid"] as? String
         let client = response.allHeaderFields["Client"] as? String
-        
-        debugPrint("save token")
-        debugPrint(token ?? String.self)
-        
+                
         if token != nil && expiryDate != nil && uid != nil && client != nil {
             let headerDict = [
                 "access-token": token!,
@@ -81,9 +78,7 @@ class NetworkHelper: NSObject {
         if let expiryTimeStamp = dictionary["expiry"] {
             let timeStamp = Double(expiryTimeStamp)
             let expiryDate = Date(timeIntervalSince1970: timeStamp!)
-            
-            debugPrint("verify token")
-            
+                        
             if Date() < expiryDate {
                callback(dictionary)
             } else {
@@ -125,7 +120,6 @@ class NetworkHelper: NSObject {
                 let errors = NetworkHelper.findErrorsIn(json!) as String
                 
                 if errors.count > 0 {
-                    print(errors)
                     callback(false, errors)
                     HelperFunctions.presentAlertViewfor(error: errors)
                     ErrorManager.handleRequest(response.response!)

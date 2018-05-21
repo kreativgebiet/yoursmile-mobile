@@ -27,7 +27,6 @@ class NetworkOperation: Operation {
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
-                debugPrint(String(describing: self) + " finished at " + formatter.string(from: Date()))
             }
         }
     }
@@ -37,8 +36,6 @@ class NetworkOperation: Operation {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
-
-        debugPrint(String(describing: self) + " started at " + formatter.string(from: Date()))
     }
 
 }

@@ -63,7 +63,6 @@ class CoreDataController: NSObject {
 
         do {
             let searchResults = try self.managedObjectContext.fetch(fetchRequest)
-            print ("num of results = \(searchResults.count)")
             return searchResults.count > 0 ? searchResults[0] : nil
             
         } catch {
@@ -120,7 +119,6 @@ class CoreDataController: NSObject {
         
         do {
             let searchResults = try self.managedObjectContext.fetch(fetchRequest)
-            print ("num of results = \(searchResults.count)")            
             return searchResults
             
         } catch {

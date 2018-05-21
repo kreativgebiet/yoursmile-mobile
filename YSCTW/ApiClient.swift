@@ -70,7 +70,6 @@ class APIClient: NSObject {
     // MARK: Projects
     
     class func projects(callback: @escaping ((_ projects: [Project]) -> () )) {
-        debugPrint("projects get")
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "projects"
@@ -95,7 +94,6 @@ class APIClient: NSObject {
     // MARK: Uploads
 
     class func uploadsWith(id: String?, callback: @escaping ((_ uploads: [Upload]) -> () )) {
-        debugPrint("uploads get")
         NetworkHelper.verifyToken { (token) in
             
             var requestURL = ""
@@ -126,7 +124,6 @@ class APIClient: NSObject {
     // MARK: Report Upload
     
     class func reportUploadsWith(id: Int?, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
-        debugPrint("report Upload")
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "uploads/" + "\(id!)" + "/report"
@@ -148,7 +145,6 @@ class APIClient: NSObject {
         
         //Core Data is not threadsafe so the Object needs to be fetched by ObjectID
         let objectID = model.objectID
-        debugPrint("uploads post")
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "uploads"
@@ -184,7 +180,6 @@ class APIClient: NSObject {
                         
                         upload.uploadProgress { progress in
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: uploadProgressNotificationIdentifier), object: nil, userInfo: ["progress": progress])
-                            print(Float(progress.fractionCompleted))
                         }
                         
                         upload.response { response in
@@ -225,7 +220,6 @@ class APIClient: NSObject {
                         }
                         
                     case .failure(let encodingError):
-                        print("error:\(encodingError)")
                         callback(false, String(describing: encodingError))
                     }
                     
@@ -237,8 +231,6 @@ class APIClient: NSObject {
     // MARK: Likes handling
     
     class func likeUploadWith(id: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
-        debugPrint("like upload post")
-        
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "uploads/" + id + "/like"
@@ -255,7 +247,6 @@ class APIClient: NSObject {
     // MARK: Comment handling
     
     class func commentsWith(_ uploadId: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
-        debugPrint("comments get")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "uploads/" + uploadId + "/comments"
             
@@ -270,7 +261,6 @@ class APIClient: NSObject {
     }
     
     class func postCommentWith(_ uploadId: String, _ text: String, _ callback: @escaping ((_ comments: [Comment]) -> () )) {
-        debugPrint("comments post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "uploads/" + uploadId + "/comments"
             
@@ -291,7 +281,6 @@ class APIClient: NSObject {
     // MARK: Stripe Payment
     
     class func postPaymentSource(_ stripeToken: String, _ callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
-        debugPrint("sources post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "sources"
             
@@ -308,7 +297,6 @@ class APIClient: NSObject {
     }
     
     class func postPayment(_ uploadId: String, _ callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
-        debugPrint("upload payment post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "uploads/" + uploadId + "/pay"
             
@@ -323,8 +311,6 @@ class APIClient: NSObject {
     // MARK: User handling
     
     class func uploadUser(image: UIImage!, username: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> () )) {
-        debugPrint("upload image")
-        
         let imageData = UIImageJPEGRepresentation(image, 0.5)! as Data?
         
         NetworkHelper.verifyToken { (token) in
@@ -342,11 +328,11 @@ class APIClient: NSObject {
                     case .success(let upload, _, _):
                         
                         upload.uploadProgress { progress in
-                            print(progress)
+//                            print(progress)
                         }
                         
                         upload.response { response in
-                            print(response)
+//                            print(response)
                             callback(true, "")
                         }
                         
@@ -361,8 +347,6 @@ class APIClient: NSObject {
     }
     
     class func userDataFor(id: String!, callback: @escaping ((_ profile: Profile?) -> ())) {
-        debugPrint("user data post")
-        
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "user/" + id
             
@@ -376,8 +360,6 @@ class APIClient: NSObject {
     }
     
     class func followUserWith(id: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
-        debugPrint("follow user post")
-        
         NetworkHelper.verifyToken { (token) in
     
             let requestURL = baseURL + "user/" + id + "/follow"
@@ -392,8 +374,6 @@ class APIClient: NSObject {
     }
     
     class func followerForUserWith(id: String!, callback: @escaping ((_ profiles: [ProfileRelation]) -> ())) {
-        debugPrint("follower users get")
-        
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "user/" + id + "/followers"
@@ -408,8 +388,6 @@ class APIClient: NSObject {
     }
     
     class func followingUsersForUserWith(id: String!, callback: @escaping ((_ profiles: [ProfileRelation]) -> ())) {
-        debugPrint("following users with data")
-        
         NetworkHelper.verifyToken { (token) in
             
             let requestURL = baseURL + "user/" + id + "/following"
@@ -424,7 +402,6 @@ class APIClient: NSObject {
     }
     
     class func resetPassword(newPassword: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
-        debugPrint("password post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "auth/password"
             
@@ -441,7 +418,6 @@ class APIClient: NSObject {
     }
     
     class func resetPasswordFor(email: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
-        debugPrint("password post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "auth/password"
             
@@ -461,7 +437,6 @@ class APIClient: NSObject {
     }
     
     class func deleteUser(callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
-        debugPrint("delete user post")
         NetworkHelper.verifyToken { (token) in
             let requestURL = baseURL + "auth/"
             

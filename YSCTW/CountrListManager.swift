@@ -25,7 +25,6 @@ class CountrListManager: NSObject {
                 if jsonObj != JSON.null {
                     self.countryList = jsonObj
                 } else {
-                    print("Could not get json from file, make sure that file contains valid json.")
                 }
             } catch let error {
                 print(error.localizedDescription)

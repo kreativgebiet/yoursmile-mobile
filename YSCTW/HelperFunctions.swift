@@ -77,7 +77,6 @@ class HelperFunctions: NSObject {
                     self.fetchPhotoAtIndexFromEnd(targetSize: targetSize, index + 1)
                 } else {
                     // Else you have completed creating your array
-                    print("Completed array: \(self.images)")
                 }
             })
         }
