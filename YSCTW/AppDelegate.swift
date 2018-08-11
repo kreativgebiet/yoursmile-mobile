@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //Enter your client ID of the app from the Google APIs console
         GIDSignIn.sharedInstance().clientID = "39907485128-v9puaisfv2l8hcmd2kb2dd9ek0028u25.apps.googleusercontent.com"
-        
+
         //Enter your OneSignal credentials
         OneSignal.initWithLaunchOptions(launchOptions, appId: "c356a13a-8dc6-4d9e-9f22-8b302cb1e2e7")
 
@@ -31,16 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         //Enter your Paypal credentials (Payment)
-        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YJ9T7CBLY3ZHE",
-                                                                PayPalEnvironmentSandbox: "YJ9T7CBLY3ZHE"])
+        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "ENKX0hpI1-TqMxV3ONjkY1KD_i1UXiELUofXDwA9OKSZDQ-OhZks1WQM-rg_rgxSq4ftNmWxWGO68-YF", PayPalEnvironmentSandbox: "AZD5t0HYfLAljRLLAaLmsuWDE3pir2W2ieE4tk0cJ5_3SSAqs3sCJBDjAQ5SOOwT_T7HNWQNm05RQ4-m"])
 
-        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentProduction)
-        
+        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentSandbox)
+
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
+
         var initialViewController: UIViewController!
-        
+
         if UserDefaults.standard.value(forKey: "didOnboarding") as? Bool == true {
             if let loggedIn = UserDefaults.standard.value(forKey: "loggedIn") as? Bool {
                 if loggedIn == true {
@@ -51,30 +50,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
             }
-            
+
         } else {
-           initialViewController = storyboard.instantiateViewController(withIdentifier: "OVC")
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "OVC")
         }
-        
+
         let animationScreen = storyboard.instantiateViewController(withIdentifier: "LaunchAnimationViewController")
-        
+
         self.window?.rootViewController = animationScreen
-        
+
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
             self.window?.rootViewController = initialViewController
         })
 
         self.window?.makeKeyAndVisible()
-        
-    
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true
     }
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let isHandled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as! String?, annotation: options[.annotation])
-        
+
         let google = GIDSignIn.sharedInstance().handle(url, sourceApplication: options   [UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                    annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+                                                       annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         return isHandled || google
     }
 

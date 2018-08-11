@@ -78,6 +78,7 @@
 		A18A2DAE1E377F9E004D1F67 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18A2DAD1E377F9E004D1F67 /* OnboardingViewController.swift */; };
 		A18A2DB01E37A9E6004D1F67 /* OnboardPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */; };
 		A18A2DB21E37A9F3004D1F67 /* OnboardPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */; };
+		A18E4712211EFBF70058672F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A18E4711211EFBF70058672F /* Default-568h@2x.png */; };
 		A19677761DEC3CD500C1CBBC /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19677751DEC3CD500C1CBBC /* Down.framework */; };
 		A19677771DEC40F000C1CBBC /* acknowledgments.md in Resources */ = {isa = PBXBuildFile; fileRef = A196776D1DEC33F000C1CBBC /* acknowledgments.md */; };
 		A19677791DEC47B300C1CBBC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19677781DEC47B300C1CBBC /* DateExtension.swift */; };
@@ -237,6 +238,7 @@
 		A18A2DAD1E377F9E004D1F67 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A18A2DAF1E37A9E6004D1F67 /* OnboardPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageView.swift; sourceTree = "<group>"; };
 		A18A2DB11E37A9F3004D1F67 /* OnboardPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardPageView.xib; sourceTree = "<group>"; };
+		A18E4711211EFBF70058672F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A196776D1DEC33F000C1CBBC /* acknowledgments.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = acknowledgments.md; sourceTree = "<group>"; };
 		A19677751DEC3CD500C1CBBC /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		A19677781DEC47B300C1CBBC /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 		A12A45401DCF8C76002977DF = {
 			isa = PBXGroup;
 			children = (
+				A18E4711211EFBF70058672F /* Default-568h@2x.png */,
 				A12A454B1DCF8C76002977DF /* YSCTW */,
 				A12A454A1DCF8C76002977DF /* Products */,
 				A11029141DDB231D00633343 /* Frameworks */,
@@ -742,6 +745,7 @@
 				A16407201DDF181800BA1853 /* Gotham-Ultra.otf in Resources */,
 				A16407231DDF181800BA1853 /* Gotham-MediumItalic.otf in Resources */,
 				A1CF0CB91DD341CB002C4562 /* ProjectTableViewCell.xib in Resources */,
+				A18E4712211EFBF70058672F /* Default-568h@2x.png in Resources */,
 				A164071B1DDF181800BA1853 /* Gotham-BoldItalic.otf in Resources */,
 				A11028F11DD50EA200633343 /* AddProjectButton.xib in Resources */,
 				A161B55A1DEDA06C00356514 /* CardPaymentView.xib in Resources */,

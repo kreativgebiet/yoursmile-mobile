@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb591818551005950</string>
+				<string>fb818538218345753</string>
 			</array>
 		</dict>
 		<dict>
@@ -40,9 +40,9 @@
 	<key>CFBundleVersion</key>
 	<string>1 </string>
 	<key>FacebookAppID</key>
-	<string>148198149249557</string>
+	<string>818538218345753</string>
 	<key>FacebookDisplayName</key>
-	<string>YSCTW</string>
+	<string>Smile&amp;Change</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
