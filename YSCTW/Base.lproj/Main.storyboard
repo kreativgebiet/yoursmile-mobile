@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -584,19 +584,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIj-cu-1Ng">
-                                <rect key="frame" x="20" y="586.5" width="39" height="14.5"/>
+                                <rect key="frame" x="20" y="550" width="39" height="14.5"/>
                                 <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="14"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWN-yb-0Oo">
-                                <rect key="frame" x="310" y="585" width="45" height="16"/>
+                                <rect key="frame" x="310" y="549" width="45" height="16"/>
                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="16"/>
                                 <color key="textColor" red="0.99607843137254903" green="0.61960784313725492" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYk-4D-pyL">
-                                <rect key="frame" x="0.0" y="20" width="375" height="550"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="514"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpi-hW-loS" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="481"/>
@@ -635,6 +635,21 @@
                                     <constraint firstItem="fpi-hW-loS" firstAttribute="top" secondItem="wYk-4D-pyL" secondAttribute="top" id="yVt-C3-pco"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrH-aK-gV9">
+                                <rect key="frame" x="20" y="572" width="57" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="sww-gj-M57"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="13"/>
+                                <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="6" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-3" maxY="0.0"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleCurrencySelectionButton:" destination="o4g-Cs-04F" eventType="touchUpInside" id="COZ-hX-IBg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -643,12 +658,14 @@
                             <constraint firstItem="FIj-cu-1Ng" firstAttribute="centerY" secondItem="MWN-yb-0Oo" secondAttribute="centerY" id="Bqk-Q4-4XL"/>
                             <constraint firstAttribute="trailing" secondItem="Iao-Jo-huO" secondAttribute="trailing" id="E21-Hm-G1u"/>
                             <constraint firstItem="tia-LB-Vrb" firstAttribute="leading" secondItem="BkI-eR-cxv" secondAttribute="leading" constant="10" id="Hkz-Mm-DM8"/>
-                            <constraint firstItem="tia-LB-Vrb" firstAttribute="top" secondItem="MWN-yb-0Oo" secondAttribute="bottom" constant="8" id="Ml0-XW-Xcb"/>
+                            <constraint firstItem="JrH-aK-gV9" firstAttribute="leading" secondItem="FIj-cu-1Ng" secondAttribute="leading" id="TZM-vE-mSt"/>
                             <constraint firstAttribute="trailing" secondItem="wYk-4D-pyL" secondAttribute="trailing" id="Tu8-rC-Kee"/>
                             <constraint firstItem="ApM-UO-TJa" firstAttribute="top" secondItem="tia-LB-Vrb" secondAttribute="bottom" constant="8" id="WNs-3m-KL2"/>
                             <constraint firstItem="wYk-4D-pyL" firstAttribute="leading" secondItem="BkI-eR-cxv" secondAttribute="leading" id="XNp-Tf-cWd"/>
                             <constraint firstItem="wYk-4D-pyL" firstAttribute="top" secondItem="fcW-G5-z0i" secondAttribute="bottom" id="Zb5-qJ-Nwg"/>
+                            <constraint firstItem="JrH-aK-gV9" firstAttribute="top" secondItem="MWN-yb-0Oo" secondAttribute="bottom" constant="7" id="cTz-tD-Akh"/>
                             <constraint firstItem="Iao-Jo-huO" firstAttribute="leading" secondItem="BkI-eR-cxv" secondAttribute="leading" id="edb-C3-EXc"/>
+                            <constraint firstItem="tia-LB-Vrb" firstAttribute="top" secondItem="JrH-aK-gV9" secondAttribute="bottom" constant="7" id="hhL-HP-iTu"/>
                             <constraint firstItem="FIj-cu-1Ng" firstAttribute="leading" secondItem="BkI-eR-cxv" secondAttribute="leading" constant="20" id="kyI-YJ-oOa"/>
                             <constraint firstItem="MWN-yb-0Oo" firstAttribute="top" secondItem="wYk-4D-pyL" secondAttribute="bottom" constant="15" id="xil-5D-HXn"/>
                             <constraint firstItem="Iao-Jo-huO" firstAttribute="top" secondItem="BkI-eR-cxv" secondAttribute="topMargin" id="y2C-Oq-e7L"/>
@@ -660,6 +677,7 @@
                         <outlet property="addProjectButtonTopConstraint" destination="Cct-Da-pbn" id="DLX-Yv-xEY"/>
                         <outlet property="contentView" destination="fpi-hW-loS" id="mWd-lL-P2m"/>
                         <outlet property="contentViewHeight" destination="NqT-L4-f7i" id="BK6-4F-3ng"/>
+                        <outlet property="currencySelectionButton" destination="JrH-aK-gV9" id="2T0-aU-3tD"/>
                         <outlet property="donationSumDescriptionLabel" destination="FIj-cu-1Ng" id="1ib-eP-Z4O"/>
                         <outlet property="donationSumLabel" destination="MWN-yb-0Oo" id="DGB-cp-tkr"/>
                         <outlet property="paymentSelectionView" destination="tia-LB-Vrb" id="kTx-4l-I7E"/>

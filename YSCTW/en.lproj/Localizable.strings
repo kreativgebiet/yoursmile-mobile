@@ -186,3 +186,6 @@
 "ONBOARDING_TEXT_2" = "We make everyone the same. Each user can donate to several projects per image, as much and as often as he likes.";
 "ONBOARDING_TEXT_3" = "We will charge you transaction fees from the bank so that we can donate the full unit to your selected project";
 "ONBOARDING_TEXT_4" = "The most important is the distribution via social media. Put your picture on Instagram & Facebook. Show your friends this great deed and encourage them to do the same.";
+
+"CURRENCY" = "Currency";
+"SELECT_CURRENCY" = "Select currency";

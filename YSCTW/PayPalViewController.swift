@@ -13,11 +13,13 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
     public var callback: ((_ upload: UploadModel?, _ success: Bool, _ error: String) -> ())!
     
     var payPalConfig = PayPalConfiguration()
+    var selectedCurrency: Currency!
     
     public func showPayPalPaymentFor(amount: Float, fee: Float, projects: [Project], paymentDict: [String : Float]) -> () {
         
         payPalConfig.acceptCreditCards = false
         payPalConfig.merchantName = "YSCTW GmbH"
+        payPalConfig.alwaysDisplayCurrencyCodes = true
         payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
         payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
         
@@ -29,7 +31,7 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
             let price = paymentDict[project.id]
             let priceString = "\(Int(price!))"
             
-            let item = PayPalItem(name: (project.projectName as NSString) as String, withQuantity: 1, withPrice: NSDecimalNumber(string: priceString), withCurrency: "EUR", withSku: (project.projectName as NSString) as String)
+            let item = PayPalItem(name: (project.projectName as NSString) as String, withQuantity: 1, withPrice: NSDecimalNumber(string: priceString), withCurrency: selectedCurrency.rawValue, withSku: (project.projectName as NSString) as String)
             items.append(item)
         }
         
@@ -46,7 +48,7 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
         
         let total = roundedAmount.adding(roundedFee)
         
-        let payment = PayPalPayment(amount: total, currencyCode: "EUR", shortDescription: "Donation", intent: .sale)
+        let payment = PayPalPayment(amount: total, currencyCode: selectedCurrency.rawValue, shortDescription: "Donation", intent: .sale)
         payment.paymentDetails = paymentDetails
         payment.items = items
         
@@ -62,14 +64,12 @@ class PayPalViewController: UIViewController, PayPalPaymentDelegate {
     // MARK: PayPalPaymentDelegate
     
     func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
-//        print("PayPal Payment Cancelled")
         paymentViewController.dismiss(animated: true, completion: nil)
         self.dismiss(animated: true, completion: nil)
         self.callback(nil, false, "Canceled")
     }
     
     func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
-//        print("PayPal Payment Success !")
         paymentViewController.dismiss(animated: true, completion: { () -> Void in
             self.dismiss(animated: true, completion: nil)            
             let controller = CoreDataController()

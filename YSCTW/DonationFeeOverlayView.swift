@@ -18,10 +18,15 @@ class DonationFeeOverlayView: UIView {
     @IBOutlet weak var infoView: UIView!
     
     public var callback: (() -> Void)!
+
+    var selectedCurrency: Currency
     
-    public init(frame: CGRect, fee: Float, paymentType: Payment) {
+    public init(frame: CGRect, fee: Float, paymentType: Payment, selectedCurrency: Currency) {
+        self.selectedCurrency = selectedCurrency
+
         super.init(frame: frame)
-        
+
+
         view = self.loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -39,7 +44,7 @@ class DonationFeeOverlayView: UIView {
         self.paymentLabel.text = "FEE_TITLE".localized
         self.paymentLabel.textColor = gray85
         
-        let text = "FEE_TEXT".localized.replacingOccurrences(of: "%@", with: String(fee))
+        let text = "FEE_TEXT".localized.replacingOccurrences(of: "%@", with: String(fee)).replacingOccurrences(of: "€", with: self.selectedCurrency.symbol)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 4

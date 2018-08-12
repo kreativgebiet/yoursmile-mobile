@@ -28,7 +28,16 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     public var selectedProject: Project?
     //Dictionary of kind [Project.id : float]
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var currencySelectionButton: UIButton!
+
     public var selectedProjectDonations: [String : Float] = [:]
+
+    var selectedCurrency: Currency {
+        if let currencyString = UserDefaults.standard.value(forKey: "selectedCurrency") as? String, let currency = Currency(rawValue: currencyString) {
+            return currency
+        }
+        return .euro
+    }
     
     var supportedProjects = [Project]()
     var selfieContext: SelfieContext?
@@ -57,7 +66,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         self.paymentSelectionView.callback = { paymentType in
             let navigationView = self.navigationController?.view
             let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.sum(), paymentType: paymentType)
-            let overlay = DonationFeeOverlayView.init(frame: (navigationView?.bounds)!, fee: fee, paymentType: paymentType)
+            let overlay = DonationFeeOverlayView.init(frame: (navigationView?.bounds)!, fee: fee, paymentType: paymentType, selectedCurrency: self.selectedCurrency)
             
             let view = UIView(frame: (navigationView?.bounds)!)
             view.backgroundColor = navigationBarGray.withAlphaComponent(0.6)
@@ -125,6 +134,14 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         
         self.selectedProjectsContainerView.setNeedsLayout()
         self.selectedProjectsContainerView.layoutIfNeeded()
+
+        self.currencySelectionButton.setTitle("CURRENCY".localized, for: .normal)
+        self.currencySelectionButton.setTitle("CURRENCY".localized, for: .selected)
+        self.currencySelectionButton.layer.cornerRadius = 5
+        self.currencySelectionButton.clipsToBounds = true
+
+        self.currencySelectionButton.layer.borderColor = customDarkerGray.cgColor
+        self.currencySelectionButton.layer.borderWidth = 1
         
         showSum()
         self.loadSupportedProjects()
@@ -205,6 +222,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
             let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: self.sum(), paymentType: self.paymentSelectionView.selectedPayment)
 
             let paymentViewController = PayPalViewController()
+            paymentViewController.selectedCurrency = selectedCurrency
             paymentViewController.callback = callback
 
             self.navigationController?.present(paymentViewController, animated: false, completion: nil)
@@ -216,10 +234,11 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
 
             let total = Int(fee*100) + Int(self.sum() * 100)
 
-            let paymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StripePaymentViewController") as!  StripePaymentViewController
+            let paymentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StripePaymentViewController") as! StripePaymentViewController
 
             paymentViewController.callback = callback
             paymentViewController.totalPrice = total
+            paymentViewController.selectedCurrency = selectedCurrency
             paymentViewController.dataManager = self.dataManager
             paymentViewController.title = "PAY".localized
 
@@ -289,7 +308,7 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
                 projectView.slider.setValue(round(value), animated: false)
                 projectView.setNeedsLayout()
                 projectView.layoutIfNeeded()
-                projectView.sliderLabel.text = "\(Int(value))€"
+                projectView.sliderLabel.text = "\(Int(value)) \(selectedCurrency.symbol)"
                 projectView.sliderLabel.sizeToFit()
                 projectView.sliderLabel.center = CGPoint(x: projectView.slider.thumbCenterX, y: projectView.slider.frame.maxY + projectView.sliderLabel.frame.height/2)
                 
@@ -343,6 +362,10 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         }
         
         showSum()
+    }
+
+    private func updateLabels() {
+        loadSupportedProjects()
     }
     
     // MARK: - AddedProjectView delegate
@@ -433,8 +456,33 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
     }
     
     func showSum() {
-        donationSumLabel.text = "\(Int(sum()))€"
+        donationSumLabel.text = "\(Int(sum())) \(selectedCurrency.symbol)"
         navController.sum = sum()
+    }
+
+    // MARK: - Keyboard
+
+    @IBAction func handleCurrencySelectionButton(_ sender: Any) {
+
+        let picker = UIPickerView()
+        picker.delegate = self
+        picker.dataSource = self
+
+        self.view.addSubview(picker)
+
+        let alertView = UIAlertController(title: "SELECT_CURRENCY".localized, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        alertView.view.addSubview(picker)
+
+        alertView.view.topAnchor.constraint(equalTo: picker.topAnchor).isActive = true
+        alertView.view.leadingAnchor.constraint(equalTo: picker.leadingAnchor).isActive = true
+        alertView.view.trailingAnchor.constraint(equalTo: picker.trailingAnchor).isActive = true
+
+        alertView.view.heightAnchor.constraint(equalToConstant: 250).isActive = true
+
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+
+        alertView.addAction(action)
+        self.present(alertView, animated: true, completion: nil)
     }
     
     
@@ -481,4 +529,29 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
         navController.selectedPayment = self.paymentSelectionView.selectedPayment
     }
 
+}
+
+extension DonationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    static let selectableCurrencies: [Currency] = [.euro, .chf, .dollar, .pound]
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return DonationViewController.selectableCurrencies.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let currency = DonationViewController.selectableCurrencies[row]
+        return currency.rawValue
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let currency = DonationViewController.selectableCurrencies[row]
+        UserDefaults.standard.setValue(currency.rawValue, forKey: "selectedCurrency")
+        UserDefaults.standard.synchronize()
+        updateLabels()
+    }
 }

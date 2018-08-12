@@ -16,6 +16,13 @@ protocol AddedProjectButtonDelegate {
 class AddedProjectButtonView: UIView, UITextFieldDelegate {
     public var delegate: AddedProjectButtonDelegate!
     public var project: Project!
+
+    var selectedCurrency: Currency {
+        if let currencyString = UserDefaults.standard.value(forKey: "selectedCurrency") as? String, let currency = Currency(rawValue: currencyString) {
+            return currency
+        }
+        return .euro
+    }
     
     @IBOutlet weak var slider: DonationSlider!
     @IBOutlet weak var projectNameLabel: UILabel!
@@ -67,7 +74,7 @@ class AddedProjectButtonView: UIView, UITextFieldDelegate {
             self.addSubview(sliderLabel)
         }
         
-        sliderLabel.text = "\(Int(slider.value))€"
+        sliderLabel.text = "\(Int(slider.value)) \(selectedCurrency.symbol)"
         sliderLabel.sizeToFit()
         sliderLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.frame.maxY + sliderLabel.frame.height/2)
         
@@ -85,7 +92,7 @@ class AddedProjectButtonView: UIView, UITextFieldDelegate {
         sender.setValue(round(sender.value), animated: false)
         let value = sender.value
         
-        sliderLabel.text = "\(Int(value))€"
+        sliderLabel.text = "\(Int(value)) \(selectedCurrency.symbol)"
         sliderLabel.sizeToFit()
         
         sliderLabel.center = CGPoint(x: slider.thumbCenterX, y: slider.frame.maxY + sliderLabel.frame.height/2)

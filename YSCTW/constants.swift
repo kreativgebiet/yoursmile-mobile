@@ -71,6 +71,22 @@ enum Sector {
     case error
 }
 
+enum Currency: String {
+    case euro = "EUR"
+    case dollar = "USD"
+    case chf = "CHF"
+    case pound = "GBP"
+
+    var symbol: String {
+        switch self {
+        case .euro: return "€"
+        case .dollar: return "$"
+        case .chf: return "CHF"
+        case .pound: return "£"
+        }
+    }
+}
+
 //Data structure
 
 struct ProfileRelation {

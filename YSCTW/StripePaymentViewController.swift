@@ -18,6 +18,7 @@ class StripePaymentViewController: UIViewController {
     public var totalPrice: Int!
     public var callback: ((_ upload: UploadModel?, _ success: Bool, _ error: String) -> ())!
     public var dataManager: DataManager!
+    var selectedCurrency: Currency!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class StripePaymentViewController: UIViewController {
                 // If you have your own form for getting credit card information, you can construct
                 // your own STPCardParams from number, month, year, and CVV.
                 let card = self.cardPaymentView.paymentField.cardParams
-                card.currency = "EUR"
+                card.currency = self.selectedCurrency.rawValue
                 
                 STPAPIClient.shared().createToken(withCard: card) { token, error in
                     

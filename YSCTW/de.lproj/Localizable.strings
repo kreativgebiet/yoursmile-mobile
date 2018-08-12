@@ -185,3 +185,6 @@
 "ONBOARDING_TEXT_2" = "Wir stellen alle Menschen gleich. Jeder User kann pro Bild an mehrere Projekte spenden, so viel und so oft er mag.";
 "ONBOARDING_TEXT_3" = "Wir rechnen dir Transaktionsgebühren der Bank auf, damit wir die volle Einheit an dein ausgewähltes Projekt spenden können";
 "ONBOARDING_TEXT_4" = "Das wichtigste ist die Verbreitung via Social Media. Poste dein Bild auf Instagram & Facebook. zeige deinen Freunden diese groß­ar­tigen Tat und ermutige sie dazu, dasselbe zu tun.";
+
+"CURRENCY" = "Währung";
+"SELECT_CURRENCY" = "Währung auswählen";
