@@ -15,7 +15,7 @@ let instagramURL = "https://www.instagram.com/Smile&Change"
 
 let baseURLLive = "http://yoursmile.herokuapp.com/"
 let baseURLStaging = "http://yoursmile-staging.herokuapp.com/"
-let baseURL = baseURLStaging
+let baseURL = baseURLLive
 
 let feedNotificationIdentifier: String = "FeedNotificationIdentifier"
 let preferencesNotificationIdentifier: String = "PreferencesNotificationIdentifier"

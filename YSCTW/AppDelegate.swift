@@ -27,13 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //pk_test_cX8rDspcsLdUPz5yKSDZ5QRm
         //pk_live_7bLZF5x44IPX9tnYxDIimKJ6
 
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_cX8rDspcsLdUPz5yKSDZ5QRm"
+        STPPaymentConfiguration.shared().publishableKey = "pk_live_7bLZF5x44IPX9tnYxDIimKJ6"
 
 
         //Enter your Paypal credentials (Payment)
         PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "ENKX0hpI1-TqMxV3ONjkY1KD_i1UXiELUofXDwA9OKSZDQ-OhZks1WQM-rg_rgxSq4ftNmWxWGO68-YF", PayPalEnvironmentSandbox: "AZD5t0HYfLAljRLLAaLmsuWDE3pir2W2ieE4tk0cJ5_3SSAqs3sCJBDjAQ5SOOwT_T7HNWQNm05RQ4-m"])
 
-        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentSandbox)
+        PayPalMobile.preconnect(withEnvironment: PayPalEnvironmentProduction)
 
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         self.window = UIWindow(frame: UIScreen.main.bounds)
