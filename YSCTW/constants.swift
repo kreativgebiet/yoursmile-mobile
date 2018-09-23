@@ -199,7 +199,6 @@ struct Comment {
 struct Upload {
     
     var projects: [Project]
-    var imageURL: String
     var id: String
     
     var date: Date
@@ -213,9 +212,8 @@ struct Upload {
     
     var comments: [Comment]?
     
-    init(supportedProjects: [Project], imageURL: String, id: String, created_at: String, description: String, profile: Profile) {
+    init(supportedProjects: [Project], id: String, created_at: String, description: String, profile: Profile) {
         self.projects = supportedProjects
-        self.imageURL = imageURL
         self.id = id
         
         let dateFormatter = DateFormatter()

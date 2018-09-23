@@ -37,6 +37,7 @@ class NavigationViewController: UINavigationController, UINavigationControllerDe
         self.navigationBar.tintColor = blue
         let rootViewController = self.viewControllers[0] as! ProjectCategoryViewController
         rootViewController.dataManager = self.dataManager
+        self.dataManager.uploadSelfies()
         
         self.delegate = self
     }

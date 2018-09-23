@@ -35,7 +35,6 @@ class LaunchAnimationViewController: UIViewController {
         attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
         attributedString.addAttribute(NSAttributedStringKey.kern, value: CGFloat(6), range: NSRange(location: 0, length: attributedString.length))
 
-
         label.attributedText = attributedString
         label.alpha = 0
         logoImage.alpha = 0

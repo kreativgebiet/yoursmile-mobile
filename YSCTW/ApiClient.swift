@@ -154,77 +154,55 @@ class APIClient: NSObject {
             
             let projectIds = uploadModel.projectIds
             let projectAmounts = uploadModel.projectAmounts
-            
-            Alamofire.upload(multipartFormData: { multipartFormData in
-                
-                var i = 0
-                
-                for id in projectIds {
-                    let amount = projectAmounts[i]
-                    
-                    multipartFormData.append("\(amount*100)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][\(id)]")
-                    
-                    i += 1
-                }
-                
-                
-                multipartFormData.append("\(60)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "upload[supported_projects][2]")
-                
-                }, to: requestURL, method: .post, headers: token,
-                   encodingCompletion: { encodingResult in
-                    
-                    switch encodingResult {
-                    case .success(let upload, _, _):
-                        
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: showUploadNotificationIdentifier), object: nil, userInfo: ["request": upload])
-                        
-                        upload.uploadProgress { progress in
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: uploadProgressNotificationIdentifier), object: nil, userInfo: ["progress": progress])
-                        }
-                        
-                        upload.response { response in
-                            
-                            NetworkHelper.parseUploadResponseFrom(response: response, callback: { (success, upload) in
-                                
-                                let manager = CoreDataController()
-                                let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
-                                
-                                if success == true {
-                                    
-                                    if uploadModel.isStripePayment == true {
-                                        let id = upload?.id
-                                        uploadModel.backendId = id!
-                                        manager.save()
-                                        
-                                        APIClient.postPayment(id!, { (success, error) in
-                                            if success {
-                                                let manager = CoreDataController()
-                                                let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
-                                                manager.managedObjectContext.delete(uploadModel)
-                                                manager.save()
-                                            }
-                                            callback(success, error)
-                                        })
-                                    } else {
-                                        callback(success, "upload error")
-                                    }
-                                    
-                                    uploadModel.isUploaded = true
+            var projects = [String : String]()
+
+            var i = 0
+
+            for id in projectIds {
+                let amount = projectAmounts[i]
+                projects["\(id)"] = "\(amount)"
+                i += 1
+            }
+
+            let parameters: [String : Any] = [
+                "upload": projects,
+                "supported_projects": projects
+            ]
+
+            Alamofire.request(requestURL, method: .post, parameters: parameters, headers: token).response(completionHandler: { (response) in
+                debugPrint(response)
+                NetworkHelper.parseUploadResponseFrom(response: response, callback: { (success, upload) in
+                    let manager = CoreDataController()
+                    let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
+
+                    if success == true {
+
+                        if uploadModel.isStripePayment == true {
+                            let id = upload?.id
+                            uploadModel.backendId = id!
+                            manager.save()
+
+                            APIClient.postPayment(id!, { (success, error) in
+                                if success {
+                                    let manager = CoreDataController()
+                                    let uploadModel = manager.managedObjectContext.object(with: objectID) as! UploadModel
+                                    manager.managedObjectContext.delete(uploadModel)
                                     manager.save()
-                                } else {
-                                    callback(success, "upload error")
                                 }
-                                
+                                callback(success, error)
                             })
-                            
+                        } else {
+                            callback(success, "upload error")
                         }
-                        
-                    case .failure(let encodingError):
-                        callback(false, String(describing: encodingError))
+
+                        uploadModel.isUploaded = true
+                        manager.save()
+                    } else {
+                        callback(success, "upload error")
                     }
-                    
+                })
+
             })
-            
         }
     }
     
@@ -418,21 +396,19 @@ class APIClient: NSObject {
     }
     
     class func resetPasswordFor(email: String!, callback: @escaping ((_ success: Bool, _ errorMessage: String) -> ())) {
-        NetworkHelper.verifyToken { (token) in
-            let requestURL = baseURL + "auth/password"
-            
-            let bundleIdentifierSeperated =  Bundle.main.bundleIdentifier?.components(separatedBy: ".")
-            let redirectURL = (bundleIdentifierSeperated?.last)! + "://passwordreset"
-            
-            let parameters: [String : String] = [
-                "email": email,
-                "redirect_url": redirectURL
-            ]
-            
-            Alamofire.request(requestURL, method: .post, parameters: parameters, headers: token)
-                .responseJSON { response in
-                    NetworkHelper.standardResponseHandling(response: response, callback: callback)
-            }
+        let requestURL = baseURL + "auth/password"
+
+        let bundleIdentifierSeperated =  Bundle.main.bundleIdentifier?.components(separatedBy: ".")
+        let redirectURL = (bundleIdentifierSeperated?.last)! + "://passwordreset"
+
+        let parameters: [String : String] = [
+            "email": email,
+            "redirect_url": redirectURL
+        ]
+
+        Alamofire.request(requestURL, method: .post, parameters: parameters)
+            .responseJSON { response in
+                NetworkHelper.standardResponseHandling(response: response, callback: callback)
         }
     }
     

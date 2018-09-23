@@ -20,7 +20,8 @@ class FeeCalculator: NSObject {
             fee = amount*0.019 + 0.35
         } else if paymentType == .creditCard {
             //https://stripe.com/de/pricing
-            fee = amount*0.014 + 0.25
+            // It seems the backend adds additional 0,03
+            fee = amount*0.014 + 0.25 + 0.03
         } else {
             fee = 0
         }

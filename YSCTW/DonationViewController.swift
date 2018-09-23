@@ -202,9 +202,24 @@ class DonationViewController: UIViewController, AddedProjectButtonDelegate {
 
             if success {
                 let projectIds = self.navController.supportedProjects.map({Int($0.id)!})
-                let projectAmounts = self.selectedProjectDonations.compactMap({Int($1)})
+
+                var projectAmounts = [String: Int]()
+
+                for (projectId, value) in self.selectedProjectDonations {
+                    
+                    let fee = FeeCalculator.calculateFeeForPaymentAmount(amount: value, paymentType: self.paymentSelectionView.selectedPayment)
+
+                    if self.paymentSelectionView.selectedPayment == .creditCard {
+                        // Stride payments add the fee internally
+                        let total = value * 100
+                        projectAmounts[projectId] = Int(total)
+                    } else {
+                        let total = value * 100 + fee
+                        projectAmounts[projectId] = Int(total)
+                    }
+                }
                 uploadModel?.projectIds = projectIds.reversed()
-                uploadModel?.projectAmounts = projectAmounts
+                uploadModel?.projectAmounts = projectAmounts.map { $1 }
 
                 do {
                     try uploadModel?.managedObjectContext?.save()
