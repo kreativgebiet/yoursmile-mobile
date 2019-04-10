@@ -21,6 +21,14 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.smileandchange.yoursmile</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>yoursmile</string>
+			</array>
+		</dict>
+		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb818538218345753</string>
@@ -36,7 +44,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>5</string>
 	<key>FacebookAppID</key>
 	<string>818538218345753</string>
 	<key>FacebookDisplayName</key>

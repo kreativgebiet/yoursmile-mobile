@@ -31,6 +31,8 @@
 @interface UIApplicationOverrider : NSObject
 +(void)reset;
 
++(void)setBlockApnsResponse:(BOOL)block;
+
 +(void)setCurrentUIApplicationState:(UIApplicationState)value;
 
 +(UILocalNotification*)lastUILocalNotification;
@@ -43,4 +45,7 @@
 +(void) setDidFailRegistarationErrorCode:(NSInteger)value;
 
 + (void)helperCallDidRegisterForRemoteNotificationsWithDeviceToken;
+
++ (NSURL* )lastOpenedUrl;
+
 @end

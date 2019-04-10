@@ -41,9 +41,8 @@
     [FIRApp configure];
     
     NSLog(@"Bundle URL: %@", [[NSBundle mainBundle] bundleURL]);
-    NSLog(@"[[NSUUID alloc] initWithUUIDString:nil]: %@", [[NSUUID alloc] initWithUUIDString:nil]);
     
-    [OneSignal setLogLevel:ONE_S_LL_VERBOSE visualLevel:ONE_S_LL_WARN];
+    [OneSignal setLogLevel:ONE_S_LL_VERBOSE visualLevel:ONE_S_LL_ERROR];
     
     OneSignal.inFocusDisplayType = OSNotificationDisplayTypeInAppAlert;
     
@@ -60,8 +59,6 @@
     
     id notificationReceiverBlock = ^(OSNotification *notification) {
         NSLog(@"Received Notification - %@", notification.payload.notificationID);
-        
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:11];
     };
     
     [OneSignal initWithLaunchOptions:launchOptions

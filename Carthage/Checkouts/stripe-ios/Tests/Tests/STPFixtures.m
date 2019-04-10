@@ -14,12 +14,21 @@ NSString *const STPTestJSONCustomer = @"Customer";
 
 NSString *const STPTestJSONCard = @"Card";
 
-NSString *const STPTestJSONSourceAlipay = @"AlipaySource";
-NSString *const STPTestJSONSourceBitcoin = @"BitcoinSource";
-NSString *const STPTestJSONSourceCard = @"CardSource";
+NSString *const STPTestJSONPaymentIntent = @"PaymentIntent";
+NSString *const STPTestJSONPaymentMethod = @"PaymentMethod";
+
 NSString *const STPTestJSONSource3DS = @"3DSSource";
+NSString *const STPTestJSONSourceAlipay = @"AlipaySource";
+NSString *const STPTestJSONSourceBancontact = @"BancontactSource";
+NSString *const STPTestJSONSourceCard = @"CardSource";
+NSString *const STPTestJSONSourceEPS = @"EPSSource";
+NSString *const STPTestJSONSourceGiropay = @"GiropaySource";
 NSString *const STPTestJSONSourceiDEAL = @"iDEALSource";
+NSString *const STPTestJSONSourceMultibanco = @"MultibancoSource";
+NSString *const STPTestJSONSourceP24 = @"P24Source";
 NSString *const STPTestJSONSourceSEPADebit = @"SEPADebitSource";
+NSString *const STPTestJSONSourceSOFORT = @"SOFORTSource";
+
 
 @implementation STPFixtures
 
@@ -77,6 +86,7 @@ NSString *const STPTestJSONSourceSEPADebit = @"SEPADebitSource";
                                 @"object": @"token",
                                 @"livemode": @NO,
                                 @"created": @1353025450.0,
+                                @"type": @"card",
                                 @"used": @NO,
                                 @"card": cardDict
                                 };
@@ -181,12 +191,16 @@ NSString *const STPTestJSONSourceSEPADebit = @"SEPADebitSource";
     return [STPSource decodedObjectFromAPIResponse:[STPTestUtils jsonNamed:STPTestJSONSourceAlipay]];
 }
 
-+ (STPSource *)alipaySourceWithNativeUrl {
++ (STPSource *)alipaySourceWithNativeURL {
     NSMutableDictionary *dictionary = [STPTestUtils jsonNamed:STPTestJSONSourceAlipay].mutableCopy;
     NSMutableDictionary *detailsDictionary = ((NSDictionary *)dictionary[@"alipay"]).mutableCopy;
     detailsDictionary[@"native_url"] = @"alipay://test";
     dictionary[@"alipay"] = detailsDictionary;
     return [STPSource decodedObjectFromAPIResponse:dictionary];
+}
+
++ (STPPaymentIntent *)paymentIntent {
+    return [STPPaymentIntent decodedObjectFromAPIResponse:[STPTestUtils jsonNamed:@"PaymentIntent"]];
 }
 
 + (STPPaymentConfiguration *)paymentConfiguration {
@@ -268,6 +282,7 @@ NSString *const STPTestJSONSourceSEPADebit = @"SEPADebitSource";
 
     legalEntity.verification = [STPVerificationParams new];
     legalEntity.verification.document = @"file_abc";
+    legalEntity.verification.documentBack = @"file_def";
 
     STPPersonParams *jenny = [self personParams], *jacob = [self personParams];
     jenny.firstName = @"Jenny";

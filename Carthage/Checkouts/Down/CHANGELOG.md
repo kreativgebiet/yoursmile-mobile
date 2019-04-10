@@ -1,5 +1,137 @@
 # Change Log
 
+## [v0.6.4](https://github.com/iwasrobbed/Down/tree/v0.6.4) (2019-03-30)
+[Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.6.3...v0.6.4)
+
+**Closed issues:**
+
+- Support SwiftPM [\#128](https://github.com/iwasrobbed/Down/issues/128)
+- \[DownView\] Load multiple .md files \(link support\) [\#68](https://github.com/iwasrobbed/Down/issues/68)
+
+**Merged pull requests:**
+
+- Fix Swift module errors when used alongside Firestore [\#125](https://github.com/iwasrobbed/Down/pull/125) ([vzsg](https://github.com/vzsg))
+
+## [v0.6.3](https://github.com/iwasrobbed/Down/tree/v0.6.3) (2019-03-27)
+[Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.6.2...v0.6.3)
+
+**Implemented enhancements:**
+
+- \[DownView\] Doesn't reflow text on orientation change [\#111](https://github.com/iwasrobbed/Down/issues/111)
+
+**Fixed bugs:**
+
+- Crash rendering markdown [\#126](https://github.com/iwasrobbed/Down/issues/126)
+
+**Closed issues:**
+
+- Cocoapods: libcmark [\#124](https://github.com/iwasrobbed/Down/issues/124)
+- Use with storyboards [\#123](https://github.com/iwasrobbed/Down/issues/123)
+- support for audio markdown? [\#122](https://github.com/iwasrobbed/Down/issues/122)
+- \[Down\] Can't render toAttributedString while app is in background [\#116](https://github.com/iwasrobbed/Down/issues/116)
+
+**Merged pull requests:**
+
+- Fix crash from missing parser.h include [\#129](https://github.com/iwasrobbed/Down/pull/129) ([phoney](https://github.com/phoney))
+- Make the DownView reflow text on device rotation [\#127](https://github.com/iwasrobbed/Down/pull/127) ([phoney](https://github.com/phoney))
+
+## [v0.6.2](https://github.com/iwasrobbed/Down/tree/v0.6.2) (2018-11-28)
+[Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.6.1...v0.6.2)
+
+**Implemented enhancements:**
+
+- \[cmark\] Some characters are escaped twice [\#99](https://github.com/iwasrobbed/Down/issues/99)
+
+**Fixed bugs:**
+
+- \\[cmark\\] Some characters are escaped twice [\#99](https://github.com/iwasrobbed/Down/issues/99)
+
+**Merged pull requests:**
+
+- Add compiler flag to suppress implicit conversion warnings [\#118](https://github.com/iwasrobbed/Down/pull/118) ([phoney](https://github.com/phoney))
+
+## [v0.6.1](https://github.com/iwasrobbed/Down/tree/v0.6.1) (2018-11-23)
+[Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.6.0...v0.6.1)
+
+**Closed issues:**
+
+- 2 Swift Compiler Errors when installing Down on iOS [\#117](https://github.com/iwasrobbed/Down/issues/117)
+- How to update to the latest version of the cmark library [\#115](https://github.com/iwasrobbed/Down/issues/115)
+
+**Merged pull requests:**
+
+- \[travis\] Update to retry [\#114](https://github.com/iwasrobbed/Down/pull/114) ([iwasrobbed](https://github.com/iwasrobbed))
+- Fix macOS Platform, Custom URL Scheme Handler, Polish Demos. [\#110](https://github.com/iwasrobbed/Down/pull/110) ([chriszielinski](https://github.com/chriszielinski))
+
+## [v0.6.0](https://github.com/iwasrobbed/Down/tree/v0.6.0) (2018-11-10)
+[Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.5.3...v0.6.0)
+
+**Implemented enhancements:**
+
+- \[iOS 10+\] Warnings for WebKit signal service and latex.c [\#94](https://github.com/iwasrobbed/Down/issues/94)
+- Update cmark version to latest stable release [\#84](https://github.com/iwasrobbed/Down/issues/84)
+
+**Closed issues:**
+
+- HTML to Markdowndow? [\#107](https://github.com/iwasrobbed/Down/issues/107)
+- Blockquote does not work in NSAttributedString [\#106](https://github.com/iwasrobbed/Down/issues/106)
+- Support for Dynamic Type [\#90](https://github.com/iwasrobbed/Down/issues/90)
+
+**Merged pull requests:**
+
+- \[Down\] Bump to v0.6.0 [\#113](https://github.com/iwasrobbed/Down/pull/113) ([iwasrobbed](https://github.com/iwasrobbed))
+- \[cmark\] Update lib to v0.28.3 [\#112](https://github.com/iwasrobbed/Down/pull/112) ([phoney](https://github.com/phoney))
+- Update project to Xcode 10 [\#109](https://github.com/iwasrobbed/Down/pull/109) ([funkyboy](https://github.com/funkyboy))
+
+## [v0.5.3](https://github.com/iwasrobbed/Down/tree/v0.5.3) (2018-09-19)
+[Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.5.2...v0.5.3)
+
+**Implemented enhancements:**
+
+- &rdquo; not being rendered [\#95](https://github.com/iwasrobbed/Down/issues/95)
+- Update issue templates [\#101](https://github.com/iwasrobbed/Down/pull/101) ([iwasrobbed](https://github.com/iwasrobbed))
+
+**Fixed bugs:**
+
+- \[Xcode 10\] Crash in XCBuildService; need to use old build system [\#91](https://github.com/iwasrobbed/Down/issues/91)
+
+**Closed issues:**
+
+- DownView font size on iPad is huge [\#102](https://github.com/iwasrobbed/Down/issues/102)
+- Is there a way to convert NSAttributedString back to markdown? [\#98](https://github.com/iwasrobbed/Down/issues/98)
+- Back Gesture [\#96](https://github.com/iwasrobbed/Down/issues/96)
+- Access for  [\#92](https://github.com/iwasrobbed/Down/issues/92)
+- Image size NSAttributedString [\#89](https://github.com/iwasrobbed/Down/issues/89)
+- Dependency analysis warnings with Cocoapods [\#88](https://github.com/iwasrobbed/Down/issues/88)
+- WatchKit Support [\#71](https://github.com/iwasrobbed/Down/issues/71)
+- Installation via Swift Package Manager [\#61](https://github.com/iwasrobbed/Down/issues/61)
+
+**Merged pull requests:**
+
+- \[Xcode 10\]\[Carthage\] Use new build system [\#104](https://github.com/iwasrobbed/Down/pull/104) ([torokzsolt](https://github.com/torokzsolt))
+- Updates the project settings to use the Legacy Build System. [\#97](https://github.com/iwasrobbed/Down/pull/97) ([pieromattos](https://github.com/pieromattos))
+- \[Release\] v0.5.2 [\#87](https://github.com/iwasrobbed/Down/pull/87) ([iwasrobbed](https://github.com/iwasrobbed))
+
+## [v0.5.2](https://github.com/iwasrobbed/Down/tree/v0.5.2) (2018-05-05)
+[Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.5.1...v0.5.2)
+
+**Merged pull requests:**
+
+- \[Pods\] Only include files in source\_files that can be compiled [\#86](https://github.com/iwasrobbed/Down/pull/86) ([njdehoog](https://github.com/njdehoog))
+
+## [v0.5.1](https://github.com/iwasrobbed/Down/tree/v0.5.1) (2018-03-03)
+[Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.5.0...v0.5.1)
+
+**Closed issues:**
+
+- `DocumentReadingOptionKey` Error via pod [\#80](https://github.com/iwasrobbed/Down/issues/80)
+
+**Merged pull requests:**
+
+- Add optional stylesheet argument for NSAttributedString renderer [\#79](https://github.com/iwasrobbed/Down/pull/79) ([kengruven](https://github.com/kengruven))
+- Roll up cmark's COPYING sections into the top-level LICENSE file [\#78](https://github.com/iwasrobbed/Down/pull/78) ([kengruven](https://github.com/kengruven))
+- Update supported versions in README [\#77](https://github.com/iwasrobbed/Down/pull/77) ([kengruven](https://github.com/kengruven))
+
 ## [v0.5.0](https://github.com/iwasrobbed/Down/tree/v0.5.0) (2018-02-24)
 [Full Changelog](https://github.com/iwasrobbed/Down/compare/v0.4.2...v0.5.0)
 

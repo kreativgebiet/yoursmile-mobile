@@ -24,7 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic, strong, readwrite) NSURL *apiURL;
-@property (nonatomic, strong, readwrite) NSURLSession *urlSession;
+@property (nonatomic, strong, readonly) NSURLSession *urlSession;
+
+- (NSMutableURLRequest *)configuredRequestForURL:(NSURL *)url;
+
++ (NSURLSessionConfiguration *)sharedUrlSessionConfiguration;
 
 @end
 
@@ -34,6 +38,10 @@ NS_ASSUME_NONNULL_BEGIN
                                   clientSecret:(NSString *)secret
                             responseCompletion:(STPAPIResponseBlock)completion;
 
+@end
+
+@interface STPAPIClient (EphemeralKeys)
++ (instancetype)apiClientWithEphemeralKey:(STPEphemeralKey *)key;
 @end
 
 @interface STPAPIClient (Customers)
@@ -71,7 +79,7 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
  */
 + (void)deleteSource:(NSString *)sourceID
 fromCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
-          completion:(STPSourceProtocolCompletionBlock)completion;
+          completion:(STPErrorBlock)completion;
 
 @end
 

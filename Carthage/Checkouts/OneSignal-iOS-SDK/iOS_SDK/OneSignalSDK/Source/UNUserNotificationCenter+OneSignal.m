@@ -35,6 +35,7 @@
 #import "OneSignalHelper.h"
 #import "OneSignalSelectorHelpers.h"
 #import "UIApplicationDelegate+OneSignal.h"
+#import "OneSignalCommonDefines.h"
 
 
 #if XC8_AVAILABLE
@@ -46,7 +47,8 @@
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 @interface OneSignal (UN_extra)
-+ (void)notificationOpened:(NSDictionary*)messageDict isActive:(BOOL)isActive;
++ (void)notificationReceived:(NSDictionary*)messageDict isActive:(BOOL)isActive wasOpened:(BOOL)opened;
++ (BOOL)shouldLogMissingPrivacyConsentErrorWithMethodName:(NSString *)methodName;
 @end
 
 // This class hooks into the following iSO 10 UNUserNotificationCenterDelegate selectors:
@@ -68,6 +70,10 @@ static Class delegateUNClass = nil;
 // But rather in one of the subclasses
 static NSArray* delegateUNSubclasses = nil;
 
+//ensures setDelegate: swizzles will never get executed twice for the same delegate object
+//captures a weak reference to avoid retain cycles
+__weak static id previousDelegate;
+
 + (void)swizzleSelectors {
     injectToProperClass(@selector(setOneSignalUNDelegate:), @selector(setDelegate:), @[], [OneSignalUNUserNotificationCenter class], [UNUserNotificationCenter class]);
     
@@ -88,14 +94,24 @@ static BOOL useiOS10_2_workaround = true;
 static BOOL useCachedUNNotificationSettings;
 static UNNotificationSettings* cachedUNNotificationSettings;
 
+// This is a swizzled implementation of requestAuthorizationWithOptions:
+// in case developers call it directly instead of using our prompt method
 - (void)onesignalRequestAuthorizationWithOptions:(UNAuthorizationOptions)options completionHandler:(void (^)(BOOL granted, NSError *__nullable error))completionHandler {
-    OneSignal.currentPermissionState.hasPrompted = true;
+    
+    // check options for UNAuthorizationOptionProvisional membership
+    BOOL notProvisionalRequest = (options & PROVISIONAL_UNAUTHORIZATIONOPTION) == 0;
+    
+    //we don't want to modify these settings if the authorization is provisional (iOS 12 'Direct to History')
+    if (notProvisionalRequest)
+        OneSignal.currentPermissionState.hasPrompted = true;
     
     useCachedUNNotificationSettings = true;
     id wrapperBlock = ^(BOOL granted, NSError* error) {
         useCachedUNNotificationSettings = false;
-        OneSignal.currentPermissionState.accepted = granted;
-        OneSignal.currentPermissionState.answeredPrompt = true;
+        if (notProvisionalRequest) {
+            OneSignal.currentPermissionState.accepted = granted;
+            OneSignal.currentPermissionState.answeredPrompt = true;
+        }
         completionHandler(granted, error);
     };
     
@@ -120,6 +136,13 @@ static UNNotificationSettings* cachedUNNotificationSettings;
 //  - Selector will be called once if developer does not set a UNUserNotificationCenter delegate.
 //  - Selector will be called a 2nd time if the developer does set one.
 - (void) setOneSignalUNDelegate:(id)delegate {
+    if (previousDelegate == delegate) {
+        [self setOneSignalUNDelegate:delegate];
+        return;
+    }
+    
+    previousDelegate = delegate;
+    
     [OneSignal onesignal_Log:ONE_S_LL_VERBOSE message:@"OneSignalUNUserNotificationCenter setOneSignalUNDelegate Fired!"];
     
     delegateUNClass = getClassWithProtocolInHierarchy([delegate class], @protocol(UNUserNotificationCenterDelegate));
@@ -141,7 +164,8 @@ static UNNotificationSettings* cachedUNNotificationSettings;
                 willPresentNotification:(UNNotification *)notification
                   withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
     
-    if (![OneSignalHelper isOneSignalPayload:notification.request.content.userInfo]) {
+    // return if the user has not granted privacy permissions or if not a OneSignal payload
+    if ([OneSignal shouldLogMissingPrivacyConsentErrorWithMethodName:nil] || ![OneSignalHelper isOneSignalPayload:notification.request.content.userInfo]) {
         if ([self respondsToSelector:@selector(onesignalUserNotificationCenter:willPresentNotification:withCompletionHandler:)])
             [self onesignalUserNotificationCenter:center willPresentNotification:notification withCompletionHandler:completionHandler];
         else
@@ -159,9 +183,10 @@ static UNNotificationSettings* cachedUNNotificationSettings;
         default: break;
     }
     
-    if ([OneSignal app_id]) {
-        [OneSignal notificationOpened:notification.request.content.userInfo isActive:YES];
-    }
+    let notShown = OneSignal.inFocusDisplayType == OSNotificationDisplayTypeNone && notification.request.content.body != nil;
+    
+    if ([OneSignal app_id])
+        [OneSignal notificationReceived:notification.request.content.userInfo isActive:YES wasOpened:notShown];
     
     // Call orginal selector if one was set.
     if ([self respondsToSelector:@selector(onesignalUserNotificationCenter:willPresentNotification:withCompletionHandler:)])
@@ -188,7 +213,8 @@ static UNNotificationSettings* cachedUNNotificationSettings;
          didReceiveNotificationResponse:(UNNotificationResponse *)response
                   withCompletionHandler:(void(^)())completionHandler {
     
-    if (![OneSignalHelper isOneSignalPayload:response.notification.request.content.userInfo]) {
+    // return if the user has not granted privacy permissions or if not a OneSignal payload
+    if ([OneSignal shouldLogMissingPrivacyConsentErrorWithMethodName:nil] || ![OneSignalHelper isOneSignalPayload:response.notification.request.content.userInfo]) {
         if ([self respondsToSelector:@selector(onesignalUserNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:)])
             [self onesignalUserNotificationCenter:center didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
         else
@@ -239,7 +265,8 @@ static UNNotificationSettings* cachedUNNotificationSettings;
     let userInfo = [OneSignalHelper formatApsPayloadIntoStandard:response.notification.request.content.userInfo
                                                       identifier:response.actionIdentifier];
     
-    [OneSignal notificationOpened:userInfo isActive:isActive];
+    [OneSignal notificationReceived:userInfo isActive:isActive wasOpened:YES];
+    
 }
 
 // Calls depercated pre-iOS 10 selector if one is set on the AppDelegate.

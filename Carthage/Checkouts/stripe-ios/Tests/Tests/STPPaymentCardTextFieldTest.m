@@ -11,6 +11,7 @@
 @import OCMock;
 
 #import "Stripe.h"
+#import "STPFixtures.h"
 #import "STPFormTextField.h"
 #import "STPPaymentCardTextFieldViewModel.h"
 
@@ -26,6 +27,34 @@
 + (UIImage *)cvcImageForCardBrand:(STPCardBrand)cardBrand;
 + (UIImage *)brandImageForCardBrand:(STPCardBrand)cardBrand;
 @end
+
+/**
+ Class that implements STPPaymentCardTextFieldDelegate and uses a block for each delegate method.
+ */
+@interface PaymentCardTextFieldBlockDelegate: NSObject <STPPaymentCardTextFieldDelegate>
+@property (nonatomic, strong, nullable) void (^didChange)(STPPaymentCardTextField *);
+@property (nonatomic, strong, nullable) void (^willEndEditingForReturn)(STPPaymentCardTextField *);
+@property (nonatomic, strong, nullable) void (^didEndEditing)(STPPaymentCardTextField *);
+// add more properties for other delegate methods as this test needs them
+@end
+@implementation PaymentCardTextFieldBlockDelegate
+- (void)paymentCardTextFieldDidChange:(STPPaymentCardTextField *)textField {
+    if (self.didChange) {
+        self.didChange(textField);
+    }
+}
+- (void)paymentCardTextFieldWillEndEditingForReturn:(STPPaymentCardTextField *)textField {
+    if (self.willEndEditingForReturn) {
+        self.willEndEditingForReturn(textField);
+    }
+}
+- (void)paymentCardTextFieldDidEndEditing:(STPPaymentCardTextField *)textField {
+    if (self.didEndEditing) {
+        self.didEndEditing(textField);
+    }
+}
+@end
+
 
 @interface STPPaymentCardTextFieldTest : XCTestCase
 @end
@@ -104,6 +133,16 @@
     XCTAssertEqualObjects(sut.cvcField.text, cvc);
     XCTAssertNil(sut.currentFirstResponderField);
     XCTAssertFalse(sut.isValid);
+}
+
+- (void)testSetCard_updatesCVCValidity {
+    STPPaymentCardTextField *sut = [STPPaymentCardTextField new];
+    sut.numberField.text = @"378282246310005";
+    sut.cvcField.text = @"1234";
+    sut.expirationField.text = @"10/99";
+    XCTAssertTrue(sut.cvcField.validText);
+    sut.numberField.text = @"4242424242424242";
+    XCTAssertFalse(sut.cvcField.validText);
 }
 
 - (void)testSetCard_numberVisa {
@@ -350,6 +389,52 @@
     XCTAssertEqual((int)params.expYear, 99);
 }
 
+- (void)testAccessingCardParamsDuringSettingCardParams {
+    PaymentCardTextFieldBlockDelegate *delegate = [PaymentCardTextFieldBlockDelegate new];
+    delegate.didChange = ^(STPPaymentCardTextField *textField) {
+        // delegate reads the `cardParams` for any reason it wants
+        [textField cardParams];
+    };
+    STPPaymentCardTextField *sut = [STPPaymentCardTextField new];
+    sut.delegate = delegate;
+
+    STPCardParams *params = [STPCardParams new];
+    params.number = @"4242424242424242";
+    params.cvc = @"123";
+    params.name = @"John";
+
+    sut.cardParams = params;
+    STPCardParams *actual = sut.cardParams;
+
+    XCTAssertEqualObjects(@"4242424242424242", actual.number);
+    XCTAssertEqualObjects(@"123", actual.cvc);
+    XCTAssertEqualObjects(@"John", actual.name);
+}
+
+- (void)testSetCardParamsCopiesObject {
+    STPPaymentCardTextField *sut = [STPPaymentCardTextField new];
+    STPCardParams *params = [STPCardParams new];
+
+    params.number = @"4242424242424242"; // legit
+    sut.cardParams = params;
+
+    // fetching `sut.cardParams` returns a copy, so edits happen to caller's copy
+    sut.cardParams.currency = @"GBP";
+    sut.cardParams.address.line1 = @"123 Main St";
+
+    // `sut` copied `params` (& `params.address`) when set, so edits to original don't show up
+    params.name = @"John";
+    params.address.line2 = @"Apt 3";
+
+    XCTAssertEqualObjects(@"4242424242424242", sut.cardParams.number, @"set via setCardParams:");
+
+    XCTAssertNotEqualObjects(@"GBP", sut.cardParams.currency, @"return value from cardParams cannot be edited inline");
+    XCTAssertNotEqualObjects(@"123 Main St", sut.cardParams.address.line1, @"returned cardParams.address cannot be edited inline");
+
+    XCTAssertNotEqualObjects(@"John", sut.cardParams.name, @"caller changed their copy after setCardParams:");
+    XCTAssertNotEqualObjects(@"Apt 3", sut.cardParams.address.line2, @"caller changed their copy after setCardParams:");
+}
+
 @end
 
 @interface STPPaymentCardTextFieldUITests : XCTestCase
@@ -537,6 +622,56 @@
     XCTAssertTrue([self.sut becomeFirstResponder]);
     XCTAssertEqual(self.sut.postalCodeField, self.sut.currentFirstResponderField,
                    @"When all fields are valid, the last one should be the preferred firstResponder");
+}
+
+- (void)testShouldReturnCyclesThroughFields {
+    PaymentCardTextFieldBlockDelegate *delegate = [PaymentCardTextFieldBlockDelegate new];
+    delegate.willEndEditingForReturn = ^(__unused STPPaymentCardTextField *textField) {
+        XCTFail(@"Did not expect editing to end in this test");
+    };
+    self.sut.delegate = delegate;
+
+    [self.sut becomeFirstResponder];
+    XCTAssertTrue(self.sut.numberField.isFirstResponder);
+
+    XCTAssertFalse([self.sut.numberField.delegate textFieldShouldReturn:self.sut.numberField], @"shouldReturn = NO");
+    XCTAssertTrue(self.sut.expirationField.isFirstResponder, @"with side effect to move 1st responder to next field");
+
+    XCTAssertFalse([self.sut.expirationField.delegate textFieldShouldReturn:self.sut.expirationField], @"shouldReturn = NO");
+    XCTAssertTrue(self.sut.cvcField.isFirstResponder, @"with side effect to move 1st responder to next field");
+
+    XCTAssertFalse([self.sut.cvcField.delegate textFieldShouldReturn:self.sut.cvcField], @"shouldReturn = NO");
+    XCTAssertTrue(self.sut.numberField.isFirstResponder, @"with side effect to move 1st responder from last field to first invalid field");
+}
+
+- (void)testShouldReturnDismissesWhenValid {
+    __block BOOL hasReturned = NO;
+    __block BOOL didEnd = NO;
+
+    [self.sut setCardParams:[STPFixtures cardParams]];
+
+    PaymentCardTextFieldBlockDelegate *delegate = [PaymentCardTextFieldBlockDelegate new];
+    delegate.willEndEditingForReturn = ^(__unused STPPaymentCardTextField *textField) {
+        XCTAssertFalse(didEnd, @"willEnd is called before didEnd");
+        XCTAssertFalse(hasReturned, @"willEnd is only called once");
+        hasReturned = YES;
+    };
+    delegate.didEndEditing = ^(__unused STPPaymentCardTextField *textField) {
+        XCTAssertTrue(hasReturned, @"didEndEditing should be called after willEnd");
+        XCTAssertFalse(didEnd, @"didEnd is only called once");
+        didEnd = YES;
+    };
+
+    self.sut.delegate = delegate;
+    [self.sut becomeFirstResponder];
+    XCTAssertTrue(self.sut.cvcField.isFirstResponder, @"when textfield is filled out, default first responder is the last field");
+
+    XCTAssertFalse(hasReturned, @"willEndEditingForReturn delegate method should not have been called yet");
+    XCTAssertFalse([self.sut.cvcField.delegate textFieldShouldReturn:self.sut.cvcField], @"shouldReturn = NO");
+
+    XCTAssertNil(self.sut.currentFirstResponderField, @"Should have resigned first responder");
+    XCTAssertTrue(hasReturned, @"delegate method has been invoked");
+    XCTAssertTrue(didEnd, @"delegate method has been invoked");
 }
 
 @end

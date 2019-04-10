@@ -31,9 +31,9 @@
 #import "OneSignal.h"
 #import "OneSignalHelper.h"
 #import "OneSignalClient.h"
-#import "OneSignalRequest.h"
 #import "OneSignalSelectorHelpers.h"
 #import "Requests.h"
+#import "OneSignalCommonDefines.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -48,6 +48,9 @@ static BOOL executeInstantaneously = true;
 static dispatch_queue_t executionQueue;
 static NSString *lastHTTPRequestType;
 static BOOL requiresEmailAuth = false;
+static BOOL shouldUseProvisionalAuthorization = false; //new in iOS 12 (aka Direct to History)
+static BOOL disableOverride = false;
+static NSMutableArray<OneSignalRequest *> *executedRequests;
 
 + (void)load {
     serialMockMainLooper = dispatch_queue_create("com.onesignal.unittest", DISPATCH_QUEUE_SERIAL);
@@ -59,9 +62,17 @@ static BOOL requiresEmailAuth = false;
     
     executionQueue = dispatch_queue_create("com.onesignal.execution", NULL);
     
+    executedRequests = [NSMutableArray new];
+}
+
+// Calling this function twice results in reversing the swizzle
++ (void)disableExecuteRequestOverride:(BOOL)disable {
+    disableOverride = disable;
 }
 
 - (void)overrideExecuteSimultaneousRequests:(NSDictionary<NSString *, OneSignalRequest *> *)requests withSuccess:(OSMultipleSuccessBlock)successBlock onFailure:(OSMultipleFailureBlock)failureBlock {
+    if (disableOverride)
+        return [self overrideExecuteSimultaneousRequests:requests withSuccess:successBlock onFailure:failureBlock];
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
@@ -69,6 +80,8 @@ static BOOL requiresEmailAuth = false;
     __block NSMutableDictionary<NSString *, NSDictionary *> *results = [NSMutableDictionary new];
     
     for (NSString *key in requests.allKeys) {
+        [executedRequests addObject:requests[key]];
+        
         [OneSignalClient.sharedClient executeRequest:requests[key] onSuccess:^(NSDictionary *result) {
             results[key] = result;
             dispatch_semaphore_signal(semaphore);
@@ -90,6 +103,12 @@ static BOOL requiresEmailAuth = false;
 }
 
 - (void)overrideExecuteRequest:(OneSignalRequest *)request onSuccess:(OSResultSuccessBlock)successBlock onFailure:(OSFailureBlock)failureBlock {
+    
+    if (disableOverride)
+        return [self overrideExecuteRequest:request onSuccess:successBlock onFailure:failureBlock];
+    
+    [executedRequests addObject:request];
+    
     if (executeInstantaneously) {
         [OneSignalClientOverrider finishExecutingRequest:request onSuccess:successBlock onFailure:failureBlock];
     } else {
@@ -105,12 +124,12 @@ static BOOL requiresEmailAuth = false;
         
         NSMutableDictionary *parameters = [request.parameters mutableCopy];
         
-        if (!parameters[@"app_id"] && ![request.request.URL.absoluteString containsString:@"/apps/"])
+        if (!parameters[@"app_id"] && ![request.urlRequest.URL.absoluteString containsString:@"/apps/"])
             _XCTPrimitiveFail(currentTestInstance, @"All request should include an app_id");
         
         networkRequestCount++;
         
-        id url = [request.request URL];
+        id url = [request.urlRequest URL];
         NSLog(@"url: %@", url);
         NSLog(@"parameters: %@", parameters);
         
@@ -120,11 +139,19 @@ static BOOL requiresEmailAuth = false;
         
         if (successBlock) {
             if ([request isKindOfClass:[OSRequestGetIosParams class]])
-                successBlock(@{@"fba": @true, @"require_email_auth" : @(requiresEmailAuth)});
+                successBlock(@{@"fba": @true, IOS_REQUIRES_EMAIL_AUTHENTICATION : @(requiresEmailAuth), IOS_USES_PROVISIONAL_AUTHORIZATION : @(shouldUseProvisionalAuthorization)});
             else
                 successBlock(@{@"id": @"1234"});
         }
     }
+}
+
++(BOOL)hasExecutedRequestOfType:(Class)type {
+    for (OneSignalRequest *request in executedRequests)
+        if ([request isKindOfClass:type])
+            return true;
+    
+    return false;
 }
 
 +(dispatch_queue_t)getHTTPQueue {
@@ -141,10 +168,11 @@ static BOOL requiresEmailAuth = false;
 
 +(void)reset:(XCTestCase*)testInstance {
     currentTestInstance = testInstance;
-    
+    shouldUseProvisionalAuthorization = false;
     networkRequestCount = 0;
     lastUrl = nil;
     lastHTTPRequest = nil;
+    [executedRequests removeAllObjects];
 }
 
 +(void)setLastHTTPRequest:(NSDictionary*)value {
@@ -172,6 +200,14 @@ static BOOL requiresEmailAuth = false;
 
 +(void)setRequiresEmailAuth:(BOOL)required {
     requiresEmailAuth = required;
+}
+
++(void)setShouldUseProvisionalAuth:(BOOL)provisional {
+    shouldUseProvisionalAuthorization = provisional;
+}
+
++(NSArray<OneSignalRequest *> *)executedRequests {
+    return executedRequests;
 }
 
 @end

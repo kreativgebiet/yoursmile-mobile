@@ -35,6 +35,8 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *consentSegmentedControl;
+@property (weak, nonatomic) IBOutlet UITextField *externalIdTextField;
 
 @end
 
@@ -45,6 +47,11 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.activityIndicatorView.hidden = true;
+    
+    self.consentSegmentedControl.selectedSegmentIndex = (NSInteger)![OneSignal requiresUserPrivacyConsent];
+    
+    self.textField.delegate = self;
+    self.externalIdTextField.delegate = self;
 }
 
 - (void)changeAnimationState:(BOOL)animating {
@@ -121,5 +128,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)consentSegmentedControlValueChanged:(UISegmentedControl *)sender {
+    NSLog(@"View controller consent granted: %i", (int)sender.selectedSegmentIndex);
+    [OneSignal consentGranted:(bool)sender.selectedSegmentIndex];
+}
+
+- (IBAction)setExternalIdButtonPressed:(UIButton *)sender {
+    [OneSignal setExternalUserId:self.externalIdTextField.text];
+}
+
+- (IBAction)removeExternalIdButtonPressed:(UIButton *)sender {
+    [OneSignal removeExternalUserId];
+}
+
+#pragma mark UITextFieldDelegate Methods
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return false;
+}
 
 @end

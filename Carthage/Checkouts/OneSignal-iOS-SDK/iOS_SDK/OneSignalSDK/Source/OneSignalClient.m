@@ -28,14 +28,16 @@
 #import "OneSignalClient.h"
 #import "UIApplicationDelegate+OneSignal.h"
 #import "ReattemptRequest.h"
+#import "OneSignal.h"
+#import "OneSignalCommonDefines.h"
 
-#define REATTEMPT_DELAY 30.0
-#define REQUEST_TIMEOUT_REQUEST 60.0 //for most HTTP requests
-#define REQUEST_TIMEOUT_RESOURCE 100.0 //for loading a resource like an image
-#define MAX_ATTEMPT_COUNT 3
+@interface OneSignal (OneSignalClientExtra)
++ (BOOL)shouldLogMissingPrivacyConsentErrorWithMethodName:(NSString *)methodName;
+@end
 
 @interface OneSignalClient ()
 @property (strong, nonatomic) NSURLSession *sharedSession;
+@property (strong, nonatomic) NSURLSession *noCacheSession;
 @end
 
 @implementation OneSignalClient
@@ -51,14 +53,31 @@
 
 -(instancetype)init {
     if (self = [super init]) {
-        let configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT_REQUEST;
-        configuration.timeoutIntervalForResource = REQUEST_TIMEOUT_RESOURCE;
-        
-        _sharedSession = [NSURLSession sessionWithConfiguration:configuration];
+        _sharedSession = [NSURLSession sessionWithConfiguration:[self configurationWithCachingPolicy:NSURLRequestUseProtocolCachePolicy]];
+        _noCacheSession = [NSURLSession sessionWithConfiguration:[self configurationWithCachingPolicy:NSURLRequestReloadIgnoringLocalCacheData]];
     }
     
     return self;
+}
+
+- (NSURLSessionConfiguration *)configurationWithCachingPolicy:(NSURLRequestCachePolicy)policy {
+    let configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT_REQUEST;
+    configuration.timeoutIntervalForResource = REQUEST_TIMEOUT_RESOURCE;
+    
+    //prevent caching of requests, this mainly impacts OSRequestGetIosParams,
+    //since the OSRequestGetTags endpoint has a caching header policy
+    configuration.requestCachePolicy = policy;
+    
+    return configuration;
+}
+
+- (NSError *)privacyConsentErrorWithRequestType:(NSString *)type {
+    return [NSError errorWithDomain:@"OneSignal Error" code:0 userInfo:@{@"error" : [NSString stringWithFormat: @"Attempted to perform an HTTP request (%@) before the user provided privacy consent.", type]}];
+}
+
+- (NSError *)genericTimedOutError {
+    return [NSError errorWithDomain:@"OneSignal Error" code:0 userInfo:@{@"error" : @"The request timed out"}];
 }
 
 - (void)executeSimultaneousRequests:(NSDictionary<NSString *, OneSignalRequest *> *)requests withSuccess:(OSMultipleSuccessBlock)successBlock onFailure:(OSMultipleFailureBlock)failureBlock {
@@ -67,7 +86,7 @@
     
     //execute on a background thread or the semaphore will block the caller thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        dispatch_group_t group = dispatch_group_create();
         
         __block NSMutableDictionary<NSString *, NSError *> *errors = [NSMutableDictionary new];
         __block NSMutableDictionary<NSString *, NSDictionary *> *results = [NSMutableDictionary new];
@@ -75,18 +94,27 @@
         for (NSString *identifier in requests.allKeys) {
             let request = requests[identifier];
             
+            //use a dispatch_group instead of a semaphore, in case the failureBlock gets called synchronously
+            //this will prevent the SDK from waiting/blocking on a request that instantly failed
+            dispatch_group_enter(group);
             [self executeRequest:request onSuccess:^(NSDictionary *result) {
                 results[identifier] = result;
-                dispatch_semaphore_signal(semaphore);
+                dispatch_group_leave(group);
             } onFailure:^(NSError *error) {
                 errors[identifier] = error;
-                dispatch_semaphore_signal(semaphore);
+                dispatch_group_leave(group);
             }];
         }
         
-        for (int i = 0; i < requests.count; i++) {
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        }
+        // Will wait for up to (maxTimeout) seconds and will then give up and call
+        // the failure block if the request times out.
+        let timedOut = (bool)(0 != dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, MAX_TIMEOUT)));
+        
+        // add a generic 'timed out' error if the request timed out
+        // and there are no other errors present.
+        if (timedOut && errors.allKeys.count == 0)
+            for (NSString *key in requests.allKeys)
+                errors[key] = [self genericTimedOutError];
         
         //requests should all be completed at this point
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -100,12 +128,29 @@
 }
 
 - (void)executeRequest:(OneSignalRequest *)request onSuccess:(OSResultSuccessBlock)successBlock onFailure:(OSFailureBlock)failureBlock {
+    
+    if (request.method != GET && [OneSignal shouldLogMissingPrivacyConsentErrorWithMethodName:nil]) {
+        if (failureBlock) {
+            failureBlock([self privacyConsentErrorWithRequestType:NSStringFromClass(request.class)]);
+        }
+        
+        return;
+    }
+    
     if (![self validRequest:request]) {
         [self handleMissingAppIdError:failureBlock withRequest:request];
         return;
     }
     
-    let task = [self.sharedSession dataTaskWithRequest:request.request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    /*
+        None of our requests should currently be cached locally.
+        However, to avoid any future confusion, each OneSignalRequest
+        has a property indicating if local caching should be
+        explicitly disabled for that request. The default is false.
+    */
+    var session = request.disableLocalCaching ? self.noCacheSession : self.sharedSession;
+    
+    let task = [session dataTaskWithRequest:request.urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         [self handleJSONNSURLResponse:response data:data error:error isAsync:true withRequest:request onSuccess:successBlock onFailure:failureBlock];
     }];
     
@@ -125,7 +170,7 @@
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
-    let dataTask = [self.sharedSession dataTaskWithRequest:request.request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    let dataTask = [self.sharedSession dataTaskWithRequest:request.urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         httpResponse = response;
         httpError = error;
         
@@ -144,7 +189,8 @@
     
     [OneSignal onesignal_Log:ONE_S_LL_ERROR message:errorDescription];
     
-    failureBlock([NSError errorWithDomain:@"OneSignalError" code:-1 userInfo:@{@"error" : errorDescription}]);
+    if (failureBlock)
+        failureBlock([NSError errorWithDomain:@"OneSignalError" code:-1 userInfo:@{@"error" : errorDescription}]);
 }
 
 - (BOOL)validRequest:(OneSignalRequest *)request {
@@ -180,7 +226,7 @@
         
         if (async) {
             //retry again in 15 seconds
-            [OneSignal onesignal_Log:ONE_S_LL_DEBUG message:[NSString stringWithFormat:@"Re-scheduling request (%@) to be re-attempted in %i seconds due to failed HTTP request with status code %i", NSStringFromClass([request class]), (int)REATTEMPT_DELAY, (int)statusCode]];
+            [OneSignal onesignal_Log:ONE_S_LL_DEBUG message:[NSString stringWithFormat:@"Re-scheduling request (%@) to be re-attempted in %.3f seconds due to failed HTTP request with status code %i", NSStringFromClass([request class]), REATTEMPT_DELAY, (int)statusCode]];
             
             [OneSignalHelper performSelector:@selector(reattemptRequest:) onMainThreadOnObject:self withObject:reattempt afterDelay:REATTEMPT_DELAY];
         } else {
@@ -199,10 +245,17 @@
         return;
     
     NSError *error;
+    
     let data = [NSJSONSerialization dataWithJSONObject:request.parameters options:NSJSONWritingPrettyPrinted error:&error];
+    
+    if (error || !data) {
+        [OneSignal onesignal_Log:ONE_S_LL_ERROR message:[NSString stringWithFormat:@"Unable to print the parameters of %@ with JSON serialization error: %@.", NSStringFromClass([request class]), error.description]];
+        return;
+    }
+    
     let jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    [OneSignal onesignal_Log:ONE_S_LL_VERBOSE message:[NSString stringWithFormat:@"HTTP Request (%@) with URL: %@, with parameters: %@", NSStringFromClass([request class]), request.request.URL.absoluteString, jsonString]];
+    [OneSignal onesignal_Log:ONE_S_LL_VERBOSE message:[NSString stringWithFormat:@"HTTP Request (%@) with URL: %@, with parameters: %@", NSStringFromClass([request class]), request.urlRequest.URL.absoluteString, jsonString]];
 }
 
 - (void)handleJSONNSURLResponse:(NSURLResponse*)response data:(NSData*)data error:(NSError*)error isAsync:(BOOL)async withRequest:(OneSignalRequest *)request onSuccess:(OSResultSuccessBlock)successBlock onFailure:(OSFailureBlock)failureBlock {

@@ -11,6 +11,7 @@
 #import <Contacts/Contacts.h>
 #import "STPAddress.h"
 #import "STPFixtures.h"
+#import "STPTestUtils.h"
 
 @interface STPAddressTests : XCTestCase
 
@@ -19,7 +20,6 @@
 @implementation STPAddressTests
 
 - (void)testInitWithPKContact_complete {
-
     PKContact *contact = [PKContact new];
     {
         NSPersonNameComponents *name = [NSPersonNameComponents new];
@@ -196,7 +196,6 @@
     XCTAssertTrue([address containsRequiredFields:STPBillingAddressFieldsNone]);
 }
 
-
 - (void)testContainsRequiredFieldsZip {
     STPAddress *address = [STPAddress new];
 
@@ -215,6 +214,7 @@
     address.country = nil; // nil treated as alphanumeric
     XCTAssertTrue([address containsRequiredFields:STPBillingAddressFieldsZip]);
 }
+
 - (void)testContainsRequiredFieldsFull {
     STPAddress *address = [STPAddress new];
     
@@ -268,6 +268,14 @@
     XCTAssertTrue([address containsRequiredFields:STPBillingAddressFieldsFull]);
 }
 
+- (void)testContainsRequiredFieldsName {
+    STPAddress *address = [STPAddress new];
+
+    XCTAssertFalse([address containsRequiredFields:STPBillingAddressFieldsName]);
+    address.name = @"Jane Doe";
+    XCTAssertTrue([address containsRequiredFields:STPBillingAddressFieldsName]);
+}
+
 - (void)testContainsContentForBillingAddressFields {
     STPAddress *address = [STPAddress new];
 
@@ -275,6 +283,7 @@
     XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsNone]);
     XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsZip]);
     XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsFull]);
+    XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsName]);
 
     // 1+ characters in postalCode will return true for .Zip && .Full
     address.postalCode = @"0";
@@ -288,6 +297,14 @@
     XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsFull]);
     address.postalCode = nil;
 
+    // 1+ characters in name will return true for .Name
+    address.name = @"Jane Doe";
+    XCTAssertTrue([address containsContentForBillingAddressFields:STPBillingAddressFieldsName]);
+    // empty string returns false
+    address.name = @"";
+    XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsName]);
+    address.name = nil;
+
     // Test every other property that contributes to the full address, ensuring it returns True for .Full only
     // This is *not* refactoring-safe, but I think it's better than a bunch of duplicated code
     for (NSString *propertyName in @[@"line1", @"line2", @"city", @"state", @"country"]) {
@@ -296,6 +313,7 @@
             XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsNone]);
             XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsZip]);
             XCTAssertTrue([address containsContentForBillingAddressFields:STPBillingAddressFieldsFull]);
+            XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsName]);
             [address setValue:nil forKey:propertyName];
         }
 
@@ -304,6 +322,7 @@
         XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsNone]);
         XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsZip]);
         XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsFull]);
+        XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsName]);
         [address setValue:nil forKey:propertyName];
     }
 
@@ -311,6 +330,7 @@
     XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsNone]);
     XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsZip]);
     XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsFull]);
+    XCTAssertFalse([address containsContentForBillingAddressFields:STPBillingAddressFieldsName]);
 }
 
 - (void)testContainsRequiredShippingAddressFields {
@@ -469,6 +489,37 @@
     }
 
     XCTAssertEqual([[mapping allValues] count], [[NSSet setWithArray:[mapping allValues]] count]);
+}
+
+#pragma mark NSCopying Tests
+
+- (void)testCopyWithZone {
+    STPAddress *address = [STPFixtures address];
+    STPAddress *copiedAddress = [address copy];
+
+    XCTAssertNotEqual(address, copiedAddress, @"should be different objects");
+
+    // The property names we expect to *not* be equal objects
+    NSArray *notEqualProperties = @[
+                                    // these include the object's address, so they won't be the same across copies
+                                    @"debugDescription",
+                                    @"description",
+                                    @"hash",
+                                    ];
+    // use runtime inspection to find the list of properties. If a new property is
+    // added to the fixture, but not the `copyWithZone:` implementation, this should catch it
+    for (NSString *property in [STPTestUtils propertyNamesOf:address]) {
+        if ([notEqualProperties containsObject:property]) {
+            XCTAssertNotEqualObjects([address valueForKey:property],
+                                     [copiedAddress valueForKey:property],
+                                     @"%@", property);
+        }
+        else {
+            XCTAssertEqualObjects([address valueForKey:property],
+                                  [copiedAddress valueForKey:property],
+                                  @"%@", property);
+        }
+    }
 }
 
 @end

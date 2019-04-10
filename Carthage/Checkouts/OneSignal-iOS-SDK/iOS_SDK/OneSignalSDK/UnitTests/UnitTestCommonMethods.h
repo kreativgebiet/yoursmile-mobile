@@ -28,6 +28,9 @@
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
 #import "OneSignal.h"
+#import "OneSignalNotificationCategoryController.h"
+
+#define TEST_EXTERNAL_USER_ID @"i_am_a_test_external_user_id"
 
 NSString * serverUrlWithPath(NSString *path);
 
@@ -40,7 +43,21 @@ NSString * serverUrlWithPath(NSString *path);
 + (void)beforeAllTest;
 + (void)clearStateForAppRestart:(XCTestCase *)testCase;
 + (UNNotificationResponse*)createBasiciOSNotificationResponseWithPayload:(NSDictionary*)userInfo;
++ (void)answerNotificationPrompt:(BOOL)accept;
++ (void)setCurrentNotificationPermission:(BOOL)accepted;
 
+@end
+
+// Expose OneSignal test methods
+@interface OneSignal (UN_extra)
++ (dispatch_queue_t) getRegisterQueue;
++ (void)setDelayIntervals:(NSTimeInterval)apnsMaxWait withRegistrationDelay:(NSTimeInterval)registrationDelay;
+@end
+
+// Expose methods on OneSignalNotificationCategoryController
+@interface OneSignalNotificationCategoryController ()
+- (void)pruneCategories:(NSMutableArray <NSString *> *)currentCategories;
+- (NSArray<NSString *> *)existingRegisteredCategoryIds;
 @end
 
 // START - Start Observers

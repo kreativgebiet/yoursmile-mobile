@@ -415,7 +415,6 @@ void onesignal_Log(ONE_S_LOG_LEVEL logLevel, NSString* message);
 
 //when the user is logged in with email, on_focus requests should be duplicated for the email player id as well
 - (void)testOnFocusEmailRequest {
-    
     [UnitTestCommonMethods runBackgroundThreads];
     
     [self setupEmailTest];
@@ -429,13 +428,15 @@ void onesignal_Log(ONE_S_LOG_LEVEL logLevel, NSString* message);
     
     [OneSignalTracker onFocus:false];
     
+    [UnitTestCommonMethods runBackgroundThreads];
+    
     [OneSignalTracker setLastOpenedTime:now - 4000];
     
     [OneSignalTracker onFocus:true];
     
     [UnitTestCommonMethods runBackgroundThreads];
     
-    XCTAssertTrue([OneSignalClientOverrider.lastHTTPRequestType isEqualToString:NSStringFromClass([OSRequestOnFocus class])]);
+    XCTAssertTrue([OneSignalClientOverrider hasExecutedRequestOfType:[OSRequestOnFocus class]]);
     XCTAssertEqual(OneSignalClientOverrider.networkRequestCount, 1);
     
     [OneSignalClientOverrider reset:self];
@@ -462,6 +463,8 @@ void onesignal_Log(ONE_S_LOG_LEVEL logLevel, NSString* message);
     
     [OneSignalTracker onFocus:false];
     
+    [UnitTestCommonMethods runBackgroundThreads];
+    
     [OneSignalTracker setLastOpenedTime:now - 4000];
     
     [OneSignalTracker onFocus:true];
@@ -469,7 +472,7 @@ void onesignal_Log(ONE_S_LOG_LEVEL logLevel, NSString* message);
     [UnitTestCommonMethods runBackgroundThreads];
     
     // on_focus should fire off two requests, one for the email player ID and one for push player ID
-    XCTAssertTrue([OneSignalClientOverrider.lastHTTPRequestType isEqualToString:NSStringFromClass([OSRequestOnFocus class])]);
+    XCTAssertTrue([OneSignalClientOverrider hasExecutedRequestOfType:[OSRequestOnFocus class]]);
     XCTAssertEqual(OneSignalClientOverrider.networkRequestCount, 2);
     
     [OneSignalClientOverrider setRequiresEmailAuth:false];
@@ -539,6 +542,31 @@ void onesignal_Log(ONE_S_LOG_LEVEL logLevel, NSString* message);
     XCTAssertTrue([observer->last.description isEqualToString:@"<OSEmailSubscriptionStateChanges:\nfrom: <OSEmailSubscriptionState: emailAddress: (null), emailUserId: (null)>,\nto:   <OSEmailSubscriptionState: emailAddress: test@test.com, emailUserId: 1234>\n>"]);
     
     [OneSignalClientOverrider reset:self];
+}
+
+- (void)testSetExternalIdForEmailPlayer {
+    [UnitTestCommonMethods runBackgroundThreads];
+    [self setupEmailTest];
+    
+    [OneSignal setEmail:@"test@test.com"];
+    [UnitTestCommonMethods runBackgroundThreads];
+    
+    int currentRequestCount = OneSignalClientOverrider.networkRequestCount;
+    
+    [OneSignal setExternalUserId:TEST_EXTERNAL_USER_ID];
+    [UnitTestCommonMethods runBackgroundThreads];
+    
+    let emailPlayerId = OneSignal.getPermissionSubscriptionState.emailSubscriptionStatus.emailUserId;
+    XCTAssertEqual(OneSignalClientOverrider.networkRequestCount, currentRequestCount + 2);
+    
+    for (OneSignalRequest *request in OneSignalClientOverrider.executedRequests)
+        if ([request isKindOfClass:[OSRequestUpdateExternalUserId class]] && [request.urlRequest.URL.absoluteString containsString:emailPlayerId])
+            XCTAssertEqualObjects(request.parameters[@"external_user_id"], TEST_EXTERNAL_USER_ID);
+    
+    // lastly, check to make sure that calling setExternalUserId() again with the same
+    // ID doesn't create a duplicate API request
+    [OneSignal setExternalUserId:TEST_EXTERNAL_USER_ID];
+    XCTAssertEqual(OneSignalClientOverrider.networkRequestCount, currentRequestCount + 2);
 }
 
 @end

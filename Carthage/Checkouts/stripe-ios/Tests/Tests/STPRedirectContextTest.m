@@ -8,10 +8,12 @@
 
 #import <SafariServices/SafariServices.h>
 #import <XCTest/XCTest.h>
+
 #import "NSError+Stripe.h"
 #import "NSURLComponents+Stripe.h"
 #import "STPFixtures.h"
 #import "STPRedirectContext.h"
+#import "STPRedirectContext+Private.h"
 #import "STPTestUtils.h"
 #import "STPURLCallbackHandler.h"
 #import "STPWeakStrongMacros.h"
@@ -77,6 +79,118 @@
     XCTAssertNil(sut);
 }
 
+- (void)testInitWithSource {
+    STPSource *source = [STPFixtures iDEALSource];
+    __block BOOL completionCalled = NO;
+    NSError *fakeError = [NSError new];
+
+    STPRedirectContext *sut = [[STPRedirectContext alloc] initWithSource:source completion:^(NSString * _Nonnull sourceID, NSString * _Nullable clientSecret, NSError * _Nullable error) {
+        XCTAssertEqualObjects(source.stripeID, sourceID);
+        XCTAssertEqualObjects(source.clientSecret, clientSecret);
+        XCTAssertEqual(error, fakeError, @"Should be the same NSError object passed to completion() below");
+        completionCalled = YES;
+    }];
+
+    // Make sure the initWithSource: method pulled out the right values from the Source
+    XCTAssertNil(sut.nativeRedirectURL);
+    XCTAssertEqualObjects(sut.redirectURL, source.redirect.url);
+    XCTAssertEqualObjects(sut.returnURL, source.redirect.returnURL);
+
+    // and make sure the completion calls the completion block above
+    sut.completion(fakeError);
+    XCTAssertTrue(completionCalled);
+}
+
+- (void)testInitWithSourceWithNativeURL {
+    STPSource *source = [STPFixtures alipaySourceWithNativeURL];
+    __block BOOL completionCalled = NO;
+    NSURL *nativeURL = [NSURL URLWithString:source.details[@"native_url"]];
+    NSError *fakeError = [NSError new];
+
+    STPRedirectContext *sut = [[STPRedirectContext alloc] initWithSource:source completion:^(NSString * _Nonnull sourceID, NSString * _Nullable clientSecret, NSError * _Nullable error) {
+        XCTAssertEqualObjects(source.stripeID, sourceID);
+        XCTAssertEqualObjects(source.clientSecret, clientSecret);
+        XCTAssertEqual(error, fakeError, @"Should be the same NSError object passed to completion() below");
+        completionCalled = YES;
+    }];
+
+    // Make sure the initWithSource: method pulled out the right values from the Source
+    XCTAssertEqualObjects(sut.nativeRedirectURL, nativeURL);
+    XCTAssertEqualObjects(sut.redirectURL, source.redirect.url);
+    XCTAssertEqualObjects(sut.returnURL, source.redirect.returnURL);
+
+    // and make sure the completion calls the completion block above
+    sut.completion(fakeError);
+    XCTAssertTrue(completionCalled);
+}
+
+- (void)testInitWithPaymentIntent {
+    STPPaymentIntent *paymentIntent = [STPFixtures paymentIntent];
+    __block BOOL completionCalled = NO;
+    NSError *fakeError = [NSError new];
+
+    STPRedirectContext *sut = [[STPRedirectContext alloc] initWithPaymentIntent:paymentIntent completion:^(NSString * _Nonnull clientSecret, NSError * _Nullable error) {
+        XCTAssertEqualObjects(paymentIntent.clientSecret, clientSecret);
+        XCTAssertEqual(error, fakeError, @"Should be the same NSError object passed to completion() below");
+        completionCalled = YES;
+    }];
+
+    // Make sure the initWithPaymentIntent: method pulled out the right values from the PaymentIntent
+    XCTAssertNil(sut.nativeRedirectURL);
+    XCTAssertEqualObjects(sut.redirectURL.absoluteString,
+                          @"https://hooks.stripe.com/redirect/authenticate/src_1Cl1AeIl4IdHmuTb1L7x083A?client_secret=src_client_secret_DBNwUe9qHteqJ8qQBwNWiigk");
+
+    // `nextSourceAction` & `authorizeWithURL` should just be aliases for `nextAction` & `redirectToURL`, already tested in `STPPaymentIntentTest`
+    XCTAssertNotNil(paymentIntent.nextAction.redirectToURL.returnURL);
+    XCTAssertEqualObjects(sut.returnURL, paymentIntent.nextAction.redirectToURL.returnURL);
+
+    // and make sure the completion calls the completion block above
+    XCTAssertNotNil(sut);
+    if (sut.completion) {
+        sut.completion(fakeError);
+    }
+    XCTAssertTrue(completionCalled);
+}
+
+- (void)testInitWithPaymentIntentFailures {
+    // Note next_action has been renamed to next_source_action in the API, but both still get sent down in the 2015-10-12 API
+    NSMutableDictionary *json = [[STPTestUtils jsonNamed:STPTestJSONPaymentIntent] mutableCopy];
+    json[@"next_action"] = [json[@"next_action"] mutableCopy];
+    json[@"next_action"][@"redirect_to_url"] = [json[@"next_action"][@"redirect_to_url"] mutableCopy];
+
+    void (^unusedCompletion)(NSString *, NSError *) = ^(__unused NSString * _Nonnull clientSecret, __unused NSError * _Nullable error) {
+        XCTFail(@"should not be constructed, definitely not completed");
+    };
+
+    STPRedirectContext *(^create)(void) = ^{
+        STPPaymentIntent *paymentIntent = [STPPaymentIntent decodedObjectFromAPIResponse:json];
+        return [[STPRedirectContext alloc] initWithPaymentIntent:paymentIntent
+                                                      completion:unusedCompletion];
+    };
+
+    XCTAssertNotNil(create(), @"before mutation of json, creation should succeed");
+
+    json[@"status"] = @"processing";
+    XCTAssertNil(create(), @"not created with wrong status");
+    json[@"status"] = @"requires_source_action";
+
+    json[@"next_action"][@"type"] = @"not_redirect_to_url";
+    XCTAssertNil(create(), @"not created with wrong next_action.type");
+    json[@"next_action"][@"type"] = @"redirect_to_url";
+
+    NSString *correctURL = json[@"next_action"][@"redirect_to_url"][@"url"];
+    json[@"next_action"][@"redirect_to_url"][@"url"] = @"not a valid URL";
+    XCTAssertNil(create(), @"not created with an invalid URL in next_action.redirect_to_url.url");
+    json[@"next_action"][@"redirect_to_url"][@"url"] = correctURL;
+
+    NSString *correctReturnURL = json[@"next_action"][@"redirect_to_url"][@"return_url"];
+    json[@"next_action"][@"redirect_to_url"][@"return_url"] = @"not a url";
+    XCTAssertNil(create(), @"not created with invalid returnUrl");
+    json[@"next_action"][@"redirect_to_url"][@"return_url"] = correctReturnURL;
+
+    XCTAssertNotNil(create(), @"works again when everything is back to normal");
+}
+
 /**
  After starting a SafariViewController redirect flow,
  when a WillEnterForeground notification is posted, RedirectContext's completion
@@ -107,6 +221,7 @@
     OCMVerify([mockVC presentViewController:[OCMArg checkWithBlock:checker]
                                    animated:YES
                                  completion:[OCMArg any]]);
+    [self unsubscribeContext:context];
 }
 
 
@@ -125,6 +240,7 @@
         XCTAssertNil(error);
         [exp fulfill];
     }];
+    XCTAssertEqualObjects(source.redirect.returnURL, context.returnURL);
     id sut = OCMPartialMock(context);
 
     [sut startSafariViewControllerRedirectFlowFromViewController:mockVC];
@@ -170,6 +286,7 @@
     BOOL(^checker)(id) = ^BOOL(id vc) {
         if ([vc isKindOfClass:[SFSafariViewController class]]) {
             NSURL *url = [NSURL URLWithString:@"my-app://some_path"];
+            XCTAssertNotEqualObjects(url, context.returnURL);
             [[STPURLCallbackHandler shared] handleURLCallback:url];
             return YES;
         }
@@ -223,10 +340,55 @@
 
 /**
  After starting a SafariViewController redirect flow,
- when SafariViewController fails to load, RedirectContext's completion block
- and dismiss method should be called.
+ when SafariViewController fails to load the initial page (on iOS < 11.0),
+ RedirectContext's completion block should not be called (SFVC keeps loading)
  */
-- (void)testSafariViewControllerRedirectFlow_failedToLoad {
+- (void)testSafariViewControllerRedirectFlow_failedInitialLoad_preiOS11 {
+    if (@available(iOS 11, *)) {
+        // See testSafariViewControllerRedirectFlow_failedInitialLoad_iOS11Plus
+        // and testSafariViewControllerRedirectFlow_failedInitialLoadAfterRedirect_iOS11Plus
+        return; // Skipping
+    }
+
+    id mockVC = OCMClassMock([UIViewController class]);
+    STPSource *source = [STPFixtures iDEALSource];
+    STPRedirectContext *context = [[STPRedirectContext alloc] initWithSource:source completion:^(__unused NSString *sourceID, __unused NSString *clientSecret, __unused NSError *error) {
+        XCTFail(@"completion called");
+    }];
+    id sut = OCMPartialMock(context);
+
+    OCMReject([sut unsubscribeFromNotifications]);
+    OCMReject([sut dismissPresentedViewController]);
+
+    [sut startSafariViewControllerRedirectFlowFromViewController:mockVC];
+
+    BOOL(^checker)(id) = ^BOOL(id vc) {
+        if ([vc isKindOfClass:[SFSafariViewController class]]) {
+            SFSafariViewController *sfvc = (SFSafariViewController *)vc;
+            // Tell the delegate that the initial load failed. on iOS 10, this is a no-op
+            [sfvc.delegate safariViewController:sfvc didCompleteInitialLoad:NO];
+            return YES;
+        }
+        return NO;
+    };
+    OCMVerify([mockVC presentViewController:[OCMArg checkWithBlock:checker]
+                                   animated:YES
+                                 completion:[OCMArg any]]);
+    [self unsubscribeContext:context];
+}
+
+/**
+ After starting a SafariViewController redirect flow,
+ when SafariViewController fails to load the initial page (on iOS 11+ & without redirects),
+ RedirectContext's completion block and dismiss method should be called.
+ */
+- (void)testSafariViewControllerRedirectFlow_failedInitialLoad_iOS11Plus API_AVAILABLE(ios(11)) {
+    if (@available(iOS 11, *)) {}
+    else {
+        // see testSafariViewControllerRedirectFlow_failedInitialLoad_preiOS11
+        return; // Skipping
+    }
+
     id mockVC = OCMClassMock([UIViewController class]);
     STPSource *source = [STPFixtures iDEALSource];
     XCTestExpectation *exp = [self expectationWithDescription:@"completion"];
@@ -256,6 +418,51 @@
     OCMVerify([sut dismissPresentedViewController]);
 
     [self waitForExpectationsWithTimeout:2 handler:nil];
+}
+
+/**
+ After starting a SafariViewController redirect flow,
+ when SafariViewController fails to load the initial page (on iOS 11+ after redirecting to non-Stripe page),
+ RedirectContext's completion block should not be called (SFVC keeps loading)
+ */
+
+- (void)testSafariViewControllerRedirectFlow_failedInitialLoadAfterRedirect_iOS11Plus API_AVAILABLE(ios(11)) {
+    if (@available(iOS 11, *)) {}
+    else {
+        // see testSafariViewControllerRedirectFlow_failedInitialLoad_preiOS11
+        return; // Skipping
+    }
+
+    id mockVC = OCMClassMock([UIViewController class]);
+    STPSource *source = [STPFixtures iDEALSource];
+    STPRedirectContext *context = [[STPRedirectContext alloc] initWithSource:source completion:^(__unused NSString *sourceID, __unused NSString *clientSecret, __unused NSError *error) {
+        XCTFail(@"completion called");
+    }];
+    id sut = OCMPartialMock(context);
+
+    OCMReject([sut unsubscribeFromNotifications]);
+    OCMReject([sut dismissPresentedViewController]);
+
+    [sut startSafariViewControllerRedirectFlowFromViewController:mockVC];
+
+    BOOL(^checker)(id) = ^BOOL(id vc) {
+        if ([vc isKindOfClass:[SFSafariViewController class]]) {
+            SFSafariViewController *sfvc = (SFSafariViewController *)vc;
+            // before initial load is done, SFVC was redirected to a non-stripe.com domain
+            [sfvc.delegate safariViewController:sfvc
+                    initialLoadDidRedirectToURL:[NSURL URLWithString:@"https://girogate.de"]];
+            // Tell the delegate that the initial load failed.
+            // on iOS 11, with the redirect, this is a no-op
+            [sfvc.delegate safariViewController:sfvc didCompleteInitialLoad:NO];
+            return YES;
+        }
+        return NO;
+    };
+    OCMVerify([mockVC presentViewController:[OCMArg checkWithBlock:checker]
+                                   animated:YES
+                                 completion:[OCMArg any]]);
+
+    [self unsubscribeContext:context];
 }
 
 /**
@@ -310,21 +517,25 @@
  block and dismiss method should be called.
  */
 - (void)testSafariAppRedirectFlow_foregroundNotification {
+    id sut;
+
     STPSource *source = [STPFixtures iDEALSource];
     XCTestExpectation *exp = [self expectationWithDescription:@"completion"];
     STPRedirectContext *context = [[STPRedirectContext alloc] initWithSource:source completion:^(NSString *sourceID, NSString *clientSecret, NSError *error) {
         XCTAssertEqualObjects(sourceID, source.stripeID);
         XCTAssertEqualObjects(clientSecret, source.clientSecret);
         XCTAssertNil(error);
+
+        OCMVerify([sut unsubscribeFromNotifications]);
+        OCMVerify([sut dismissPresentedViewController]);
+
         [exp fulfill];
     }];
-    id sut = OCMPartialMock(context);
+    sut = OCMPartialMock(context);
 
     [sut startSafariAppRedirectFlow];
     [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationWillEnterForegroundNotification object:nil];
 
-    OCMVerify([sut unsubscribeFromNotifications]);
-    OCMVerify([sut dismissPresentedViewController]);
     [self waitForExpectationsWithTimeout:2 handler:nil];
 }
 
@@ -352,20 +563,29 @@
  url, an app to app redirect should attempt to be initiated.
  */
 - (void)testNativeRedirectSupportingSourceFlow_validNativeURL {
-    STPSource *source = [STPFixtures alipaySourceWithNativeUrl];
+    STPSource *source = [STPFixtures alipaySourceWithNativeURL];
     NSURL *sourceURL = [NSURL URLWithString:source.details[@"native_url"]];
 
     STPRedirectContext *context = [[STPRedirectContext alloc] initWithSource:source
                                                                   completion:^(__unused NSString *sourceID, __unused NSString *clientSecret, __unused NSError *error) {
         XCTFail(@"completion called");
     }];
+
+    XCTAssertNotNil(context.nativeRedirectURL);
+    XCTAssertEqualObjects(context.nativeRedirectURL, sourceURL);
+
     id sut = OCMPartialMock(context);
 
     id applicationMock = OCMClassMock([UIApplication class]);
     OCMStub([applicationMock sharedApplication]).andReturn(applicationMock);
-    OCMStub([applicationMock openURL:[OCMArg any]
-                             options:[OCMArg any]
-                   completionHandler:([OCMArg invokeBlockWithArgs:@YES, nil])]);
+    if (@available(iOS 10, *)) {
+        OCMStub([applicationMock openURL:[OCMArg any]
+                                 options:[OCMArg any]
+                       completionHandler:([OCMArg invokeBlockWithArgs:@YES, nil])]);
+    }
+    else {
+        OCMStub([applicationMock openURL:[OCMArg any]]).andReturn(YES);
+    }
 
     OCMReject([sut startSafariViewControllerRedirectFlowFromViewController:[OCMArg any]]);
     OCMReject([sut startSafariAppRedirectFlow]);
@@ -373,9 +593,14 @@
     id mockVC = OCMClassMock([UIViewController class]);
     [sut startRedirectFlowFromViewController:mockVC];
 
-    OCMVerify([applicationMock openURL:[OCMArg isEqual:sourceURL]
-                               options:[OCMArg isEqual:@{}]
-                     completionHandler:[OCMArg isNotNil]]);
+    if (@available(iOS 10, *)) {
+        OCMVerify([applicationMock openURL:[OCMArg isEqual:sourceURL]
+                                   options:[OCMArg isEqual:@{}]
+                         completionHandler:[OCMArg isNotNil]]);
+    }
+    else {
+        OCMVerify([applicationMock openURL:[OCMArg isEqual:sourceURL]]);
+    }
 
     [sut unsubscribeFromNotifications];
 }
@@ -386,19 +611,26 @@
  */
 - (void)testNativeRedirectSupportingSourceFlow_invalidNativeURL {
     STPSource *source = [STPFixtures alipaySource];
-
     STPRedirectContext *context = [[STPRedirectContext alloc] initWithSource:source
                                                                   completion:^(__unused NSString *sourceID, __unused NSString *clientSecret, __unused NSError *error) {
                                                                       XCTFail(@"completion called");
                                                                   }];
+    XCTAssertNil(context.nativeRedirectURL);
+
     id sut = OCMPartialMock(context);
 
     id applicationMock = OCMClassMock([UIApplication class]);
     OCMStub([applicationMock sharedApplication]).andReturn(applicationMock);
 
-    OCMReject([applicationMock openURL:[OCMArg any]
-                               options:[OCMArg any]
-                     completionHandler:[OCMArg any]]);
+    if (@available(iOS 10, *)) {
+        OCMReject([applicationMock openURL:[OCMArg any]
+                                   options:[OCMArg any]
+                         completionHandler:[OCMArg any]]);
+    }
+    else {
+        OCMReject([applicationMock openURL:[OCMArg any]]);
+    }
+
 
     id mockVC = OCMClassMock([UIViewController class]);
     [sut startRedirectFlowFromViewController:mockVC];
